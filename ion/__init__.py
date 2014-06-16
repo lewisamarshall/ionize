@@ -9,27 +9,22 @@ class ion:
 
     This is a direct port of the Matlab code written by Lewis Marshall.'''
 
-    if __name__=='__main__':
-        a=ion('test', -1, 1, 1)
-        print
+    '''Weakly private variables
+    These are constants and should not change.
+    Eventually, T may be  removed from the constants list.'''
+    _F = 96485.3415     # Faraday's const.[C/mol]
+    _Lpm3 = 1000        # Conversion from liters to m^3
+    _T = 298            # Temperature, in Kalvin
+    # The following are constants in eqtn 6 of Bahga 2010.
+    _Adh = 0.5102  	 # L^1/2 / mol^1/2, approximate for RT
+    _aD = 1.5  	     # mol^-1/2 mol^-3/2, approximation
 
     def __init__(self, name, z, pKa, absolute_mobility):
         self.name = name
         self.z = z
         self.pKa = dict(zip(list(z), list(pKa)))
         self.absolute_mobility = dict(zip(list(z), list(absolute_mobility)))  # Expected in m^2/V/s.
-        self.actual_mobility = dict.fromkeys(z)   # Intended to be filled by Solution
-        '''Weakly private variables
-        These are constants and should not change.
-        Eventually, T may be  removed from the constants list.'''
-
-        self._F = 96485.3415     # Faraday's const.[C/mol]
-        self._Lpm3 = 1000        # Conversion from liters to m^3
-        self._T = 298            # Temperature, in Kalvin
-        # The following are constants in eqtn 6 of Bahga 2010.
-        self._Adh = 0.5102  	 # L^1/2 / mol^1/2, approximate for RT
-        self._aD = 1.5  	     # mol^-1/2 mol^-3/2, approximation
-
+        self.actual_mobility = dict.fromkeys(z)   # Intended to be filled by solution
 
 
     '''    # Class constructor.
@@ -123,3 +118,11 @@ class ion:
         z0=[0]+obj.z;
         z0=sort(z0);
         return z0
+
+    # from ionization_fraction import ionization_fraction
+    # from activity_coefficient import activity_coefficient
+    # from effective_mobility import effective_mobility
+    # from Ka_eff import Ka_eff
+    # from L import L
+    # from molar_conductivity import molar_conductivity
+    # from robinson_stokes_mobility import robinson_stokes_mobility
