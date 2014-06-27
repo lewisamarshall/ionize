@@ -1,18 +1,6 @@
 def ionization_fraction(obj, pH, I=0,index):
-	'''This function takes the ion and the pH and the ionic strength.
-	It computes the fraction of ion in each of the ionization z states
-	in z. If index is specified, it will only return the ionization
-	in ionization state z(index).'''
-
-
-
-	# Sanitize the pH input.
-	if not isnumeric(pH):
-		error('pH should be a number.')
-
-	if length(pH)~=1:
-		pH=pH(1)
-		warning('Ionization fraction only takes a single pH. Using pH(1).')
+	'''Return the ionization fractions of an ion at a given pH and
+	ionic strength.'''
 
 	# Get the vector of products of acidity constants.
     L=obj.L(I)

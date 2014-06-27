@@ -1,12 +1,10 @@
 def activity_coefficient(obj, I, z=obj.z0):
-	from math import sqrt
 	# There are two coefficients that are used repeatedly.
 	# Specified in Bahga.
-	A=obj.Adh*sqrt(I)/(1+obj.aD*sqrt(I));
-	B=obj.Adh*0.1*I; #altered to match spresso code, Adh may not belong
+	A=obj._Adh*sqrt(I)/(1+obj._aD*sqrt(I));
+	B=obj._Adh*0.1*I; #altered to match spresso code, Adh may not belong
 
 	# Use them to calculate the activity coefficients.
 	# These coefficients are for z=+-1, for H+ and OH-
-	gamma=z.^2*(B-A);
-	gamma=10.^gamma;
+	gamma=[10**(zp**2*(B-A)) for zp in z];
 	return gamma

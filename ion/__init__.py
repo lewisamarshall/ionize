@@ -1,7 +1,7 @@
 class ion:
-    '''	A class for ions dissolved in solution.
-    Draws significantly on Bagha Electrophoresis 2010
-    "Ionic strength effects on electrophoretic focusing and separations
+    '''	Describe an ion dissolved in aqueous solution.
+    This class draws significantly on Bagha Electrophoresis 2010
+    "Ionic strength effects on electrophoretic focusing and separations"
     The ion is defined by a name, and a set of charge states (z).
     Each charge state must have an associated acidity constant (pKa).
     Each charge state must have an associated fully ionized mobility
@@ -9,9 +9,12 @@ class ion:
 
     This is a direct port of the Matlab code written by Lewis Marshall.'''
 
-    '''Weakly private variables
-    These are constants and should not change.
-    Eventually, T may be  removed from the constants list.'''
+    import warnings
+    from math import sqrt
+
+    # Weakly private variables
+    # These are constants and should not change.
+    # Eventually, T may be  removed from the constants list.
     _F = 96485.3415     # Faraday's const.[C/mol]
     _Lpm3 = 1000        # Conversion from liters to m^3
     _T = 298            # Temperature, in Kalvin
@@ -22,9 +25,9 @@ class ion:
     def __init__(self, name, z, pKa, absolute_mobility):
         self.name = name
         self.z = z
-        self.pKa = dict(zip(list(z), list(pKa)))
-        self.absolute_mobility = dict(zip(list(z), list(absolute_mobility)))  # Expected in m^2/V/s.
-        self.actual_mobility = dict.fromkeys(z)   # Intended to be filled by solution
+        self.pKa = pKa
+        self.absolute_mobility = absolute_mobility  # Expected in m^2/V/s.
+        self.actual_mobility = [None] * len(z)   # Intended to be filled by solution
 
 
     '''    # Class constructor.
@@ -76,9 +79,7 @@ class ion:
         # obj=obj.z_sort();'''
 
     def z_sort(obj):
-        '''This function sorts the charge state list (and the associated pKas)
-        by the value of the charge state (from negative to positive). This
-        is required for other methods to work correclty.'''
+        '''Sort the charge states from lowest to highest.'''
 
         # Sort the charges. Store the index order.
         [obj.z,Index]=sort(obj.z);
@@ -99,24 +100,19 @@ class ion:
 
             #Send a single warning if any charge state is missing
         if warn:
-            print('''warning('Charge states may be missing...')''')
+            warnings.warn('Charge states missing.')
         return obj
 
-    def Ka(obj, index=1):
-        '''Calculates the Kas from the pKas.'''
-        Ka=[10.**-p for p in obj.pKa.values()]
-        if exist('index', 'var'):
-            try:
-                Ka=Ka(index);
-            except:
-                print('Index is out of bound. Returning all acidity coefficients.')
+    def Ka(obj):
+        '''Returns the Kas based on the pKas.'''
+        Ka=[10.**-p for p in obj.pKa]
         return Ka
 
     def z0(obj):
-        '''Calls the list of charge states, but inserts 0 in the appropriate
-        position.'''
+        '''Returns the list of charge states with 0 inserted at the proper
+        location.'''
         z0=[0]+obj.z;
-        z0=sort(z0);
+        z0=sorted(z0);
         return z0
 
     # from ionization_fraction import ionization_fraction
