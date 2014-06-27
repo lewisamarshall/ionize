@@ -1,3 +1,5 @@
+import warnings
+
 class ion:
     '''	Describe an ion dissolved in aqueous solution.
     This class draws significantly on Bagha Electrophoresis 2010
@@ -8,9 +10,6 @@ class ion:
     (absolute_mobility).
 
     This is a direct port of the Matlab code written by Lewis Marshall.'''
-
-    import warnings
-    from math import sqrt
 
     # Weakly private variables
     # These are constants and should not change.

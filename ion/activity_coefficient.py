@@ -1,3 +1,5 @@
+from math import sqrt
+
 def activity_coefficient(obj, I, z=obj.z0):
 	# There are two coefficients that are used repeatedly.
 	# Specified in Bahga.

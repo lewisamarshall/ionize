@@ -1,10 +1,11 @@
 def Ka_eff(obj, I):
-	# Uses the ionic strength correction function from
-	# Dubye-Huckle theory to calculate the activity coefficients,
-	# and from this, compute the effective Ka values for the ion.
+	'''Return the effective Ka values for the ion.
+	This function uses the ionic strength correction function from
+	Dubye-Huckle theory to calculate the activity coefficients, and uses
+	these to correct Ka.'''
 
 	# If the ionic strength is zero, simply return the Ka's.
-	if I==0:
+	if I is 0:
 		return obj.Ka
 
 	# Make the effective Ka vector the same size as the Ka vector.
@@ -15,6 +16,6 @@ def Ka_eff(obj, I):
 
 	# For each acidity coefficient, get the effective
 	# coefficienty by multiplying by activities.
-	for i=1:length(Ka_eff)
-		Ka_eff(i)=obj.Ka(i)*gam_i(i+1)/gam_i(i)/gam_h
+	for i, Ka in enumerate(obj.Ka):
+		Ka_eff[i]=Ka*gam_i[i+1]/gam_i[i]/gam_h
 	return Ka_eff
