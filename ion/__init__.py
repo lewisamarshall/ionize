@@ -33,7 +33,6 @@ class ion:
         self.actual_mobility = [None] * len(z)   # Intended to be filled by solution
 
 
-    '''    # Class constructor.
     # Initialize the object, with checks on the form of the variables.
         # if(nargin ==4 ):
         #     # check that the name is a string
@@ -79,30 +78,31 @@ class ion:
         #
         # % After storing the ion properties, ensure that the properties are sorted in order of charge.
         # % All other ion methods assume that the states will be sorted by charge.
-        # obj=obj.z_sort();'''
+        self=self.z_sort();
 
     def z_sort(obj):
         """Sort the charge states from lowest to highest."""
         # Sort the charges. Store the index order.
-        [obj.z,Index]=sort(obj.z);
+        obj.z, obj.pKa, obj.absolute_mobility=zip(*sorted(zip(obj.z, obj.pKa, obj.absolute_mobility)))
+        obj.z=list(obj.z)
+        obj.pKa=list(obj.pKa)
+        obj.absolute_mobility=list(obj.absolute_mobility)
         # Sort the pKas by the stored index order.
-        obj.pKa=obj.pKa(Index);
         # Sort the mobilities by the stored index order.
-        obj.absolute_mobility=obj.absolute_mobility(Index);
 
         # This section will check each charge state to see if it is complete.
         # That is, if there is a charge state -2, there must be a charge state
         # -1. if there is a charge state +3, there must be a +2 and a +1.
-        warn=0
-        for i in range(len((obj.z))):
-            if obj.z(i) < -1 and obj.z(i+1)!=obj.z(i)+1:
-                warn=1
-            elif obj.z(i)>1 and obj.z(i-1)!=obj.z(i)-1:
-                warn=1
-
-            #Send a single warning if any charge state is missing
-        if warn:
-            warnings.warn('Charge states missing.')
+        # warn=0
+        # for i in range(len((obj.z))):
+        #     if obj.z(i) < -1 and obj.z(i+1)!=obj.z(i)+1:
+        #         warn=1
+        #     elif obj.z(i)>1 and obj.z(i-1)!=obj.z(i)-1:
+        #         warn=1
+        #
+        #     #Send a single warning if any charge state is missing
+        # if warn:
+        #     warnings.warn('Charge states missing.')
         return obj
 
     def Ka(obj):
@@ -125,7 +125,7 @@ class ion:
     from robinson_stokes_mobility import robinson_stokes_mobility
 
 if __name__=='__main__':
-    hcl=ion('hydrochloric acid', [-1], [-2], [76])
+    hcl=ion('hydrochloric acid', [-1, -2], [-2, 3], [76, 89])
     print hcl
     print hcl.name
     print hcl.z
