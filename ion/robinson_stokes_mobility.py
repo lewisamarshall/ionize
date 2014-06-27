@@ -1,9 +1,11 @@
 def robinson_stokes_mobility(obj, I):
-	'''If only an ionic strength is specified, use the Robinson-Stokes
-	correction to calculate a new fully ionized mobility'''
+	"""Return the robinson stokes correction to fully ionized mobility.
 
-	# If a solution object is supplied, use the full onsager fouss correction.
+	If only an ionic strength is specified, use the Robinson-Stokes
+	correction to calculate a new fully ionized mobility.
 
+	If a solution object is supplied, use the full onsager fouss correction.
+	"""
 	if isnumeric(I) and  I>=0 and isvector(I) and length(I)==1:
 		# Currently using the ionic strength where Bahga 2010
 		# uses twice the ionic strength. This appears to work, and follows the SPRESSO implimentation.

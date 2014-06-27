@@ -1,7 +1,8 @@
 def ionization_fraction(obj, pH, I=0):
-	'''Return the ionization fractions of an ion at a given pH and
-	ionic strength.'''
-
+	"""Return the ionization fractions of an ion.
+	
+	The ionization fraction is based on a given pH and ionic strength.
+	"""
 	# Get the vector of products of acidity constants.
 	L=obj.L(I)
 	# Compute the concentration of H+ from the pH.

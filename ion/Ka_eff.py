@@ -1,9 +1,10 @@
 def Ka_eff(obj, I):
-	'''Return the effective Ka values for the ion.
+	"""Return the effective Ka values for the ion.
+
 	This function uses the ionic strength correction function from
 	Dubye-Huckle theory to calculate the activity coefficients, and uses
-	these to correct Ka.'''
-
+	these to correct Ka.
+	"""
 	# If the ionic strength is zero, simply return the Ka's.
 	if I is 0:
 		return obj.Ka

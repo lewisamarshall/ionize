@@ -1,7 +1,9 @@
 import warnings
 
 class ion:
-    '''	Describe an ion dissolved in aqueous solution.
+
+    """Describe an ion dissolved in aqueous solution.
+
     This class draws significantly on Bagha Electrophoresis 2010
     "Ionic strength effects on electrophoretic focusing and separations"
     The ion is defined by a name, and a set of charge states (z).
@@ -9,7 +11,8 @@ class ion:
     Each charge state must have an associated fully ionized mobility
     (absolute_mobility).
 
-    This is a direct port of the Matlab code written by Lewis Marshall.'''
+    This is a direct port of the Matlab code written by Lewis Marshall.
+    """
 
     # Weakly private variables
     # These are constants and should not change.
@@ -22,6 +25,7 @@ class ion:
     _aD = 1.5  	     # mol^-1/2 mol^-3/2, approximation
 
     def __init__(self, name, z, pKa, absolute_mobility):
+        """Initialize an ion object."""
         self.name = name
         self.z = z
         self.pKa = pKa
@@ -78,8 +82,7 @@ class ion:
         # obj=obj.z_sort();'''
 
     def z_sort(obj):
-        '''Sort the charge states from lowest to highest.'''
-
+        """Sort the charge states from lowest to highest."""
         # Sort the charges. Store the index order.
         [obj.z,Index]=sort(obj.z);
         # Sort the pKas by the stored index order.
@@ -103,13 +106,12 @@ class ion:
         return obj
 
     def Ka(obj):
-        '''Returns the Kas based on the pKas.'''
+        """Return the Kas based on the pKas."""
         Ka=[10.**-p for p in obj.pKa]
         return Ka
 
     def z0(obj):
-        '''Returns the list of charge states with 0 inserted at the proper
-        location.'''
+        """Return the list of charge states with 0 inserted."""
         z0=[0]+obj.z;
         z0=sorted(z0);
         return z0
@@ -131,5 +133,5 @@ if __name__=='__main__':
     print hcl.absolute_mobility
     print hcl.Ka()
     print hcl.z0()
-    # print hcl.ionization_fraction(7)
+    #  print hcl.ionization_fraction(7)
     print hcl.activity_coefficient(.03)

@@ -1,7 +1,8 @@
 def molar_conductivity(obj, pH, I=0):
-	'''Retun the molar conductivity of the ion based on the pH and I.
-	Provides conducitivity in Siemens per meter per mole.'''
-
+	"""Retun the molar conductivity of the ion based on the pH and I.
+	
+	Provides conducitivity in Siemens per meter per mole.
+	"""
 	if obj.actual_mobility:
 		actual_mobility=obj.actual_mobility
 	else:

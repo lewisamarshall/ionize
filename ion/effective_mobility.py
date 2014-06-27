@@ -1,6 +1,5 @@
 def effective_mobility(obj, pH, I=0):
-	'''Returns the effective mobility of the ion at a given pH and I.'''
-
+	"""Return the effective mobility of the ion at a given pH and I."""
 	if obj.actual_mobility:
 		actual_mobility=obj.actual_mobility
 	else:
