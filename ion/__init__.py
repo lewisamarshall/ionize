@@ -114,10 +114,22 @@ class ion:
         z0=sorted(z0);
         return z0
 
-    # from ionization_fraction import ionization_fraction
-    # from activity_coefficient import activity_coefficient
-    # from effective_mobility import effective_mobility
-    # from Ka_eff import Ka_eff
-    # from L import L
-    # from molar_conductivity import molar_conductivity
-    # from robinson_stokes_mobility import robinson_stokes_mobility
+    from ionization_fraction import ionization_fraction
+    from activity_coefficient import activity_coefficient
+    from effective_mobility import effective_mobility
+    from Ka_eff import Ka_eff
+    from L import L
+    from molar_conductivity import molar_conductivity
+    from robinson_stokes_mobility import robinson_stokes_mobility
+
+if __name__=='__main__':
+    hcl=ion('hydrochloric acid', [-1], [-2], [76])
+    print hcl
+    print hcl.name
+    print hcl.z
+    print hcl.pKa
+    print hcl.absolute_mobility
+    print hcl.Ka()
+    print hcl.z0()
+    # print hcl.ionization_fraction(7)
+    print hcl.activity_coefficient(.03)

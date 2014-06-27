@@ -1,6 +1,7 @@
 from math import sqrt
 
-def activity_coefficient(obj, I, z=obj.z0):
+def activity_coefficient(obj, I):
+	z=obj.z0()
 	# There are two coefficients that are used repeatedly.
 	# Specified in Bahga.
 	A=obj._Adh*sqrt(I)/(1+obj._aD*sqrt(I));

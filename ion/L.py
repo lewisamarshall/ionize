@@ -10,7 +10,7 @@ def L(obj, I=0):
 	Ka=obj.Ka_eff(I);
 
 	index_0=find(L==0);
-	L(index_0)=1;
+	L[index_0]=1;
 
 
 
@@ -20,6 +20,6 @@ def L(obj, I=0):
 
 
 	if index_0 is not len(L)-1:
-		for i=(index_0+1):length(L):
-			L(i)= L(i-1)/Ka(i-1);
+		for i in range((index_0+1), len(L)):
+			L[i]= L(i-1)/Ka(i-1);
 	return L
