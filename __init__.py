@@ -1,3 +1,4 @@
-"""Represents ions in aqueous solution."""
+"""Represent ions in aqueous solution."""
 
 from ion import ion
+# from solution import solution

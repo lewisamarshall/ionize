@@ -1,3 +1,5 @@
+from math import copysign, sqrt
+
 def robinson_stokes_mobility(obj, I):
 	"""Return the robinson stokes correction to fully ionized mobility.
 
@@ -6,14 +8,17 @@ def robinson_stokes_mobility(obj, I):
 
 	If a solution object is supplied, use the full onsager fouss correction.
 	"""
-	if isnumeric(I) and  I>=0 and isvector(I) and length(I)==1:
+	if I>=0:
 		# Currently using the ionic strength where Bahga 2010
 		# uses twice the ionic strength. This appears to work, and follows the SPRESSO implimentation.
 		# Likely typo in paper.
-		A=0.2297;
-		B=31.410e-9;
-		#actual_mobility=obj.absolute_mobility-(A.*obj.absolute_mobility+B.*sign(obj.z))*sqrt(I)/(1+obj.aD*sqrt(I));
-		actual_mobility=0
+		A=0.2297
+		B=31.410e-9
+		actual_mobility=[]
+		for abs_mob, z in zip(obj.absolute_mobility, obj.z):
+			actual_mobility.append(abs_mob -
+				(A * abs_mob +
+				B * copysign(1, z)) * sqrt(I) / (1 + obj._aD * sqrt(I)))
 	else:
 		error('Ionic strength must be specified as a scalar positive value.')
 

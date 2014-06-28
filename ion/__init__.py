@@ -1,4 +1,5 @@
 import warnings
+from math import sqrt
 
 class ion:
 
@@ -82,13 +83,12 @@ class ion:
 
     def z_sort(obj):
         """Sort the charge states from lowest to highest."""
-        # Sort the charges. Store the index order.
+        # Zip the lists together and sort them by z.
         obj.z, obj.pKa, obj.absolute_mobility=zip(*sorted(zip(obj.z, obj.pKa, obj.absolute_mobility)))
         obj.z=list(obj.z)
         obj.pKa=list(obj.pKa)
         obj.absolute_mobility=list(obj.absolute_mobility)
-        # Sort the pKas by the stored index order.
-        # Sort the mobilities by the stored index order.
+
 
         # This section will check each charge state to see if it is complete.
         # That is, if there is a charge state -2, there must be a charge state
@@ -131,7 +131,9 @@ if __name__=='__main__':
     print hcl.z
     print hcl.pKa
     print hcl.absolute_mobility
+    print hcl.robinson_stokes_mobility(.1)
     print hcl.Ka()
     print hcl.z0()
     #  print hcl.ionization_fraction(7)
     print hcl.activity_coefficient(.03)
+    help(ion)

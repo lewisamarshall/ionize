@@ -1,4 +1,4 @@
-def Ka_eff(obj, I):
+def Ka_eff(obj, I=0):
 	"""Return the effective Ka values for the ion.
 
 	This function uses the ionic strength correction function from
@@ -16,7 +16,7 @@ def Ka_eff(obj, I):
 	gam_h=obj.activity_coefficient(I, 1)
 
 	# For each acidity coefficient, get the effective
-	# coefficienty by multiplying by activities.
-	for i, Ka in enumerate(obj.Ka):
-		Ka_eff[i]=Ka*gam_i[i+1]/gam_i[i]/gam_h
+	# coefficient by multiplying by activities.
+	for i, Kp in enumerate(obj.Ka):
+		Ka_eff[i]=Kp*gam_i[i+1]/gam_i[i]/gam_h
 	return Ka_eff

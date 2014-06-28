@@ -1,8 +1,9 @@
 from math import sqrt
 
-def activity_coefficient(obj, I):
+def activity_coefficient(obj, I, z=None):
 	"""Return activity coefficients of a charge state at ionic strength I."""
-	z=obj.z0()
+	if not z:
+		z=obj.z0()
 	# There are two coefficients that are used repeatedly.
 	# Specified in Bahga.
 	A=obj._Adh*sqrt(I)/(1+obj._aD*sqrt(I));
