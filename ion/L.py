@@ -7,18 +7,17 @@ def L(obj, I=0):
 	It can use ionic strength correction if an ionic strength is specified. Otherwise. It uses
 	uncorrected acidity coefficients.
 	"""
-	L=obj.z0;
-	Ka=obj.Ka_eff(I);
-
-	index_0=find(L==0);
-	L[index_0]=1;
+	L=obj.z0()
+	Ka=obj.Ka_eff(I)
+	index_0=obj.z0().index(0)
+	L[index_0]=1
 
 	if index_0 is not 1:
-		for i in range(index_0-1, 0, -1):
+		for i in range(index_0-1, -1, -1):
 			L[i]= L[i+1]*Ka[i]
 
 
 	if index_0 is not len(L)-1:
 		for i in range((index_0+1), len(L)):
-			L[i]= L(i-1)/Ka(i-1);
+			L[i]= L(i-1)/Ka(i-1)
 	return L

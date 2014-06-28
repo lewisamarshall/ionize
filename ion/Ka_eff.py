@@ -7,10 +7,10 @@ def Ka_eff(obj, I=0):
 	"""
 	# If the ionic strength is zero, simply return the Ka's.
 	if I is 0:
-		return obj.Ka
+		return obj.Ka()
 
 	# Make the effective Ka vector the same size as the Ka vector.
-	Ka_eff=obj.Ka
+	Ka_eff=obj.Ka()
 
 	gam_i=obj.activity_coefficient(I)
 	gam_h=obj.activity_coefficient(I, 1)

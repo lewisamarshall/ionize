@@ -125,7 +125,7 @@ class ion:
     from robinson_stokes_mobility import robinson_stokes_mobility
 
 if __name__=='__main__':
-    hcl=ion('hydrochloric acid', [-1, -2], [-2, 3], [76, 89])
+    hcl=ion('hydrochloric acid', [-1, -2], [6, 8], [76, 89])
     print hcl
     print hcl.name
     print hcl.z
@@ -134,6 +134,7 @@ if __name__=='__main__':
     print hcl.robinson_stokes_mobility(.1)
     print hcl.Ka()
     print hcl.z0()
-    #  print hcl.ionization_fraction(7)
+    print hcl.L()
+    print hcl.ionization_fraction(7)
     print hcl.activity_coefficient(.03)
     help(ion)
