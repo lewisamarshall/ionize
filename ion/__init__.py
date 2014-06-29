@@ -1,6 +1,7 @@
 import warnings
 from math import sqrt
 
+
 class ion:
 
     """Describe an ion dissolved in aqueous solution.
@@ -31,10 +32,9 @@ class ion:
         self.z = z
         self.pKa = pKa
         self.absolute_mobility = absolute_mobility  # Expected in m^2/V/s.
-        self.actual_mobility = [None] * len(z)   # Intended to be filled by solution
+        self.actual_mobility = [None] * len(z)   # Fill by solution
 
-
-    # Initialize the object, with checks on the form of the variables.
+        # Initialize the object, with checks on the form of the variables.
         # if(nargin ==4 ):
         #     # check that the name is a string
         #     if ischar(name)
@@ -79,15 +79,16 @@ class ion:
         #
         # % After storing the ion properties, ensure that the properties are sorted in order of charge.
         # % All other ion methods assume that the states will be sorted by charge.
-        self=self.z_sort()
+        self = self.z_sort()
 
     def z_sort(obj):
         """Sort the charge states from lowest to highest."""
         # Zip the lists together and sort them by z.
-        obj.z, obj.pKa, obj.absolute_mobility=zip(*sorted(zip(obj.z, obj.pKa, obj.absolute_mobility)))
-        obj.z=list(obj.z)
-        obj.pKa=list(obj.pKa)
-        obj.absolute_mobility=list(obj.absolute_mobility)
+        obj.z, obj.pKa, obj.absolute_mobility = zip(*sorted(zip(obj.z, obj.pKa,
+                                                    obj.absolute_mobility)))
+        obj.z = list(obj.z)
+        obj.pKa = list(obj.pKa)
+        obj.absolute_mobility = list(obj.absolute_mobility)
 
 
         # This section will check each charge state to see if it is complete.
@@ -107,13 +108,13 @@ class ion:
 
     def Ka(obj):
         """Return the Kas based on the pKas."""
-        Ka=[10.**-p for p in obj.pKa]
+        Ka = [10.**-p for p in obj.pKa]
         return Ka
 
     def z0(obj):
         """Return the list of charge states with 0 inserted."""
-        z0=[0]+obj.z;
-        z0=sorted(z0);
+        z0 = [0]+obj.z
+        z0 = sorted(z0)
         return z0
 
     from ionization_fraction import ionization_fraction
@@ -124,8 +125,8 @@ class ion:
     from molar_conductivity import molar_conductivity
     from robinson_stokes_mobility import robinson_stokes_mobility
 
-if __name__=='__main__':
-    hcl=ion('hydrochloric acid', [-1, -2], [6, 8], [76, 89])
+if __name__ == '__main__':
+    hcl = ion('hydrochloric acid', [-1, -2], [6, 8], [76, 89])
     print hcl
     print hcl.name
     print hcl.z

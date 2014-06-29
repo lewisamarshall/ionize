@@ -1,5 +1,5 @@
 def buffering_capacity(obj):
-	"""Return the buffering capacity of the solution.
+    """Return the buffering capacity of the solution.
 
 	This function generates an approximate solution to the buffering
 	capacity by finding the derivative of the pH with respect to
