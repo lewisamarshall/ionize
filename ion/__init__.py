@@ -19,8 +19,8 @@ class ion:
     # These are constants and should not change.
     # Eventually, T may be  removed from the constants list.
     _F = 96485.3415     # Faraday's const.[C/mol]
-    _Lpm3 = 1000        # Conversion from liters to m^3
-    _T = 298            # Temperature, in Kalvin
+    _Lpm3 = 1000.0        # Conversion from liters to m^3
+    _T = 298.0            # Temperature, in Kalvin
     # The following are constants in eqtn 6 of Bahga 2010.
     _Adh = 0.5102  	 # L^1/2 / mol^1/2, approximate for RT
     _aD = 1.5  	     # mol^-1/2 mol^-3/2, approximation
@@ -79,7 +79,7 @@ class ion:
         #
         # % After storing the ion properties, ensure that the properties are sorted in order of charge.
         # % All other ion methods assume that the states will be sorted by charge.
-        self=self.z_sort();
+        self=self.z_sort()
 
     def z_sort(obj):
         """Sort the charge states from lowest to highest."""

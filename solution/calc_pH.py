@@ -1,12 +1,15 @@
-def calc_pH(obj, I=0):
-	'''CALC_pH Finds the pH of the object.
-		If an ionic strength is specified, uses the corrected acidity constants.
-		This function should be used only when finding the equilibrium state.
-		After that, the value should be pulled from obj.pH.
+import numpy
 
-		If ionic strength does not exist, assume it is zero.
-		This function is used to find the equilibrium state,
-		so it cannot pull the ionic strength from the object.'''
+def calc_pH(obj, I=0):
+	"""Return the pH of the object.
+	If an ionic strength is specified, uses the corrected acidity constants.
+	This function should be used only when finding the equilibrium state.
+	After that, the value should be pulled from obj.pH.
+
+	If ionic strength does not exist, assume it is zero.
+	This function is used to find the equilibrium state,
+	so it cannot pull the ionic strength from the object.
+	"""
 
 
 	# Find the order of the polynomial. This is the maximum
@@ -70,7 +73,7 @@ def calc_pH(obj, I=0):
     Poly=fliplr(Poly);
 
     # Solve Polynomial for concentration
-    roo=roots(Poly);
+    roo=numpy.roots(Poly);
     cH=roo(imag(roo)==0 & roo>0);
 
 	# Convert to pH. Use the activity to calculate properly.
