@@ -5,7 +5,6 @@ def buffering_capacity(obj):
     capacity by finding the derivative of the pH with respect to
     the addition of an acid insult at small concentration.
     """
-
     # Find the smallest concentration in the solution.
     c = [cp for cp in obj.concentrations() if cp > 0]
     c = 0.1*min(c)

@@ -15,7 +15,6 @@ class ion:
 
     This is a direct port of the Matlab code written by Lewis Marshall.
     """
-
     # Weakly private variables
     # These are constants and should not change.
     # Eventually, T may be  removed from the constants list.
@@ -107,7 +106,10 @@ class ion:
         return obj
 
     def Ka(obj):
-        """Return the Kas based on the pKas."""
+        """Return the Kas based on the pKas.
+
+        These values are not corrected for ionic strength.
+        """
         Ka = [10.**-p for p in obj.pKa]
         return Ka
 

@@ -3,6 +3,7 @@ from ion import ion
 
 
 class solution:
+
     """Represent a solution containing a set of ions.
 
     Initialize with solution(ions, concentrations), where ions is a list
@@ -17,6 +18,7 @@ class solution:
 
     See also ion.
     """
+
     _F = 96485.3415        # Faraday's const.				[C/mol]
     _Rmu = 8.31            # Universal gas const. 	    [J/mol*K]
     _Temp = 298.0          # Temperature 					[K]
@@ -37,6 +39,7 @@ class solution:
     I = 0 				# Expected in molar.
 
     def __init__(self, ions, concentrations):
+        """Initialize a solution object."""
         self.ions = ions
         self.concentrations = concentrations
         # Class Constructor
@@ -88,6 +91,7 @@ class solution:
 
     def add_ion(obj, new_ions, new_concentrations):
         """add_ion initializes a new solution with more ions.
+
         NEW_SOLUTION will contain all of the ions in the current solution
         plus a new set of ions from new_ions at a new set of concentrations
         from new_concentrations.
@@ -108,7 +112,7 @@ class solution:
         return cH
 
     def cOH(obj, pH, I):
-        """Supplies the concentration of OH- in the solution."""
+        """Return the concentration of OH- in the solution."""
         if not pH:
             pH = obj.pH
 
@@ -119,14 +123,16 @@ class solution:
         return cOH
 
     def H_conductivity(obj):
-        """Calculates teh conductivity of H+.
+        """Return the conductivity of H+.
+
         Does not correct the mobility of the ion.
         """
         H_conductivity = obj.cH*obj.H.molar_conductivity(obj.pH, obj.I)
         return H_conductivity
 
     def OH_conductivity(obj):
-        """Calculates teh conductivity of OH+.
+        """Return the conductivity of OH+.
+
         Does not correct the mobility of the ion.
         """
         OH_conductivity = obj.cOH*obj.OH.molar_conductivity(obj.pH, obj.I)

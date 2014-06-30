@@ -7,7 +7,6 @@ def calc_I(obj, pH, I_guess=0):
     pH must be supplied. If a guess for ionic strength is not supplied,
     ionic strength corrections will not be used.
     """
-
     # For each ion, add the contribution to ionic strength to the sum.
     I = sum([c * sum(
         [z**2*f for (z, f) in

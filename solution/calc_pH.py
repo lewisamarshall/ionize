@@ -3,6 +3,7 @@ import numpy
 
 def calc_pH(obj, I=0):
     """Return the pH of the object.
+
     If an ionic strength is specified, uses the corrected acidity constants.
     This function should be used only when finding the equilibrium state.
     After that, the value should be pulled from obj.pH.
@@ -11,7 +12,6 @@ def calc_pH(obj, I=0):
     This function is used to find the equilibrium state,
     so it cannot pull the ionic strength from the object.
     """
-
     # Find the order of the polynomial. This is the maximum
     # size of the list of charge states in an ion.
     MaxCol = -inf

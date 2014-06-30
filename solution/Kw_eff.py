@@ -3,7 +3,6 @@ def Kw_eff(obj, I=None):
 
     Based on the activity corrections to H+ and OH-.
     """
-
     if not I:
         I = obj.I
 

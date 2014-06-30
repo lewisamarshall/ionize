@@ -1,5 +1,5 @@
 def transference(obj):
-    """Returns the fraction of charge carried by each of the ions as a list.
+    """Return the fraction of charge carried by each of the ions as a list.
 
     Should not precisely add to 1, because some charge is carried by protons
     and hydroxyls.

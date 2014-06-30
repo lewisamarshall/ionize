@@ -1,6 +1,5 @@
 from scipy.optimize import newton
 
-
 def find_equilibrium(obj):
     """Return the equilibrium ionic strength and pH.
 
@@ -9,7 +8,6 @@ def find_equilibrium(obj):
     activity coefficients. This function is called when the object is
     initialized.
     """
-
     # Generate an initial ionic strength guess without  activity corrections
     I = obj.calc_I(obj.calc_pH())
 

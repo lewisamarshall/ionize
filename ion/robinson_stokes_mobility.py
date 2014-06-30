@@ -1,4 +1,5 @@
 from math import copysign, sqrt
+import warnings
 
 
 def robinson_stokes_mobility(obj, I):
@@ -22,8 +23,8 @@ def robinson_stokes_mobility(obj, I):
                                    (A * abs_mob +
                                     B * copysign(1, z)) * sqrt(I) /
                                    (1 + obj._aD * sqrt(I)))
-        else:
-            error('''Ionic strength must be specified as
+    else:
+            warnings.warn('''Ionic strength must be specified as
                     a scalar positive value.''')
 
     return actual_mobility

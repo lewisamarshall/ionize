@@ -6,8 +6,8 @@ def zone_transfer(obj, vol):
     Qi = [0]*len(obj.ions)
     transference = obj.transference()
     for i in range(len(Qi)):
-        Qi[i] = (obj.ions[i].molar_conductivity(obj.pH, obj.I)*
-                obj.concentrations[i]/transference[i]/
-                abs(obj.ions[i].effective_mobility(obj.pH, obj.I))
+        Qi[i] = (obj.ions[i].molar_conductivity(obj.pH, obj.I) *
+                 obj.concentrations[i]/transference[i] /
+                 abs(obj.ions[i].effective_mobility(obj.pH, obj.I)))
     Qi = [Qp*vol/obj.Lpm3 for Qp in Qi]
     return Qi
