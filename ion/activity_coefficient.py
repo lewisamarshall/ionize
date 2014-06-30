@@ -13,5 +13,5 @@ def activity_coefficient(obj, I, z=None):
 
     # Use them to calculate the activity coefficients.
     # These coefficients are for z=+-1, for H+ and OH-
-    gamma=[10**(zp**2*(B-A)) for zp in z]
+    gamma = [10**(zp**2*(B-A)) for zp in z]
     return gamma
