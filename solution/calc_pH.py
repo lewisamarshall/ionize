@@ -1,4 +1,5 @@
 import numpy
+from math import log10
 
 
 def calc_pH(obj, I=0):
@@ -14,64 +15,61 @@ def calc_pH(obj, I=0):
     """
     # Find the order of the polynomial. This is the maximum
     # size of the list of charge states in an ion.
-    MaxCol = -inf
-    for i in len(range(obj.concentrations)):
-        MaxCol = max(MaxCol, max(obj.ions{i}.z)-min(obj.ions{i}.z)+1);
-    end
+    MaxCol = max([max(i.z)-min(i.z)+1 for i in obj.ions])
 
     # Set up the matrix of Ls, the multiplication
     # of acidity coefficients for each ion.
-    LMat = zeros(length(obj.ions), MaxCol)
+    LMat = numpy.zeros(len(obj.ions), MaxCol)
 
-    for i = range(len(obj.ions)):
-        LMat(i,1:length(obj.ions{i}.z)+1)=obj.ions{i}.L(I)
+    for i in range(len(obj.ions)):
+        LMat[i, range(len(obj.ions[i].z+1))] = obj.ions[i].L(I)
 
     # Construct Q vector.
-    Q=1
+    Q = 1
     # Convolve each line of the L matrix.
-    for j in  1:size(LMat,1):
-        Q=conv(Q,LMat(j,:))
+    for j in range(LMat.shape[0]):
+        Q = numpy.convolve(Q, LMat[j, :])
 
-    #Convolve with water dissociation.
-    Q=conv(Q, [-obj.Kw_eff(I) 0 1]);
+    # Convolve with water dissociation.
+    Q = numpy.convolve(Q, [-obj.Kw_eff(I), 0, 1])
 
-    #Construct P matrix
-    for i=1:length(obj.concentrations)
-        z_list=obj.ions{i}.z0
+    # Construct P matrix
+    for i in range(len(obj.concentrations)):
+        z_list = obj.ions[i].z0()
 
-        tmp=zeros(1,size(LMat,2))
-        tmp(1:length(z_list))=z_list
-        Mmod=LMat;     Mmod(i,:)=Mmod(i,:).*tmp
+        tmp = numpy.zeros(1, LMat.shape[1])
+        tmp[1:len(z_list)] = z_list
+        Mmod = LMat.copy()
+        Mmod[i, :] = numpy.multiply(Mmod[i, :], tmp)
 
         Pi = 1
-        for kl=1:size(Mmod,1)
-            Pi=conv(Pi,Mmod(kl,:))
-        end
+        for kl in range(Mmod.shape[0]):
+            Pi = numpy.convolve(Pi, Mmod[kl, :])
 
-        Pi = conv([0 1],Pi)  # Convolve with P2
-        PMat(i,:) = Pi
+        Pi = numpy.convolve([0, 1], Pi)  # Convolve with P2
+        PMat[i, :] = Pi
 
     # Multiply P matrix by concentrations, and sum.
-    C = repmat(obj.concentrations', 1, size(PMat, 2));
-    P = sum(PMat.*C, 1)
+    C = numpy.tile(numpy.transpose(obj.concentrations), (1, PMat.shape[1]))
+    P = numpy.sum(numpy.multiply(PMat, C), 0)
 
     # Pad whichever is smaller, P or Q
-    SizeDiff = size(Q,2)-size(PMat,2)
-    if SizeDiff>0:
-        P = [P,repmat(0,1,SizeDiff)];
-    elif SizeDiff<0:
-        Q = [Q,repmat(0,1,SizeDiff)];
+    SizeDiff = Q.shape[1] - PMat.shape[1]
+    if SizeDiff > 0:
+        P = list(P) + [0]*SizeDiff
+    elif SizeDiff < 0:
+        Q = list(Q) + [0]*SizeDiff
 
     # Construct polynomial.
-    Poly = zeros(1,max(length(P), length(Q)))
-    Poly(1:length(P)) = Poly(1:length(P))+P
-    Poly(1:length(Q)) = Poly(1:length(Q))+Q # from QMat
+    poly = [0] * max(len(P), len(Q))
+    poly[0:len(P)] = numpy.add(Poly[0:len(P)], P)
+    poly[0:len(Q)] = numpy.add(Poly[0:len(Q)], Q)  # from QMat
 
-    Poly = fliplr(Poly)
+    poly.reverse()
 
     # Solve Polynomial for concentration
-    roo = numpy.roots(Poly)
-    cH = roo(imag(roo)==0 & roo>0)
+    roo = numpy.roots(poly)
+    cH = [r for r in roo if r > 0 and r.imag == 0]
 
     # Convert to pH. Use the activity to calculate properly.
     pH = -log10(cH*obj.H.activity_coefficient(I, 1))

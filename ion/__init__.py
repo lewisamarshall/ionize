@@ -33,51 +33,25 @@ class ion:
         self.absolute_mobility = absolute_mobility  # Expected in m^2/V/s.
         self.actual_mobility = [None] * len(z)   # Fill by solution
 
-        # Initialize the object, with checks on the form of the variables.
-        # if(nargin ==4 ):
-        #     # check that the name is a string
-        #     if ischar(name)
-        #         obj.name=name;
-        #     else
-        #         error('Ion name must be a string.')
-        #     end
-        #
-        #     % Check that z is a vector of integers
-        #     if all(z==int8(z)) && isvector(z)
-        #         obj.z=double(z);
-        #     else
-        #         error('Charge states must be a vector of integers.')
-        #     end
-        #
-        # 	% Check that the pKa is a vector of numbers of the same length as z.
-        #     if isvector(pKa) && length(obj.z)==length(pKa) &&isnumeric(absolute_mobility)
-        #         obj.pKa=double(pKa);
-        #     else
-        #         error ('pKas must be a numeric vector the same size as charge vector.')
-        #     end
-        #
-        # 	%Check that the fully ionized mobility is a vector of numbers the same size as z.
-        #     if isvector(absolute_mobility) && length(obj.z)==length(absolute_mobility) && isnumeric(absolute_mobility)
-        #         obj.absolute_mobility=double(absolute_mobility);
-        #     else
-        #         error ('Fully ionized mobilities must be a numeric vector the same size as charge vector.')
-        #     end
-        #
+        # Check that z is a vector of integers
+        assert all([isinstance(zp, int) for zp in z]), "z contains non-integer"
+
+        # Check that the pKa is a vector of numbers of the same length as z.
+        assert len(pKa) == len(z), "pKa is not the same length as z"
+
+        assert len(absolute_mobility) == len(z), '''absolute_mobility is not
+                                                    the same length as z'''
+
         # 	% Force the sign of the fully ionized mobilities to match the sign of the charge.
         # 	% This command provides a warning, which you can suppress, with, for example,
         # 	% warning('off','all');
         #     if ~all(sign(obj.z)==sign(obj.absolute_mobility))
         #         obj.absolute_mobility=abs(obj.absolute_mobility).*double(sign(obj.z));
         #         warning('Forcing fully ionized mobility signs to match charge signs.')
-        #     end
-        #
-        # else
-        # 	% If there are not four inputs, the initialization fails.
-        #     error ('Not enough inputs to describe an ion.')
-        # end
-        #
-        # % After storing the ion properties, ensure that the properties are sorted in order of charge.
-        # % All other ion methods assume that the states will be sorted by charge.
+
+        # After storing the ion properties, ensure that the properties are
+        # sorted in order of charge. All other ion methods assume that the
+        # states will be sorted by charge.
         self = self.z_sort()
 
     def z_sort(obj):

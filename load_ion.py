@@ -1,4 +1,6 @@
 import warnings
+
+
 def load_ion(ion_name):
     """Return an ion by name from the database.
     ion=load_ion('ion_name') pulls the named ion from the database.

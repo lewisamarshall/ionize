@@ -19,4 +19,5 @@ def Ka_eff(obj, I=0):
     # coefficient by multiplying by activities.
     for i, Kp in enumerate(obj.Ka):
         Ka_eff[i] = Kp*gam_i[i+1]/gam_i[i]/gam_h
+
     return Ka_eff

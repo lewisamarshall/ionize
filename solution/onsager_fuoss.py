@@ -21,18 +21,18 @@ def onsager_fuoss(obj):
     z_list = cat(2, z_list, [1, -1])
     conc_list = cat(2, conc_list, [obj.cH, obj.cOH])
 
-    n_states = length(omega)
+    n_states = len(omega)
 
     # potential is the (chemical?) potential of each ion.
     potential = conc_list.*z_list.^2./(2*obj.I)
     # initialize and populate the h matrix.
-    h = [0]*n_states
-    for j in n_states:
-        for i in n_states:
-            h(i,j) = potential(i)*omega(i)/(omega(i)+omega(j))
+    h = [[0]*n_states]*n_states
+    for j in range(n_states):
+        for i in range(n_states):
+            h[i][j] = potential[i]*omega[i]/(omega[i]+omega[j])
             # Added to avoid NaN. Unsure if this is the correct strategy.
-            if isnan(h(i,j)):
-                h(i,j) = potential(i)/2
+            if isnan(h[i][j]):
+                h[i][j] = potential[i]/2
 
     d = diag(sum(h, 2))
     B = 2*(h+d)-eye(n_states)

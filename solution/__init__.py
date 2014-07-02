@@ -125,7 +125,8 @@ class solution:
     def H_conductivity(obj):
         """Return the conductivity of H+.
 
-        Does not correct the mobility of the ion.
+        Corrects for the mobility of the ion using the
+        ion object's actual mobility.
         """
         H_conductivity = obj.cH*obj.H.molar_conductivity(obj.pH, obj.I)
         return H_conductivity
@@ -133,7 +134,8 @@ class solution:
     def OH_conductivity(obj):
         """Return the conductivity of OH+.
 
-        Does not correct the mobility of the ion.
+        Corrects for the mobility of the ion using the
+        ion object's actual mobility.
         """
         OH_conductivity = obj.cOH*obj.OH.molar_conductivity(obj.pH, obj.I)
         return OH_conductivity
