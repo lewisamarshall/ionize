@@ -52,7 +52,7 @@ def onsager_fuoss(obj):
 
     for i in len(r[:, 0]):
         try:
-            r[i, 0] = (z_list[i]-sum(z_list.*potential) /
+            r[i, 0] = (z_list[i]-sum(z_list*potential) /
                        sum(potential/omega)*(1/omega[i]))
         except ZeroDivisionError:
             r[i, 0] = 0
@@ -76,7 +76,7 @@ def onsager_fuoss(obj):
     # split the new mobility values into cells that match the molecules
     index = 0
     mobility = [None]*(len(obj.ions)+1)
-    for i in range(len(obj.ions):
+    for i in range(len(obj.ions)):
         mobility[i] = mob_new[index:(index+length(obj.ions[i].z)-1)]
         index+=length(obj.ions[i].z)
 

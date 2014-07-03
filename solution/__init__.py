@@ -1,5 +1,6 @@
 import warnings
 from ion import ion
+import sys
 
 
 class solution:
@@ -30,8 +31,8 @@ class solution:
     _Adh = 0.512 			 # L^1/2 / mol^1/2, approximate for room temperature
     _aD = 1.5			 	 # mol^-1/2 mol^-3/2, approximation
 
-    _H = ion('H+', +1, 100, 362E-9)
-    _OH = ion('OH-', -1, -100, -205E-9)
+    _H = ion('H+', [1], [100], [362E-9])
+    _OH = ion('OH-', [-1], [-100], [-205E-9])
 
     ions = []			# Must be a list of ion objects from the Asp class.
     concentrations = 0 	# A list of concentrations in molar.
@@ -74,20 +75,22 @@ class solution:
         # end
 
         try:
-            (obj.pH, obj.I) = obj.find_equilibrium()
+            (self.pH, self.I) = self.find_equilibrium()
         except:
+            e = sys.exc_info()[0]
+            print "<p>Error: %s</p>" % e
             warnings.warn('''Could not find equilibrium with ionic strength
             corrections. Returning uncorrected pH and I.''')
-            obj.pH = obj.calc_pH
-            obj.I = obj.calc_I(obj.pH)
+            self.pH = self.calc_pH()
+            self.I = self.calc_I(self.pH)
 
         actual_mobilities = obj.onsager_fuoss()[0]
 
-        for i in range(len(obj.ions)):
-            obj.ions[i].actual_mobility = actual_mobilities[i]
+        for i in range(len(self.ions)):
+            self.ions[i].actual_mobility = actual_mobilities[i]
 
-        obj.H.actual_mobility = actual_mobilities[-1][0]
-        obj.OH.actual_mobility = actual_mobilities[-1][1]
+        self.H.actual_mobility = actual_mobilities[-1][0]
+        self.OH.actual_mobility = actual_mobilities[-1][1]
 
     def add_ion(obj, new_ions, new_concentrations):
         """add_ion initializes a new solution with more ions.
@@ -128,7 +131,7 @@ class solution:
         Corrects for the mobility of the ion using the
         ion object's actual mobility.
         """
-        H_conductivity = obj.cH*obj.H.molar_conductivity(obj.pH, obj.I)
+        H_conductivity = obj.cH*obj._H.molar_conductivity(obj.pH, obj.I)
         return H_conductivity
 
     def OH_conductivity(obj):
@@ -137,5 +140,16 @@ class solution:
         Corrects for the mobility of the ion using the
         ion object's actual mobility.
         """
-        OH_conductivity = obj.cOH*obj.OH.molar_conductivity(obj.pH, obj.I)
+        OH_conductivity = obj.cOH*obj._OH.molar_conductivity(obj.pH, obj.I)
         return OH_conductivity
+
+    from buffering_capacity import buffering_capacity
+    from calc_I import calc_I
+    from calc_pH import calc_pH
+    from conductivity import conductivity
+    from equil_offset import equil_offset
+    from find_equilibrium import find_equilibrium
+    from Kw_eff import Kw_eff
+    from onsager_fuoss import onsager_fuoss
+    from transference import transference
+    from zone_transfer import zone_transfer
