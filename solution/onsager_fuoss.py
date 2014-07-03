@@ -1,3 +1,5 @@
+import numpy
+
 def onsager_fuoss(obj):
     """Return the Onsager-Fuoss correction to the mobilities of ions."""
     # Initialize the empty variables that you will need.
@@ -12,63 +14,72 @@ def onsager_fuoss(obj):
 
     # populate them.
     for i in range(len(obj.ions)):
-        omega = cat(2, omega, (obj.ions{i}.absolute_mobility./obj.F./obj.ions{i}.z))
-        z_list = cat(2, z_list, (obj.ions{i}.z))
-        conc_list = cat(2, conc_list, (obj.concentrations(i).*obj.ions{i}.ionization_fraction(obj.pH, obj.I)))
+        omega.extend([m/obj.F/z for m, z in
+                     zip(obj.ions[i].absolute_mobility, obj.ions[i].z)])
+        z_list.extend(obj.ions[i].z)
+        conc_list.extend([obj.concentrations[i]*f for f in
+                          obj.ions[i].ionization_fraction(obj.pH, obj.I)])
 
     # add H+ and OH- ions
-    omega = cat(2, omega, [obj.H.absolute_mobility, obj.OH.absolute_mobility]./obj.F./[1, -1])
-    z_list = cat(2, z_list, [1, -1])
-    conc_list = cat(2, conc_list, [obj.cH, obj.cOH])
+    omega.extend([obj.H.absolute_mobility/obj.F/1.0,
+                  obj.OH.absolute_mobility/obj.F/-1.0])
+    z_list.extend([1, -1])
+    conc_list.extend([obj.cH, obj.cOH])
 
     n_states = len(omega)
 
+    omega = numpy.array(omega)
+    z_list = numpy.array(z_list)
+    conc_list = numpy.array(conc_list)
+
     # potential is the (chemical?) potential of each ion.
-    potential = conc_list.*z_list.^2./(2*obj.I)
+    potential = conc_list*z_list**2/2/obj.I
+
     # initialize and populate the h matrix.
     h = [[0]*n_states]*n_states
     for j in range(n_states):
         for i in range(n_states):
-            h[i][j] = potential[i]*omega[i]/(omega[i]+omega[j])
-            # Added to avoid NaN. Unsure if this is the correct strategy.
-            if isnan(h[i][j]):
+            try:
+                h[i][j] = potential[i]*omega[i]/(omega[i]+omega[j])
+            except:
+                # Added to avoid divide by zero. Unsure if this is correct.
                 h[i][j] = potential[i]/2
+    h = numpy.array(h)
+    d = numpy.diag(numpy.sum(h, 1))
+    B = 2*(h+d)-numpy.identity(n_states)
 
-    d = diag(sum(h, 2))
-    B = 2*(h+d)-eye(n_states)
+    r = numpy.zeros(n_states, 6)
 
-    r = zeros(n_states, 6)
+    for i in len(r[:, 0]):
+        try:
+            r[i, 0] = (z_list[i]-sum(z_list.*potential) /
+                       sum(potential/omega)*(1/omega[i]))
+        except ZeroDivisionError:
+            r[i, 0] = 0
 
-    r(:, 1) = (z_list-sum(z_list.*potential) / sum(potential.*abs(z_list)./omega./abs(z_list)) * (1./omega))'
-
-    # if r==NaN, r=0.
-    for i in n_states:
-        if isnan(r(i, 1)):
-            r(i,1)=0
-
-    for i in range(1,6): #used to be 2:6, assume changes based on index.
-        r(:,i)=B*r(:,i-1)
+    for i in range(1, 6):  # used to be 2:6, assume changes based on index.
+        r[:, i] = B * r[:, i-1]
 
     c = [0.2929, -0.3536, 0.0884, -0.0442, 0.0276, -0.0193]
     # coefficients in onsager-fuoss paper
 
-    factor = (c*r')
+    factor = numpy.dot(c, numpy.transpose(r))
 
     A_prime = obj.F*0.78420
     B_prime = 31.41e-9
 
-    mob_new = obj.F*omega-(A_prime * z_list.*factor.*omega+B_prime).*sqrt(obj.I)./(1+1.5*sqrt(obj.I))
+    mob_new = (obj.F*omega-(A_prime*z_list*factor*omega+B_prime)*sqrt(obj.I) /
+               (1+1.5*sqrt(obj.I)))
 
-    mob_new = (mob_new.*z_list)
+    mob_new = (mob_new*z_list)
 
-    # split the new mobility values into cells that match the
-    # molecules
-    index = 1
-    mobility = cell(1, length(obj.ions)+1)
+    # split the new mobility values into cells that match the molecules
+    index = 0
+    mobility = [None]*(len(obj.ions)+1)
     for i in range(len(obj.ions):
-        mobility{i}=mob_new(index:(index+length(obj.ions{i}.z)-1))
-        index=index+length(obj.ions{i}.z)
+        mobility[i] = mob_new[index:(index+length(obj.ions[i].z)-1)]
+        index+=length(obj.ions[i].z)
 
-    mobility{end}=mob_new(index:end)
+    mobility[-1]=mob_new[index:end]
 
     return (mobility, omega, z_list, conc_list)

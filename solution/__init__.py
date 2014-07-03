@@ -81,7 +81,7 @@ class solution:
             obj.pH = obj.calc_pH
             obj.I = obj.calc_I(obj.pH)
 
-        actual_mobilities = obj.onsager_fuoss
+        actual_mobilities = obj.onsager_fuoss()[0]
 
         for i in range(len(obj.ions)):
             obj.ions[i].actual_mobility = actual_mobilities[i]
