@@ -1,9 +1,9 @@
 import warnings
-from ion import ion
+from Ion import Ion
 import sys
 
 
-class solution:
+class Solution:
 
     """Represent a solution containing a set of ions.
 
@@ -31,8 +31,8 @@ class solution:
     _Adh = 0.512 			 # L^1/2 / mol^1/2, approximate for room temperature
     _aD = 1.5			 	 # mol^-1/2 mol^-3/2, approximation
 
-    _H = ion('H+', [1], [100], [362E-9])
-    _OH = ion('OH-', [-1], [-100], [-205E-9])
+    _H = Ion('H+', [1], [100], [362E-9])
+    _OH = Ion('OH-', [-1], [-100], [-205E-9])
 
     ions = []			# Must be a list of ion objects from the Asp class.
     concentrations = 0 	# A list of concentrations in molar.

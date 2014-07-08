@@ -10,7 +10,7 @@ def buffering_capacity(obj):
     c = 0.1*min(c)
 
     # Add an acid insult at 1% the lowest concentration in the solution.
-    new_sol = obj.add_ion(ion('Acid Insult', -1, -2, -1), c)
+    new_sol = obj.add_ion(Ion('Acid Insult', -1, -2, -1), c)
 
     # Find the slope of the pH.
     Cb = abs(c/(obj.pH-new_sol.pH))

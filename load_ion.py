@@ -1,5 +1,5 @@
 import warnings
-
+from Ion import Ion
 
 def load_ion(ion_name):
     """Return an ion by name from the database.
@@ -10,7 +10,7 @@ def load_ion(ion_name):
     if ion_name in NAMES:
         N = find(strcmpi(ion_name, NAME))
         indices =~ isnan(PKA(N, :))
-        loaded_ion = ion(NAME{N},
+        loaded_ion = Ion(NAME{N},
                          Z(indices),
                          PKA(N, indices),
                          MOBILITY(N, indices).*1e-9.*sign(Z(indices)))

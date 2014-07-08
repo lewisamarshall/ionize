@@ -2,7 +2,7 @@ import warnings
 from math import sqrt
 
 
-class ion:
+class Ion:
 
     """Describe an ion dissolved in aqueous solution.
 
@@ -42,9 +42,9 @@ class ion:
         assert len(absolute_mobility) == len(z), '''absolute_mobility is not
                                                     the same length as z'''
 
-        # 	% Force the sign of the fully ionized mobilities to match the sign of the charge.
-        # 	% This command provides a warning, which you can suppress, with, for example,
-        # 	% warning('off','all');
+        # % Force the sign of the fully ionized mobilities to match the sign of the charge.
+        # % This command provides a warning, which you can suppress, with, for example,
+        # % warning('off','all');
         #     if ~all(sign(obj.z)==sign(obj.absolute_mobility))
         #         obj.absolute_mobility=abs(obj.absolute_mobility).*double(sign(obj.z));
         #         warning('Forcing fully ionized mobility signs to match charge signs.')
@@ -93,6 +93,11 @@ class ion:
         z0 = sorted(z0)
         return z0
 
+    def __str__(obj):
+        """Return a representaiton of the ion"""
+        return ("Ion object -- " + obj.name + ": " +
+                str(dict(zip(obj.z, zip(obj.pKa, obj.absolute_mobility)))))
+
     from ionization_fraction import ionization_fraction
     from activity_coefficient import activity_coefficient
     from effective_mobility import effective_mobility
@@ -102,7 +107,7 @@ class ion:
     from robinson_stokes_mobility import robinson_stokes_mobility
 
 if __name__ == '__main__':
-    hcl = ion('hydrochloric acid', [-1, -2], [6, 8], [76, 89])
+    hcl = Ion('hydrochloric acid', [-1, -2], [6, 8], [76, 89])
     print hcl
     print hcl.name
     print hcl.z
@@ -114,4 +119,4 @@ if __name__ == '__main__':
     print hcl.L()
     print hcl.ionization_fraction(7)
     print hcl.activity_coefficient(.03)
-    help(ion)
+    help(Ion)
