@@ -3,7 +3,7 @@ from Ion import Ion
 import sys
 
 
-class Solution:
+class Solution(object):
 
     """Represent a solution containing a set of ions.
 
@@ -73,24 +73,25 @@ class Solution:
         # else % If the solution isn't specified with two arguments, throw an error.
         #     error('Solutions must have a cell of ions and a cell or vector of concentrations.')
         # end
+        (self.pH, self.I) = self.find_equilibrium()
 
         try:
             (self.pH, self.I) = self.find_equilibrium()
         except:
             e = sys.exc_info()[0]
             print "<p>Error: %s</p>" % e
-            warnings.warn('''Could not find equilibrium with ionic strength
-            corrections. Returning uncorrected pH and I.''')
+            warnings.warn("""Could not find equilibrium with ionic strength corrections. Returning uncorrected pH and I.""")
             self.pH = self.calc_pH()
+            print self.pH
             self.I = self.calc_I(self.pH)
 
-        actual_mobilities = obj.onsager_fuoss()[0]
+        # actual_mobilities = self.onsager_fuoss()[0]
 
-        for i in range(len(self.ions)):
-            self.ions[i].actual_mobility = actual_mobilities[i]
-
-        self.H.actual_mobility = actual_mobilities[-1][0]
-        self.OH.actual_mobility = actual_mobilities[-1][1]
+        # for i in range(len(self.ions)):
+        #     self.ions[i].actual_mobility = actual_mobilities[i]
+        #
+        # self.H.actual_mobility = actual_mobilities[-1][0]
+        # self.OH.actual_mobility = actual_mobilities[-1][1]
 
     def add_ion(obj, new_ions, new_concentrations):
         """add_ion initializes a new solution with more ions.
@@ -111,10 +112,10 @@ class Solution:
         if not I:
             I = obj.I
 
-        cH = 10**(-pH)/obj.H.activity_coefficient(I, 1)[0]
+        cH = 10**(-pH)/obj._H.activity_coefficient(I, [1])[0]
         return cH
 
-    def cOH(obj, pH, I):
+    def cOH(obj, pH=None, I=None):
         """Return the concentration of OH- in the solution."""
         if not pH:
             pH = obj.pH
@@ -131,7 +132,7 @@ class Solution:
         Corrects for the mobility of the ion using the
         ion object's actual mobility.
         """
-        H_conductivity = obj.cH*obj._H.molar_conductivity(obj.pH, obj.I)
+        H_conductivity = obj.cH()*obj._H.molar_conductivity(obj.pH, obj.I)
         return H_conductivity
 
     def OH_conductivity(obj):
@@ -140,7 +141,7 @@ class Solution:
         Corrects for the mobility of the ion using the
         ion object's actual mobility.
         """
-        OH_conductivity = obj.cOH*obj._OH.molar_conductivity(obj.pH, obj.I)
+        OH_conductivity = obj.cOH()*obj._OH.molar_conductivity(obj.pH, obj.I)
         return OH_conductivity
 
     from buffering_capacity import buffering_capacity

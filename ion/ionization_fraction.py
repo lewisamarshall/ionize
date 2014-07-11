@@ -15,3 +15,9 @@ def ionization_fraction(obj, pH, I=0):
     i_frac = [i/sum(i_frac_vector) for i in i_frac_vector]
     i_frac = [i for (i, z) in zip(i_frac, obj.z0()) if z]
     return i_frac
+
+if __name__=="__main__":
+    class test: pass
+    tester=test()
+    tester.L=[]
+    print ionization_fraction(tester, 7)

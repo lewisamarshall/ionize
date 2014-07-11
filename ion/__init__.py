@@ -2,7 +2,7 @@ import warnings
 from math import sqrt
 
 
-class Ion:
+class Ion(object):
 
     """Describe an ion dissolved in aqueous solution.
 
@@ -31,7 +31,7 @@ class Ion:
         self.z = z
         self.pKa = pKa
         self.absolute_mobility = absolute_mobility  # Expected in m^2/V/s.
-        self.actual_mobility = [None] * len(z)   # Fill by solution
+        self.actual_mobility = None   # Fill by solution
 
         # Check that z is a vector of integers
         assert all([isinstance(zp, int) for zp in z]), "z contains non-integer"
@@ -98,6 +98,9 @@ class Ion:
         return ("Ion object -- " + obj.name + ": " +
                 str(dict(zip(obj.z, zip(obj.pKa, obj.absolute_mobility)))))
 
+    def __repr__(obj):
+        return obj.__str__()
+
     from ionization_fraction import ionization_fraction
     from activity_coefficient import activity_coefficient
     from effective_mobility import effective_mobility
@@ -107,7 +110,7 @@ class Ion:
     from robinson_stokes_mobility import robinson_stokes_mobility
 
 if __name__ == '__main__':
-    hcl = Ion('hydrochloric acid', [-1, -2], [6, 8], [76, 89])
+    hcl = Ion('hydrochloric acid', [-1, -2], [6, 8], [-76, -89])
     print hcl
     print hcl.name
     print hcl.z

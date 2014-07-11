@@ -8,9 +8,9 @@ def molar_conductivity(obj, pH, I=0):
     else:
         actual_mobility = obj.robinson_stokes_mobility(I)
 
-    i_frac = ionization_fraction(obj, pH, I)
+    i_frac = obj.ionization_fraction(pH, I)
 
-    m_conductivity = (obj.Lpm3 * obj.F *
+    m_conductivity = (obj._Lpm3 * obj._F *
                       sum(z * f * m for (z, f, m)
                           in zip(obj.z, i_frac, actual_mobility)))
 

@@ -40,9 +40,9 @@ def calc_pH(obj, I=0):
         z_list = obj.ions[i].z0()
 
         tmp = numpy.zeros([1, LMat.shape[1]])
-        tmp[1:len(z_list)] = z_list
+        tmp[0, 0:len(z_list)] = z_list
         Mmod = LMat.copy()
-        Mmod[i, :] = numpy.multiply(Mmod[i, :], tmp)
+        Mmod[i, :] = Mmod[i, :] * tmp
 
         Pi = 1
         for kl in range(Mmod.shape[0]):
@@ -50,11 +50,12 @@ def calc_pH(obj, I=0):
 
         Pi = numpy.convolve([0, 1], Pi)  # Convolve with P2
         PMat.append(Pi)
+
     PMat = numpy.array(PMat, ndmin=2)
 
     # Multiply P matrix by concentrations, and sum.
     C = numpy.tile(numpy.transpose(obj.concentrations), numpy.transpose((PMat.shape[1], 1)))
-    P = numpy.sum(numpy.multiply(PMat, C), 0)
+    P = numpy.sum(numpy.multiply(PMat, C.transpose()), 0)
 
     # Pad whichever is smaller, P or Q
     SizeDiff = Q.shape[1] - PMat.shape[1]
@@ -66,19 +67,16 @@ def calc_pH(obj, I=0):
     # Construct polynomial.
     poly = numpy.array([0] * max(len(P), len(Q)))
     poly[0:len(P)+1] = numpy.add(poly[0:len(P)+1], P)
-    print poly[0:len(numpy.transpose(Q))+1]
-    print numpy.add(poly[0:len(numpy.transpose(Q))+1], Q)  # from QMat
 
     poly[0:len(numpy.transpose(Q))+1] = numpy.add(poly[0:len(numpy.transpose(Q))+1], Q)  # from QMat
 
-    list(poly).reverse()
-
-    print poly
+    poly = list(poly)
+    poly.reverse()
 
     # Solve Polynomial for concentration
     roo = numpy.roots(poly)
+    print roo
     cH = float([r for r in roo if r > 0 and r.imag == 0][0])
-
     # Convert to pH. Use the activity to calculate properly.
     pH = -log10(cH*obj._H.activity_coefficient(I, [1])[0])
     return pH

@@ -4,7 +4,8 @@ from Ion import Ion
 def load_ion(ion_name):
     """Return an ion by name from the database.
     ion=load_ion('ion_name') pulls the named ion from the database.
-    Database derived from Peakmaster."""
+    Database derived from Peakmaster.
+    """
 
     load database.mat
     if ion_name in NAMES:

@@ -13,7 +13,7 @@ def L(obj, I=0):
     index_0 = obj.z0().index(0)
     L[index_0] = 1
 
-    if index_0 is not 1:
+    if index_0 is not 0:
         for i in range(index_0-1, -1, -1):
             L[i] = L[i+1]*Ka[i]
 

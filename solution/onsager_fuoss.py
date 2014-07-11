@@ -14,7 +14,7 @@ def onsager_fuoss(obj):
 
     # populate them.
     for i in range(len(obj.ions)):
-        omega.extend([m/obj.F/z for m, z in
+        omega.extend([m/obj._F/z for m, z in
                      zip(obj.ions[i].absolute_mobility, obj.ions[i].z)])
         z_list.extend(obj.ions[i].z)
         conc_list.extend([obj.concentrations[i]*f for f in
