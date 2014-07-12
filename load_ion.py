@@ -1,5 +1,7 @@
 import warnings
 from Ion import Ion
+import shelve
+
 
 def load_ion(ion_name):
     """Return an ion by name from the database.
@@ -7,15 +9,22 @@ def load_ion(ion_name):
     Database derived from Peakmaster.
     """
 
-    load database.mat
-    if ion_name in NAMES:
-        N = find(strcmpi(ion_name, NAME))
-        indices =~ isnan(PKA(N, :))
-        loaded_ion = Ion(NAME{N},
-                         Z(indices),
-                         PKA(N, indices),
-                         MOBILITY(N, indices).*1e-9.*sign(Z(indices)))
-        return loaded_ion
+    ion_list = shelve.open('ions_shelve')
+
+    if ion_name.lower() in ion_list.keys():
+        ion_entry = ion_list[ion_name.lower()]
+        return Ion(ion_name.lower(), ion_entry[0], ion_entry[1], ion_entry[2])
     else:
         warnings.warn('Ion not found in database. Returning None.')
         return None
+
+if __name__ == "__main__":
+    print load_ion('hydrochloric acid')
+    print load_ion('tris')
+    print load_ion('sodium')
+    print load_ion('acetic acid')
+    print load_ion('e-aminocaproic acid')
+    print load_ion('caproic acid')
+    print load_ion('magnesium')
+    print load_ion('alexa fluor 488')
+    print load_ion('fluorescein')
