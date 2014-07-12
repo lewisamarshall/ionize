@@ -1,5 +1,5 @@
 import warnings
-from math import sqrt
+from math import sqrt, copysign
 
 
 class Ion(object):
@@ -15,15 +15,17 @@ class Ion(object):
 
     This is a direct port of the Matlab code written by Lewis Marshall.
     """
+
     # Weakly private variables
     # These are constants and should not change.
-    # Eventually, T may be  removed from the constants list.
-    _F = 96485.3415     # Faraday's const.[C/mol]
+    # Eventually, _T may be  removed from the constants list.
+    _F = 96485.34         # Faraday's const.[C/mol]
     _Lpm3 = 1000.0        # Conversion from liters to m^3
     _T = 298.0            # Temperature, in Kalvin
+
     # The following are constants in eqtn 6 of Bahga 2010.
-    _Adh = 0.5102  	 # L^1/2 / mol^1/2, approximate for RT
-    _aD = 1.5  	     # mol^-1/2 mol^-3/2, approximation
+    _Adh = 0.5102         # L^1/2 / mol^1/2, approximate for RT
+    _aD = 1.5             # mol^-1/2 mol^-3/2, approximation
 
     def __init__(self, name, z, pKa, absolute_mobility):
         """Initialize an ion object."""
@@ -31,7 +33,7 @@ class Ion(object):
         self.z = z
         self.pKa = pKa
         self.absolute_mobility = absolute_mobility  # Expected in m^2/V/s.
-        self.actual_mobility = None   # Fill by solution
+        self.actual_mobility = None                 # Fill by solution
 
         # Check that z is a vector of integers
         assert all([isinstance(zp, int) for zp in z]), "z contains non-integer"
@@ -42,12 +44,13 @@ class Ion(object):
         assert len(absolute_mobility) == len(z), '''absolute_mobility is not
                                                     the same length as z'''
 
-        # % Force the sign of the fully ionized mobilities to match the sign of the charge.
-        # % This command provides a warning, which you can suppress, with, for example,
-        # % warning('off','all');
-        #     if ~all(sign(obj.z)==sign(obj.absolute_mobility))
-        #         obj.absolute_mobility=abs(obj.absolute_mobility).*double(sign(obj.z));
-        #         warning('Forcing fully ionized mobility signs to match charge signs.')
+        # Force the sign of the fully ionized mobilities to match the sign of
+        # the charge. This command provides a warning.
+        if not all([copysign(z, m) == z for z, m in zip(self.z,
+                    self.absolute_mobility)]):
+            self.absolute_mobility = [copysign(m, z) for z, m in zip(self.z,
+                                      self.absolute_mobility)]
+            warnings.warn('Mobility signs and charge signs don\'t match. Forcing.')
 
         # After storing the ion properties, ensure that the properties are
         # sorted in order of charge. All other ion methods assume that the
@@ -63,20 +66,9 @@ class Ion(object):
         obj.pKa = list(obj.pKa)
         obj.absolute_mobility = list(obj.absolute_mobility)
 
+        full = set(range(min(obj.z), max(obj.z)+1, 1)) - {0}
+        assert set(obj.z) ^ full == set(), "Charge states missing."
 
-        # This section will check each charge state to see if it is complete.
-        # That is, if there is a charge state -2, there must be a charge state
-        # -1. if there is a charge state +3, there must be a +2 and a +1.
-        # warn=0
-        # for i in range(len((obj.z))):
-        #     if obj.z(i) < -1 and obj.z(i+1)!=obj.z(i)+1:
-        #         warn=1
-        #     elif obj.z(i)>1 and obj.z(i-1)!=obj.z(i)-1:
-        #         warn=1
-        #
-        #     #Send a single warning if any charge state is missing
-        # if warn:
-        #     warnings.warn('Charge states missing.')
         return obj
 
     def Ka(obj):
@@ -94,11 +86,12 @@ class Ion(object):
         return z0
 
     def __str__(obj):
-        """Return a representaiton of the ion"""
+        """Return a string representing the ion."""
         return ("Ion object -- " + obj.name + ": " +
                 str(dict(zip(obj.z, zip(obj.pKa, obj.absolute_mobility)))))
 
     def __repr__(obj):
+        """Return a representation of the ion."""
         return obj.__str__()
 
     from ionization_fraction import ionization_fraction
@@ -110,16 +103,24 @@ class Ion(object):
     from robinson_stokes_mobility import robinson_stokes_mobility
 
 if __name__ == '__main__':
-    hcl = Ion('hydrochloric acid', [-1, -2], [6, 8], [-76, -89])
+    hcl = Ion('hydrochloric acid', [-1], [-2.0], [-7.91e-8])
+    try:
+        pass
+        poor_ion = Ion('poor', [1.5], [-2], [3])
+    except:
+        print "Poor ion rejected."
+        pass
     print hcl
-    print hcl.name
-    print hcl.z
-    print hcl.pKa
-    print hcl.absolute_mobility
-    print hcl.robinson_stokes_mobility(.1)
-    print hcl.Ka()
-    print hcl.z0()
-    print hcl.L()
-    print hcl.ionization_fraction(7)
-    print hcl.activity_coefficient(.03)
+    print "Name:", hcl.name
+    print "Z:", hcl.z
+    print "pKa:", hcl.pKa
+    print "Absolute mobility:", hcl.absolute_mobility
+    print "Robinson-Stokes mobility at 0.1 M:",\
+        hcl.robinson_stokes_mobility(.1)
+    print "Ka:", hcl.Ka()
+    print "z0:", hcl.z0()
+    print "L:", hcl.L()
+    print "Ionization fraction at pH 7:", hcl.ionization_fraction(7)
+    print "Activity coefficient at 0.3 M:", hcl.activity_coefficient(.03)
+    print hcl.__dict__
     help(Ion)
