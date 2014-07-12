@@ -20,16 +20,16 @@ class Solution(object):
     See also ion.
     """
 
-    _F = 96485.3415        # Faraday's const.				[C/mol]
-    _Rmu = 8.31            # Universal gas const. 	    [J/mol*K]
-    _Temp = 298.0          # Temperature 					[K]
-    _Kw = 1E-14            # Water equilibrium constant	[mol^2]
-    _muH = 362E-9   		 # Mobility of Hydronium 		[m^2/s*V]
-    _muOH = 205E-9 		 # Mobility of Hydroxide 		[m^2/s*V]
-    _Lpm3 = 1000.0         # Liters per meter^3			[]
-    _visc = 1E-3           # Dynamic viscosity (water) 	[Pa s]
-    _Adh = 0.512 			 # L^1/2 / mol^1/2, approximate for room temperature
-    _aD = 1.5			 	 # mol^-1/2 mol^-3/2, approximation
+    _F = 96485.3415        # Faraday's const.           [C/mol]
+    _Rmu = 8.31            # Universal gas const.       [J/mol*K]
+    _Temp = 298.0          # Temperature                [K]
+    _Kw = 1E-14            # Water equilibrium constant [mol^2]
+    _muH = 362E-9          # Mobility of Hydronium      [m^2/s*V]
+    _muOH = 205E-9         # Mobility of Hydroxide      [m^2/s*V]
+    _Lpm3 = 1000.0         # Liters per meter^3         []
+    _visc = 1E-3           # Dynamic viscosity (water)  [Pa s]
+    _Adh = 0.512           # L^1/2 / mol^1/2, approximate for room temperature
+    _aD = 1.5              # mol^-1/2 mol^-3/2, approximation
 
     _H = Ion('H+', [1], [100], [362E-9])
     _OH = Ion('OH-', [-1], [-100], [-205E-9])
@@ -39,40 +39,25 @@ class Solution(object):
     pH = 7				# Normal pH units.
     I = 0 				# Expected in molar.
 
-    def __init__(self, ions, concentrations):
+    def __init__(self, ions=[], concentrations=[]):
         """Initialize a solution object."""
-        self.ions = ions
-        self.concentrations = concentrations
-        # Class Constructor
+        try:
+            self.ions = [i for i in ions]
+        except:
+            self.ions = [ions]
 
-        # if(nargin == 2)
-        # 	% If the object is not a cell, try to force it to be a cell array.
-        # 	% This may be the case when there is only one ion.
-        # 	if ~iscell(ions)
-        # 		ions=num2cell(ions);
-        # 	end
-        #
-        # 	% Check that all of the objects in IONS are in the ion class.
-        #     if isvector(ions) && all(strcmp(cellfun(@class, ions, 'UniformOutput', false), 'ion'))
-        #         obj.ions=ions;
-        #     else
-        #         error('You must input a cell vector of ion objects. Use "help ion" for more information.')
-        #     end
-        #
-        # 	% Check that CONCENTRATIONS is a numeric vector of the same length as IONS.
-        # 	% Also check that all of the concentrations are positive.
-        #     if isvector(concentrations) && length(ions)==length(concentrations) && isnumeric(concentrations) && all(concentrations>=0)
-        # 		% If the concentration is put in as a cell, change it to a vector.
-        # 		if iscell(concentrations)
-        # 			concentrations=cell2mat(concentrations)
-        # 		end
-        # 		obj.concentrations=concentrations;
-        #     else
-        #         error('The concentrations vector must be the same size as the ions vector.')
-        #     end
-        # else % If the solution isn't specified with two arguments, throw an error.
-        #     error('Solutions must have a cell of ions and a cell or vector of concentrations.')
-        # end
+        try:
+            self.concentrations = [c for c in concentrations]
+        except:
+            self.concentrations = [concentrations]
+
+        assert len(self.ions) == len(self.concentrations),\
+            """Must be initialized with the same number of ions and concentrations.
+        """
+
+        assert all([c > 0 for c in concentrations]),\
+            """Concentrations must be positive."""
+
         (self.pH, self.I) = self.find_equilibrium()
 
         try:
@@ -82,16 +67,16 @@ class Solution(object):
             print "<p>Error: %s</p>" % e
             warnings.warn("""Could not find equilibrium with ionic strength corrections. Returning uncorrected pH and I.""")
             self.pH = self.calc_pH()
-            print self.pH
             self.I = self.calc_I(self.pH)
 
-        # actual_mobilities = self.onsager_fuoss()[0]
+        actual_mobilities = self.onsager_fuoss()[0]
+        print actual_mobilities
 
-        # for i in range(len(self.ions)):
-        #     self.ions[i].actual_mobility = actual_mobilities[i]
-        #
-        # self.H.actual_mobility = actual_mobilities[-1][0]
-        # self.OH.actual_mobility = actual_mobilities[-1][1]
+        for i in range(len(self.ions)):
+            self.ions[i].actual_mobility = actual_mobilities[i]
+
+        self._H.actual_mobility = [actual_mobilities[-1][0]]
+        self._OH.actual_mobility = [actual_mobilities[-1][1]]
 
     def add_ion(obj, new_ions, new_concentrations):
         """add_ion initializes a new solution with more ions.
