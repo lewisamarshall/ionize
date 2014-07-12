@@ -7,7 +7,7 @@ def load_ion(ion_name):
     """Return an ion by name from the database.
 
     load_ion('ion_name') pulls the named ion from the database.
-    Database derived from Peakmaster, with additions.
+    Database derived from Peakmaster, with additions from literature.
     """
     ion_list = shelve.open('ions_shelve')
 
