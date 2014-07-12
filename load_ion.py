@@ -19,17 +19,5 @@ def load_ion(ion_name):
         return None
 
 if __name__ == "__main__":
-    print load_ion('hydrochloric acid')
-    print load_ion('tris')
-    print load_ion('sodium')
-    print load_ion('acetic acid')
-    print load_ion('e-aminocaproic acid')
-    print load_ion('caproic acid')
-    print load_ion('magnesium')
-    print load_ion('alexa fluor 488')
-    print load_ion('fluorescein')
-    print load_ion('vanillic acid')
-    print load_ion('hydrofluoric acid')
-    print load_ion('potassium')
-    print load_ion('ammonium')
-    print load_ion('histidine')
+    for name in sorted(shelve.open('ions_shelve').keys()):
+        print load_ion(name)
