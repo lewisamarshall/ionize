@@ -5,10 +5,10 @@ import shelve
 
 def load_ion(ion_name):
     """Return an ion by name from the database.
-    ion=load_ion('ion_name') pulls the named ion from the database.
-    Database derived from Peakmaster.
-    """
 
+    load_ion('ion_name') pulls the named ion from the database.
+    Database derived from Peakmaster, with additions.
+    """
     ion_list = shelve.open('ions_shelve')
 
     if ion_name.lower() in ion_list.keys():
