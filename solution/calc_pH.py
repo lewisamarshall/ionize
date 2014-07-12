@@ -75,7 +75,6 @@ def calc_pH(obj, I=0):
 
     # Solve Polynomial for concentration
     roo = numpy.roots(poly)
-    print roo
     cH = float([r for r in roo if r > 0 and r.imag == 0][0])
     # Convert to pH. Use the activity to calculate properly.
     pH = -log10(cH*obj._H.activity_coefficient(I, [1])[0])
