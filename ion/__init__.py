@@ -30,18 +30,30 @@ class Ion(object):
     def __init__(self, name, z, pKa, absolute_mobility):
         """Initialize an ion object."""
         self.name = name
-        self.z = z
-        self.pKa = pKa
-        self.absolute_mobility = absolute_mobility  # Expected in m^2/V/s.
+
+        try:
+            self.z = [zp for zp in z]
+        except:
+            self.z = [z]
+
+        try:
+            self.pKa = [p for p in pKa]
+        except:
+            self.pKa = [pKa]
+
+        try:
+            self.absolute_mobility = [m for m in absolute_mobility]  # m^2/V/s.
+        except:
+            self.absolute_mobility = [absolute_mobility]
         self.actual_mobility = None                 # Fill by solution
 
         # Check that z is a vector of integers
-        assert all([isinstance(zp, int) for zp in z]), "z contains non-integer"
+        assert all([isinstance(zp, int) for zp in self.z]), "z contains non-integer"
 
         # Check that the pKa is a vector of numbers of the same length as z.
-        assert len(pKa) == len(z), "pKa is not the same length as z"
+        assert len(self.pKa) == len(self.z), "pKa is not the same length as z"
 
-        assert len(absolute_mobility) == len(z), '''absolute_mobility is not
+        assert len(self.absolute_mobility) == len(self.z), '''absolute_mobility is not
                                                     the same length as z'''
 
         # Force the sign of the fully ionized mobilities to match the sign of
@@ -103,7 +115,7 @@ class Ion(object):
     from robinson_stokes_mobility import robinson_stokes_mobility
 
 if __name__ == '__main__':
-    hcl = Ion('hydrochloric acid', [-1], [-2.0], [-7.91e-8])
+    hcl = Ion('hydrochloric acid', -1, -2.0, -7.91e-8)
     try:
         pass
         poor_ion = Ion('poor', [1.5], [-2], [3])

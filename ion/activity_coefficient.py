@@ -5,6 +5,11 @@ def activity_coefficient(obj, I, z=None):
     """Return activity coefficients of a charge state at ionic strength I."""
     if not z:
         z = obj.z0()
+    else:
+        try:
+            z = [zp for zp in z]
+        except:
+            z = [z]
 
     # There are two coefficients that are used repeatedly.
     # Specified in Bahga.
