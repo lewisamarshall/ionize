@@ -15,9 +15,11 @@ from load_ion import load_ion
 if __name__ == "__main__":
     hcl = load_ion('hydrochloric acid')
     print hcl
-    tris = load_ion('tris')
+    tris = load_ion('histidine')
     print tris
     buf = Solution([hcl, tris], [0.03, 0.06])
     print buf.I
     print buf.pH
     print buf.conductivity()
+    print buf.ions[1].actual_mobility
+    print buf.ions[1].absolute_mobility
