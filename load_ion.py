@@ -28,3 +28,8 @@ if __name__ == "__main__":
     print load_ion('magnesium')
     print load_ion('alexa fluor 488')
     print load_ion('fluorescein')
+    print load_ion('vanillic acid')
+    print load_ion('hydrofluoric acid')
+    print load_ion('potassium')
+    print load_ion('ammonium')
+    print load_ion('histidine')

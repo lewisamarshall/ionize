@@ -13,11 +13,11 @@ def Ka_eff(obj, I=0):
     Ka_eff = obj.Ka()
 
     gam_i = obj.activity_coefficient(I)
-    gam_h = obj.activity_coefficient(I, [1])[0]
+    gam_h = obj.activity_coefficient(I, [1])
 
     # For each acidity coefficient, get the effective
     # coefficient by multiplying by activities.
     for i, Kp in enumerate(obj.Ka()):
-        Ka_eff[i] = Kp*gam_i[i+1]/gam_i[i]/gam_h
+        Ka_eff[i] = Kp*gam_i[i+1]/gam_i[i]/gam_h[0]
 
     return Ka_eff

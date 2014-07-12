@@ -10,21 +10,17 @@ def robinson_stokes_mobility(obj, I):
 
     If a solution object is supplied, use the full onsager fouss correction.
     """
-    if I >= 0:
-        # Currently using the ionic strength where Bahga 2010
-        # uses twice the ionic strength. This appears to work, and follows the
-        # SPRESSO implimentation.
-        # Likely typo in paper.
-        A = 0.2297
-        B = 31.410e-9
-        actual_mobility = []
-        for abs_mob, z in zip(obj.absolute_mobility, obj.z):
-            actual_mobility.append(abs_mob -
-                                   (A * abs_mob +
-                                    B * copysign(1, z)) * sqrt(I) /
-                                   (1 + obj._aD * sqrt(I)))
-    else:
-            warnings.warn('''Ionic strength must be specified as
-                    a scalar positive value.''')
+    # Currently using the ionic strength where Bahga 2010
+    # uses twice the ionic strength. This appears to work, and follows the
+    # SPRESSO implimentation.
+    # Likely typo in paper.
+    A = 0.2297
+    B = 31.410e-9
+    actual_mobility = []
+    for abs_mob, z in zip(obj.absolute_mobility, obj.z):
+        actual_mobility.append(abs_mob -
+                               (A * abs_mob +
+                                B * copysign(1, z)) * sqrt(I) /
+                               (1 + obj._aD * sqrt(I)))
 
     return actual_mobility

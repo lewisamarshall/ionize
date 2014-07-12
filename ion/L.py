@@ -20,4 +20,7 @@ def L(obj, I=0):
     if index_0 is not len(L)-1:
         for i in range((index_0+1), len(L)):
             L[i] = L[i-1]/Ka[i-1]
+
+    # print L
+    # print [p/cumprod(Ka)[index_0] for p in cumprod(Ka)]
     return L
