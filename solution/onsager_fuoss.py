@@ -1,4 +1,5 @@
 import numpy
+from math import sqrt
 
 def onsager_fuoss(obj):
     """Return the Onsager-Fuoss correction to the mobilities of ions."""
@@ -21,10 +22,10 @@ def onsager_fuoss(obj):
                           obj.ions[i].ionization_fraction(obj.pH, obj.I)])
 
     # add H+ and OH- ions
-    omega.extend([obj.H.absolute_mobility/obj.F/1.0,
-                  obj.OH.absolute_mobility/obj.F/-1.0])
+    omega.extend([obj._H.absolute_mobility[0]/obj._F/1.0,
+                  obj._OH.absolute_mobility[0]/obj._F/-1.0])
     z_list.extend([1, -1])
-    conc_list.extend([obj.cH, obj.cOH])
+    conc_list.extend([obj.cH(), obj.cOH()])
 
     n_states = len(omega)
 
@@ -48,9 +49,9 @@ def onsager_fuoss(obj):
     d = numpy.diag(numpy.sum(h, 1))
     B = 2*(h+d)-numpy.identity(n_states)
 
-    r = numpy.zeros(n_states, 6)
+    r = numpy.zeros([n_states, 6])
 
-    for i in len(r[:, 0]):
+    for i in range(len(r[:, 0])):
         try:
             r[i, 0] = (z_list[i]-sum(z_list*potential) /
                        sum(potential/omega)*(1/omega[i]))
@@ -58,28 +59,28 @@ def onsager_fuoss(obj):
             r[i, 0] = 0
 
     for i in range(1, 6):  # used to be 2:6, assume changes based on index.
-        r[:, i] = B * r[:, i-1]
+        r[:, i] = numpy.dot(B, r[:, i-1])
 
     c = [0.2929, -0.3536, 0.0884, -0.0442, 0.0276, -0.0193]
     # coefficients in onsager-fuoss paper
 
     factor = numpy.dot(c, numpy.transpose(r))
 
-    A_prime = obj.F*0.78420
+    A_prime = obj._F*0.78420
     B_prime = 31.41e-9
 
-    mob_new = (obj.F*omega-(A_prime*z_list*factor*omega+B_prime)*sqrt(obj.I) /
+    mob_new = (obj._F*omega-(A_prime*z_list*factor*omega+B_prime)*sqrt(obj.I) /
                (1+1.5*sqrt(obj.I)))
 
     mob_new = (mob_new*z_list)
+    mob_new = mob_new.tolist()
 
     # split the new mobility values into cells that match the molecules
     index = 0
     mobility = [None]*(len(obj.ions)+1)
     for i in range(len(obj.ions)):
-        mobility[i] = mob_new[index:(index+length(obj.ions[i].z)-1)]
-        index+=length(obj.ions[i].z)
+        mobility[i] = mob_new[index:(index+len(obj.ions[i].z))]
+        index += len(obj.ions[i].z)
 
-    mobility[-1]=mob_new[index:end]
-
+    mobility[-1] = mob_new[index:]
     return (mobility, omega, z_list, conc_list)
