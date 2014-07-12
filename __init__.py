@@ -1,13 +1,23 @@
-"""Represent ions in aqueous solution."""
+"""Represent ions in aqueous solution.
+
+Class Ion represents ion species.
+
+Function load_ion loads these ions from a database housed in ions_shelve.db.
+The ions in this database are largely based on the Hirokawa database.
+
+Class Solution represents an aqueous solution containing one or more ions.
+"""
 
 from Ion import Ion
 from Solution import Solution
-# from load_ion import load_ion
+from load_ion import load_ion
 
 if __name__ == "__main__":
-    a = Ion('A', [-1], [-2], [-10])
-    b = Ion('B', [1], [7], [10])
-    s = Solution([a, b], [0.03, 0.06])
-    print s.I
-    print s.pH
-    print s.conductivity()
+    hcl = load_ion('hydrochloric acid')
+    print hcl
+    tris = load_ion('tris')
+    print tris
+    buf = Solution([hcl, tris], [0.03, 0.06])
+    print buf.I
+    print buf.pH
+    print buf.conductivity()
