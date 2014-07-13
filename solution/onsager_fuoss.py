@@ -27,8 +27,10 @@ def onsager_fuoss(obj):
     z_list.extend([1, -1])
     conc_list.extend([obj.cH(), obj.cOH()])
 
+    # n_states is the total number of ionic species that we are tracking.
     n_states = len(omega)
 
+    # turn all variables into numpy arrays for matrix math
     omega = numpy.array(omega)
     z_list = numpy.array(z_list)
     conc_list = numpy.array(conc_list)
@@ -45,6 +47,7 @@ def onsager_fuoss(obj):
             except:
                 # Added to avoid divide by zero. Unsure if this is correct.
                 h[i][j] = potential[i]/2
+    # turn h into a numpy array
     h = numpy.array(h)
     d = numpy.diag(numpy.sum(h, 1))
     B = 2*(h+d)-numpy.identity(n_states)
@@ -61,8 +64,8 @@ def onsager_fuoss(obj):
     for i in range(1, 6):  # used to be 2:6, assume changes based on index.
         r[:, i] = numpy.dot(B, r[:, i-1])
 
-    c = [0.2929, -0.3536, 0.0884, -0.0442, 0.0276, -0.0193]
     # coefficients in onsager-fuoss paper
+    c = [0.2929, -0.3536, 0.0884, -0.0442, 0.0276, -0.0193]
 
     factor = numpy.dot(c, numpy.transpose(r))
 
@@ -70,9 +73,9 @@ def onsager_fuoss(obj):
     B_prime = 31.41e-9
 
     mob_new = (obj._F*omega-(A_prime*z_list*factor*omega+B_prime)*sqrt(obj.I) /
-               (1+1.5*sqrt(obj.I)))
+               (1+1.5*sqrt(obj.I)))*z_list
 
-    mob_new = (mob_new*z_list)
+    # transfer the new mobilities from a numpy array back to alist.
     mob_new = mob_new.tolist()
 
     # split the new mobility values into cells that match the molecules
@@ -83,4 +86,4 @@ def onsager_fuoss(obj):
         index += len(obj.ions[i].z)
 
     mobility[-1] = mob_new[index:]
-    return (mobility, omega, z_list, conc_list)
+    return mobility
