@@ -9,5 +9,5 @@ def zone_transfer(obj, vol):
         Qi[i] = (obj.ions[i].molar_conductivity(obj.pH, obj.I) *
                  obj.concentrations[i]/transference[i] /
                  abs(obj.ions[i].effective_mobility(obj.pH, obj.I)))
-    Qi = [Qp*vol/obj.Lpm3 for Qp in Qi]
+    Qi = [Qp*vol/obj._Lpm3 for Qp in Qi]
     return Qi
