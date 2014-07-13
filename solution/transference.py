@@ -9,5 +9,5 @@ def transference(obj):
         T[i] = (obj.ions[i].molar_conductivity(obj.pH, obj.I) *
                 obj.concentrations[i])
 
-    T = T / obj.conductivity()
+    T = [tp / obj.conductivity() for tp in T]
     return T
