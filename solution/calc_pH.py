@@ -15,7 +15,6 @@ def calc_pH(obj, I=0):
     """
     # Find the order of the polynomial. This is the maximum
     # size of the list of charge states in an ion.
-    # added a column because matrix didn't seem to fit
     MaxCol = max([max(i.z)-min(i.z)+2 for i in obj.ions])
 
     # Set up the matrix of Ls, the multiplication
@@ -54,7 +53,8 @@ def calc_pH(obj, I=0):
     PMat = numpy.array(PMat, ndmin=2)
 
     # Multiply P matrix by concentrations, and sum.
-    C = numpy.tile(numpy.transpose(obj.concentrations), numpy.transpose((PMat.shape[1], 1)))
+    C = numpy.tile(numpy.transpose(obj.concentrations),
+                   numpy.transpose((PMat.shape[1], 1)))
     P = numpy.sum(numpy.multiply(PMat, C.transpose()), 0)
 
     # Pad whichever is smaller, P or Q
@@ -68,14 +68,16 @@ def calc_pH(obj, I=0):
     poly = numpy.array([0] * max(len(P), len(Q)))
     poly[0:len(P)+1] = numpy.add(poly[0:len(P)+1], P)
 
-    poly[0:len(numpy.transpose(Q))+1] = numpy.add(poly[0:len(numpy.transpose(Q))+1], Q)  # from QMat
+    poly[0:len(numpy.transpose(Q))+1] =\
+        numpy.add(poly[0:len(numpy.transpose(Q))+1], Q)  # from QMat
 
+    # format for the poly function.
     poly = list(poly)
     poly.reverse()
 
     # Solve Polynomial for concentration
     roo = numpy.roots(poly)
     cH = float([r for r in roo if r > 0 and r.imag == 0][0])
-    # Convert to pH. Use the activity to calculate properly.
+    # Convert to pH. Use the activity to correct the calculation.
     pH = -log10(cH*obj._H.activity_coefficient(I, [1])[0])
     return pH
