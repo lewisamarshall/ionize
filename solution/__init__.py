@@ -17,15 +17,13 @@ class Solution(object):
     object. Other solution properties can be calculated by invoking the
     appropriate method.
 
-    See also ion.
+    See also Ion.
     """
 
     _F = 96485.3415        # Faraday's const.           [C/mol]
     _Rmu = 8.31            # Universal gas const.       [J/mol*K]
     _Temp = 298.0          # Temperature                [K]
     _Kw = 1E-14            # Water equilibrium constant [mol^2]
-    _muH = 362E-9          # Mobility of Hydronium      [m^2/s*V]
-    _muOH = 205E-9         # Mobility of Hydroxide      [m^2/s*V]
     _Lpm3 = 1000.0         # Liters per meter^3         []
     _visc = 1E-3           # Dynamic viscosity (water)  [Pa s]
     _Adh = 0.512           # L^1/2 / mol^1/2, approximate for room temperature
@@ -34,10 +32,10 @@ class Solution(object):
     _H = Ion('H+', [1], [100], [362E-9])
     _OH = Ion('OH-', [-1], [-100], [-205E-9])
 
-    ions = []			# Must be a list of ion objects from the Asp class.
-    concentrations = 0 	# A list of concentrations in molar.
-    pH = 7				# Normal pH units.
-    I = 0 				# Expected in molar.
+    ions = []              # Should be a list of ion objects.
+    concentrations = []    # A list of concentrations in molar.
+    pH = 7                 # Normal pH units.
+    I = 0                  # Expected in molar.
 
     def __init__(self, ions=[], concentrations=[]):
         """Initialize a solution object."""
@@ -60,17 +58,18 @@ class Solution(object):
 
         (self.pH, self.I) = self.find_equilibrium()
 
-        try:
-            (self.pH, self.I) = self.find_equilibrium()
-        except:
-            e = sys.exc_info()[0]
-            print "<p>Error: %s</p>" % e
-            warnings.warn("""Could not find equilibrium with ionic strength corrections. Returning uncorrected pH and I.""")
-            self.pH = self.calc_pH()
-            self.I = self.calc_I(self.pH)
+        if self.ions:
+            try:
+                (self.pH, self.I) = self.find_equilibrium()
+            except:
+                e = sys.exc_info()[0]
+                print "<p>Error: %s</p>" % e
+                warnings.warn("""Could not find equilibrium with ionic strength.
+                """)
+                self.pH = self.calc_pH()
+                self.I = self.calc_I(self.pH)
 
-        actual_mobilities = self.onsager_fuoss()[0]
-        print actual_mobilities
+        actual_mobilities = self.onsager_fuoss()
 
         for i in range(len(self.ions)):
             self.ions[i].actual_mobility = actual_mobilities[i]
@@ -79,18 +78,18 @@ class Solution(object):
         self._OH.actual_mobility = [actual_mobilities[-1][1]]
 
     def add_ion(obj, new_ions, new_concentrations):
-        """add_ion initializes a new solution with more ions.
+        """add_ion initializes a new solution with additional ions.
 
-        NEW_SOLUTION will contain all of the ions in the current solution
-        plus a new set of ions from new_ions at a new set of concentrations
-        from new_concentrations.
+        The returned solution will contain all of the ions in the current
+        solution plus a new set of ions from new_ions at a new set of
+        concentrations from new_concentrations.
         """
-        new_solution = solution((obj.ions + new_ions),
-                                [obj.concentrations + new_concentrations])
+        new_solution = Solution(obj.ions + new_ions,
+                                obj.concentrations + new_concentrations)
         return new_solution
 
     def cH(obj, pH=None, I=None):
-        """Return the concentration of H+ in the solution."""
+        """Return the concentration of protons in solution."""
         if not pH:
             pH = obj.pH
 
@@ -101,7 +100,7 @@ class Solution(object):
         return cH
 
     def cOH(obj, pH=None, I=None):
-        """Return the concentration of OH- in the solution."""
+        """Return the concentration of hydroxyls in solution."""
         if not pH:
             pH = obj.pH
 
@@ -112,7 +111,7 @@ class Solution(object):
         return cOH
 
     def H_conductivity(obj):
-        """Return the conductivity of H+.
+        """Return the conductivity of protons in solution.
 
         Corrects for the mobility of the ion using the
         ion object's actual mobility.
@@ -121,7 +120,7 @@ class Solution(object):
         return H_conductivity
 
     def OH_conductivity(obj):
-        """Return the conductivity of OH+.
+        """Return the conductivity of hydroxyls in solution.
 
         Corrects for the mobility of the ion using the
         ion object's actual mobility.
