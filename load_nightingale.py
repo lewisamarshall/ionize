@@ -26,11 +26,10 @@ def load_nightingale(name):
             entries = map(float, entries)
             temp.append(entries[0])
             state.append(entries[1])
-        print temp, state
         statefunc = interpolate.interp1d(temp, state)
         print statefunc(30)
     else:
         return None
 
-if __name__=="__main__":
+if __name__ == "__main__":
     load_nightingale('silver')
