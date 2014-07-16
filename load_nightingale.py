@@ -27,9 +27,9 @@ def load_nightingale(name):
             temp.append(entries[0])
             state.append(entries[1])
         statefunc = interpolate.interp1d(temp, state)
-        print statefunc(30)
+        return statefunc
     else:
         return None
 
 if __name__ == "__main__":
-    load_nightingale('silver')
+    print load_nightingale('silver')(88)
