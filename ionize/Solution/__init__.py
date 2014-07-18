@@ -1,5 +1,5 @@
 import warnings
-from Ion import Ion
+from ..Ion import Ion
 import sys
 
 

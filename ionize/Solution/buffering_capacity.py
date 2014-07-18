@@ -1,4 +1,4 @@
-from Ion import Ion
+from ..Ion import Ion
 
 
 def buffering_capacity(obj):

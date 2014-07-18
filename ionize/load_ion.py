@@ -9,7 +9,7 @@ def load_ion(ion_name):
     load_ion('ion_name') pulls the named ion from the database.
     Database derived from Peakmaster, with additions from literature.
     """
-    ion_list = shelve.open('ions_shelve')
+    ion_list = shelve.open('ionize/ions_shelve', flag='r')
 
     if ion_name.lower() in ion_list.keys():
         ion_entry = ion_list[ion_name.lower()]
