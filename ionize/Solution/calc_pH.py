@@ -31,7 +31,7 @@ def calc_pH(obj, I=0):
 
     # Convolve with water dissociation.
     Q = numpy.convolve(Q, [-obj.Kw_eff(I), 0, 1])
-    Q = numpy.array(Q, ndmin=2)
+    Q = numpy.array(Q, ndmin=1)
 
     # Construct P matrix
     PMat = []
@@ -53,12 +53,12 @@ def calc_pH(obj, I=0):
     PMat = numpy.array(PMat, ndmin=2)
 
     # Multiply P matrix by concentrations, and sum.
-    C = numpy.tile(numpy.transpose(obj.concentrations),
-                   numpy.transpose((PMat.shape[1], 1)))
-    P = numpy.sum(numpy.multiply(PMat, C.transpose()), 0)
+    C = numpy.tile((obj.concentrations),
+                   ((PMat.shape[1], 1))).transpose()
+    P = numpy.sum(PMat*C, 0)
 
     # Pad whichever is smaller, P or Q
-    SizeDiff = Q.shape[1] - PMat.shape[1]
+    SizeDiff = Q.shape[0] - P.shape[0]
     if SizeDiff > 0:
         P = list(P) + [0]*SizeDiff
     elif SizeDiff < 0:
@@ -68,12 +68,13 @@ def calc_pH(obj, I=0):
     poly = numpy.array([0] * max(len(P), len(Q)))
     poly[0:len(P)+1] = numpy.add(poly[0:len(P)+1], P)
 
-    poly[0:len(numpy.transpose(Q))+1] =\
-        numpy.add(poly[0:len(numpy.transpose(Q))+1], Q)  # from QMat
+    poly[0:len(Q)+1] =\
+        numpy.add(poly[0:len(Q)+1], Q)  # from QMat
 
     # format for the poly function.
     poly = list(poly)
     poly.reverse()
+    poly = numpy.complex_(poly)
 
     # Solve Polynomial for concentration
     roo = numpy.roots(poly)
