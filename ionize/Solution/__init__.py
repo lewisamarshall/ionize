@@ -53,7 +53,7 @@ class Solution(object):
             """Must be initialized with the same number of ions and concentrations.
         """
 
-        assert all([c > 0 for c in concentrations]),\
+        assert all([c >= 0 for c in concentrations]),\
             """Concentrations must be positive."""
 
         (self.pH, self.I) = self.find_equilibrium()
