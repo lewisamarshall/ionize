@@ -25,12 +25,12 @@ def calc_pH(obj, I=0):
         LMat[i, 0:len(obj.ions[i].z)+1] = obj.ions[i].L(I)
 
     # Construct Q vector.
-    Q = 1
+    Q = 1.0
     for j in range(LMat.shape[0]):
         Q = numpy.convolve(Q, LMat[j, :])
 
     # Convolve with water dissociation.
-    Q = numpy.convolve(Q, [-obj.Kw_eff(I), 0, 1])
+    Q = numpy.convolve(Q, [-obj.Kw_eff(I), 0.0, 1.0])
     Q = numpy.array(Q, ndmin=1)
 
     # Construct P matrix
@@ -47,7 +47,7 @@ def calc_pH(obj, I=0):
         for kl in range(Mmod.shape[0]):
             Pi = numpy.convolve(Pi, Mmod[kl, :])
 
-        Pi = numpy.convolve([0, 1], Pi)  # Convolve with P2
+        Pi = numpy.convolve([0.0, 1.0], Pi)  # Convolve with P2
         PMat.append(Pi)
 
     PMat = numpy.array(PMat, ndmin=2)
@@ -65,7 +65,7 @@ def calc_pH(obj, I=0):
         Q = list(Q) + [0]*SizeDiff
 
     # Construct polynomial.
-    poly = numpy.array([0] * max(len(P), len(Q)))
+    poly = numpy.array([0.0] * max(len(P), len(Q)))
     poly[0:len(P)+1] = numpy.add(poly[0:len(P)+1], P)
 
     poly[0:len(Q)+1] =\
@@ -74,11 +74,19 @@ def calc_pH(obj, I=0):
     # format for the poly function.
     poly = list(poly)
     poly.reverse()
-    poly = numpy.complex_(poly)
+    # poly = numpy.complex_(poly)
 
     # Solve Polynomial for concentration
-    roo = numpy.roots(poly)
-    cH = float([r for r in roo if r > 0 and r.imag == 0][0])
+    roo = map(complex, numpy.roots(poly))
+
+    roo_reduced =[r for r in roo if r.real > 0 and r.imag == 0]
+    if roo_reduced:
+        cH = float(roo_reduced[-1].real)
+    else:
+        print 'failing to find pH'
+        print 'I =', I
+        print 'poly =', poly
+        print 'roo =', roo
     # Convert to pH. Use the activity to correct the calculation.
     pH = -log10(cH*obj._H.activity_coefficient(I, [1])[0])
     return pH
