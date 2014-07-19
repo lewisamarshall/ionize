@@ -34,8 +34,8 @@ class Solution(object):
 
     ions = []              # Should be a list of ion objects.
     concentrations = []    # A list of concentrations in molar.
-    pH = 7                 # Normal pH units.
-    I = 0                  # Expected in molar.
+    pH = 7.0               # Normal pH units.
+    I = 0.0                # Expected in molar.
 
     def __init__(self, ions=[], concentrations=[]):
         """Initialize a solution object."""
@@ -56,18 +56,10 @@ class Solution(object):
         assert all([c >= 0 for c in concentrations]),\
             """Concentrations must be positive."""
 
-        (self.pH, self.I) = self.find_equilibrium()
-
         if self.ions:
-            try:
-                (self.pH, self.I) = self.find_equilibrium()
-            except:
-                e = sys.exc_info()[0]
-                print "<p>Error: %s</p>" % e
-                warnings.warn("""Could not find equilibrium with ionic strength.
-                """)
-                self.pH = self.calc_pH()
-                self.I = self.calc_I(self.pH)
+            (self.pH, self.I) = self.find_equilibrium()
+        else:
+            self.I = self.calc_I(self.pH)
 
         actual_mobilities = self.onsager_fuoss()
 
