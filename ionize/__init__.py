@@ -11,6 +11,7 @@ Class Solution represents an aqueous solution containing one or more ions.
 from Ion import Ion
 from Solution import Solution
 from load_ion import load_ion
+from search_ion import search_ion
 
 if __name__ == "__main__":
     # water = Solution()
