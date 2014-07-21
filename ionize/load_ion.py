@@ -2,6 +2,7 @@ import warnings
 from Ion import Ion
 import shelve
 import os
+import sys
 
 
 def load_ion(ion_name):
@@ -10,8 +11,12 @@ def load_ion(ion_name):
     load_ion('ion_name') pulls the named ion from the database.
     Database derived from Peakmaster, with additions from literature.
     """
-    path = os.path.dirname(__file__)
-    ion_list = shelve.open(os.path.join(path, 'ions_shelve'), flag='r')
+    if sys.platform=='win32':
+        path = os.path.join(os.getcwd(), os.path.dirname(__file__), 'ions_shelve.bin')
+    else:
+        path = os.path.join(os.getcwd(), os.path.dirname(__file__), 'ions_shelve.db')
+
+    ion_list = shelve.open(path, flag='r')
 
     if ion_name.lower() in ion_list.keys():
         ion_entry = ion_list[ion_name.lower()]
@@ -21,5 +26,6 @@ def load_ion(ion_name):
         return None
 
 if __name__ == "__main__":
-    for name in sorted(shelve.open('ions_shelve').keys()):
+    path = os.path.join(os.getcwd(), os.path.dirname(__file__), 'ions_shelve.bin')
+    for name in sorted(shelve.open(path, 'r').keys()):
         print load_ion(name)
