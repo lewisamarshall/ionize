@@ -25,6 +25,7 @@ def load_nightingale(name):
             entries = line.strip().split(',')
             entries = map(float, entries)
             temp.append(entries[0])
+            # state.append(entries[1]*10.35e-21/abs(z)/x(4)*10^10)
             state.append(entries[1])
         statefunc = interpolate.interp1d(temp, state)
         return statefunc

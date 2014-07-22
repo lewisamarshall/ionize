@@ -1,5 +1,6 @@
 import warnings
 from math import sqrt, copysign
+from ..viscosity import viscosity
 
 
 class Ion(object):
@@ -15,21 +16,26 @@ class Ion(object):
 
     This is a direct port of the Matlab code written by Lewis Marshall.
     """
-
     # Weakly private variables
     # These are constants and should not change.
     # Eventually, _T may be  removed from the constants list.
     _F = 96485.34         # Faraday's const.[C/mol]
     _Lpm3 = 1000.0        # Conversion from liters to m^3
-    _T = 298.0            # Temperature, in Kalvin
 
     # The following are constants in eqtn 6 of Bahga 2010.
     _Adh = 0.5102         # L^1/2 / mol^1/2, approximate for RT
     _aD = 1.5             # mol^-1/2 mol^-3/2, approximation
 
-    def __init__(self, name, z, pKa, absolute_mobility):
+    # The reference properties of the ion are stored in private variables.
+    _pKa_ref = []
+    _absolute_mobility_ref = []  # m^2/V/s.
+
+    def __init__(self, name, z, pKa_ref, absolute_mobility_ref,
+                 T=25.0, T_ref=25.0):
         """Initialize an ion object."""
         self.name = name
+        self.T = T
+        self._T_ref = T_ref
 
         try:
             self.z = [zp for zp in z]
@@ -37,14 +43,27 @@ class Ion(object):
             self.z = [z]
 
         try:
-            self.pKa = [p for p in pKa]
+            self._pKa_ref = [p for p in pKa_ref]
         except:
-            self.pKa = [pKa]
+            self._pKa_ref = [pKa_ref]
 
         try:
-            self.absolute_mobility = [m for m in absolute_mobility]  # m^2/V/s.
+            self._absolute_mobility_ref = [m for m in absolute_mobility_ref]
         except:
-            self.absolute_mobility = [absolute_mobility]
+            self._absolute_mobility_ref = [absolute_mobility_ref]
+
+        if T == T_ref:
+            self.pKa = self._pKa_ref
+            self.absolute_mobility = self._absolute_mobility_ref
+        else:
+            self.pKa = self._pKa_ref
+            warnings.warn('Temperature adjustment of mobility is not implimented.')
+
+            self.absolute_mobility =\
+                [viscosity(self._T_ref)/viscosity(self.T)*m
+                 for m in self._absolute_mobility_ref]
+            warnings.warn('Temperature adjustment of pKa is not implimented.')
+
         self.actual_mobility = None                 # Fill by solution
 
         # Check that z is a vector of integers
