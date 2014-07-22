@@ -1,6 +1,7 @@
 import numpy
 from math import sqrt
 
+
 def onsager_fuoss(obj):
     """Return the Onsager-Fuoss correction to the mobilities of ions."""
     # Initialize the empty variables that you will need.
