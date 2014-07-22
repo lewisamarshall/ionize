@@ -10,11 +10,12 @@ Class Solution represents an aqueous solution containing one or more ions.
 
 from Ion import Ion
 from Solution import Solution
+from get_db import get_db
 from load_ion import load_ion
 from search_ion import search_ion
 
 if __name__ == "__main__":
-    # water = Solution()
+    water = Solution()
     hcl = load_ion('hydrochloric acid')
     print hcl
     tris = load_ion('tris')

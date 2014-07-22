@@ -2,11 +2,11 @@ import re
 from load_ion import load_ion
 import os
 import shelve
+from get_db import get_db
 
 
 def search_ion(namepart):
-    path = os.path.dirname(__file__)
-    ion_list = shelve.open(os.path.join(path, 'ions_shelve'), flag='r')
+    ion_list = get_db()
 
     if namepart.lower() in ion_list.keys():
         print namepart
@@ -14,4 +14,8 @@ def search_ion(namepart):
         for name in sorted(ion_list.keys()):
             if re.search(namepart, name):
                 print name
+    ion_list.close()
     return None
+
+if __name__ == '__main__':
+    search_ion('fluor')
