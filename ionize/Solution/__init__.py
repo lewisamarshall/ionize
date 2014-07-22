@@ -120,6 +120,36 @@ class Solution(object):
         OH_conductivity = obj.cOH()*obj._OH.molar_conductivity(obj.pH, obj.I)
         return OH_conductivity
 
+    def __add__(obj, other):
+        if isinstance(other, Solution):
+            return Solution(obj.ions + other.ions,
+                            obj.concentrations + other.concentrations)
+        else:
+            raise NotImplementedError
+
+    __radd__ = __add__
+
+    def __mul__(obj, other):
+        if other >= 0:
+            return Solution(obj.ions,
+                            [c * other for c in obj.concentrations])
+        else:
+            raise NotImplementedError
+
+    __rmul__ = __mul__
+
+    def __str__(obj):
+        """Return a string representing the Solution."""
+        return "Solution object -- pH = " + str(obj.pH) + \
+            ", I = " + str(obj.I) + ' M'
+
+    def __repr__(obj):
+        """Return a representation of the Solution."""
+        return obj.__str__()
+
+    def __len__(obj):
+        return len(obj.ions)
+
     from buffering_capacity import buffering_capacity
     from calc_I import calc_I
     from calc_pH import calc_pH
