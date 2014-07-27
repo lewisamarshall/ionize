@@ -132,6 +132,11 @@ class Ion(object):
         Adh = Adh_ref * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
         return Adh
 
+    def set_T(obj, T):
+        return Ion(obj.name, obj.z, obj._pKa_ref, obj._absolute_mobility_ref,
+                   obj.dH, obj.dCp,
+                   T, obj._T_ref)
+
     def __str__(obj):
         """Return a string representing the ion."""
         return ("Ion object -- " + obj.name + ": " +
