@@ -1,6 +1,7 @@
 import warnings
 from ..Ion import Ion
 import sys
+from math import log, log10
 
 
 class Solution(object):
@@ -21,8 +22,8 @@ class Solution(object):
     """
 
     _F = 96485.3415        # Faraday's const.           [C/mol]
-    _Rmu = 8.31            # Universal gas const.       [J/mol*K]
-    _Kw = 1E-14            # Water equilibrium constant [mol^2]
+    _R = 8.31              # Universal gas const.       [J/mol*K]
+    _Kw_ref = 1E-14        # Water equilibrium constant [mol^2]
     _Lpm3 = 1000.0         # Liters per meter^3         []
     _visc = 1E-3           # Dynamic viscosity (water)  [Pa s]
     _Adh = 0.512           # L^1/2 / mol^1/2, approximate for room temperature
@@ -36,14 +37,23 @@ class Solution(object):
     pH = 7.0               # Normal pH units.
     I = 0.0                # Expected in molar.
     T = 25                 # Temperature in C
+    _T_ref = 25            # reference temperature
+
+    _dHw = 55.815e3
+    _dCpw = -224
 
     def __init__(self, ions=[], concentrations=[], T=25):
         """Initialize a solution object."""
-        self.T = T
+        self.T = float(T)
+        if self.T == self._T_ref:
+            self._Kw = self._Kw_ref
+        else:
+            self._Kw = self.adjust_Kw()
+
         try:
-            self.ions = [i for i in ions]
+            self.ions = [i.set_T(self.T) for i in ions]
         except:
-            self.ions = [ions]
+            self.ions = [ions.set_T(self.T)]
 
         try:
             self.concentrations = [c for c in concentrations]
@@ -69,6 +79,16 @@ class Solution(object):
 
         self._H.actual_mobility = [actual_mobilities[-1][0]]
         self._OH.actual_mobility = [actual_mobilities[-1][1]]
+
+    def adjust_Kw(obj):
+        pKw_ref = -log10(obj._Kw_ref)
+        T_ref = obj._T_ref + 273.15
+        T = obj.T + 273.15
+        pKw = pKw_ref -\
+            (obj._dHw/2.303/obj._R)*(1.0/T_ref - 1.0/T) -\
+            (obj._dCpw/2.303/obj._R)*(T_ref/T-1.0+log(T/T_ref))
+        Kw = 10.0**(-pKw)
+        return Kw
 
     def add_ion(obj, new_ions, new_concentrations):
         """add_ion initializes a new solution with additional ions.

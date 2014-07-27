@@ -15,8 +15,8 @@ def correct_pKa(obj):
 
 
 def vant_hoff(obj):
-    T = obj.T
-    T_ref = obj._T_ref
+    T = obj.T + 273.15
+    T_ref = obj._T_ref + 273.15
     if abs(T-T_ref) > 20:
         warnings.warn('Using the van\'t Hoff correction for dT > 20 deg.')
     pKa_ref = obj._pKa_ref
@@ -30,8 +30,8 @@ def vant_hoff(obj):
 
 
 def clark_glew(obj):
-    T = obj.T
-    T_ref = obj._T_ref
+    T = obj.T + 273.15
+    T_ref = obj._T_ref + 273.15
     if abs(T-T_ref) > 100:
         warnings.warn('Using the Clark-Glew correction for dT > 100 deg.')
     pKa_ref = obj._pKa_ref
