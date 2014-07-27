@@ -160,3 +160,5 @@ class Solution(object):
     from onsager_fuoss import onsager_fuoss
     from transference import transference
     from zone_transfer import zone_transfer
+    from ..dielectric import dielectric
+    from ..viscosity import ..viscosity
