@@ -43,10 +43,10 @@ for idx, name in enumerate(namelist):
             state[1].append(float(pKa[i]))
             state[2].append(copysign(float(mobility[i]), z[i])*1e-9)
 
-    if state[3] and len(state[3])<len(state[2]):
-        state[3].append(None)
-    if state[4] and len(state[4])<len(state[2]):
-        state[4].append(None)
+    if state[3] and len(state[3]) < len(state[2]):
+        state[3].append(0)
+    if state[4] and len(state[4]) < len(state[2]):
+        state[4].append(0)
 
     ion_dict[name] = state
 

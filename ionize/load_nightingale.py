@@ -13,7 +13,7 @@ def load_nightingale(name):
         'cesium': 'Nightingale_Rb and Cs _data.txt',
         'calcium': 'Nightingale_Rb and Cs _data.txt',
         'silver': 'Nightingale_Ag_data.txt',
-        'sulfate': 'Nightingale_Sulfate_data.txt'
+        'sulfuric acid': 'Nightingale_Sulfate_data.txt'
     }
 
     if name in namedict:
