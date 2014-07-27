@@ -16,8 +16,12 @@ def load_ion(ion_name):
     if ion_name.lower() in ion_list.keys():
         ion_entry = ion_list[ion_name.lower()]
         ion_list.close()
-        return Ion(ion_name.lower(),
-                   ion_entry[0], ion_entry[1], ion_entry[2])
+        if len(ion_entry) == 3:
+            return Ion(ion_name.lower(),
+                       ion_entry[0], ion_entry[1], ion_entry[2])
+        elif len(ion_entry) == 5:
+            return Ion(ion_name.lower(),
+                       ion_entry[0], ion_entry[1], ion_entry[2], ion_entry[3], ion_entry[4])
     else:
         warnings.warn('Ion not found in database. Returning None.')
         ion_list.close()
