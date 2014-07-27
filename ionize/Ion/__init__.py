@@ -33,11 +33,14 @@ class Ion(object):
     dCp = None
 
     def __init__(self, name, z, pKa_ref, absolute_mobility_ref,
+                 dH=None, dCp=None,
                  T=25.0, T_ref=25.0):
         """Initialize an ion object."""
         self.name = name
         self.T = T
         self._T_ref = T_ref
+        self.dH = dH
+        self.dCp = dCp
 
         try:
             self.z = [zp for zp in z]
