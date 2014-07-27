@@ -1,4 +1,4 @@
-def dielectric(T=25):
+def dielectric(obj, T=25):
     """Return the dielectric constant of water at a specified temperature.
 
     The temperature should be specified in celcius. It is internally converted

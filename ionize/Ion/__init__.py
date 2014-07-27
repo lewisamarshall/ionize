@@ -58,6 +58,7 @@ class Ion(object):
             self.pKa = self._pKa_ref
             self.absolute_mobility = self._absolute_mobility_ref
         else:
+            _Adh = self.get_Adh()
             self.pKa = self.correct_pKa()
 
             self.absolute_mobility =\
@@ -115,6 +116,18 @@ class Ion(object):
         z0 = [0]+obj.z
         z0 = sorted(z0)
         return z0
+
+    from ..dielectric import dielectric
+
+    def get_Adh(obj, T=None):
+        if not T:
+            T = obj.T
+        T_ref = 25
+        Adh_ref = 0.5102
+        d = obj.dielectric(T)
+        d_ref = obj.dielectric(T)
+        Adh = Adh_ref * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
+        return Adh
 
     def __str__(obj):
         """Return a string representing the ion."""
