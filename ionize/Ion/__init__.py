@@ -146,6 +146,7 @@ class Ion(object):
     from molar_conductivity import molar_conductivity
     from robinson_stokes_mobility import robinson_stokes_mobility
     from correct_pKa import correct_pKa, vant_hoff, clark_glew
+    from ..viscosity import viscosity
 
 if __name__ == '__main__':
     hcl = Ion('hydrochloric acid', -1, -2.0, -7.91e-8)

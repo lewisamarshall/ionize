@@ -1,4 +1,4 @@
-def viscosity(T=25):
+def viscosity(obj, T=25):
     """Return the viscosity of water at the specified temperature.
 
     The temperature should be specified in celcius. The function internally

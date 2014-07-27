@@ -22,7 +22,6 @@ class Solution(object):
 
     _F = 96485.3415        # Faraday's const.           [C/mol]
     _Rmu = 8.31            # Universal gas const.       [J/mol*K]
-    _Temp = 298.0          # Temperature                [K]
     _Kw = 1E-14            # Water equilibrium constant [mol^2]
     _Lpm3 = 1000.0         # Liters per meter^3         []
     _visc = 1E-3           # Dynamic viscosity (water)  [Pa s]
@@ -36,9 +35,11 @@ class Solution(object):
     concentrations = []    # A list of concentrations in molar.
     pH = 7.0               # Normal pH units.
     I = 0.0                # Expected in molar.
+    T = 25                 # Temperature in C
 
-    def __init__(self, ions=[], concentrations=[]):
+    def __init__(self, ions=[], concentrations=[], T=25):
         """Initialize a solution object."""
+        self.T = T
         try:
             self.ions = [i for i in ions]
         except:
@@ -161,4 +162,4 @@ class Solution(object):
     from transference import transference
     from zone_transfer import zone_transfer
     from ..dielectric import dielectric
-    from ..viscosity import ..viscosity
+    from ..viscosity import viscosity
