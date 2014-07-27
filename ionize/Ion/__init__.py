@@ -25,10 +25,12 @@ class Ion(object):
     # The following are constants in eqtn 6 of Bahga 2010.
     _Adh = 0.5102         # L^1/2 / mol^1/2, approximate for RT
     _aD = 1.5             # mol^-1/2 mol^-3/2, approximation
-
+    R = 8.314             # J/mol-K
     # The reference properties of the ion are stored in private variables.
     _pKa_ref = []
     _absolute_mobility_ref = []  # m^2/V/s.
+    dH = None
+    dCp = None
 
     def __init__(self, name, z, pKa_ref, absolute_mobility_ref,
                  T=25.0, T_ref=25.0):
@@ -56,13 +58,11 @@ class Ion(object):
             self.pKa = self._pKa_ref
             self.absolute_mobility = self._absolute_mobility_ref
         else:
-            self.pKa = self._pKa_ref
-            warnings.warn('Temperature adjustment of mobility is not implimented.')
+            self.pKa = self.correct_pKa()
 
             self.absolute_mobility =\
                 [viscosity(self._T_ref)/viscosity(self.T)*m
                  for m in self._absolute_mobility_ref]
-            warnings.warn('Temperature adjustment of pKa is not implimented.')
 
         self.actual_mobility = None                 # Fill by solution
 
@@ -132,6 +132,7 @@ class Ion(object):
     from L import L
     from molar_conductivity import molar_conductivity
     from robinson_stokes_mobility import robinson_stokes_mobility
+    from correct_pKa import correct_pKa, vant_hoff, clark_glew
 
 if __name__ == '__main__':
     hcl = Ion('hydrochloric acid', -1, -2.0, -7.91e-8)
