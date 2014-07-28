@@ -1,7 +1,11 @@
 import csv
 
 
-def load_steep_db(filename='old_database/STEEP_Database.csv'):
+def load_steep_db(filename='create_database/STEEP_Database.csv'):
+    """Return a dictionary containing the STEEP database.
+
+    Opens the database CSV file and converts to a dictionary.
+    """
     data = dict()
     with open(filename, 'rU') as file:
         filereader = csv.reader(file, delimiter=',')
