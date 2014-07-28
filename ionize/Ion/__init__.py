@@ -33,7 +33,7 @@ class Ion(object):
     dCp = None
 
     def __init__(self, name, z, pKa_ref, absolute_mobility_ref,
-                 dH=None, dCp=None,
+                 dH=None, dCp=None, nightingale_function=None,
                  T=25.0, T_ref=25.0):
         """Initialize an ion object."""
         self.name = name
@@ -41,7 +41,7 @@ class Ion(object):
         self._T_ref = T_ref
         self.dH = dH
         self.dCp = dCp
-
+        self.nightingale_function = nightingale_function
         try:
             self.z = [zp for zp in z]
         except:
@@ -63,15 +63,19 @@ class Ion(object):
         else:
             _Adh = self.get_Adh()
             self.pKa = self.correct_pKa()
-
-            self.absolute_mobility =\
-                [viscosity(self._T_ref)/viscosity(self.T)*m
-                 for m in self._absolute_mobility_ref]
+            if self.nightingale_function:
+                self.absolute_mobility = [self.nightingale_function(self.T).tolist()] *\
+                    len(self.z)
+            else:
+                self.absolute_mobility =\
+                    [viscosity(self._T_ref)/viscosity(self.T)*m
+                     for m in self._absolute_mobility_ref]
 
         self.actual_mobility = None                 # Fill by solution
 
         # Check that z is a vector of integers
-        assert all([isinstance(zp, int) for zp in self.z]), "z contains non-integer"
+        assert all([isinstance(zp, int) for zp in self.z]), \
+            "z contains non-integer"
 
         # Check that the pKa is a vector of numbers of the same length as z.
         assert len(self.pKa) == len(self.z), "pKa is not the same length as z"
@@ -134,7 +138,7 @@ class Ion(object):
 
     def set_T(obj, T):
         return Ion(obj.name, obj.z, obj._pKa_ref, obj._absolute_mobility_ref,
-                   obj.dH, obj.dCp,
+                   obj.dH, obj.dCp, obj.nightingale_function,
                    T, obj._T_ref)
 
     def __str__(obj):
