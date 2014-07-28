@@ -5,7 +5,7 @@ import warnings
 def find_equilibrium(obj):
     """Return the equilibrium ionic strength and pH.
 
-    It uses the newton's method  root finder from scipy.optimize to find the
+    Uses the newton's method root finder from scipy.optimize to find the
     equilibrium pH and ionic strength of a solution, using the ionic-strength
     adjusted activity coefficients. This function is called when the object is
     initialized.

@@ -7,14 +7,7 @@ class Ion(object):
 
     """Describe an ion dissolved in aqueous solution.
 
-    This class draws significantly on Bagha Electrophoresis 2010
-    "Ionic strength effects on electrophoretic focusing and separations"
-    The ion is defined by a name, and a set of charge states (z).
-    Each charge state must have an associated acidity constant (pKa).
-    Each charge state must have an associated fully ionized mobility
-    (absolute_mobility).
-
-    This is a direct port of the Matlab code written by Lewis Marshall.
+    Initialize with Ion(name, z, pKa, absolute_mobility).
     """
     # Weakly private variables
     # These are constants and should not change.
@@ -127,6 +120,7 @@ class Ion(object):
     from ..dielectric import dielectric
 
     def get_Adh(obj, T=None):
+        """Account for the temperature dependance of Adh."""
         if not T:
             T = obj.T
         T_ref = 25
@@ -137,6 +131,7 @@ class Ion(object):
         return Adh
 
     def set_T(obj, T):
+        """Return a new ion at the specified temperature."""
         return Ion(obj.name, obj.z, obj._pKa_ref, obj._absolute_mobility_ref,
                    obj.dH, obj.dCp, obj.nightingale_function,
                    T, obj._T_ref)
@@ -161,24 +156,4 @@ class Ion(object):
     from ..viscosity import viscosity
 
 if __name__ == '__main__':
-    hcl = Ion('hydrochloric acid', -1, -2.0, -7.91e-8)
-    try:
-        pass
-        poor_ion = Ion('poor', [1.5], [-2], [3])
-    except:
-        print "Poor ion rejected."
-        pass
-    print hcl
-    print "Name:", hcl.name
-    print "Z:", hcl.z
-    print "pKa:", hcl.pKa
-    print "Absolute mobility:", hcl.absolute_mobility
-    print "Robinson-Stokes mobility at 0.1 M:",\
-        hcl.robinson_stokes_mobility(.1)
-    print "Ka:", hcl.Ka()
-    print "z0:", hcl.z0()
-    print "L:", hcl.L()
-    print "Ionization fraction at pH 7:", hcl.ionization_fraction(7)
-    print "Activity coefficient at 0.3 M:", hcl.activity_coefficient(.03)
-    print hcl.__dict__
-    help(Ion)
+    pass

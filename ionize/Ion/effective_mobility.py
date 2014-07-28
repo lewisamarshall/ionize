@@ -1,5 +1,9 @@
 def effective_mobility(obj, pH, I=0):
-    """Return the effective mobility of the ion at a given pH and I."""
+    """Return the effective mobility of the ion at a given pH and I.
+
+    If an actual mobility from Onsager-Fouss is available, it is used,
+    otherwise, the Robinson-Stokes correction is used.
+    """
     if obj.actual_mobility:
         actual_mobility = obj.actual_mobility
     else:

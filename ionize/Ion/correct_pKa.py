@@ -3,6 +3,13 @@ from math import log
 
 
 def correct_pKa(obj):
+    """Return the pKa corrected for temperature.
+
+    If dCp for the ion is available, returns the Clark-Glew correction, which
+    is most accurate. If only dH is available, returns the van't Hoff
+    correction, which is less accurate. If neither is available, returns the
+    original pKa, with a warning.
+    """
     if obj.T == obj._T_ref:
         return obj._pKa_ref
     elif obj.dH and obj.dCp:

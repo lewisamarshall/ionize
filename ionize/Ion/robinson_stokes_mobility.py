@@ -3,12 +3,10 @@ import warnings
 
 
 def robinson_stokes_mobility(obj, I, T=25):
-    """Return the robinson stokes correction to fully ionized mobility.
+    """Return the Robinson-Stokes correction to fully ionized mobility.
 
-    If only an ionic strength is specified, use the Robinson-Stokes
-    correction to calculate a new fully ionized mobility.
-
-    If a solution object is supplied, use the full onsager fouss correction.
+    This correction is appropriate if a generic ionic strength is known,
+    but the specific ions in solution are unknown.
     """
     # Currently using the ionic strength where Bahga 2010
     # uses twice the ionic strength. This appears to work, and follows the

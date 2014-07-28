@@ -3,7 +3,11 @@ from math import sqrt
 
 
 def onsager_fuoss(obj):
-    """Return the Onsager-Fuoss correction to the mobilities of ions."""
+    """Return the Onsager-Fuoss correction to the mobilities of ions.
+
+    This function returns a list of all corrected actual mobilities.
+    These mobilities are automatically assigned to the correct ions when
+    a solution is initialized."""
     # Initialize the empty variables that you will need.
     # Omega = mobility / F / z
     omega = []
@@ -75,6 +79,8 @@ def onsager_fuoss(obj):
     d = obj.dielectric(T)
     d_ref = obj.dielectric(T)
 
+    # New temperature corrected coefficients.
+    # Temperature corrections are based on the reference values.
     A_prime = obj._F*0.78420*((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
     B_prime = 31.410e-9 * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-0.5) *\
         obj.viscosity(T_ref)/obj.viscosity(T)

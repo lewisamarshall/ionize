@@ -10,7 +10,8 @@ class Solution(object):
 
     Initialize with solution(ions, concentrations), where ions is a list
     containing AspPy ion objects, and concentrations is a list containing
-    positive scalars.
+    positive scalars. Can also take T as an optional temperature argument, in
+    Celcius.
 
     When a new solution is initialized, it will immediately calculate the
     equilibrium state, including the pH and the ionic strength (I) of the
