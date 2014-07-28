@@ -1,18 +1,20 @@
 import re
-from load_ion import load_ion
 import os
-import shelve
 from get_db import get_db
 
 
-def search_ion(namepart):
+def search_ion(searchstring):
+    """Print the names of ions in the database that contain the search string.
+
+    This function always returns None. It only prints the search results.
+    """
     ion_list = get_db()
 
-    if namepart.lower() in ion_list.keys():
-        print namepart
+    if searchstring.lower() in ion_list.keys():
+        print searchstring
     else:
         for name in sorted(ion_list.keys()):
-            if re.search(namepart, name):
+            if re.search(searchstring, name):
                 print name
     ion_list.close()
     return None

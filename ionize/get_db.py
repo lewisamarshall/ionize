@@ -8,6 +8,8 @@ def get_db(flag='r'):
 
     By default opens in write-only state. Pass in a different flag for write
     access.
+
+    Because the database is housed in a file, be sure to close when done.
     """
     if sys.platform == 'win32':
         db_name = 'ions_shelve.bin'

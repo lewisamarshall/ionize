@@ -5,6 +5,16 @@ import os
 
 
 def load_nightingale(name):
+    """Return the Nightingale mobility function if available for the ion named.
+
+    The function includes data for small ions, including hydrochloric acid,
+    sodium, potassium, lithium, magnesium, perchloric acid, rubidium, cesium,
+    calcium silver, and sulfuric acid. This data takes the place of viscosity
+    correction for these ions, and also includes emperical effects from changes
+    in solvation.
+
+    If no data is available, returns None.
+    """
     namedict = {
         'hydrochloric acid': 'Nightingale_Cl_data.txt',
         'sodium': 'Nightingale_Na.txt',
@@ -37,7 +47,7 @@ def load_nightingale(name):
         temp = []
         state = []
         datafilename = os.path.join(os.getcwd(), os.path.dirname(__file__),
-                                    'STEEP_files', namedict[name])
+                                    'nigthingale_data', namedict[name])
         datafile = open(datafilename)
         z = z_dict[name]
         datafile.readline()
@@ -45,7 +55,8 @@ def load_nightingale(name):
             entries = line.strip().split(',')
             entries = map(float, entries)
             temp.append(entries[0])
-            state.append(entries[1]*10.35e-21/z/viscosity(None, entries[0])*10**10)
+            # Convert from limiting conductivity to mobility
+            state.append(entries[1]*10.35e-11/z/viscosity(None, entries[0]))
         statefunc = interpolate.interp1d(temp, state)
         return statefunc
     else:
