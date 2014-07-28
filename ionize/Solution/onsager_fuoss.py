@@ -70,8 +70,17 @@ def onsager_fuoss(obj):
 
     factor = numpy.dot(c, numpy.transpose(r))
 
-    A_prime = obj._F*0.78420
-    B_prime = 31.41e-9
+    T = obj.T
+    T_ref = 25
+    d = obj.dielectric(T)
+    d_ref = obj.dielectric(T)
+
+    A_prime = obj._F*0.78420*((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
+    B_prime = 31.410e-9 * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-0.5) *\
+        obj.viscosity(T_ref)/obj.viscosity(T)
+
+    # A_prime = obj._F*0.78420
+    # B_prime = 31.41e-9
 
     mob_new = (obj._F*omega-(A_prime*z_list*factor*omega+B_prime)*sqrt(obj.I) /
                (1+1.5*sqrt(obj.I)))*z_list

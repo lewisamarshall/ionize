@@ -1,5 +1,6 @@
 import warnings
 from math import sqrt, copysign
+from ..viscosity import viscosity
 
 
 class Ion(object):
@@ -15,40 +16,66 @@ class Ion(object):
 
     This is a direct port of the Matlab code written by Lewis Marshall.
     """
-
     # Weakly private variables
     # These are constants and should not change.
     # Eventually, _T may be  removed from the constants list.
     _F = 96485.34         # Faraday's const.[C/mol]
     _Lpm3 = 1000.0        # Conversion from liters to m^3
-    _T = 298.0            # Temperature, in Kalvin
 
     # The following are constants in eqtn 6 of Bahga 2010.
     _Adh = 0.5102         # L^1/2 / mol^1/2, approximate for RT
     _aD = 1.5             # mol^-1/2 mol^-3/2, approximation
+    R = 8.314             # J/mol-K
+    # The reference properties of the ion are stored in private variables.
+    _pKa_ref = []
+    _absolute_mobility_ref = []  # m^2/V/s.
+    dH = None
+    dCp = None
 
-    def __init__(self, name, z, pKa, absolute_mobility):
+    def __init__(self, name, z, pKa_ref, absolute_mobility_ref,
+                 dH=None, dCp=None, nightingale_function=None,
+                 T=25.0, T_ref=25.0):
         """Initialize an ion object."""
         self.name = name
-
+        self.T = T
+        self._T_ref = T_ref
+        self.dH = dH
+        self.dCp = dCp
+        self.nightingale_function = nightingale_function
         try:
             self.z = [zp for zp in z]
         except:
             self.z = [z]
 
         try:
-            self.pKa = [p for p in pKa]
+            self._pKa_ref = [p for p in pKa_ref]
         except:
-            self.pKa = [pKa]
+            self._pKa_ref = [pKa_ref]
 
         try:
-            self.absolute_mobility = [m for m in absolute_mobility]  # m^2/V/s.
+            self._absolute_mobility_ref = [m for m in absolute_mobility_ref]
         except:
-            self.absolute_mobility = [absolute_mobility]
+            self._absolute_mobility_ref = [absolute_mobility_ref]
+
+        if T == T_ref:
+            self.pKa = self._pKa_ref
+            self.absolute_mobility = self._absolute_mobility_ref
+        else:
+            _Adh = self.get_Adh()
+            self.pKa = self.correct_pKa()
+            if self.nightingale_function:
+                self.absolute_mobility = [self.nightingale_function(self.T).tolist()] *\
+                    len(self.z)
+            else:
+                self.absolute_mobility =\
+                    [viscosity(self._T_ref)/viscosity(self.T)*m
+                     for m in self._absolute_mobility_ref]
+
         self.actual_mobility = None                 # Fill by solution
 
         # Check that z is a vector of integers
-        assert all([isinstance(zp, int) for zp in self.z]), "z contains non-integer"
+        assert all([isinstance(zp, int) for zp in self.z]), \
+            "z contains non-integer"
 
         # Check that the pKa is a vector of numbers of the same length as z.
         assert len(self.pKa) == len(self.z), "pKa is not the same length as z"
@@ -97,6 +124,23 @@ class Ion(object):
         z0 = sorted(z0)
         return z0
 
+    from ..dielectric import dielectric
+
+    def get_Adh(obj, T=None):
+        if not T:
+            T = obj.T
+        T_ref = 25
+        Adh_ref = 0.5102
+        d = obj.dielectric(T)
+        d_ref = obj.dielectric(T)
+        Adh = Adh_ref * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
+        return Adh
+
+    def set_T(obj, T):
+        return Ion(obj.name, obj.z, obj._pKa_ref, obj._absolute_mobility_ref,
+                   obj.dH, obj.dCp, obj.nightingale_function,
+                   T, obj._T_ref)
+
     def __str__(obj):
         """Return a string representing the ion."""
         return ("Ion object -- " + obj.name + ": " +
@@ -113,6 +157,8 @@ class Ion(object):
     from L import L
     from molar_conductivity import molar_conductivity
     from robinson_stokes_mobility import robinson_stokes_mobility
+    from correct_pKa import correct_pKa, vant_hoff, clark_glew
+    from ..viscosity import viscosity
 
 if __name__ == '__main__':
     hcl = Ion('hydrochloric acid', -1, -2.0, -7.91e-8)

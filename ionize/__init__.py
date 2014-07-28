@@ -13,6 +13,8 @@ from Solution import Solution
 from get_db import get_db
 from load_ion import load_ion
 from search_ion import search_ion
+from viscosity import viscosity
+
 
 if __name__ == "__main__":
     water = Solution()
