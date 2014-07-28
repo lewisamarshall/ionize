@@ -1,7 +1,7 @@
 import warnings
 from ..Ion import Ion
 import sys
-from math import log, log10
+from math import log, log10, sqrt
 
 
 class Solution(object):
@@ -71,6 +71,7 @@ class Solution(object):
         if self.ions:
             (self.pH, self.I) = self.find_equilibrium()
         else:
+            self.pH = -log10(sqrt(self._Kw))
             self.I = self.calc_I(self.pH)
 
         actual_mobilities = self.onsager_fuoss()

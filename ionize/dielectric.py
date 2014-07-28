@@ -5,5 +5,5 @@ def dielectric(obj, T=25):
     CRC handbook.
     """
     Tk = T+273.15  # Convert to Kalvin.
-    d = (2.414e-5)*10**(247.8/(Tk-140))
+    d = 249.21 - 0.79069*Tk + 0.72997e-3*Tk**2
     return d

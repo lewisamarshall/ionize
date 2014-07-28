@@ -61,7 +61,7 @@ class Ion(object):
                     len(self.z)
             else:
                 self.absolute_mobility =\
-                    [viscosity(self._T_ref)/viscosity(self.T)*m
+                    [self.viscosity(self._T_ref)/self.viscosity(self.T)*m
                      for m in self._absolute_mobility_ref]
 
         self.actual_mobility = None                 # Fill by solution
@@ -134,7 +134,7 @@ class Ion(object):
         """Return a new ion at the specified temperature."""
         return Ion(obj.name, obj.z, obj._pKa_ref, obj._absolute_mobility_ref,
                    obj.dH, obj.dCp, obj.nightingale_function,
-                   T, obj._T_ref)
+                   T=T, T_ref=obj._T_ref)
 
     def __str__(obj):
         """Return a string representing the ion."""
