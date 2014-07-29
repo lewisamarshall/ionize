@@ -8,7 +8,7 @@ def conductivity(obj):
     """
     con = 0
     for c, i in zip(obj.concentrations, obj.ions):
-        con += c * i.molar_conductivity(obj.pH, obj.I)
+        con += c * i.molar_conductivity()
 
     con += obj.OH_conductivity()    # Add OH- contribution.
     con += obj.H_conductivity()     # Add H+ contribution.

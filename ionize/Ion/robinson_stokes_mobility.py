@@ -2,7 +2,7 @@ from math import copysign, sqrt
 import warnings
 
 
-def robinson_stokes_mobility(obj, I, T=25):
+def robinson_stokes_mobility(obj, I=None, T=25):
     """Return the Robinson-Stokes correction to fully ionized mobility.
 
     This correction is appropriate if a generic ionic strength is known,
@@ -12,6 +12,11 @@ def robinson_stokes_mobility(obj, I, T=25):
     # uses twice the ionic strength. This appears to work, and follows the
     # SPRESSO implimentation.
     # Likely typo in paper.
+    if I is None:
+        if obj._I:
+            I = obj._I
+        else:
+            I = 0
 
     if not T:
         T = obj.T

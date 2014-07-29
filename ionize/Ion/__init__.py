@@ -24,6 +24,8 @@ class Ion(object):
     _absolute_mobility_ref = []  # m^2/V/s.
     dH = None
     dCp = None
+    _pH = None
+    _I = None
 
     def __init__(self, name, z, pKa_ref, absolute_mobility_ref,
                  dH=None, dCp=None, nightingale_function=None,

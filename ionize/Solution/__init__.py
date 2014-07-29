@@ -74,6 +74,10 @@ class Solution(object):
             self.pH = -log10(sqrt(self._Kw))
             self.I = self.calc_I(self.pH)
 
+        for ion in self.ions:
+            ion._I = self.I
+            ion._pH = self.pH
+
         actual_mobilities = self.onsager_fuoss()
 
         for i in range(len(self.ions)):

@@ -1,13 +1,19 @@
 from numpy import cumprod, prod
 
 
-def L(obj, I=0):
+def L(obj, I=None):
     """Return the L products of acidity constants.
 
     These products are used in the pH calculating routine.
     It can use ionic strength correction if an ionic strength is specified.
     Otherwise, it uses uncorrected acidity coefficients.
     """
+    if I is None:
+        if obj._I:
+            I = obj._I
+        else:
+            I = 0
+
     Ka = obj.Ka_eff(I)
     index_0 = obj.z0().index(0)
     Ka.insert(index_0, 1)

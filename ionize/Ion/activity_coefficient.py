@@ -1,8 +1,14 @@
 from math import sqrt
 
 
-def activity_coefficient(obj, I, z=None):
+def activity_coefficient(obj, I=None, z=None):
     """Return activity coefficients of a charge state at ionic strength I."""
+    if I is None:
+        if obj._I:
+            I = obj._I
+        else:
+            I = 0
+
     if not z:
         z = obj.z0()
     else:
