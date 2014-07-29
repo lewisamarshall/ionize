@@ -96,16 +96,24 @@ class Solution(object):
         Kw = 10.0**(-pKw)
         return Kw
 
-    def add_ion(obj, new_ions, new_concentrations):
-        """add_ion initializes a new solution with additional ions.
+    def buffering_capacity(obj):
+        """Return the buffering capacity of the solution.
 
-        The returned solution will contain all of the ions in the current
-        solution plus a new set of ions from new_ions at a new set of
-        concentrations from new_concentrations.
+        This function generates an approximate solution to the buffering
+        capacity by finding the derivative of the pH with respect to
+        the addition of an acid insult at small concentration.
         """
-        new_solution = Solution(obj.ions + new_ions,
-                                obj.concentrations + new_concentrations)
-        return new_solution
+        # Remove any ions at concentration 0.
+        c = [cp for cp in obj.concentrations if cp > 0]
+        # Choose a concentration 1% the lowest ion concentration.
+        c = 0.01*min(c)
+
+        # Add an acid insult at 1% the lowest concentration in the solution.
+        new_sol = obj + Solution([Ion('Acid Insult', -1, -2, -1)], [c])
+
+        # Find the slope of the pH.
+        Cb = abs(c/(obj.pH-new_sol.pH))
+        return Cb
 
     def cH(obj, pH=None, I=None):
         """Return the concentration of protons in solution."""
@@ -177,7 +185,6 @@ class Solution(object):
     def __len__(obj):
         return len(obj.ions)
 
-    from buffering_capacity import buffering_capacity
     from calc_I import calc_I
     from calc_pH import calc_pH
     from conductivity import conductivity
@@ -189,3 +196,4 @@ class Solution(object):
     from zone_transfer import zone_transfer
     from ..dielectric import dielectric
     from ..viscosity import viscosity
+    from kohlrausch import kohlrausch
