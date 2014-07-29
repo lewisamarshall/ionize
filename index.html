@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ionize by lewisamarshall</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">ionize</h1>
+        <p class="header">A unified Python module for calculating buffer properties.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/lewisamarshall/ionize/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/lewisamarshall/ionize/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/lewisamarshall/ionize">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/lewisamarshall">lewisamarshall</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="ionize" class="anchor" href="#ionize"><span class="octicon octicon-link"></span></a>ionize</h1>
+
+<p>A unified Python module for calculating buffer properties.</p>
+
+<p><strong>ionize</strong> calculates the properties of individual ionic species in
+aqueous solution, as well as aqueous solutions containing arbitrary
+sets of ions.</p>
+
+<p>The <strong>ionize</strong> model is based on techniques previously demonstrated by
+<a href="http://web.natur.cuni.cz/gas/" title="Peakmaster">Peakmaster</a>, <a href="http://stanfordspresso.blogspot.com/" title="Spresso">Spresso</a>, and <a href="http://microfluidics.stanford.edu/download/" title="STEEP">STEEP</a>. The <strong>ionize</strong>
+model takes into account pH, ionic strength, and temperature effects, including
+the  most up-to-date temperature model published in STEEP. The <strong>ionize</strong> object
+classes make these techniques directly accessible as a backend for simulations
+written in python.</p>
+
+<h2>
+<a name="tutorial" class="anchor" href="#tutorial"><span class="octicon octicon-link"></span></a>Tutorial</h2>
+
+<p>Want to use <strong>ionize</strong>? Read the <a href="http://nbviewer.ipython.org/github/lewisamarshall/ionize/blob/master/tutorial.ipynb" title="ionize Tutorial">tutorial</a>, written in ipython
+notebook.</p>
+
+<h2>
+<a name="ionize-components" class="anchor" href="#ionize-components"><span class="octicon octicon-link"></span></a>ionize Components</h2>
+
+<p><strong>ionize</strong> is composed of three main components:</p>
+
+<h3>
+<a name="the-ion-class" class="anchor" href="#the-ion-class"><span class="octicon octicon-link"></span></a>The Ion Class</h3>
+
+<p>The core of <strong>ionize</strong> is the <strong>Ion</strong> class, which  represents a single ionic
+species. An ion contains a name, a set of ionization states, and an optional
+temperature parameter. Each ionization state contains a charge, a pKa, and
+an absolute mobility. An ionization  state may also include values for
+ΔH and ΔCp of ionization to improve the accuracy of temperature
+correction.</p>
+
+<h3>
+<a name="the-solution-class" class="anchor" href="#the-solution-class"><span class="octicon octicon-link"></span></a>The Solution Class</h3>
+
+<p>The <strong>Solution</strong> class is used to represent an aqueous solution containing any
+number of ionic species. A <strong>Solution</strong> contains a list of <strong>Ion</strong> objects, and
+a second list containing the concentrations of each species. <strong>Solution</strong> can
+also take an optional temperature parameter. <strong>Solution</strong> solves for pH,
+iteratively accounting for the ionic strength. The ionic strength and pH are
+used to calculate the properties of the <strong>Ions</strong>, and bulk properties of the
+solution such as conductivity.</p>
+
+<h3>
+<a name="the-ionize-database" class="anchor" href="#the-ionize-database"><span class="octicon octicon-link"></span></a>The ionize Database</h3>
+
+<p><strong>ionize</strong> also contains its own database, containing the combined entries of
+the Spresso and STEEP databases. This database can be accessed through the
+<strong>load_ion</strong>() and <strong>search_ion</strong>() functions.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
