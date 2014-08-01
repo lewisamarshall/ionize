@@ -147,6 +147,19 @@ class Ion(object):
         """Return a representation of the ion."""
         return obj.__str__()
 
+    def __eq__(self, other):
+        if self.name == other.name and\
+                self.z == other.z and \
+                self._pKa_ref == other._pKa_ref and\
+                self._absolute_mobility_ref == other._absolute_mobility_ref and\
+                self.dH == other.dH and\
+                self.dCp == other.dCp and\
+                self._T_ref == other._T_ref:
+                # self.nightingale_function == other.nightingale_function and\
+            return True
+        else:
+            return False
+
     from ionization_fraction import ionization_fraction
     from activity_coefficient import activity_coefficient
     from effective_mobility import effective_mobility
