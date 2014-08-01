@@ -203,5 +203,4 @@ class Solution(object):
     from zone_transfer import zone_transfer
     from ..dielectric import dielectric
     from ..viscosity import viscosity
-    from kohlrausch import kohlrausch
-    from alberty import alberty
+    from conservation import kohlrausch, alberty, jovin
