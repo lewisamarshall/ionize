@@ -157,8 +157,15 @@ class Solution(object):
 
     def __add__(obj, other):
         if isinstance(other, Solution):
-            return Solution(obj.ions + other.ions,
-                            obj.concentrations + other.concentrations)
+            new_i = obj.ions[:]
+            new_c = obj.concentrations[:]
+            for ion, c in zip(other.ions, other.concentrations):
+                if ion in obj.ions:
+                    new_c[obj.ions.index(ion)] += c
+                else:
+                    new_i.append(ion)
+                    new_c.append(c)
+            return Solution(new_i, new_c)
         else:
             raise NotImplementedError
 
