@@ -105,10 +105,10 @@ class Solution(object):
         """
         # Remove any ions at concentration 0.
         c = [cp for cp in obj.concentrations if cp > 0]
-        # Choose a concentration 1% the lowest ion concentration.
-        c = 0.01*min(c)
+        # Choose a concentration 0.1% the lowest ion concentration.
+        c = 0.001*min(c)
 
-        # Add an acid insult at 1% the lowest concentration in the solution.
+        # Add an acid insult at 0.1% the lowest concentration in the solution.
         new_sol = obj + Solution([Ion('Acid Insult', -1, -2, -1)], [c])
 
         # Find the slope of the pH.
@@ -204,3 +204,4 @@ class Solution(object):
     from ..dielectric import dielectric
     from ..viscosity import viscosity
     from kohlrausch import kohlrausch
+    from alberty import alberty
