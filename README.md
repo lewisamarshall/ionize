@@ -1,6 +1,6 @@
 ionize
 =====
-A unified Python module for calculating buffer properties.
+A unified Python package for calculating buffer properties.
 
 **ionize** calculates the properties of individual ionic species in
 aqueous solution, as well as aqueous solutions containing arbitrary
@@ -15,8 +15,13 @@ written in python.
 
 Tutorial
 --------
-Want to use **ionize**? Read the [tutorial][tutorial], written in ipython
-notebook.
+Want to use **ionize**? Read the [tutorial][tutorial], written with iPython
+Notebook.
+
+Examples
+--------
+Want to see some examples of **ionize** in action? Take a look at the
+[examples][examples], displayed with iPython Notebook.
 
 ionize Components
 -----------------
@@ -49,3 +54,4 @@ the Spresso and STEEP databases. This database can be accessed through the
 [Spresso]: http://stanfordspresso.blogspot.com/ "Spresso"
 [STEEP]: http://microfluidics.stanford.edu/download/ "STEEP"
 [tutorial]: http://nbviewer.ipython.org/github/lewisamarshall/ionize/blob/master/tutorial.ipynb  "ionize Tutorial"
+[examples]: http://nbviewer.ipython.org/github/lewisamarshall/ionize/blob/master/examples.ipynb  "ionize Examples"

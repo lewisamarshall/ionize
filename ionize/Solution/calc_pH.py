@@ -79,7 +79,7 @@ def calc_pH(obj, I=0):
     # Solve Polynomial for concentration
     roo = map(complex, numpy.roots(poly))
 
-    roo_reduced =[r for r in roo if r.real > 0 and r.imag == 0]
+    roo_reduced = [r for r in roo if r.real > 0 and r.imag == 0]
     if roo_reduced:
         cH = float(roo_reduced[-1].real)
     else:
