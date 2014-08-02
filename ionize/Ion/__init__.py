@@ -1,6 +1,5 @@
 import warnings
 from math import sqrt, copysign
-from ..viscosity import viscosity
 
 
 class Ion(object):
