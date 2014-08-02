@@ -58,7 +58,7 @@ def jovin(self):
                 warnings.warn('Ion not in single valance. Jovin invalid.')
             elif abs(ion.z[f.index(max[f])]) != 1:
                 warnings.warn('Ion valance is not 1. Jovin invalid.')
-            jov += c * ion._Lpm3 * ion.z[f.index(max(f))]
+            jov += c * ion.z[f.index(max(f))]
 
     return jov
 
