@@ -104,15 +104,17 @@ class Solution(object):
         the addition of an acid insult at small concentration.
         """
         # Remove any ions at concentration 0.
-        c = [cp for cp in obj.concentrations if cp > 0]
-        # Choose a concentration 0.1% the lowest ion concentration.
-        c = 0.001*min(c)
+        c = 0.001*min([cp for cp in obj.concentrations if cp > 0])
+        Cb = 0
 
         # Add an acid insult at 0.1% the lowest concentration in the solution.
-        new_sol = obj + Solution([Ion('Acid Insult', -1, -2, -1)], [c])
-
-        # Find the slope of the pH.
-        Cb = abs(c/(obj.pH-new_sol.pH))
+        # If the buffering capacity is measured as above the insult c,
+        # make the insult c lower.
+        while Cb < c:
+            new_sol = obj + Solution([Ion('Acid Insult', -1, -2, -1)], [c])
+            # Find the slope of the pH.
+            Cb = abs(c/(obj.pH-new_sol.pH))
+            c = 0.01 * Cb
         return Cb
 
     def cH(obj, pH=None, I=None):
