@@ -31,7 +31,6 @@ def calc_pH(obj, I=0):
 
     # Convolve with water dissociation.
     Q = numpy.convolve(Q, [-obj.Kw_eff(I), 0.0, 1.0])
-    Q = numpy.array(Q, ndmin=1)
 
     # Construct P matrix
     PMat = []
@@ -57,36 +56,25 @@ def calc_pH(obj, I=0):
                    ((PMat.shape[1], 1))).transpose()
     P = numpy.sum(PMat*C, 0)
 
-    # Pad whichever is smaller, P or Q
-    SizeDiff = Q.shape[0] - P.shape[0]
-    if SizeDiff > 0:
-        P = list(P) + [0]*SizeDiff
-    elif SizeDiff < 0:
-        Q = list(Q) + [0]*SizeDiff
-
     # Construct polynomial.
     poly = numpy.array([0.0] * max(len(P), len(Q)))
-    poly[0:len(P)+1] = numpy.add(poly[0:len(P)+1], P)
-
-    poly[0:len(Q)+1] =\
-        numpy.add(poly[0:len(Q)+1], Q)  # from QMat
+    poly[0:len(P)] = numpy.add(poly[0:len(P)], P)
+    poly[0:len(Q)] =\
+        numpy.add(poly[0:len(Q)], Q)  # from QMat
 
     # format for the poly function.
     poly = list(poly)
     poly.reverse()
-    # poly = numpy.complex_(poly)
 
     # Solve Polynomial for concentration
-    roo = map(complex, numpy.roots(poly))
+    roo = numpy.roots(poly)
 
     roo_reduced = [r for r in roo if r.real > 0 and r.imag == 0]
     if roo_reduced:
         cH = float(roo_reduced[-1].real)
     else:
-        print 'failing to find pH'
-        print 'I =', I
-        print 'poly =', poly
-        print 'roo =', roo
+        print 'Failed to find pH.'
+
     # Convert to pH. Use the activity to correct the calculation.
     pH = -log10(cH*obj._H.activity_coefficient(I, [1])[0])
     return pH
