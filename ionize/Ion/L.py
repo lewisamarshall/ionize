@@ -1,4 +1,4 @@
-from numpy import cumprod, prod
+from numpy import prod
 
 
 def L(obj, I=None):
@@ -15,7 +15,7 @@ def L(obj, I=None):
             I = 0
 
     Ka = obj.Ka_eff(I)
-    index_0 = obj.z0().index(0)
+    index_0 = obj.z0.index(0)
     Ka.insert(index_0, 1)
 
     L = [prod(Ka[i:index_0]) for i in range(len(Ka)) if i < index_0] +\

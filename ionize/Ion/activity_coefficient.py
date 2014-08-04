@@ -10,7 +10,7 @@ def activity_coefficient(obj, I=None, z=None):
             I = 0
 
     if not z:
-        z = obj.z0()
+        z = obj.z0
     else:
         try:
             z = [zp for zp in z]

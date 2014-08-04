@@ -83,13 +83,14 @@ class Ion(object):
                     self.absolute_mobility)]):
             self.absolute_mobility = [copysign(m, z) for z, m in zip(self.z,
                                       self.absolute_mobility)]
-            warnings.warn('Mobility signs and charge signs don\'t match. Forcing.')
+            warnings.warn("Mobility signs and charge signs don't match.")
 
         # After storing the ion properties, ensure that the properties are
         # sorted in order of charge. All other ion methods assume that the
         # states will be sorted by charge.
         self = self.z_sort()
         self.Ka = self.get_Ka()
+        self.z0 = self.get_z0()
 
     def z_sort(obj):
         """Sort the charge states from lowest to highest."""
@@ -113,7 +114,7 @@ class Ion(object):
         Ka = [10.**-p for p in obj.pKa]
         return Ka
 
-    def z0(obj):
+    def get_z0(obj):
         """Return the list of charge states with 0 inserted."""
         z0 = [0]+obj.z
         z0 = sorted(z0)

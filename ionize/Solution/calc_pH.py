@@ -35,7 +35,7 @@ def calc_pH(obj, I=0):
     # Construct P matrix
     PMat = []
     for i in range(len(obj.concentrations)):
-        z_list = obj.ions[i].z0()
+        z_list = obj.ions[i].z0
 
         tmp = numpy.zeros([1, LMat.shape[1]])
         tmp[0, 0:len(z_list)] = z_list
