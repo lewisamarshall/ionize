@@ -52,8 +52,7 @@ def calc_pH(obj, I=0):
     PMat = numpy.array(PMat, ndmin=2)
 
     # Multiply P matrix by concentrations, and sum.
-    C = numpy.tile((obj.concentrations),
-                   ((PMat.shape[1], 1))).transpose()
+    C = numpy.tile((obj.concentrations), ((PMat.shape[1], 1))).transpose()
     P = numpy.sum(PMat*C, 0)
 
     # Construct polynomial.

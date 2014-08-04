@@ -21,7 +21,9 @@ def activity_coefficient(obj, I=None, z=None):
     # Specified in Bahga.
     A = obj._Adh*sqrt(I)/(1.0+obj._aD*sqrt(I))
     B = 0.1*I  # Matching STEEP implementation.
+
     # Use them to calculate the activity coefficients.
     # These coefficients are for z=+-1, for H+ and OH-
     gamma = [10**(zp**2*(B-A)) for zp in z]
+
     return gamma
