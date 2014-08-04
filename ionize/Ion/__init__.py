@@ -89,6 +89,7 @@ class Ion(object):
         # sorted in order of charge. All other ion methods assume that the
         # states will be sorted by charge.
         self = self.z_sort()
+        self.Ka = self.get_Ka()
 
     def z_sort(obj):
         """Sort the charge states from lowest to highest."""
@@ -104,7 +105,7 @@ class Ion(object):
 
         return obj
 
-    def Ka(obj):
+    def get_Ka(obj):
         """Return the Kas based on the pKas.
 
         These values are not corrected for ionic strength.
