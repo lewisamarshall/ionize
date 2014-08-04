@@ -59,8 +59,7 @@ def calc_pH(obj, I=0):
     # Construct polynomial.
     poly = numpy.array([0.0] * max(len(P), len(Q)))
     poly[0:len(P)] = numpy.add(poly[0:len(P)], P)
-    poly[0:len(Q)] =\
-        numpy.add(poly[0:len(Q)], Q)  # from QMat
+    poly[0:len(Q)] = numpy.add(poly[0:len(Q)], Q)  # from QMat
 
     # format for the poly function.
     poly = list(poly)
