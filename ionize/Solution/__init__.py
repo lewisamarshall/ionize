@@ -203,15 +203,15 @@ class Solution(object):
     def __len__(obj):
         return len(obj.ions)
 
-    from calc_I import calc_I
-    from calc_pH import calc_pH
-    from conductivity import conductivity
-    from equil_offset import equil_offset
-    from find_equilibrium import find_equilibrium
-    from Kw_eff import Kw_eff
-    from onsager_fuoss import onsager_fuoss
-    from transference import transference
-    from zone_transfer import zone_transfer
+    from .calc_I import calc_I
+    from .calc_pH import calc_pH
+    from .conductivity import conductivity
+    from .equil_offset import equil_offset
+    from .find_equilibrium import find_equilibrium
+    from .Kw_eff import Kw_eff
+    from .onsager_fuoss import onsager_fuoss
+    from .transference import transference
+    from .zone_transfer import zone_transfer
     from ..dielectric import dielectric
     from ..viscosity import viscosity
-    from conservation import kohlrausch, alberty, jovin
+    from .conservation import kohlrausch, alberty, jovin
