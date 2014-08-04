@@ -111,7 +111,7 @@ class Solution(object):
         # If the buffering capacity is measured as above the insult c,
         # make the insult c lower.
         while Cb < c:
-            new_sol = obj + Solution([Ion('Acid Insult', -1, -2, -1)], [c])
+            new_sol = obj + (Ion('Acid Insult', -1, -2, -1), c)
             # Find the slope of the pH.
             Cb = abs(c/(obj.pH-new_sol.pH))
             c = 0.01 * Cb
@@ -158,15 +158,24 @@ class Solution(object):
         return OH_conductivity
 
     def __add__(obj, other):
+        new_i = obj.ions[:]
+        new_c = obj.concentrations[:]
         if isinstance(other, Solution):
-            new_i = obj.ions[:]
-            new_c = obj.concentrations[:]
             for ion, c in zip(other.ions, other.concentrations):
                 if ion in obj.ions:
                     new_c[obj.ions.index(ion)] += c
                 else:
                     new_i.append(ion)
                     new_c.append(c)
+            return Solution(new_i, new_c)
+        elif isinstance(other, (list, tuple)) and len(other) == 2 and\
+                isinstance(other[0], Ion) and isinstance(other[1], (int, float)):
+            ion, c = other
+            if ion in obj.ions:
+                new_c[obj.ions.index(ion)] += c
+            else:
+                new_i.append(ion)
+                new_c.append(c)
             return Solution(new_i, new_c)
         else:
             raise NotImplementedError
