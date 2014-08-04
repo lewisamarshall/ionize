@@ -1,0 +1,1 @@
+Search.setIndex({objtypes:{},filenames:["index"],titleterms:{document:0,ioniz:0,indic:0,welcom:0,tabl:0},objnames:{},titles:["Welcome to ionize&#8217;s documentation!"],envversion:43,terms:{modul:0,index:0,search:0,page:0,content:0},objects:{}})

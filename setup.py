@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='ionize',
-      version='0.13',
+      version='0.1.4',
       author='Lewis A. Marshall',
       author_email='lewis.a.marshall@gmail.com',
       url="http://lewisamarshall.github.io/ionize/",
