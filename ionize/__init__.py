@@ -11,13 +11,13 @@ Function search_ion searches the database.
 Function get_db returns the database as a dictionary.
 """
 
-from Ion import Ion
-from Solution import Solution
-from get_db import get_db
-from load_ion import load_ion
-from search_ion import search_ion
-from viscosity import viscosity as _viscosity
-from dielectric import dielectric as _dielectric
+from .Ion import Ion
+from .Solution import Solution
+from .get_db import get_db
+from .load_ion import load_ion
+from .search_ion import search_ion
+from .viscosity import viscosity as _viscosity
+from .dielectric import dielectric as _dielectric
 
 
 def viscosity(T):

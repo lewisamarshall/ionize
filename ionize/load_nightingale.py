@@ -47,7 +47,7 @@ def load_nightingale(name):
         temp = []
         state = []
         datafilename = os.path.join(os.getcwd(), os.path.dirname(__file__),
-                                    'nigthingale_data', namedict[name])
+                                    'nightingale_data', namedict[name])
         datafile = open(datafilename)
         z = z_dict[name]
         datafile.readline()

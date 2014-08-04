@@ -65,7 +65,7 @@ class Solution(object):
             """Must be initialized with the same number of ions and concentrations.
         """
 
-        assert all([c >= 0 for c in concentrations]),\
+        assert all([c >= 0 for c in self.concentrations]),\
             """Concentrations must be positive."""
 
         if self.ions:

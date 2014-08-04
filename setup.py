@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='ionize',
-      version='0.1',
+      version='0.13',
       author='Lewis A. Marshall',
       author_email='lewis.a.marshall@gmail.com',
       url="http://lewisamarshall.github.io/ionize/",
@@ -18,7 +18,10 @@ setup(name='ionize',
           ],
       license='LICENSE',
       description='A unified Python package for calculating buffer properties.',
-      long_description=open('README.txt').read()
-      packages=['ionize'],
-      requires=['numpy', 'scipy']
+      long_description=open('README.txt').read(),
+      packages=['ionize', 'ionize.Ion', 'ionize.Solution'],
+      requires=['numpy', 'scipy'],
+      package_data={'ionize': ['ions_shelve.db', 'ions_shelve.bin',
+                               'nightingale_data/*.txt']
+                    }
       )
