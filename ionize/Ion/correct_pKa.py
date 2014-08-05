@@ -49,5 +49,5 @@ def clark_glew(obj):
                - c/(2.303 * obj.R) * (T_ref/T - 1 - log(T/T_ref))
                for p, h, c in zip(pKa_ref, dH, dCp)]
     else:
-        warnings.warn('No dH available. Returning uncorrected pKa.')
+        warnings.warn('No dCp available. Returning uncorrected pKa.')
     return pKa

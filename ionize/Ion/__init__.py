@@ -6,36 +6,84 @@ class Ion(object):
 
     """Describe an ion dissolved in aqueous solution.
 
-    Initialize with Ion(name, z, pKa, absolute_mobility).
+    Args:
+        name (str): The chemical name of the ion.
+
+        z (list): A list of valence states for the ion, as integers.
+
+        pKa_ref (list): The pKa of each valence at the refernce temperature,\
+        as floats.
+
+        absolute_mobility_ref (list): The signed absolute mobility of each\
+        valence at the reference temperature, as floats, in units\
+        of m^2/V/s. Expect O(10^-8).
+
+    Kwargs:
+        dH (list): The enthalpy of dissociation of each valence, at the\
+        reference temperature, as floats.
+
+        dCp (list): The change in heat capacity of dissociation of each\
+        valence, at the reference temperature, as floats.
+
+        nightingale_function (function): A function describing absolute\
+        mobility as a function of temperature, for special ions.
+
+        T (float): The temperature to use to calculate the properties of the
+        ions, in degrees C.
+
+        T_ref (float): The reference temperature for the reference properties,
+        in degrees C.
+
+    Raises:
+        None
+
+    To to initialize an Ion, call as:
+
+    >>> ionize.Ion('my_acid', [-1, -2], [1.2, 3.4], [-10e-8, -21e-8])
     """
     # Weakly private variables
     # These are constants and should not change.
-    # Eventually, _T may be  removed from the constants list.
     _F = 96485.34         # Faraday's const.[C/mol]
     _Lpm3 = 1000.0        # Conversion from liters to m^3
+    R = 8.314             # J/mol-K
 
     # The following are constants in eqtn 6 of Bahga 2010.
+    # _Adh is updated for temperature on initialize.
     _Adh = 0.5102         # L^1/2 / mol^1/2, approximate for RT
     _aD = 1.5             # mol^-1/2 mol^-3/2, approximation
-    R = 8.314             # J/mol-K
+
     # The reference properties of the ion are stored in private variables.
     _pKa_ref = []
     _absolute_mobility_ref = []  # m^2/V/s.
+
+    # The properties of the ions are stored in public variables.
+    pKa = None
+    Ka = None
+    absolute_mobility = None
     dH = None
     dCp = None
+
+    # If the Ion is in a solution object, copy the pH and I of the Solution
+    # locally for reference, in a private variable. Also store the Onsager-
+    # Fouss mobility in actual_mobility.
     _pH = None
     _I = None
+    actual_mobility = None
 
     def __init__(self, name, z, pKa_ref, absolute_mobility_ref,
                  dH=None, dCp=None, nightingale_function=None,
                  T=25.0, T_ref=25.0):
-        """Initialize an ion object."""
+        """Initialize an Ion object."""
+        # Copy properties into the ion.
         self.name = name
         self.T = T
         self._T_ref = T_ref
         self.dH = dH
         self.dCp = dCp
         self.nightingale_function = nightingale_function
+
+        # Copy in the properties that should be lists, as long as they are
+        # single values or iterables.
         try:
             self.z = [zp for zp in z]
         except:
@@ -51,11 +99,12 @@ class Ion(object):
         except:
             self._absolute_mobility_ref = [absolute_mobility_ref]
 
+        # Temperature adjust the ion.
+        self._set_Adh()
         if T == T_ref:
             self.pKa = self._pKa_ref
             self.absolute_mobility = self._absolute_mobility_ref
         else:
-            _Adh = self.get_Adh()
             self.pKa = self.correct_pKa()
             if self.nightingale_function:
                 self.absolute_mobility = [self.nightingale_function(self.T).tolist()] *\
@@ -65,7 +114,13 @@ class Ion(object):
                     [self._viscosity(self._T_ref)/self._viscosity(self.T)*m
                      for m in self._absolute_mobility_ref]
 
-        self.actual_mobility = None                 # Fill by solution
+        # Force the sign of the fully ionized mobilities to match the sign of
+        # the charge. This command provides a warning.
+        if not all([copysign(z, m) == z for z, m in zip(self.z,
+                    self.absolute_mobility)]):
+            self.absolute_mobility = [copysign(m, z) for z, m in zip(self.z,
+                                      self.absolute_mobility)]
+            warnings.warn("Mobility signs and charge signs don't match.")
 
         # Check that z is a vector of integers
         assert all([isinstance(zp, int) for zp in self.z]), \
@@ -77,22 +132,14 @@ class Ion(object):
         assert len(self.absolute_mobility) == len(self.z), '''absolute_mobility is not
                                                     the same length as z'''
 
-        # Force the sign of the fully ionized mobilities to match the sign of
-        # the charge. This command provides a warning.
-        if not all([copysign(z, m) == z for z, m in zip(self.z,
-                    self.absolute_mobility)]):
-            self.absolute_mobility = [copysign(m, z) for z, m in zip(self.z,
-                                      self.absolute_mobility)]
-            warnings.warn("Mobility signs and charge signs don't match.")
-
         # After storing the ion properties, ensure that the properties are
         # sorted in order of charge. All other ion methods assume that the
         # states will be sorted by charge.
-        self = self.z_sort()
-        self.Ka = self.get_Ka()
-        self.z0 = self.get_z0()
+        self._z_sort()
+        self._set_Ka()
+        self._set_z0()
 
-    def z_sort(obj):
+    def _z_sort(obj):
         """Sort the charge states from lowest to highest."""
         # Zip the lists together and sort them by z.
         obj.z, obj.pKa, obj.absolute_mobility = zip(*sorted(zip(obj.z, obj.pKa,
@@ -104,34 +151,31 @@ class Ion(object):
         full = set(range(min(obj.z), max(obj.z)+1, 1)) - {0}
         assert set(obj.z) ^ full == set(), "Charge states missing."
 
-        return obj
+        return None
 
-    def get_Ka(obj):
+    def _set_Ka(obj):
         """Return the Kas based on the pKas.
 
         These values are not corrected for ionic strength.
         """
-        Ka = [10.**-p for p in obj.pKa]
-        return Ka
+        obj.Ka = [10.**-p for p in obj.pKa]
+        return None
 
-    def get_z0(obj):
+    def _set_z0(obj):
         """Return the list of charge states with 0 inserted."""
-        z0 = [0]+obj.z
-        z0 = sorted(z0)
-        return z0
+        obj.z0 = sorted([0]+obj.z)
+        return None
 
-    from ..dielectric import dielectric
-
-    def get_Adh(obj, T=None):
+    def _set_Adh(obj, T=None):
         """Account for the temperature dependance of Adh."""
         if not T:
             T = obj.T
         T_ref = 25
         Adh_ref = 0.5102
-        d = obj.dielectric(T)
-        d_ref = obj.dielectric(T)
-        Adh = Adh_ref * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
-        return Adh
+        d = obj._dielectric(T)
+        d_ref = obj._dielectric(T)
+        obj._Adh = Adh_ref * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
+        return None
 
     def set_T(obj, T):
         """Return a new ion at the specified temperature."""
@@ -161,6 +205,7 @@ class Ion(object):
         else:
             return False
 
+    from ..dielectric import dielectric as _dielectric
     from .ionization_fraction import ionization_fraction
     from .activity_coefficient import activity_coefficient
     from .effective_mobility import effective_mobility

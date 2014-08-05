@@ -56,7 +56,29 @@
 <dt id="ionize.Ion">
 <em class="property">class </em><tt class="descclassname">ionize.</tt><tt class="descname">Ion</tt><big>(</big><em>name</em>, <em>z</em>, <em>pKa_ref</em>, <em>absolute_mobility_ref</em>, <em>dH=None</em>, <em>dCp=None</em>, <em>nightingale_function=None</em>, <em>T=25.0</em>, <em>T_ref=25.0</em><big>)</big><a class="headerlink" href="#ionize.Ion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Describe an ion dissolved in aqueous solution.</p>
-<p>Initialize with Ion(name, z, pKa, absolute_mobility).</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">name (str): The chemical name of the ion.</p>
+<p>z (list): A list of valence states for the ion, as integers.</p>
+<p>pKa_ref (list): The pKa of each valence at the refernce temperature,        as floats.</p>
+<p class="last">absolute_mobility_ref (list): The signed absolute mobility of each        valence at the reference temperature, as floats, in units        of m^2/V/s. Expect O(10^-8).</p>
+</dd>
+<dt>Kwargs:</dt>
+<dd><p class="first">dH (list): The enthalpy of dissociation of each valence, at the        reference temperature, as floats.</p>
+<p>dCp (list): The change in heat capacity of dissociation of each        valence, at the reference temperature, as floats.</p>
+<p>nightingale_function (function): A function describing absolute        mobility as a function of temperature, for special ions.</p>
+<p>T (float): The temperature to use to calculate the properties of the
+ions, in degrees C.</p>
+<p class="last">T_ref (float): The reference temperature for the reference properties,
+in degrees C.</p>
+</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+<p>To to initialize an Ion, call as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ionize</span><span class="o">.</span><span class="n">Ion</span><span class="p">(</span><span class="s">&#39;my_acid&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">10e-8</span><span class="p">,</span> <span class="o">-</span><span class="mf">21e-8</span><span class="p">])</span>
+</pre></div>
+</div>
 <dl class="method">
 <dt id="ionize.Ion.Ka_eff">
 <tt class="descname">Ka_eff</tt><big>(</big><em>obj</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.Ka_eff" title="Permalink to this definition">¶</a></dt>
@@ -92,38 +114,11 @@ original pKa, with a warning.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="ionize.Ion.dielectric">
-<tt class="descname">dielectric</tt><big>(</big><em>obj</em>, <em>T=25</em><big>)</big><a class="headerlink" href="#ionize.Ion.dielectric" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the dielectric constant of water at a specified temperature.</p>
-<p>The temperature should be specified in Celcius. Correlation is based on the
-CRC handbook.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ionize.Ion.effective_mobility">
 <tt class="descname">effective_mobility</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.effective_mobility" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the effective mobility of the ion at a given pH and I.</p>
 <p>If an actual mobility from Onsager-Fouss is available, it is used,
 otherwise, the Robinson-Stokes correction is used.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Ion.get_Adh">
-<tt class="descname">get_Adh</tt><big>(</big><em>obj</em>, <em>T=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.get_Adh" title="Permalink to this definition">¶</a></dt>
-<dd><p>Account for the temperature dependance of Adh.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Ion.get_Ka">
-<tt class="descname">get_Ka</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Ion.get_Ka" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the Kas based on the pKas.</p>
-<p>These values are not corrected for ionic strength.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Ion.get_z0">
-<tt class="descname">get_z0</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Ion.get_z0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the list of charge states with 0 inserted.</p>
 </dd></dl>
 
 <dl class="method">
@@ -152,12 +147,6 @@ but the specific ions in solution are unknown.</p>
 <dt id="ionize.Ion.set_T">
 <tt class="descname">set_T</tt><big>(</big><em>obj</em>, <em>T</em><big>)</big><a class="headerlink" href="#ionize.Ion.set_T" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new ion at the specified temperature.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Ion.z_sort">
-<tt class="descname">z_sort</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Ion.z_sort" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sort the charge states from lowest to highest.</p>
 </dd></dl>
 
 </dd></dl>

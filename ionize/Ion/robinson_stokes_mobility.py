@@ -21,12 +21,12 @@ def robinson_stokes_mobility(obj, I=None, T=25):
     if not T:
         T = obj.T
     T_ref = 25
-    d = obj.dielectric(T)
-    d_ref = obj.dielectric(T)
+    d = obj._dielectric(T)
+    d_ref = obj._dielectric(T)
 
     A = 0.2297*((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
     B = 31.410e-9 * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-0.5) *\
-        obj.viscosity(T_ref)/obj.viscosity(T)
+        obj._viscosity(T_ref)/obj._viscosity(T)
     actual_mobility = []
     for abs_mob, z in zip(obj.absolute_mobility, obj.z):
         actual_mobility.append(abs_mob -
