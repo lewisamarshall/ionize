@@ -62,7 +62,7 @@ class Ion(object):
                     len(self.z)
             else:
                 self.absolute_mobility =\
-                    [self.viscosity(self._T_ref)/self.viscosity(self.T)*m
+                    [self._viscosity(self._T_ref)/self._viscosity(self.T)*m
                      for m in self._absolute_mobility_ref]
 
         self.actual_mobility = None                 # Fill by solution
@@ -169,7 +169,7 @@ class Ion(object):
     from .molar_conductivity import molar_conductivity
     from .robinson_stokes_mobility import robinson_stokes_mobility
     from .correct_pKa import correct_pKa, vant_hoff, clark_glew
-    from ..viscosity import viscosity
+    from ..viscosity import viscosity as _viscosity
 
 if __name__ == '__main__':
     pass

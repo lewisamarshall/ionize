@@ -7,24 +7,19 @@ Welcome to ionize's documentation!
 ==================================
 
 Contents:
+---------
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-.. automodule:: ionize
-   :members:
+    Ion
+    Solution
+    database
+    
 
-.. automodule:: ionize
-   :members:
-
-.. autoclass:: ionize.Ion
-   :members:
-
-.. autoclass:: ionize.Solution
-   :members:
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`

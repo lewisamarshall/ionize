@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Ion Class &mdash; ionize 0.1.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="ionize 0.1.4 documentation" href="index.html" />
+    <link rel="next" title="The Solution Class" href="Solution.html" />
+    <link rel="prev" title="Welcome to ionize’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Solution.html" title="The Solution Class"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to ionize’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ionize 0.1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-ion-class">
+<h1>The Ion Class<a class="headerlink" href="#the-ion-class" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ionize.Ion">
+<em class="property">class </em><tt class="descclassname">ionize.</tt><tt class="descname">Ion</tt><big>(</big><em>name</em>, <em>z</em>, <em>pKa_ref</em>, <em>absolute_mobility_ref</em>, <em>dH=None</em>, <em>dCp=None</em>, <em>nightingale_function=None</em>, <em>T=25.0</em>, <em>T_ref=25.0</em><big>)</big><a class="headerlink" href="#ionize.Ion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describe an ion dissolved in aqueous solution.</p>
+<p>Initialize with Ion(name, z, pKa, absolute_mobility).</p>
+<dl class="method">
+<dt id="ionize.Ion.Ka_eff">
+<tt class="descname">Ka_eff</tt><big>(</big><em>obj</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.Ka_eff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the effective Ka values for the ion.</p>
+<p>This function uses the ionic strength correction function from
+Dubye-Huckle theory to calculate the activity coefficients, and uses
+these to correct Ka.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.L">
+<tt class="descname">L</tt><big>(</big><em>obj</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.L" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the L products of acidity constants.</p>
+<p>These products are used in the pH calculating routine.
+It can use ionic strength correction if an ionic strength is specified.
+Otherwise, it uses uncorrected acidity coefficients.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.activity_coefficient">
+<tt class="descname">activity_coefficient</tt><big>(</big><em>obj</em>, <em>I=None</em>, <em>z=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.activity_coefficient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return activity coefficients of a charge state at ionic strength I.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.correct_pKa">
+<tt class="descname">correct_pKa</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Ion.correct_pKa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the pKa corrected for temperature.</p>
+<p>If dCp for the ion is available, returns the Clark-Glew correction, which
+is most accurate. If only dH is available, returns the van&#8217;t Hoff
+correction, which is less accurate. If neither is available, returns the
+original pKa, with a warning.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.dielectric">
+<tt class="descname">dielectric</tt><big>(</big><em>obj</em>, <em>T=25</em><big>)</big><a class="headerlink" href="#ionize.Ion.dielectric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the dielectric constant of water at a specified temperature.</p>
+<p>The temperature should be specified in Celcius. Correlation is based on the
+CRC handbook.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.effective_mobility">
+<tt class="descname">effective_mobility</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.effective_mobility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the effective mobility of the ion at a given pH and I.</p>
+<p>If an actual mobility from Onsager-Fouss is available, it is used,
+otherwise, the Robinson-Stokes correction is used.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.get_Adh">
+<tt class="descname">get_Adh</tt><big>(</big><em>obj</em>, <em>T=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.get_Adh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Account for the temperature dependance of Adh.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.get_Ka">
+<tt class="descname">get_Ka</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Ion.get_Ka" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Kas based on the pKas.</p>
+<p>These values are not corrected for ionic strength.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.get_z0">
+<tt class="descname">get_z0</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Ion.get_z0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of charge states with 0 inserted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.ionization_fraction">
+<tt class="descname">ionization_fraction</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.ionization_fraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the ionization fractions of an ion.</p>
+<p>The ionization fraction is based on a given pH and ionic strength.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.molar_conductivity">
+<tt class="descname">molar_conductivity</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.molar_conductivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retun the molar conductivity of the ion based on the pH and I.</p>
+<p>Provides conducitivity in Siemens per meter per mole.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.robinson_stokes_mobility">
+<tt class="descname">robinson_stokes_mobility</tt><big>(</big><em>obj</em>, <em>I=None</em>, <em>T=25</em><big>)</big><a class="headerlink" href="#ionize.Ion.robinson_stokes_mobility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Robinson-Stokes correction to fully ionized mobility.</p>
+<p>This correction is appropriate if a generic ionic strength is known,
+but the specific ions in solution are unknown.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.set_T">
+<tt class="descname">set_T</tt><big>(</big><em>obj</em>, <em>T</em><big>)</big><a class="headerlink" href="#ionize.Ion.set_T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new ion at the specified temperature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ionize.Ion.z_sort">
+<tt class="descname">z_sort</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Ion.z_sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the charge states from lowest to highest.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to ionize&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Solution.html"
+                        title="next chapter">The Solution Class</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/Ion.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Solution.html" title="The Solution Class"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to ionize’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">ionize 0.1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Lewis A. Marshall.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
