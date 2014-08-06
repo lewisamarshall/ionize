@@ -1,7 +1,15 @@
 def ionization_fraction(obj, pH=None, I=None):
     """Return the ionization fractions of an ion.
 
-    The ionization fraction is based on a given pH and ionic strength.
+    Args:
+        pH (float): The ambiant pH.
+        I (float): The ambiant ionic strength.
+
+    If the Ion is nested in a Solution, ok to call without a pH.
+
+    >>> Solution(myIon, .1).ions[0].ionization_fraction()
+
+    Otherwise, always call with a pH argument.
     """
     if pH is None:
         assert obj._pH, 'requires an input pH'
@@ -11,7 +19,7 @@ def ionization_fraction(obj, pH=None, I=None):
         if obj._I:
             I = obj._I
         else:
-            I = 0
+            I = 0.0
 
     # Get the vector of products of acidity constants.
     L = obj.L(I)

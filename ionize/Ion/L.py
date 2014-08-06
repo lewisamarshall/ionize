@@ -4,15 +4,21 @@ from numpy import prod
 def L(obj, I=None):
     """Return the L products of acidity constants.
 
-    These products are used in the pH calculating routine.
-    It can use ionic strength correction if an ionic strength is specified.
-    Otherwise, it uses uncorrected acidity coefficients.
+    Args:
+        I (float): The ambiant ionic strength.
+
+    This function uses ionic strength to correct the Ka of ions. If no ionic
+    strength is supplied, and the Ion is nested in a Solution, the solution
+    ionic strength will be used. Otherwise, the ionic strength is assumed to be
+    0.
+
+    L is used by Solution objects to calculate equilibrium pH.
     """
     if I is None:
         if obj._I:
             I = obj._I
         else:
-            I = 0
+            I = 0.0
 
     Ka = obj.Ka_eff(I)
     index_0 = obj.z0.index(0)

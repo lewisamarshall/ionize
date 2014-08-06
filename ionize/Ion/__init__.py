@@ -18,7 +18,6 @@ class Ion(object):
         valence at the reference temperature, as floats, in units\
         of m^2/V/s. Expect O(10^-8).
 
-    Kwargs:
         dH (list): The enthalpy of dissociation of each valence, at the\
         reference temperature, as floats.
 
@@ -34,6 +33,20 @@ class Ion(object):
         T_ref (float): The reference temperature for the reference properties,
         in degrees C.
 
+    Attributes:
+        z (list): A list of valence states for the ion, as integers.
+
+        pKa (list): The pKa of each valence at the refernce temperature,\
+            as floats.
+
+        absolute_mobility (list): The signed absolute mobility of each\
+            valence at the reference temperature, as floats, in units\
+            of m^2/V/s. Expect O(10^-8).
+
+        T (float): The temperature to use to calculate the properties of the\
+            ions, in degrees C.
+
+
     Raises:
         None
 
@@ -41,27 +54,31 @@ class Ion(object):
 
     >>> ionize.Ion('my_acid', [-1, -2], [1.2, 3.4], [-10e-8, -21e-8])
     """
-    # Weakly private variables
     # These are constants and should not change.
     _F = 96485.34         # Faraday's const.[C/mol]
     _Lpm3 = 1000.0        # Conversion from liters to m^3
-    R = 8.314             # J/mol-K
+    _R = 8.314             # J/mol-K
 
     # The following are constants in eqtn 6 of Bahga 2010.
     # _Adh is updated for temperature on initialize.
     _Adh = 0.5102         # L^1/2 / mol^1/2, approximate for RT
-    _aD = 1.5             # mol^-1/2 mol^-3/2, approximation
+    # _aD is treated as a constant, though it does vary slightly with temp.
+    _aD = 1.5             # L^3/2 mol^-1
 
-    # The reference properties of the ion are stored in private variables.
+    # The reference properties of the ion are stored and used to calculate
+    # properties at the current temperature.
     _pKa_ref = []
     _absolute_mobility_ref = []  # m^2/V/s.
+    _T_ref = 25
 
     # The properties of the ions are stored in public variables.
+    # These are the properties at the current temperature.
     pKa = None
     Ka = None
     absolute_mobility = None
     dH = None
     dCp = None
+    T = 25
 
     # If the Ion is in a solution object, copy the pH and I of the Solution
     # locally for reference, in a private variable. Also store the Onsager-
@@ -154,7 +171,7 @@ class Ion(object):
         return None
 
     def _set_Ka(obj):
-        """Return the Kas based on the pKas.
+        """Set the Kas based on the pKas.
 
         These values are not corrected for ionic strength.
         """
@@ -162,7 +179,7 @@ class Ion(object):
         return None
 
     def _set_z0(obj):
-        """Return the list of charge states with 0 inserted."""
+        """Set the list of charge states with 0 inserted."""
         obj.z0 = sorted([0]+obj.z)
         return None
 

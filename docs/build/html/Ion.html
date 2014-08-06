@@ -61,16 +61,20 @@
 <dd><p class="first">name (str): The chemical name of the ion.</p>
 <p>z (list): A list of valence states for the ion, as integers.</p>
 <p>pKa_ref (list): The pKa of each valence at the refernce temperature,        as floats.</p>
-<p class="last">absolute_mobility_ref (list): The signed absolute mobility of each        valence at the reference temperature, as floats, in units        of m^2/V/s. Expect O(10^-8).</p>
-</dd>
-<dt>Kwargs:</dt>
-<dd><p class="first">dH (list): The enthalpy of dissociation of each valence, at the        reference temperature, as floats.</p>
+<p>absolute_mobility_ref (list): The signed absolute mobility of each        valence at the reference temperature, as floats, in units        of m^2/V/s. Expect O(10^-8).</p>
+<p>dH (list): The enthalpy of dissociation of each valence, at the        reference temperature, as floats.</p>
 <p>dCp (list): The change in heat capacity of dissociation of each        valence, at the reference temperature, as floats.</p>
 <p>nightingale_function (function): A function describing absolute        mobility as a function of temperature, for special ions.</p>
 <p>T (float): The temperature to use to calculate the properties of the
 ions, in degrees C.</p>
 <p class="last">T_ref (float): The reference temperature for the reference properties,
 in degrees C.</p>
+</dd>
+<dt>Attributes:</dt>
+<dd><p class="first">z (list): A list of valence states for the ion, as integers.</p>
+<p>pKa (list): The pKa of each valence at the refernce temperature,            as floats.</p>
+<p>absolute_mobility (list): The signed absolute mobility of each            valence at the reference temperature, as floats, in units            of m^2/V/s. Expect O(10^-8).</p>
+<p class="last">T (float): The temperature to use to calculate the properties of the            ions, in degrees C.</p>
 </dd>
 <dt>Raises:</dt>
 <dd>None</dd>
@@ -83,18 +87,29 @@ in degrees C.</p>
 <dt id="ionize.Ion.Ka_eff">
 <tt class="descname">Ka_eff</tt><big>(</big><em>obj</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.Ka_eff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the effective Ka values for the ion.</p>
-<p>This function uses the ionic strength correction function from
-Dubye-Huckle theory to calculate the activity coefficients, and uses
-these to correct Ka.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>I (float): The ambiant ionic strength.</dd>
+</dl>
+<p>This function correct the Ka for ionic strength, using the Dubye-Huckle
+theory to calculate activity coefficients. If no ionic strength is supplied,
+and the Ion is nested in a Solution, the solution ionic strength will be
+used. Otherwise, the ionic strength is assumed to be 0.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="ionize.Ion.L">
 <tt class="descname">L</tt><big>(</big><em>obj</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.L" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the L products of acidity constants.</p>
-<p>These products are used in the pH calculating routine.
-It can use ionic strength correction if an ionic strength is specified.
-Otherwise, it uses uncorrected acidity coefficients.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>I (float): The ambiant ionic strength.</dd>
+</dl>
+<p>This function uses ionic strength to correct the Ka of ions. If no ionic
+strength is supplied, and the Ion is nested in a Solution, the solution
+ionic strength will be used. Otherwise, the ionic strength is assumed to be
+0.</p>
+<p>L is used by Solution objects to calculate equilibrium pH.</p>
 </dd></dl>
 
 <dl class="method">
@@ -117,15 +132,34 @@ original pKa, with a warning.</p>
 <dt id="ionize.Ion.effective_mobility">
 <tt class="descname">effective_mobility</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.effective_mobility" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the effective mobility of the ion at a given pH and I.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>pH (float): The ambiant pH.
+I (float): The ambiant ionic strength.</dd>
+</dl>
 <p>If an actual mobility from Onsager-Fouss is available, it is used,
-otherwise, the Robinson-Stokes correction is used.</p>
+otherwise, the Robinson-Stokes mobility estimate is used.</p>
+<p>If the Ion is nested in a Solution, ok to call without a pH.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Solution</span><span class="p">(</span><span class="n">myIon</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">effective_mobility</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Otherwise, always call with a pH argument.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="ionize.Ion.ionization_fraction">
 <tt class="descname">ionization_fraction</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.ionization_fraction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the ionization fractions of an ion.</p>
-<p>The ionization fraction is based on a given pH and ionic strength.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>pH (float): The ambiant pH.
+I (float): The ambiant ionic strength.</dd>
+</dl>
+<p>If the Ion is nested in a Solution, ok to call without a pH.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Solution</span><span class="p">(</span><span class="n">myIon</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ionization_fraction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Otherwise, always call with a pH argument.</p>
 </dd></dl>
 
 <dl class="method">
@@ -133,6 +167,18 @@ otherwise, the Robinson-Stokes correction is used.</p>
 <tt class="descname">molar_conductivity</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.molar_conductivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retun the molar conductivity of the ion based on the pH and I.</p>
 <p>Provides conducitivity in Siemens per meter per mole.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>pH (float): The ambiant pH.
+I (float): The ambiant ionic strength.</dd>
+</dl>
+<p>If an actual mobility from Onsager-Fouss is available, it is used,
+otherwise, the Robinson-Stokes mobility estimate is used.</p>
+<p>If the Ion is nested in a Solution, ok to call without a pH.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Solution</span><span class="p">(</span><span class="n">myIon</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">molar_conductivity</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Otherwise, always call with a pH argument.</p>
 </dd></dl>
 
 <dl class="method">
