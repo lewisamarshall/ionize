@@ -7,7 +7,7 @@ def activity_coefficient(obj, I=None, z=None):
         if obj._I:
             I = obj._I
         else:
-            I = 0
+            I = 0.0
 
     if not z:
         z = obj.z0
