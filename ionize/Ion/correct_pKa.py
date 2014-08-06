@@ -29,7 +29,7 @@ def vant_hoff(obj):
     pKa_ref = obj._pKa_ref
     dH = obj.dH
     if dH and len(dH) == len(pKa_ref):
-        pKa = [p - h/(2.303 * obj.R)*(1/T_ref - 1/T)
+        pKa = [p - h/(2.303 * obj._R)*(1/T_ref - 1/T)
                for p, h in zip(pKa_ref, dH)]
     else:
         warnings.warn('No dH available. Returning uncorrected pKa.')
@@ -45,8 +45,8 @@ def clark_glew(obj):
     dH = obj.dH
     dCp = obj.dCp
     if dH and dCp and len(dH) == len(pKa_ref) == len(dCp):
-        pKa = [p - h/(2.303 * obj.R)*(1/T_ref - 1/T)
-               - c/(2.303 * obj.R) * (T_ref/T - 1 - log(T/T_ref))
+        pKa = [p - h/(2.303 * obj._R)*(1/T_ref - 1/T)
+               - c/(2.303 * obj._R) * (T_ref/T - 1 - log(T/T_ref))
                for p, h, c in zip(pKa_ref, dH, dCp)]
     else:
         warnings.warn('No dCp available. Returning uncorrected pKa.')
