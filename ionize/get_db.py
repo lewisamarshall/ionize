@@ -3,6 +3,7 @@ import os
 import shelve
 
 
+
 def get_db(flag='r'):
     """Opens the ion database and returns it as a shelve.
 
@@ -11,7 +12,7 @@ def get_db(flag='r'):
 
     Because the database is housed in a file, be sure to close when done.
     """
-    if sys.platform == 'win32':
+    if sys.platform == 'win32' or sys.version_info[0] == 3:
         db_name = 'ions_shelve.bin'
     else:
         db_name = 'ions_shelve.db'
