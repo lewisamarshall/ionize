@@ -1,7 +1,5 @@
 import warnings
 from Ion import Ion
-import shelve
-import os
 import sys
 from get_db import get_db
 from load_nightingale import load_nightingale
@@ -19,7 +17,6 @@ def load_ion(ion_name, solvation=True):
     ion_list = get_db()  # Open the database.
     if ion_name in ion_list.keys():
         ion_entry = ion_list[ion_name]
-        ion_list.close()
 
         if solvation:
             nightingale_function = load_nightingale(ion_name)
@@ -36,11 +33,9 @@ def load_ion(ion_name, solvation=True):
                        ion_entry[4], nightingale_function)
     else:
         warnings.warn('Ion not found in database. Returning None.')
-        ion_list.close()
         return None
 
 if __name__ == "__main__":
     ion_list = get_db()
     for name in ion_list.keys():
         print load_ion(name)
-    ion_list.close()

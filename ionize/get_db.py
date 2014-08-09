@@ -1,27 +1,20 @@
-import sys
 import os
-import shelve
+import json
 
 
-
-def get_db(flag='r'):
-    """Opens the ion database and returns it as a shelve.
-
-    By default opens in write-only state. Pass in a different flag for write
-    access.
-
-    Because the database is housed in a file, be sure to close when done.
+def get_db():
+    """Opens the ion database and returns it as a dictionary.
     """
-    if sys.platform == 'win32' or sys.version_info[0] == 3:
-        db_name = 'ions_shelve.bin'
-    else:
-        db_name = 'ions_shelve.db'
+
+    db_name = 'ions_db.json'
     path = os.path.join(os.getcwd(), os.path.dirname(__file__), db_name)
 
-    ion_list = shelve.open(path, flag=flag)
+    with open(path, 'r') as fp:
+        ion_list = json.load(fp)
+
     return ion_list
 
 if __name__ == '__main__':
     ion_list = get_db()
     print len(ion_list), 'ions in database.'
-    ion_list.close()
+    print ion_list['hydrochloric acid']

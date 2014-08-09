@@ -1,6 +1,7 @@
 from math import copysign
 import shelve
 from load_steep_db import load_steep_db
+import json
 
 
 def make_database():
@@ -73,13 +74,19 @@ def make_database():
 
     # boric acid is uniquely in the STEEP database but not the Spresso database
     # add manually.
+    steep_db['boric acid'][2][0] *= -1
     ion_dict['boric acid'] = steep_db['boric acid']
     n_steep += 1
     steep_common.append('boric acid')
 
-    ions = shelve.open('ionize/ions_shelve')
-    ions.update(ion_dict)
-    ions.close()
+    # ions = shelve.open('ionize/ions_shelve')
+    # ions.update(ion_dict)
+    # ions.close()
+
+    with open('ionize/ions_db.json', 'wb') as ion_db:
+        json.dump(ion_dict, ion_db,
+                  sort_keys=True, indent=4, separators=(',', ': '))
+
 
     print len(ion_dict), 'ions in database'
     print n_steep, 'ions from steep'

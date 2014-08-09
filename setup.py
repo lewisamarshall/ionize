@@ -1,13 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(name='ionize',
-      version='0.1.5',
+      version='0.2.0c',
       author='Lewis A. Marshall',
       author_email='lewis.a.marshall@gmail.com',
       url="http://lewisamarshall.github.io/ionize/",
       classifiers=[
           "Programming Language :: Python",
-          "Programming Language :: Python :: 2",
           "Development Status :: 3 - Alpha",
           "Environment :: Console",
           "Intended Audience :: Science/Research",
@@ -22,7 +21,7 @@ setup(name='ionize',
       long_description=open('README.txt').read(),
       packages=find_packages(),
       requires=['numpy', 'scipy'],
-      package_data={'ionize': ['ions_shelve.db', 'ions_shelve.bin',
+      package_data={'ionize': ['ions_db.json',
                                'nightingale_data/*.txt']
                     }
       )

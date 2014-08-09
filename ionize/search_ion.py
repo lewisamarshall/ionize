@@ -16,7 +16,6 @@ def search_ion(searchstring):
         for name in sorted(ion_list.keys()):
             if re.search(searchstring, name):
                 print name
-    ion_list.close()
     return None
 
 if __name__ == '__main__':
