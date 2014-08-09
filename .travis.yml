@@ -8,4 +8,4 @@ python:
 install: "pip install numpy scipy"
 # command to run tests
 script:
-    pass
+    python setup.py test
