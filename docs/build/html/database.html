@@ -48,6 +48,28 @@
             
   <div class="section" id="the-ionize-database">
 <h1>The <strong>ionize</strong> Database<a class="headerlink" href="#the-ionize-database" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="ionize.load_ion">
+<tt class="descclassname">ionize.</tt><tt class="descname">load_ion</tt><big>(</big><em>ion_name</em>, <em>solvation=True</em><big>)</big><a class="headerlink" href="#ionize.load_ion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an ion by name from the database.</p>
+<p>load_ion(&#8216;ion_name&#8217;) pulls the named ion from the database.</p>
+<p>By default load solvation data for small ions from the Nightingale
+files. Pass in solvation=False to disable.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ionize.search_ion">
+<tt class="descclassname">ionize.</tt><tt class="descname">search_ion</tt><big>(</big><em>searchstring</em><big>)</big><a class="headerlink" href="#ionize.search_ion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the names of ions in the database that contain the search string.</p>
+<p>This function always returns None. It only prints the search results.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ionize.get_db">
+<tt class="descclassname">ionize.</tt><tt class="descname">get_db</tt><big>(</big><big>)</big><a class="headerlink" href="#ionize.get_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens the ion database and returns it as a dictionary.</p>
+</dd></dl>
+
 </div>
 
 

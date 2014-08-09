@@ -6,20 +6,38 @@ from math import log, log10, sqrt
 
 class Solution(object):
 
-    """Represent a solution containing a set of ions.
+    """Describe an aqueous solution.
 
-    Initialize with solution(ions, concentrations), where ions is a list
-    containing AspPy ion objects, and concentrations is a list containing
-    positive scalars. Can also take T as an optional temperature argument, in
-    Celcius.
+    Args:
+        ions (list): A list of valence states for the ion, as integers.
 
-    When a new solution is initialized, it will immediately calculate the
+        concentrations (list): The pKa of each valence at the refernce
+        temperature, as floats.
+
+        T (float): The temperature to use to calculate the properties of the
+        ions, in degrees C.
+
+    Attributes:
+        ions (list): A list of valence states for the ion, as integers.
+
+        concentrations (list): The pKa of each valence at the refernce temperature,
+        as floats.
+
+        T (float): The temperature to use to calculate the properties of the
+        ions, in degrees C.
+
+    Raises:
+        None
+
+    To to initialize an Soltuion, call as:
+
+    >>> ionize.Solution([ion1, ion2], [c1, c2], T=30)
+
+    When a new Solution is initialized, it will immediately calculate the
     equilibrium state, including the pH and the ionic strength (I) of the
     solution. These values willl be stored as permenant attributes of the
     object. Other solution properties can be calculated by invoking the
     appropriate method.
-
-    See also Ion.
     """
 
     _F = 96485.3415        # Faraday's const.           [C/mol]

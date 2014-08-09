@@ -55,17 +55,34 @@
 <dl class="class">
 <dt id="ionize.Solution">
 <em class="property">class </em><tt class="descclassname">ionize.</tt><tt class="descname">Solution</tt><big>(</big><em>ions=</em>, <span class="optional">[</span><span class="optional">]</span><em>concentrations=</em>, <span class="optional">[</span><span class="optional">]</span><em>T=25</em><big>)</big><a class="headerlink" href="#ionize.Solution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Represent a solution containing a set of ions.</p>
-<p>Initialize with solution(ions, concentrations), where ions is a list
-containing AspPy ion objects, and concentrations is a list containing
-positive scalars. Can also take T as an optional temperature argument, in
-Celcius.</p>
-<p>When a new solution is initialized, it will immediately calculate the
+<dd><p>Describe an aqueous solution.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">ions (list): A list of valence states for the ion, as integers.</p>
+<p>concentrations (list): The pKa of each valence at the refernce
+temperature, as floats.</p>
+<p class="last">T (float): The temperature to use to calculate the properties of the
+ions, in degrees C.</p>
+</dd>
+<dt>Attributes:</dt>
+<dd><p class="first">ions (list): A list of valence states for the ion, as integers.</p>
+<p>concentrations (list): The pKa of each valence at the refernce temperature,
+as floats.</p>
+<p class="last">T (float): The temperature to use to calculate the properties of the
+ions, in degrees C.</p>
+</dd>
+<dt>Raises:</dt>
+<dd>None</dd>
+</dl>
+<p>To to initialize an Soltuion, call as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ionize</span><span class="o">.</span><span class="n">Solution</span><span class="p">([</span><span class="n">ion1</span><span class="p">,</span> <span class="n">ion2</span><span class="p">],</span> <span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">],</span> <span class="n">T</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When a new Solution is initialized, it will immediately calculate the
 equilibrium state, including the pH and the ionic strength (I) of the
 solution. These values willl be stored as permenant attributes of the
 object. Other solution properties can be calculated by invoking the
 appropriate method.</p>
-<p>See also Ion.</p>
 <dl class="method">
 <dt id="ionize.Solution.H_conductivity">
 <tt class="descname">H_conductivity</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Solution.H_conductivity" title="Permalink to this definition">¶</a></dt>
