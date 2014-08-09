@@ -1,8 +1,6 @@
 ionize
 =====
 [![Build Status](https://travis-ci.org/lewisamarshall/ionize.svg?branch=master)](https://travis-ci.org/lewisamarshall/ionize)
-[![Version](https://pypip.in/v/ionize/badge.png)](https://warehouse.python.org/project/ionize/)
-[![Downloads](https://pypip.in/d/ionize/badge.png)](https://warehouse.python.org/project/ionize/)
 
 A unified Python package for calculating buffer properties.
 
