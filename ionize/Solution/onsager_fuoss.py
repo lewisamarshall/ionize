@@ -77,7 +77,7 @@ def onsager_fuoss(obj):
     T = obj.T
     T_ref = 25
     d = obj.dielectric(T)
-    d_ref = obj.dielectric(T)
+    d_ref = obj.dielectric(T_ref)
 
     # New temperature corrected coefficients.
     # Temperature corrections are based on the reference values.
