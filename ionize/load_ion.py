@@ -1,6 +1,5 @@
 import warnings
 from Ion import Ion
-import sys
 from get_db import get_db
 from load_nightingale import load_nightingale
 

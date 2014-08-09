@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: ionize
-Version: 0.2.0b
+Version: 0.2.0c
 Summary: A package for calculating electrolyte properties.
 Home-page: http://lewisamarshall.github.io/ionize/
 Author: Lewis A. Marshall
@@ -48,7 +48,6 @@ Description: ======
         
 Platform: UNKNOWN
 Classifier: Programming Language :: Python
-Classifier: Programming Language :: Python :: 2
 Classifier: Development Status :: 3 - Alpha
 Classifier: Environment :: Console
 Classifier: Intended Audience :: Science/Research

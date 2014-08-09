@@ -5,8 +5,6 @@ ionize/__init__.py
 ionize/dielectric.py
 ionize/get_db.py
 ionize/ions_db.json
-ionize/ions_shelve.bin
-ionize/ions_shelve.db
 ionize/load_ion.py
 ionize/load_nightingale.py
 ionize/search_ion.py
