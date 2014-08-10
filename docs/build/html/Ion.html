@@ -6,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The Ion Class &mdash; ionize 0.1.4 documentation</title>
+    <title>The Ion Class &mdash; ionize 0.2.0c documentation</title>
     
-    <link rel="stylesheet" href="_static/traditional.css" type="text/css" />
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.4',
+        VERSION:     '0.2.0c',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,32 +24,29 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="ionize 0.1.4 documentation" href="index.html" />
+    <link rel="top" title="ionize 0.2.0c documentation" href="index.html" />
     <link rel="next" title="The Solution Class" href="Solution.html" />
     <link rel="prev" title="Welcome to ionize’s documentation!" href="index.html" /> 
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="Solution.html" title="The Solution Class"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Welcome to ionize’s documentation!"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">ionize 0.1.4 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>ionize 0.2.0c documentation</span></a></h1>
+        <h2 class="heading"><span>The Ion Class</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Welcome to ionize&#8217;s documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="Solution.html">The Solution Class</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      </div>
+      <div class="content">
+        
+        
   <div class="section" id="the-ion-class">
 <h1>The Ion Class<a class="headerlink" href="#the-ion-class" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
@@ -84,58 +81,14 @@ in degrees C.</p>
 </pre></div>
 </div>
 <dl class="method">
-<dt id="ionize.Ion.Ka_eff">
-<tt class="descname">Ka_eff</tt><big>(</big><em>obj</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.Ka_eff" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the effective Ka values for the ion.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>I (float): The ambiant ionic strength.</dd>
-</dl>
-<p>This function correct the Ka for ionic strength, using the Dubye-Huckle
-theory to calculate activity coefficients. If no ionic strength is supplied,
-and the Ion is nested in a Solution, the solution ionic strength will be
-used. Otherwise, the ionic strength is assumed to be 0.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Ion.L">
-<tt class="descname">L</tt><big>(</big><em>obj</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.L" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the L products of acidity constants.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>I (float): The ambiant ionic strength.</dd>
-</dl>
-<p>This function uses ionic strength to correct the Ka of ions. If no ionic
-strength is supplied, and the Ion is nested in a Solution, the solution
-ionic strength will be used. Otherwise, the ionic strength is assumed to be
-0.</p>
-<p>L is used by Solution objects to calculate equilibrium pH.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Ion.activity_coefficient">
-<tt class="descname">activity_coefficient</tt><big>(</big><em>obj</em>, <em>I=None</em>, <em>z=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.activity_coefficient" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return activity coefficients of a charge state at ionic strength I.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Ion.correct_pKa">
-<tt class="descname">correct_pKa</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Ion.correct_pKa" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the pKa corrected for temperature.</p>
-<p>If dCp for the ion is available, returns the Clark-Glew correction, which
-is most accurate. If only dH is available, returns the van&#8217;t Hoff
-correction, which is less accurate. If neither is available, returns the
-original pKa, with a warning.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ionize.Ion.effective_mobility">
 <tt class="descname">effective_mobility</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.effective_mobility" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the effective mobility of the ion at a given pH and I.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>pH (float): The ambiant pH.
-I (float): The ambiant ionic strength.</dd>
+<dd><p class="first">pH (float): The ambiant pH.</p>
+<p class="last">I (float): The ambiant ionic strength.</p>
+</dd>
 </dl>
 <p>If an actual mobility from Onsager-Fouss is available, it is used,
 otherwise, the Robinson-Stokes mobility estimate is used.</p>
@@ -152,8 +105,9 @@ otherwise, the Robinson-Stokes mobility estimate is used.</p>
 <dd><p>Return the ionization fractions of an ion.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>pH (float): The ambiant pH.
-I (float): The ambiant ionic strength.</dd>
+<dd><p class="first">pH (float): The ambiant pH.</p>
+<p class="last">I (float): The ambiant ionic strength.</p>
+</dd>
 </dl>
 <p>If the Ion is nested in a Solution, ok to call without a pH.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Solution</span><span class="p">(</span><span class="n">myIon</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ionization_fraction</span><span class="p">()</span>
@@ -169,8 +123,9 @@ I (float): The ambiant ionic strength.</dd>
 <p>Provides conducitivity in Siemens per meter per mole.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>pH (float): The ambiant pH.
-I (float): The ambiant ionic strength.</dd>
+<dd><p class="first">pH (float): The ambiant pH.</p>
+<p class="last">I (float): The ambiant ionic strength.</p>
+</dd>
 </dl>
 <p>If an actual mobility from Onsager-Fouss is available, it is used,
 otherwise, the Robinson-Stokes mobility estimate is used.</p>
@@ -200,54 +155,19 @@ but the specific ions in solution are unknown.</p>
 </div>
 
 
-          </div>
-        </div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to ionize&#8217;s documentation!</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="Solution.html"
-                        title="next chapter">The Solution Class</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/Ion.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Welcome to ionize&#8217;s documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="Solution.html">The Solution Class</a>&#160;&#160;»
+        </p>
+
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="Solution.html" title="The Solution Class"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Welcome to ionize’s documentation!"
-             >previous</a> |</li>
-        <li><a href="index.html">ionize 0.1.4 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
+
     <div class="footer">
         &copy; Copyright 2014, Lewis A. Marshall.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.

@@ -122,7 +122,7 @@ class Ion(object):
             self.pKa = self._pKa_ref
             self.absolute_mobility = self._absolute_mobility_ref
         else:
-            self.pKa = self.correct_pKa()
+            self.pKa = self._correct_pKa()
             if self.nightingale_function:
                 self.absolute_mobility = [self.nightingale_function(self.T).tolist()] *\
                     len(self.z)
@@ -230,7 +230,7 @@ class Ion(object):
     from .L import L
     from .molar_conductivity import molar_conductivity
     from .robinson_stokes_mobility import robinson_stokes_mobility
-    from .correct_pKa import correct_pKa, vant_hoff, clark_glew
+    from .correct_pKa import _correct_pKa, _vant_hoff, _clark_glew
     from ..viscosity import viscosity as _viscosity
 
 if __name__ == '__main__':

@@ -2,7 +2,7 @@ import warnings
 from math import log
 
 
-def correct_pKa(obj):
+def _correct_pKa(obj):
     """Return the pKa corrected for temperature.
 
     If dCp for the ion is available, returns the Clark-Glew correction, which
@@ -13,15 +13,15 @@ def correct_pKa(obj):
     if obj.T == obj._T_ref:
         return obj._pKa_ref
     elif obj.dH and obj.dCp:
-        return clark_glew(obj)
+        return _clark_glew(obj)
     elif obj.dH and not obj.dCp:
-        return vant_hoff(obj)
+        return _vant_hoff(obj)
     else:
         warnings.warn('No data available to correct pKa for temperature.')
         return obj._pKa_ref
 
 
-def vant_hoff(obj):
+def _vant_hoff(obj):
     T = obj.T + 273.15
     T_ref = obj._T_ref + 273.15
     if abs(T-T_ref) > 20:
@@ -36,7 +36,7 @@ def vant_hoff(obj):
     return pKa
 
 
-def clark_glew(obj):
+def _clark_glew(obj):
     T = obj.T + 273.15
     T_ref = obj._T_ref + 273.15
     if abs(T-T_ref) > 100:

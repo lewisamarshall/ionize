@@ -14,5 +14,5 @@ def calc_I(obj, pH, I_guess=0):
         for c, ionp in zip(obj.concentrations, obj.ions)])
 
     # Add the ionic strength due to water dissociation.
-    I = I+(obj.cH(pH) + obj.cOH(pH, I_guess))/2
+    I = I+(obj.cH(pH, I_guess) + obj.cOH(pH, I_guess))/2
     return I

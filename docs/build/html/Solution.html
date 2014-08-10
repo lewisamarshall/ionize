@@ -6,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The Solution Class &mdash; ionize 0.1.4 documentation</title>
+    <title>The Solution Class &mdash; ionize 0.2.0c documentation</title>
     
-    <link rel="stylesheet" href="_static/traditional.css" type="text/css" />
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.4',
+        VERSION:     '0.2.0c',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,32 +24,29 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="ionize 0.1.4 documentation" href="index.html" />
+    <link rel="top" title="ionize 0.2.0c documentation" href="index.html" />
     <link rel="next" title="The ionize Database" href="database.html" />
     <link rel="prev" title="The Ion Class" href="Ion.html" /> 
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="database.html" title="The ionize Database"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="Ion.html" title="The Ion Class"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">ionize 0.1.4 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>ionize 0.2.0c documentation</span></a></h1>
+        <h2 class="heading"><span>The Solution Class</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="Ion.html">The Ion Class</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="database.html">The <strong>ionize</strong> Database</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+      </div>
+      <div class="content">
+        
+        
   <div class="section" id="the-solution-class">
 <h1>The Solution Class<a class="headerlink" href="#the-solution-class" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
@@ -136,61 +133,12 @@ the addition of an acid insult at small concentration.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="ionize.Solution.calc_I">
-<tt class="descname">calc_I</tt><big>(</big><em>obj</em>, <em>pH</em>, <em>I_guess=0</em><big>)</big><a class="headerlink" href="#ionize.Solution.calc_I" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return an estimate of the ionic strength of the solution.</p>
-<p>calc_I should only be used during solution initialization.
-After that, the equilibrium ionic strength is stored in obj.I.</p>
-<p>pH must be supplied. If a guess for ionic strength is not supplied,
-ionic strength corrections will not be used.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Solution.calc_pH">
-<tt class="descname">calc_pH</tt><big>(</big><em>obj</em>, <em>I=0</em><big>)</big><a class="headerlink" href="#ionize.Solution.calc_pH" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the pH of the object.</p>
-<p>If an ionic strength is specified, uses the corrected acidity constants.
-This function should be used only when finding the equilibrium state.
-After that, the value should be pulled from obj.pH.</p>
-<p>If ionic strength does not exist, assume it is zero.
-This function is used to find the equilibrium state,
-so it cannot pull the ionic strength from the object.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ionize.Solution.conductivity">
 <tt class="descname">conductivity</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Solution.conductivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the electrical conductivity of the solution.</p>
 <p>Relies on molar conductivity calculations from ion and total conductivity
 of H+ and OH-.</p>
 <p>The conductivity is returned in Seimens per meter.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Solution.dielectric">
-<tt class="descname">dielectric</tt><big>(</big><em>obj</em>, <em>T=25</em><big>)</big><a class="headerlink" href="#ionize.Solution.dielectric" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the dielectric constant of water at a specified temperature.</p>
-<p>The temperature should be specified in Celcius. Correlation is based on the
-CRC handbook.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Solution.equil_offset">
-<tt class="descname">equil_offset</tt><big>(</big><em>obj</em>, <em>I_i</em><big>)</big><a class="headerlink" href="#ionize.Solution.equil_offset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the error in ionic strength.</p>
-<p>Takes an ionic strength, then uses it to calculate a new ionic strength
-using the new equilibrum coefficents. find_equilibrium finds the root of
-this function.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Solution.find_equilibrium">
-<tt class="descname">find_equilibrium</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Solution.find_equilibrium" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the equilibrium ionic strength and pH.</p>
-<p>Uses the newton&#8217;s method root finder from scipy.optimize to find the
-equilibrium pH and ionic strength of a solution, using the ionic-strength
-adjusted activity coefficients. This function is called when the object is
-initialized.</p>
 </dd></dl>
 
 <dl class="method">
@@ -209,29 +157,11 @@ cannot be neglected.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="ionize.Solution.onsager_fuoss">
-<tt class="descname">onsager_fuoss</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Solution.onsager_fuoss" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the Onsager-Fuoss correction to the mobilities of ions.</p>
-<p>This function returns a list of all corrected actual mobilities.
-These mobilities are automatically assigned to the correct ions when
-a solution is initialized.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ionize.Solution.transference">
 <tt class="descname">transference</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Solution.transference" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the fraction of charge carried by each of the ions as a list.</p>
 <p>Should not precisely add to 1, because some charge is carried by protons
 and hydroxyls.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ionize.Solution.viscosity">
-<tt class="descname">viscosity</tt><big>(</big><em>obj</em>, <em>T=25</em><big>)</big><a class="headerlink" href="#ionize.Solution.viscosity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the viscosity of water at the specified temperature.</p>
-<p>The temperature should be specified in celcius. The function internally
-converts the temperature to Kelvin. Correlation is based on Fox and
-McDonald&#8217;s Intro to FLuid Mechanics, as implimented in STEEP.</p>
 </dd></dl>
 
 <dl class="method">
@@ -246,54 +176,19 @@ McDonald&#8217;s Intro to FLuid Mechanics, as implimented in STEEP.</p>
 </div>
 
 
-          </div>
-        </div>
       </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="Ion.html"
-                        title="previous chapter">The Ion Class</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="database.html"
-                        title="next chapter">The <strong>ionize</strong> Database</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/Solution.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="Ion.html">The Ion Class</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="database.html">The <strong>ionize</strong> Database</a>&#160;&#160;»
+        </p>
+
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="database.html" title="The ionize Database"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="Ion.html" title="The Ion Class"
-             >previous</a> |</li>
-        <li><a href="index.html">ionize 0.1.4 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
+
     <div class="footer">
         &copy; Copyright 2014, Lewis A. Marshall.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.

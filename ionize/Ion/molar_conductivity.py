@@ -5,6 +5,7 @@ def molar_conductivity(obj, pH=None, I=None):
 
     Args:
         pH (float): The ambiant pH.
+        
         I (float): The ambiant ionic strength.
 
     If an actual mobility from Onsager-Fouss is available, it is used,
@@ -13,7 +14,7 @@ def molar_conductivity(obj, pH=None, I=None):
     If the Ion is nested in a Solution, ok to call without a pH.
 
     >>> Solution(myIon, .1).ions[0].molar_conductivity()
-    
+
     Otherwise, always call with a pH argument.
     """
     if pH is None:

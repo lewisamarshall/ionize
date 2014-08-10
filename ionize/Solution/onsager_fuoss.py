@@ -76,14 +76,14 @@ def onsager_fuoss(obj):
 
     T = obj.T
     T_ref = 25
-    d = obj.dielectric(T)
-    d_ref = obj.dielectric(T_ref)
+    d = obj._dielectric(T)
+    d_ref = obj._dielectric(T_ref)
 
     # New temperature corrected coefficients.
     # Temperature corrections are based on the reference values.
     A_prime = obj._F*0.78420*((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
     B_prime = 31.410e-9 * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-0.5) *\
-        obj.viscosity(T_ref)/obj.viscosity(T)
+        obj._viscosity(T_ref)/obj._viscosity(T)
 
     # A_prime = obj._F*0.78420
     # B_prime = 31.41e-9

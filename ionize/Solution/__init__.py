@@ -87,16 +87,16 @@ class Solution(object):
             """Concentrations must be positive."""
 
         if self.ions:
-            (self.pH, self.I) = self.find_equilibrium()
+            (self.pH, self.I) = self._find_equilibrium()
         else:
             self.pH = -log10(sqrt(self._Kw))
-            self.I = self.calc_I(self.pH)
+            self.I = self._calc_I(self.pH)
 
         for ion in self.ions:
             ion._I = self.I
             ion._pH = self.pH
 
-        actual_mobilities = self.onsager_fuoss()
+        actual_mobilities = self._onsager_fuoss()
 
         for i in range(len(self.ions)):
             self.ions[i].actual_mobility = actual_mobilities[i]
@@ -221,15 +221,15 @@ class Solution(object):
     def __len__(obj):
         return len(obj.ions)
 
-    from .calc_I import calc_I
-    from .calc_pH import calc_pH
+    from .calc_I import calc_I as _calc_I
+    from .calc_pH import calc_pH as _calc_pH
     from .conductivity import conductivity
-    from .equil_offset import equil_offset
-    from .find_equilibrium import find_equilibrium
+    from .equil_offset import equil_offset as _equil_offset
+    from .find_equilibrium import find_equilibrium as _find_equilibrium
     from .Kw_eff import Kw_eff
-    from .onsager_fuoss import onsager_fuoss
+    from .onsager_fuoss import onsager_fuoss as _onsager_fuoss
     from .transference import transference
     from .zone_transfer import zone_transfer
-    from ..dielectric import dielectric
-    from ..viscosity import viscosity
+    from ..dielectric import dielectric as _dielectric
+    from ..viscosity import viscosity as _viscosity
     from .conservation import kohlrausch, alberty, jovin

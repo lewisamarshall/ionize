@@ -3,6 +3,7 @@ def effective_mobility(obj, pH=None, I=None):
 
     Args:
         pH (float): The ambiant pH.
+
         I (float): The ambiant ionic strength.
 
     If an actual mobility from Onsager-Fouss is available, it is used,

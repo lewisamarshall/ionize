@@ -69,22 +69,22 @@ a:hover, a:active {
 
 h1 a:hover, a:active {
     text-decoration: none;
-    color: #0c3762;
+    color: #b00000;
 }
 
 h2 a:hover, a:active {
     text-decoration: none;
-    color: #0c3762;
+    color: #b00000;
 }
 
 h3 a:hover, a:active {
     text-decoration: none;
-    color: #0c3762;
+    color: #b00000;
 }
 
 h4 a:hover, a:active {
     text-decoration: none;
-    color: #0c3762;
+    color: #b00000;
 }
 
 a.headerlink {
@@ -120,14 +120,14 @@ div.header h1 {
     font-size: 1.6em;
     font-weight: normal;
     letter-spacing: 1px;
-    color: #0c3762;
+    color: #b00000;
     border: 0;
     margin: 0;
     padding-top: 15px;
 }
 div.header h1 a {
     font-weight: normal;
-    color: #0c3762;
+    color: #b00000;
 }
 div.header h2 {
     font-size: 1.3em;
@@ -148,7 +148,7 @@ div.header img.rightlogo {
 div.title {
     font-size: 1.3em;
     font-weight: bold;
-    color: #0c3762;
+    color: #b00000;
     border-bottom: dotted thin #e0e0e0;
     margin-bottom: 25px;
 }
@@ -244,7 +244,7 @@ div.seealso {
 h1 {
     font-size: 1.3em;
     font-weight: bold;
-    color: #0c3762;
+    color: #b00000;
     border-bottom: dotted thin #e0e0e0;
     margin-top: 30px;
 }
@@ -252,7 +252,7 @@ h1 {
 h2 {
     font-size: 1.2em;
     font-weight: normal;
-    color: #0c3762;
+    color: #b00000;
     border-bottom: dotted thin #e0e0e0;
     margin-top: 30px;
 }
@@ -260,14 +260,14 @@ h2 {
 h3 {
     font-size: 1.1em;
     font-weight: normal;
-    color: #0c3762;
+    color: #b00000;
     margin-top: 30px;
 }
 
 h4 {
     font-size: 1.0em;
     font-weight: normal;
-    color: #0c3762;
+    color: #b00000;
     margin-top: 30px;
 }
 

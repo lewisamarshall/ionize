@@ -11,24 +11,24 @@ def find_equilibrium(obj):
     initialized.
     """
     # Generate an initial ionic strength guess without  activity corrections
-    I = obj.calc_I(obj.calc_pH())
+    I = obj._calc_I(obj._calc_pH())
 
     # Try to bound the true answer.
-    b1 = obj.equil_offset(0.)
-    b2 = obj.equil_offset(2.*I)
+    b1 = obj._equil_offset(0.)
+    b2 = obj._equil_offset(2.*I)
 
     # If the answer is in the bound, use brentq. Otherwise, use newton.
     # If brentq doesn't converge, use newton.
     if ((b1 < 0.) ^ (b2 < 0.)):
-        I, r = brentq(obj.equil_offset, 0, 2*I, full_output=True)
+        I, r = brentq(obj._equil_offset, 0, 2*I, full_output=True)
         if not r.converged:
-            I = newton(obj.equil_offset, I)
+            I = newton(obj._equil_offset, I)
             warnings.warn('Couldn\'t use the brentq method. Using newton.')
 
     else:
-        I = newton(obj.equil_offset, I)
+        I = newton(obj._equil_offset, I)
         warnings.warn('Couldn\'t use the brentq method. Using newton.')
 
     # Use this final ionic strength to find the correct pH.
-    pH = obj.calc_pH(I)
+    pH = obj._calc_pH(I)
     return (pH, I)
