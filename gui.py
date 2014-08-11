@@ -62,8 +62,8 @@ class Application(Frame):
         self.createWidgets()
 
 root = Tk()
-img = PhotoImage(file='ionize_icon_v1.gif')
-root.tk.call('wm', 'iconphoto', root._w, img)
+# img = PhotoImage(file='ionize_icon_v1.gif')
+# root.tk.call('wm', 'iconphoto', root._w, img)
 app = Application(master=root)
 app.mainloop()
 root.destroy()
