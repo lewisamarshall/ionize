@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from Tkinter import *
 import ionize
 from AutocompleteEntry import AutocompleteEntry
@@ -13,12 +14,12 @@ class Application(Frame):
         if ion and c:
             self.ions.append(ion)
             self.concentrations.append(c)
-        self.ion_list_display.insert(INSERT, str(ion)+
+        self.ion_list_display.insert(INSERT, str(ion.name)+
         ' ' + str(c) + '\n')
 
     def calc_solution(self):
         sol = ionize.Solution(self.ions, self.concentrations)
-        self.ion_list_display.insert(INSERT, str(sol)+'\n')
+        self.solution_list_display.insert(INSERT, str(sol)+'\n')
 
 
     def createWidgets(self):
@@ -47,8 +48,13 @@ class Application(Frame):
         self.quit_button.pack({"side": "left"})
 
         self.button_frame.pack()
-        self.ion_list_display = Text(self)
+
+        self.display_frame = Frame(self)
+        self.ion_list_display = Text(self.display_frame)
         self.ion_list_display.pack()
+        self.solution_list_display = Text(self.display_frame)
+        self.solution_list_display.pack()
+        self.display_frame.pack()
 
     def __init__(self, master=None):
         Frame.__init__(self, master)
@@ -56,8 +62,8 @@ class Application(Frame):
         self.createWidgets()
 
 root = Tk()
-# img = PhotoImage(file='your-icon')
-# root.tk.call('wm', 'iconphoto', root._w, img)
+img = PhotoImage(file='ionize_icon_v1.gif')
+root.tk.call('wm', 'iconphoto', root._w, img)
 app = Application(master=root)
 app.mainloop()
 root.destroy()
