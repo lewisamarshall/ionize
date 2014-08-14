@@ -202,8 +202,8 @@ class Ion(object):
 
     def __str__(obj):
         """Return a string representing the ion."""
-        return ("Ion object -- " + obj.name + ": " +
-                str(dict(zip(obj.z, zip(obj.pKa, obj.absolute_mobility)))))
+        obj_str = "Ion('{}', z={})".format(obj.name, obj.z)
+        return obj_str
 
     def __repr__(obj):
         """Return a representation of the ion."""

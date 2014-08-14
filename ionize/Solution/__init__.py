@@ -211,8 +211,7 @@ class Solution(object):
 
     def __str__(obj):
         """Return a string representing the Solution."""
-        return "Solution object -- pH = " + str(obj.pH) + \
-            ", I = " + str(obj.I) + ' M'
+        return "Solution(pH={:.3g}, I={:.3g} M)".format(obj.pH, obj.I)
 
     def __repr__(obj):
         """Return a representation of the Solution."""
