@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='ionize',
-      version='0.2.1',
+      version='0.2.2',
       author='Lewis A. Marshall',
       author_email='lewis.a.marshall@gmail.com',
       url="http://lewisamarshall.github.io/ionize/",
@@ -22,6 +22,11 @@ setup(name='ionize',
       packages=find_packages(),
       requires=['numpy', 'scipy'],
       package_data={'ionize': ['ions_db.json',
-                               'nightingale_data/*.txt']
-                    }
+                               'nightingale_data/*.txt'],
+                    },
+      entry_points = {
+                      'gui_scripts': [
+                                      'ionize_calculator = ionize_calculator'
+                                      ]
+                      }
       )

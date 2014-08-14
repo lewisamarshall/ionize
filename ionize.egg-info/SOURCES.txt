@@ -1,5 +1,6 @@
 MANIFEST.in
 README.txt
+requirements.txt
 setup.py
 ionize/__init__.py
 ionize/dielectric.py
@@ -12,6 +13,7 @@ ionize/viscosity.py
 ionize.egg-info/PKG-INFO
 ionize.egg-info/SOURCES.txt
 ionize.egg-info/dependency_links.txt
+ionize.egg-info/entry_points.txt
 ionize.egg-info/top_level.txt
 ionize/Ion/Ka_eff.py
 ionize/Ion/L.py
