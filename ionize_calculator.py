@@ -27,7 +27,7 @@ class Application(Frame):
         text = ''
         text += 'pH: {:.3g}\n'.format(sol.pH)
         text += 'Ionic strength: {:.3g} M\n'.format(sol.I)
-        text += 'Conductivity: {:.3g} s/M\n'.format(sol.conductivity())
+        text += 'Conductivity: {:.3g} S/m\n'.format(sol.conductivity())
         text += 'KRF: {:.3g}\n'.format(sol.kohlrausch())
         text += 'Alberty: {:.3g}\n'.format(sol.alberty())
         text += 'Jovin: {:.3g}\n'.format(sol.jovin())
