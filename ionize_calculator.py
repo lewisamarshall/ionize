@@ -10,17 +10,15 @@ class Application(Frame):
     data = ionize.get_db()
 
     def add_ion(self):
-        # ion_name = self.ion_entry.get()
         ion_name = self.db_tree.focus()
         #for multiple selection
         # ion_name = self.db_tree.selection()
         c = float(self.concentration_entry.get())
         ion = ionize.load_ion(ion_name)
-        if ion and c:
-            self.ions.append(ion)
-            self.concentrations.append(c)
-        # self.ion_list_display.insert(INSERT, str(ion.name)+
-        # ' ' + str(c) + '\n')
+
+        self.ions.append(ion)
+        self.concentrations.append(c)
+
         self.sol_tree.insert('', 'end', ion.name, text=str(ion.name),
                             values=c)
 
@@ -72,7 +70,7 @@ class Application(Frame):
         self.db_tree.heading('#0', text='Ion')
         self.db_tree.heading('z', text='Valance')
         self.db_tree.heading('pKa', text='pKa')
-        self.db_tree.heading('mu', text='mobility')
+        self.db_tree.heading('mu', text='Mobility')
 
         for item in sorted(data.keys()):
             self.db_tree.insert('', 'end', item, text=item,
@@ -84,7 +82,7 @@ class Application(Frame):
         self.sol_tree = Treeview(parent)
         self.sol_tree['columns'] = ('conc')
         self.sol_tree.heading('#0', text='Ion')
-        self.sol_tree.heading('conc', text='Concentration')
+        self.sol_tree.heading('conc', text='Concentration (M)')
         self.sol_tree.pack({"side": "left"})
 
     def createWidgets(self):
@@ -112,18 +110,11 @@ class Application(Frame):
         self.calc_solution_button["command"] = self.calc_solution
         self.calc_solution_button.pack({"side": "left"})
 
-        self.quit_button = Button(self.button_frame)
-        self.quit_button["text"] = "Quit."
-        self.quit_button["command"] =  self.quit
-        self.quit_button.pack({"side": "left"})
-
         self.button_frame.pack()
 
         self.display_frame = Frame(self)
         self.database_tree(self.display_frame, ionize.get_db())
         self.solution_tree(self.display_frame)
-        # self.ion_list_display = Text(self.display_frame)
-        # self.ion_list_display.pack()
         self.display_frame.pack()
         self.solution_list_display = Text(self)
         self.solution_list_display.config(state=DISABLED)
@@ -148,5 +139,9 @@ root = Tk()
 # img = PhotoImage(file='ionize_icon_v1.gif')
 # root.tk.call('wm', 'iconphoto', root._w, img)
 app = Application(master=root)
+app.master.title("ionize")
 app.mainloop()
-root.destroy()
+try:
+    root.destroy()
+except:
+    pass
