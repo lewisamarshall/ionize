@@ -10,13 +10,18 @@ def search_ion(searchstring):
     """
     ion_list = get_db()
 
-    if searchstring.lower() in ion_list.keys():
-        print searchstring
-    else:
-        for name in sorted(ion_list.keys()):
-            if re.search(searchstring, name):
-                print name
-    return None
+    ions=[]
+
+    for name in sorted(ion_list.keys()):
+        if re.search(searchstring, name):
+            ions.append(name)
+
+
+    return [str(i) for i in ions]
 
 if __name__ == '__main__':
-    search_ion('fluor')
+    for i in search_ion('fluor'):
+        print i
+
+    print '\n'
+    print search_ion('fluor')
