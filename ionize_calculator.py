@@ -12,7 +12,6 @@ class Application(Frame):
         ion_name = self.db_tree.focus()
         #for multiple selection
         # ion_name = self.db_tree.selection()
-        print ion_name
         c = float(self.concentration_entry.get())
         ion = ionize.load_ion(ion_name)
         if ion and c:
@@ -31,6 +30,11 @@ class Application(Frame):
         text += 'KRF: {:.3g}\n'.format(sol.kohlrausch())
         text += 'Alberty: {:.3g}\n'.format(sol.alberty())
         text += 'Jovin: {:.3g}\n'.format(sol.jovin())
+
+        text += '\nIon mobilities:\n---------------\n'
+        for ion in sol.ions:
+            text += '{}: {} m^2/V/s\n'.format(ion.name, ion.effective_mobility())
+
         self.solution_list_display.insert(INSERT, text)
 
 
@@ -57,7 +61,8 @@ class Application(Frame):
         self.ion_entry = Entry(self.button_frame)
         self.ion_entry.pack({"side": "left"})
 
-        self.concentration_entry = Entry(self.button_frame)
+        vc = self.register(self.valid_conc, )
+        self.concentration_entry = Entry(self.button_frame,validate='all', validatecommand=(vc, '%P'))
         self.concentration_entry.pack({"side": "left"})
 
         self.add_ion_button = Button(self.button_frame)
@@ -85,6 +90,16 @@ class Application(Frame):
         self.solution_list_display = Text(self.display_frame)
         self.solution_list_display.pack()
         self.display_frame.pack()
+
+    def valid_conc(self, string):
+        try:
+            n = float(string)
+            if n>=0:
+                return True
+        except:
+            if string in ['', '.']:
+                return True
+        return False
 
     def __init__(self, master=None):
         Frame.__init__(self, master)
