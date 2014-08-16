@@ -84,6 +84,27 @@ class Application(Frame):
         self.sol_tree.heading('#0', text='Ion')
         self.sol_tree.heading('conc', text='Concentration (M)')
         self.sol_tree.pack({"side": "left"})
+        self.sol_tree.bind("<Double-1>", self.set_conc_popup)
+
+    def set_concentration(self,item):
+        c = float(self.c_box.get())
+        self.sol_tree.set(item, column='conc', value=c)
+        self.concentrations[self.ions.index(ionize.load_ion(item))] = c
+
+    def set_conc_popup(self, event):
+        item = self.sol_tree.identify('item',event.x,event.y)
+        self.conc_pop = Toplevel()
+        self.conc_pop.title('Set {} concentration.'.format(self.sol_tree.item(item,"text")))
+
+        self.c_box = Entry(self.conc_pop)
+        self.c_box.pack()
+
+        button1 = Button(self.conc_pop, text="set", command=lambda: self.set_concentration(item))
+        button1.pack()
+
+        button2 = Button(self.conc_pop, text="Close", command=self.conc_pop.destroy)
+        button2.pack()
+
 
     def createWidgets(self):
         self.button_frame = Frame(self)
