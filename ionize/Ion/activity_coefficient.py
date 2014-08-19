@@ -1,16 +1,16 @@
 from math import sqrt
 
 
-def activity_coefficient(obj, I=None, z=None):
+def activity_coefficient(self, I=None, z=None):
     """Return activity coefficients of a charge state at ionic strength I."""
     if I is None:
-        if obj._I:
-            I = obj._I
+        if self._I:
+            I = self._I
         else:
             I = 0.0
 
     if not z:
-        z = obj.z0
+        z = self.z0
     else:
         try:
             z = [zp for zp in z]
@@ -19,7 +19,7 @@ def activity_coefficient(obj, I=None, z=None):
 
     # There are two coefficients that are used repeatedly.
     # Specified in Bahga.
-    A = obj._Adh*sqrt(I)/(1.0+obj._aD*sqrt(I))
+    A = self._Adh*sqrt(I)/(1.0+self._aD*sqrt(I))
     B = 0.1*I  # Matching STEEP implementation.
 
     # Use them to calculate the activity coefficients.

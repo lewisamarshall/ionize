@@ -2,14 +2,14 @@ import warnings
 from numpy import mean
 
 
-def kohlrausch(obj):
+def kohlrausch(self):
     """Return the Kohlrausch regulating function (KRF) value of a solution.
 
     Throw a warning if the ions in the solution are not near fully ionized.
     """
     KRF = 0
 
-    for ion, c in zip(obj.ions, obj.concentrations):
+    for ion, c in zip(self.ions, self.concentrations):
         z_eff = (mean([z*f for z, f in
                  zip(ion.z, ion.ionization_fraction())]))
         KRF += abs(z_eff) * c * ion._Lpm3 / ion.effective_mobility()

@@ -1,6 +1,4 @@
-import warnings
 from ..Ion import Ion
-import sys
 from math import log, log10, sqrt
 
 
@@ -104,17 +102,17 @@ class Solution(object):
         self._H.actual_mobility = [actual_mobilities[-1][0]]
         self._OH.actual_mobility = [actual_mobilities[-1][1]]
 
-    def adjust_Kw(obj):
-        pKw_ref = -log10(obj._Kw_ref)
-        T_ref = obj._T_ref + 273.15
-        T = obj.T + 273.15
+    def adjust_Kw(self):
+        pKw_ref = -log10(self._Kw_ref)
+        T_ref = self._T_ref + 273.15
+        T = self.T + 273.15
         pKw = pKw_ref -\
-            (obj._dHw/2.303/obj._R)*(1.0/T_ref - 1.0/T) -\
-            (obj._dCpw/2.303/obj._R)*(T_ref/T-1.0+log(T/T_ref))
+            (self._dHw/2.303/self._R)*(1.0/T_ref - 1.0/T) -\
+            (self._dCpw/2.303/self._R)*(T_ref/T-1.0+log(T/T_ref))
         Kw = 10.0**(-pKw)
         return Kw
 
-    def buffering_capacity(obj):
+    def buffering_capacity(self):
         """Return the buffering capacity of the solution.
 
         This function generates an approximate solution to the buffering
@@ -122,66 +120,66 @@ class Solution(object):
         the addition of an acid insult at small concentration.
         """
         # Remove any ions at concentration 0.
-        c = 0.001*min([cp for cp in obj.concentrations if cp > 0])
+        c = 0.001*min([cp for cp in self.concentrations if cp > 0])
         Cb = 0
 
         # Add an acid insult at 0.1% the lowest concentration in the solution.
         # If the buffering capacity is measured as above the insult c,
         # make the insult c lower.
         while Cb < c:
-            new_sol = obj + (Ion('Acid Insult', -1, -2, -1), c)
+            new_sol = self + (Ion('Acid Insult', -1, -2, -1), c)
             # Find the slope of the pH.
-            Cb = abs(c/(obj.pH-new_sol.pH))
+            Cb = abs(c/(self.pH-new_sol.pH))
             c = 0.01 * Cb
         return Cb
 
-    def cH(obj, pH=None, I=None):
+    def cH(self, pH=None, I=None):
         """Return the concentration of protons in solution."""
         if not pH:
-            pH = obj.pH
+            pH = self.pH
 
         if not I:
-            I = obj.I
+            I = self.I
 
-        cH = 10**(-pH)/obj._H.activity_coefficient(I, [1])[0]
+        cH = 10**(-pH)/self._H.activity_coefficient(I, [1])[0]
         return cH
 
-    def cOH(obj, pH=None, I=None):
+    def cOH(self, pH=None, I=None):
         """Return the concentration of hydroxyls in solution."""
         if not pH:
-            pH = obj.pH
+            pH = self.pH
 
         if not I:
-            I = obj.I
+            I = self.I
 
-        cOH = obj.Kw_eff(I)/obj.cH(pH)
+        cOH = self.Kw_eff(I)/self.cH(pH)
         return cOH
 
-    def H_conductivity(obj):
+    def H_conductivity(self):
         """Return the conductivity of protons in solution.
 
         Corrects for the mobility of the ion using the
-        ion object's actual mobility.
+        ion objects's actual mobility.
         """
-        H_conductivity = obj.cH()*obj._H.molar_conductivity(obj.pH, obj.I)
+        H_conductivity = self.cH()*self._H.molar_conductivity(self.pH, self.I)
         return H_conductivity
 
-    def OH_conductivity(obj):
+    def OH_conductivity(self):
         """Return the conductivity of hydroxyls in solution.
 
         Corrects for the mobility of the ion using the
         ion object's actual mobility.
         """
-        OH_conductivity = obj.cOH()*obj._OH.molar_conductivity(obj.pH, obj.I)
+        OH_conductivity = self.cOH()*self._OH.molar_conductivity(self.pH, self.I)
         return OH_conductivity
 
-    def __add__(obj, other):
-        new_i = obj.ions[:]
-        new_c = obj.concentrations[:]
+    def __add__(self, other):
+        new_i = self.ions[:]
+        new_c = self.concentrations[:]
         if isinstance(other, Solution):
             for ion, c in zip(other.ions, other.concentrations):
-                if ion in obj.ions:
-                    new_c[obj.ions.index(ion)] += c
+                if ion in self.ions:
+                    new_c[self.ions.index(ion)] += c
                 else:
                     new_i.append(ion)
                     new_c.append(c)
@@ -189,8 +187,8 @@ class Solution(object):
         elif isinstance(other, (list, tuple)) and len(other) == 2 and\
                 isinstance(other[0], Ion) and isinstance(other[1], (int, float)):
             ion, c = other
-            if ion in obj.ions:
-                new_c[obj.ions.index(ion)] += c
+            if ion in self.ions:
+                new_c[self.ions.index(ion)] += c
             else:
                 new_i.append(ion)
                 new_c.append(c)
@@ -200,25 +198,25 @@ class Solution(object):
 
     __radd__ = __add__
 
-    def __mul__(obj, other):
+    def __mul__(self, other):
         if other >= 0:
-            return Solution(obj.ions,
-                            [c * other for c in obj.concentrations])
+            return Solution(self.ions,
+                            [c * other for c in self.concentrations])
         else:
             raise NotImplementedError
 
     __rmul__ = __mul__
 
-    def __str__(obj):
+    def __str__(self):
         """Return a string representing the Solution."""
-        return "Solution(pH={:.3g}, I={:.3g} M)".format(obj.pH, obj.I)
+        return "Solution(pH={:.3g}, I={:.3g} M)".format(self.pH, self.I)
 
-    def __repr__(obj):
+    def __repr__(self):
         """Return a representation of the Solution."""
-        return obj.__str__()
+        return self.__str__()
 
-    def __len__(obj):
-        return len(obj.ions)
+    def __len__(self):
+        return len(self.ions)
 
     from .calc_I import calc_I as _calc_I
     from .calc_pH import calc_pH as _calc_pH

@@ -52,8 +52,7 @@ def load_nightingale(name):
         z = z_dict[name]
         datafile.readline()
         for line in datafile:
-            entries = line.strip().split(',')
-            entries = map(float, entries)
+            entries = [float(i) for i in line.strip().split(',')]
             temp.append(entries[0])
             # Convert from limiting conductivity to mobility
             state.append(entries[1]*10.35e-11/z/viscosity(None, entries[0]))

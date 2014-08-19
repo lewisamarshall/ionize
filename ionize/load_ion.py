@@ -35,6 +35,6 @@ def load_ion(ion_name, solvation=True):
         return None
 
 if __name__ == "__main__":
-    ion_list = get_db()
-    for name in ion_list.keys():
+    ions = get_db()
+    for name in ions.keys():
         print load_ion(name)

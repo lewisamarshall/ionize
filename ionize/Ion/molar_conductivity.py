@@ -1,11 +1,11 @@
-def molar_conductivity(obj, pH=None, I=None):
+def molar_conductivity(self, pH=None, I=None):
     """Retun the molar conductivity of the ion based on the pH and I.
 
     Provides conducitivity in Siemens per meter per mole.
 
     Args:
         pH (float): The ambiant pH.
-        
+
         I (float): The ambiant ionic strength.
 
     If an actual mobility from Onsager-Fouss is available, it is used,
@@ -18,24 +18,24 @@ def molar_conductivity(obj, pH=None, I=None):
     Otherwise, always call with a pH argument.
     """
     if pH is None:
-        assert obj._pH, 'requires an input pH'
-        pH = obj._pH
+        assert self._pH, 'requires an input pH'
+        pH = self._pH
 
     if I is None:
-        if obj._I:
-            I = obj._I
+        if self._I:
+            I = self._I
         else:
             I = 0
 
-    if obj.actual_mobility:
-        actual_mobility = obj.actual_mobility
+    if self.actual_mobility:
+        actual_mobility = self.actual_mobility
     else:
-        actual_mobility = obj.robinson_stokes_mobility(I)
+        actual_mobility = self.robinson_stokes_mobility(I)
 
-    i_frac = obj.ionization_fraction(pH, I)
+    i_frac = self.ionization_fraction(pH, I)
 
-    m_conductivity = (obj._Lpm3 * obj._F *
+    m_conductivity = (self._Lpm3 * self._F *
                       sum(z * f * m for (z, f, m)
-                          in zip(obj.z, i_frac, actual_mobility)))
+                          in zip(self.z, i_frac, actual_mobility)))
 
     return m_conductivity

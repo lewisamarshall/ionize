@@ -1,5 +1,5 @@
 import warnings
-from math import sqrt, copysign
+from math import copysign
 
 
 class Ion(object):
@@ -72,12 +72,14 @@ class Ion(object):
     _T_ref = 25
 
     # The properties of the ions are stored in public variables.
-    # These are the properties at the current temperature.
+    # These are the properties at the current temperature, or are treated
+    # as temperature independant.
     pKa = None
     Ka = None
     absolute_mobility = None
     dH = None
     dCp = None
+    z0 = None
     T = 25
 
     # If the Ion is in a solution object, copy the pH and I of the Solution
@@ -156,58 +158,58 @@ class Ion(object):
         self._set_Ka()
         self._set_z0()
 
-    def _z_sort(obj):
+    def _z_sort(self):
         """Sort the charge states from lowest to highest."""
         # Zip the lists together and sort them by z.
-        obj.z, obj.pKa, obj.absolute_mobility = zip(*sorted(zip(obj.z, obj.pKa,
-                                                    obj.absolute_mobility)))
-        obj.z = list(obj.z)
-        obj.pKa = list(obj.pKa)
-        obj.absolute_mobility = list(obj.absolute_mobility)
+        self.z, self.pKa, self.absolute_mobility =\
+            zip(*sorted(zip(self.z, self.pKa, self.absolute_mobility)))
+        self.z = list(self.z)
+        self.pKa = list(self.pKa)
+        self.absolute_mobility = list(self.absolute_mobility)
 
-        full = set(range(min(obj.z), max(obj.z)+1, 1)) - {0}
-        assert set(obj.z) ^ full == set(), "Charge states missing."
+        full = set(range(min(self.z), max(self.z)+1, 1)) - {0}
+        assert set(self.z) ^ full == set(), "Charge states missing."
 
         return None
 
-    def _set_Ka(obj):
+    def _set_Ka(self):
         """Set the Kas based on the pKas.
 
         These values are not corrected for ionic strength.
         """
-        obj.Ka = [10.**-p for p in obj.pKa]
+        self.Ka = [10.**-p for p in self.pKa]
         return None
 
-    def _set_z0(obj):
+    def _set_z0(self):
         """Set the list of charge states with 0 inserted."""
-        obj.z0 = sorted([0]+obj.z)
+        self.z0 = sorted([0]+self.z)
         return None
 
-    def _set_Adh(obj, T=None):
+    def _set_Adh(self, T=None):
         """Account for the temperature dependance of Adh."""
         if not T:
-            T = obj.T
+            T = self.T
         T_ref = 25
         Adh_ref = 0.5102
-        d = obj._dielectric(T)
-        d_ref = obj._dielectric(T)
-        obj._Adh = Adh_ref * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
+        d = self._dielectric(T)
+        d_ref = self._dielectric(T)
+        self._Adh = Adh_ref * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
         return None
 
-    def set_T(obj, T):
+    def set_T(self, T):
         """Return a new ion at the specified temperature."""
-        return Ion(obj.name, obj.z, obj._pKa_ref, obj._absolute_mobility_ref,
-                   obj.dH, obj.dCp, obj.nightingale_function,
-                   T=T, T_ref=obj._T_ref)
+        return Ion(self.name, self.z, self._pKa_ref, self._absolute_mobility_ref,
+                   self.dH, self.dCp, self.nightingale_function,
+                   T=T, T_ref=self._T_ref)
 
-    def __str__(obj):
+    def __str__(self):
         """Return a string representing the ion."""
-        obj_str = "Ion('{}', z={})".format(obj.name, obj.z)
+        obj_str = "Ion('{}', z={})".format(self.name, self.z)
         return obj_str
 
-    def __repr__(obj):
+    def __repr__(self):
         """Return a representation of the ion."""
-        return obj.__str__()
+        return self.__str__()
 
     def __eq__(self, other):
         if self.name == other.name and\

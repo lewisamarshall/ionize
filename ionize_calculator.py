@@ -1,7 +1,8 @@
 #!/usr/bin/python
-from Tkinter import *
-from ttk import *
+from Tkinter import *  # pylint: disable=W0614, W0401
+from ttk import *  # pylint: disable=W0614, W0401
 import ionize
+
 
 class Application(Frame):
     ions = []
@@ -11,7 +12,7 @@ class Application(Frame):
 
     def add_ion(self):
         ion_name = self.db_tree.focus()
-        #for multiple selection
+        # for multiple selection
         # ion_name = self.db_tree.selection()
         c = float(self.concentration_entry.get())
         ion = ionize.load_ion(ion_name)
@@ -20,7 +21,7 @@ class Application(Frame):
         self.concentrations.append(c)
 
         self.sol_tree.insert('', 'end', ion.name, text=str(ion.name),
-                            values=c)
+                             values=c)
 
     def calc_solution(self):
         T = self.temp_entry.get()
@@ -40,7 +41,8 @@ class Application(Frame):
 
         text += '\nIon mobilities:\n---------------\n'
         for ion in sol.ions:
-            text += '{}: {:.3g} m^2/V/s\n'.format(ion.name, ion.effective_mobility())
+            text += '{}: {:.3g} m^2/V/s\n'.format(ion.name,
+                                                  ion.effective_mobility())
 
         self.solution_list_display.insert(INSERT, text)
         self.solution_list_display.config(state=DISABLED)
@@ -51,9 +53,8 @@ class Application(Frame):
             ions = ionize.search_ion(searchstring)
         else:
             ions = self.data.keys()
-        ions=sorted(ions)
+        ions = sorted(ions)
         self.db_tree_update(ions)
-
 
     def db_tree_update(self, items):
         for i in self.db_tree.get_children():
@@ -77,7 +78,6 @@ class Application(Frame):
                                 values=data[item][0:3])
         self.db_tree.pack({"side": "left"})
 
-
     def solution_tree(self, parent):
         self.sol_tree = Treeview(parent)
         self.sol_tree['columns'] = ('conc')
@@ -86,36 +86,42 @@ class Application(Frame):
         self.sol_tree.pack({"side": "left"})
         self.sol_tree.bind("<Double-1>", self.set_conc_popup)
 
-    def set_concentration(self,item):
+    def set_concentration(self, item):
         c = float(self.c_box.get())
         self.sol_tree.set(item, column='conc', value=c)
         self.concentrations[self.ions.index(ionize.load_ion(item))] = c
 
     def set_conc_popup(self, event):
-        item = self.sol_tree.identify('item',event.x,event.y)
+        item = self.sol_tree.identify('item', event.x, event.y)
         self.conc_pop = Toplevel()
-        self.conc_pop.title('Set {} concentration.'.format(self.sol_tree.item(item,"text")))
+        self.conc_pop.title('Set {} concentration.'.format(
+                            self.sol_tree.item(item, "text")))
 
         self.c_box = Entry(self.conc_pop)
         self.c_box.pack()
 
-        button1 = Button(self.conc_pop, text="set", command=lambda: self.set_concentration(item))
+        button1 = Button(self.conc_pop, text="set",
+                         command=lambda: self.set_concentration(item))
         button1.pack()
 
-        button2 = Button(self.conc_pop, text="Close", command=self.conc_pop.destroy)
+        button2 = Button(self.conc_pop, text="Close",
+                         command=self.conc_pop.destroy)
         button2.pack()
-
 
     def createWidgets(self):
         self.button_frame = Frame(self)
 
         self.searchstring = StringVar()
-        self.searchstring.trace("w", lambda name, index, mode, sv=self.searchstring: self.ion_search())
-        self.ion_search_entry = Entry(self.button_frame, textvariable=self.searchstring)
+        self.searchstring.trace("w", lambda name, index, mode,
+                                sv=self.searchstring: self.ion_search())
+        self.ion_search_entry = Entry(self.button_frame,
+                                      textvariable=self.searchstring)
         self.ion_search_entry.pack({"side": "left"})
 
         vc = self.register(self.valid_conc, )
-        self.concentration_entry = Entry(self.button_frame,validate='all', validatecommand=(vc, '%P'))
+        self.concentration_entry = Entry(self.button_frame,
+                                         validate='all',
+                                         validatecommand=(vc, '%P'))
         self.concentration_entry.pack({"side": "left"})
 
         self.temp_entry = Entry(self.button_frame)
@@ -144,7 +150,7 @@ class Application(Frame):
     def valid_conc(self, string):
         try:
             n = float(string)
-            if n>=0:
+            if n >= 0:
                 return True
         except:
             if string in ['', '.']:
