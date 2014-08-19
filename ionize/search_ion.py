@@ -1,5 +1,4 @@
 import re
-import os
 from get_db import get_db
 
 
@@ -10,18 +9,17 @@ def search_ion(searchstring):
     """
     ion_list = get_db()
 
-    ions=[]
+    ions = []
 
     for name in sorted(ion_list.keys()):
         if re.search(searchstring, name):
             ions.append(name)
 
-
     return [str(i) for i in ions]
 
 if __name__ == '__main__':
-    for i in search_ion('fluor'):
-        print i
+    for ion in search_ion('fluor'):
+        print ion
 
     print '\n'
     print search_ion('fluor')
