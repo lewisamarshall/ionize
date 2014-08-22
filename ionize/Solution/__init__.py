@@ -18,8 +18,8 @@ class Solution(object):
     Attributes:
         ions (list): A list of valence states for the ion, as integers.
 
-        concentrations (list): The pKa of each valence at the refernce temperature,
-        as floats.
+        concentrations (list): The pKa of each valence at the reference
+        temperature, as floats.
 
         T (float): The temperature to use to calculate the properties of the
         ions, in degrees C.
@@ -27,15 +27,16 @@ class Solution(object):
     Raises:
         None
 
-    To to initialize an Soltuion, call as:
+    Example:
+        To to initialize an Soltuion, call as:
 
-    >>> ionize.Solution([ion1, ion2], [c1, c2], T=30)
+        >>> ionize.Solution([ion1, ion2], [c1, c2], T=30)
 
-    When a new Solution is initialized, it will immediately calculate the
-    equilibrium state, including the pH and the ionic strength (I) of the
-    solution. These values willl be stored as permenant attributes of the
-    object. Other solution properties can be calculated by invoking the
-    appropriate method.
+        When a new Solution is initialized, it will immediately calculate the
+        equilibrium state, including the pH and the ionic strength (I) of the
+        solution. These values willl be stored as permenant attributes of the
+        object. Other solution properties can be calculated by invoking the
+        appropriate method.
     """
 
     _F = 96485.3415        # Faraday's const.           [C/mol]

@@ -46,13 +46,13 @@ class Ion(object):
         T (float): The temperature to use to calculate the properties of the\
             ions, in degrees C.
 
-
     Raises:
         None
 
-    To to initialize an Ion, call as:
+    Example:
+        To to initialize an Ion, call as:
 
-    >>> ionize.Ion('my_acid', [-1, -2], [1.2, 3.4], [-10e-8, -21e-8])
+        >>> ionize.Ion('my_acid', [-1, -2], [1.2, 3.4], [-10e-8, -21e-8])
     """
     # These are constants and should not change.
     _F = 96485.34         # Faraday's const.[C/mol]
@@ -198,8 +198,9 @@ class Ion(object):
 
     def set_T(self, T):
         """Return a new ion at the specified temperature."""
-        return Ion(self.name, self.z, self._pKa_ref, self._absolute_mobility_ref,
-                   self.dH, self.dCp, self.nightingale_function,
+        return Ion(self.name, self.z, self._pKa_ref,
+                   self._absolute_mobility_ref, self.dH, self.dCp,
+                   self.nightingale_function,
                    T=T, T_ref=self._T_ref)
 
     def __str__(self):
