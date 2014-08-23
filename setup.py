@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from setuptools import setup, find_packages
 
 setup(name='ionize',
@@ -15,7 +16,7 @@ setup(name='ionize',
           "Topic :: Software Development :: Libraries :: Python Modules",
           "Topic :: Scientific/Engineering :: Chemistry",
           ],
-      use_2to3 = True,
+      use_2to3=True,
       license='LICENSE',
       description='A package for calculating electrolyte properties.',
       long_description=open('README.txt').read(),
@@ -24,9 +25,5 @@ setup(name='ionize',
       package_data={'ionize': ['ions_db.json',
                                'nightingale_data/*.txt'],
                     },
-      entry_points = {
-                      'gui_scripts': [
-                                      'ionize_calculator = ionize_calculator'
-                                      ]
-                      }
+      entry_points={'gui_scripts': ['ionize_calculator = ionize_calculator']}
       )
