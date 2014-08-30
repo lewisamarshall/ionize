@@ -18,6 +18,7 @@ from .load_ion import load_ion
 from .search_ion import search_ion
 from .viscosity import viscosity as _viscosity
 from .dielectric import dielectric as _dielectric
+from .nucleic_acid import nucleic_acid
 
 
 def viscosity(T):
