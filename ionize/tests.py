@@ -6,7 +6,7 @@
 # from .viscosity import viscosity as _viscosity
 # from .dielectric import dielectric as _dielectric
 # from .nucleic_acid import nucleic_acid
-import ..ionize
+from ..ionize import *
 import unittest
 
 
