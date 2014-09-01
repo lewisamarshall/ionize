@@ -1,11 +1,12 @@
-from .Ion import Ion
-from .Solution import Solution
-from .get_db import get_db
-from .load_ion import load_ion
-from .search_ion import search_ion
-from .viscosity import viscosity as _viscosity
-from .dielectric import dielectric as _dielectric
-from .nucleic_acid import nucleic_acid
+# from .Ion import Ion
+# from .Solution import Solution
+# from .get_db import get_db
+# from .load_ion import load_ion
+# from .search_ion import search_ion
+# from .viscosity import viscosity as _viscosity
+# from .dielectric import dielectric as _dielectric
+# from .nucleic_acid import nucleic_acid
+import ..ionize
 import unittest
 
 
