@@ -167,7 +167,7 @@ class Ion(object):
         self.pKa = list(self.pKa)
         self.absolute_mobility = list(self.absolute_mobility)
 
-        full = set(range(min(self.z), max(self.z)+1, 1)) - set(0)
+        full = set(range(min(self.z), max(self.z)+1, 1)) - set([0])
         assert set(self.z) ^ full == set(), "Charge states missing."
 
         return None
