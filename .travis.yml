@@ -10,7 +10,7 @@ notifications:
     email: false
 
 install:
-    - pip install setuptools
+    - pip install setuptools scipy.optimize
 
 script:
     - python setup.py nosetests
