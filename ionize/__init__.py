@@ -11,13 +11,12 @@ Function search_ion searches the database.
 Function get_db returns the database as a dictionary.
 """
 
+from .Aqueous import Aqueous
 from .Ion import Ion
 from .Solution import Solution
 from .get_db import get_db
 from .load_ion import load_ion
 from .search_ion import search_ion
-from .viscosity import viscosity as _viscosity
-from .dielectric import dielectric as _dielectric
 from .nucleic_acid import nucleic_acid
 
 
@@ -26,7 +25,7 @@ def viscosity(T):
 
     T should be entered in Celcius.
     """
-    return _viscosity(None, T)
+    return Aqueous()._viscosity(T)
 
 
 def dielectric(T):
@@ -34,4 +33,4 @@ def dielectric(T):
 
     T should be entered in Celcius.
     """
-    return _dielectric(None, T)
+    return Aqueous()._dielectric(T)

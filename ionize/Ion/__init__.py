@@ -1,8 +1,9 @@
 import warnings
 from math import copysign
+from ..Aqueous import Aqueous
 
 
-class Ion(object):
+class Ion(Aqueous):
 
     """Describe an ion dissolved in aqueous solution.
 
@@ -81,7 +82,8 @@ class Ion(object):
     dCp = None
     z0 = None
     T = 25
-
+    # _dielectric = dielectric
+    # _viscosity = viscosity
     # If the Ion is in a solution object, copy the pH and I of the Solution
     # locally for reference, in a private variable. Also store the Onsager-
     # Fouss mobility in actual_mobility.
@@ -94,6 +96,7 @@ class Ion(object):
                  T=25.0, T_ref=25.0):
         """Initialize an Ion object."""
         # Copy properties into the ion.
+
         self.name = name
         self.T = T
         self._T_ref = T_ref
@@ -225,7 +228,6 @@ class Ion(object):
         else:
             return False
 
-    from ..dielectric import dielectric as _dielectric
     from .ionization_fraction import ionization_fraction
     from .activity_coefficient import activity_coefficient
     from .effective_mobility import effective_mobility
@@ -234,7 +236,6 @@ class Ion(object):
     from .molar_conductivity import molar_conductivity
     from .robinson_stokes_mobility import robinson_stokes_mobility
     from .correct_pKa import _correct_pKa, _vant_hoff, _clark_glew
-    from ..viscosity import viscosity as _viscosity
 
 if __name__ == '__main__':
     pass

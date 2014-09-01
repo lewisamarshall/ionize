@@ -1,8 +1,9 @@
 from ..Ion import Ion
 from math import log, log10, sqrt
+from ..Aqueous import Aqueous
 
 
-class Solution(object):
+class Solution(Aqueous):
 
     """Describe an aqueous solution.
 
@@ -62,6 +63,7 @@ class Solution(object):
 
     def __init__(self, ions=[], concentrations=[], T=25):
         """Initialize a solution object."""
+
         self.T = float(T)
         if self.T == self._T_ref:
             self._Kw = self._Kw_ref
@@ -228,6 +230,4 @@ class Solution(object):
     from .onsager_fuoss import onsager_fuoss as _onsager_fuoss
     from .transference import transference
     from .zone_transfer import zone_transfer
-    from ..dielectric import dielectric as _dielectric
-    from ..viscosity import viscosity as _viscosity
     from .conservation import kohlrausch, alberty, jovin
