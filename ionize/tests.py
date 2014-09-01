@@ -5,7 +5,8 @@ from .load_ion import load_ion
 from .search_ion import search_ion
 from .viscosity import viscosity as _viscosity
 from .dielectric import dielectric as _dielectric
-from .nucleic_acid import nucleic_acidimport unittest
+from .nucleic_acid import nucleic_acid
+import unittest
 
 
 class TestIon(unittest.TestCase):
