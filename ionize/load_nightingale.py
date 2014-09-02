@@ -1,5 +1,5 @@
 from scipy import interpolate
-from viscosity import viscosity
+from Aqueous import Aqueous
 import sys
 import os
 
@@ -55,7 +55,7 @@ def load_nightingale(name):
             entries = [float(i) for i in line.strip().split(',')]
             temp.append(entries[0])
             # Convert from limiting conductivity to mobility
-            state.append(entries[1]*10.35e-11/z/viscosity(None, entries[0]))
+            state.append(entries[1]*10.35e-11/z/Aqueous()._viscosity(None, entries[0]))
         statefunc = interpolate.interp1d(temp, state)
         return statefunc
     else:
