@@ -231,3 +231,4 @@ class Solution(Aqueous):
     from .transference import transference
     from .zone_transfer import zone_transfer
     from .conservation import kohlrausch, alberty, jovin
+    from .titrate import titrate
