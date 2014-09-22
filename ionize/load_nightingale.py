@@ -24,7 +24,7 @@ def load_nightingale(name):
         'perchloric acid': 'Nightingale_Perchlorate_data.txt',
         'rubidium': 'Nightingale_Rb and Cs _data.txt',
         'cesium': 'Nightingale_Rb and Cs _data.txt',
-        'calcium': 'Nightingale_Rb and Cs _data.txt',
+        'calcium': 'Nightingale_Ca_data.txt',
         'silver': 'Nightingale_Ag_data.txt',
         'sulfuric acid': 'Nightingale_Sulfate_data.txt'
     }
@@ -55,11 +55,12 @@ def load_nightingale(name):
             entries = [float(i) for i in line.strip().split(',')]
             temp.append(entries[0])
             # Convert from limiting conductivity to mobility
-            state.append(entries[1]*10.35e-11/z/Aqueous()._viscosity(entries[0]))
+            state.append(entries[1]*10.35e-11*z/Aqueous()._viscosity(entries[0]))
         statefunc = interpolate.interp1d(temp, state)
         return statefunc
     else:
         return None
 
 if __name__ == "__main__":
-    print load_nightingale('silver')(22)
+    print load_nightingale('magnesium')(24)
+    print load_nightingale('calcium')(24)
