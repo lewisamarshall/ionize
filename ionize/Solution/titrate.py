@@ -13,7 +13,7 @@ def titrate(self, titrant, target, property='pH', return_c=False):
     instead of pH, by setting property to "I" or "Conductivity".
 
     Normally, titrate returns the titrated solution. However, to instead return
-    the titrant concentration, set return_c="True". 
+    the titrant concentration, set return_c="True".
     """
     if property == 'pH':
         min_func = lambda c: (self + (titrant, c)).pH - target
