@@ -10,7 +10,7 @@ def titrate(self, titrant, target, property='pH', return_c=False):
     by addition of the titrant, titrate raises an error.
 
     To titrate to a target property other than pH, simply set the property
-    to a property of the Solution class. 
+    to a property of the Solution class.
     """
 
     min_func = lambda c: (self + (titrant, c)).__dict__[property]-target
