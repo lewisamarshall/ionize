@@ -1,6 +1,7 @@
 from ..Ion import Ion
 from math import log, log10, sqrt
 from ..Aqueous import Aqueous
+from ..load_ion import load_ion
 
 
 class Solution(Aqueous):
@@ -70,10 +71,18 @@ class Solution(Aqueous):
         else:
             self._Kw = self.adjust_Kw()
 
+        if isinstance(ions, basestring):
+            ions = [ions]
         try:
-            self.ions = [i.set_T(self.T) for i in ions]
+            self.ions = [i for i in ions]
         except:
-            self.ions = [ions.set_T(self.T)]
+            self.ions = [ions]
+
+        for idx, ion in enumerate(self.ions):
+            if isinstance(ion, basestring):
+                self.ions[idx] = load_ion(ion)
+
+        self.ions = [i.set_T(self.T) for i in self.ions]
 
         try:
             self.concentrations = [c for c in concentrations]
