@@ -16,6 +16,12 @@ the  most up-to-date temperature model published in STEEP. The **ionize** object
 classes make these techniques directly accessible as a backend for simulations
 written in python.
 
+Installation
+------------
+One-line install using [pip](https://pypi.python.org/pypi/pip):
+
+    pip install ionize
+
 Tutorial
 --------
 Want to use **ionize**? Read the [tutorial][tutorial], written with iPython
