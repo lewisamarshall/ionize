@@ -114,6 +114,9 @@ class Solution(Aqueous):
         self._H.actual_mobility = [actual_mobilities[-1][0]]
         self._OH.actual_mobility = [actual_mobilities[-1][1]]
 
+    def set_T(self, T):
+        pass
+
     def adjust_Kw(self):
         pKw_ref = -log10(self._Kw_ref)
         T_ref = self._T_ref + 273.15
@@ -182,7 +185,9 @@ class Solution(Aqueous):
         Corrects for the mobility of the ion using the
         ion object's actual mobility.
         """
-        OH_conductivity = self.cOH()*self._OH.molar_conductivity(self.pH, self.I)
+        OH_conductivity = self.cOH() *\
+            self._OH.molar_conductivity(self.pH, self.I)
+
         return OH_conductivity
 
     def __add__(self, other):
@@ -196,8 +201,10 @@ class Solution(Aqueous):
                     new_i.append(ion)
                     new_c.append(c)
             return Solution(new_i, new_c)
-        elif isinstance(other, (list, tuple)) and len(other) == 2 and\
-                isinstance(other[0], Ion) and isinstance(other[1], (int, float)):
+        elif isinstance(other, (list, tuple)) and\
+                len(other) == 2 and\
+                isinstance(other[0], Ion) and\
+                isinstance(other[1], (int, float)):
             ion, c = other
             if ion in self.ions:
                 new_c[self.ions.index(ion)] += c
