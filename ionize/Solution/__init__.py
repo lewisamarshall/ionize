@@ -119,7 +119,7 @@ class Solution(Aqueous):
         self._OH.actual_mobility = [actual_mobilities[-1][1]]
 
     def set_T(self, T):
-        pass
+        return Solution(self.ions, self.concentrations, T=T)
 
     def adjust_Kw(self):
         pKw_ref = -log10(self._Kw_ref)
