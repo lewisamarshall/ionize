@@ -48,6 +48,10 @@ class Solution(Aqueous):
     _visc = 1E-3           # Dynamic viscosity (water)  [Pa s]
     _Adh = 0.512           # L^1/2 / mol^1/2, approximate for room temperature
     _aD = 1.5              # mol^-1/2 mol^-3/2, approximation
+    _permittivity = 8.85e-12   # permittivity of free space
+    _k = 1.38e-23              # Boltzman constant
+    _Na = 6.02e23          # Avagadro's number
+    _e = 1.6e-19               # elementary charge
 
     _H = Ion('H+', [1], [100], [362E-9])
     _OH = Ion('OH-', [-1], [-100], [-205E-9])
@@ -189,6 +193,13 @@ class Solution(Aqueous):
             self._OH.molar_conductivity(self.pH, self.I)
 
         return OH_conductivity
+
+    def debye(self):
+        dielectric = self._dielectric(self.T)
+        viscosity = self._viscosity(self.T)
+        epsilon = dielectric * self._permittivity
+        lamda = (epsilon*self._k*self.T/self._e**2/self.I/self._Na)**.5
+        return lamda
 
     def __add__(self, other):
         new_i = self.ions[:]
