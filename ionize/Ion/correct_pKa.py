@@ -33,7 +33,8 @@ def _vant_hoff(self):
                for p, h in zip(pKa_ref, dH)]
     else:
         warnings.warn('No dH available. Returning uncorrected pKa.')
-    return pKa_ref
+        pKa = pKa_ref
+    return pKa
 
 
 def _clark_glew(self):
@@ -50,4 +51,5 @@ def _clark_glew(self):
                for p, h, c in zip(pKa_ref, dH, dCp)]
     else:
         warnings.warn('No dCp available. Returning uncorrected pKa.')
-    return pKa_ref
+        pKa = pKa_ref
+    return pKa
