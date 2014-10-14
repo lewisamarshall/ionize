@@ -15,7 +15,7 @@ def nucleic_acid(bp=float('inf')):
     from these estimates. The correlation between size and mobility is drawn
     from Stellwagen 1997, 'The Free Solution Mobility of DNA'.
     """
-    mu = (3.75 - 1.8*(bp**-.6)) * 1e-9
+    mu = (3.75 - 1.8*(bp**-.6)) * 1e-8
     return Ion('DNA: {} bp'.format(bp), -1, -1, -mu)
 
 if __name__ == '__main__':
