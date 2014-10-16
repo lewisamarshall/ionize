@@ -71,7 +71,9 @@ def make_database():
 
         # Add the result to the ion dictionary.
         ion_dict[name] = state
-
+    ion_dict['taps'][4] = [15.0]
+    # print ion_dict['taps']
+    # print ion_dict['tartaric acid']
     # boric acid is uniquely in the STEEP database but not the Spresso database
     # add manually.
     steep_db['boric acid'][2][0] *= -1
@@ -86,7 +88,6 @@ def make_database():
     with open('ionize/ions_db.json', 'wb') as ion_db:
         json.dump(ion_dict, ion_db,
                   sort_keys=True, indent=4, separators=(',', ': '))
-
 
     print len(ion_dict), 'ions in database'
     print n_steep, 'ions from steep'

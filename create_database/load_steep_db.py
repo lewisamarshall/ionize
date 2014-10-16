@@ -23,4 +23,5 @@ def load_steep_db(filename='create_database/STEEP_Database.csv'):
 if __name__ == '__main__':
     data = load_steep_db()
     for ion in data:
-        print ion+':', data[ion]
+        if ion == 'taps':
+            print ion+':', data[ion]
