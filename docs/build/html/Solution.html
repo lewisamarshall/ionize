@@ -63,41 +63,43 @@ ions, in degrees C.</p>
 </dd>
 <dt>Attributes:</dt>
 <dd><p class="first">ions (list): A list of valence states for the ion, as integers.</p>
-<p>concentrations (list): The pKa of each valence at the refernce temperature,
-as floats.</p>
+<p>concentrations (list): The pKa of each valence at the reference
+temperature, as floats.</p>
 <p class="last">T (float): The temperature to use to calculate the properties of the
 ions, in degrees C.</p>
 </dd>
 <dt>Raises:</dt>
 <dd>None</dd>
-</dl>
-<p>To to initialize an Soltuion, call as:</p>
+<dt>Example:</dt>
+<dd><p class="first">To to initialize an Soltuion, call as:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ionize</span><span class="o">.</span><span class="n">Solution</span><span class="p">([</span><span class="n">ion1</span><span class="p">,</span> <span class="n">ion2</span><span class="p">],</span> <span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">],</span> <span class="n">T</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>When a new Solution is initialized, it will immediately calculate the
+<p class="last">When a new Solution is initialized, it will immediately calculate the
 equilibrium state, including the pH and the ionic strength (I) of the
 solution. These values willl be stored as permenant attributes of the
 object. Other solution properties can be calculated by invoking the
 appropriate method.</p>
+</dd>
+</dl>
 <dl class="method">
 <dt id="ionize.Solution.H_conductivity">
-<tt class="descname">H_conductivity</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Solution.H_conductivity" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">H_conductivity</tt><big>(</big><big>)</big><a class="headerlink" href="#ionize.Solution.H_conductivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the conductivity of protons in solution.</p>
 <p>Corrects for the mobility of the ion using the
-ion object&#8217;s actual mobility.</p>
+ion objects&#8217;s actual mobility.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="ionize.Solution.Kw_eff">
-<tt class="descname">Kw_eff</tt><big>(</big><em>obj</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Solution.Kw_eff" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">Kw_eff</tt><big>(</big><em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Solution.Kw_eff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the effective water dissociation constant.</p>
 <p>Based on the activity corrections to H+ and OH-.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="ionize.Solution.OH_conductivity">
-<tt class="descname">OH_conductivity</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Solution.OH_conductivity" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">OH_conductivity</tt><big>(</big><big>)</big><a class="headerlink" href="#ionize.Solution.OH_conductivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the conductivity of hydroxyls in solution.</p>
 <p>Corrects for the mobility of the ion using the
 ion object&#8217;s actual mobility.</p>
@@ -113,7 +115,7 @@ cannot be neglected.</p>
 
 <dl class="method">
 <dt id="ionize.Solution.buffering_capacity">
-<tt class="descname">buffering_capacity</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Solution.buffering_capacity" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">buffering_capacity</tt><big>(</big><big>)</big><a class="headerlink" href="#ionize.Solution.buffering_capacity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the buffering capacity of the solution.</p>
 <p>This function generates an approximate solution to the buffering
 capacity by finding the derivative of the pH with respect to
@@ -122,19 +124,19 @@ the addition of an acid insult at small concentration.</p>
 
 <dl class="method">
 <dt id="ionize.Solution.cH">
-<tt class="descname">cH</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Solution.cH" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">cH</tt><big>(</big><em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Solution.cH" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the concentration of protons in solution.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="ionize.Solution.cOH">
-<tt class="descname">cOH</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Solution.cOH" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">cOH</tt><big>(</big><em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Solution.cOH" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the concentration of hydroxyls in solution.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="ionize.Solution.conductivity">
-<tt class="descname">conductivity</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Solution.conductivity" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">conductivity</tt><big>(</big><big>)</big><a class="headerlink" href="#ionize.Solution.conductivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the electrical conductivity of the solution.</p>
 <p>Relies on molar conductivity calculations from ion and total conductivity
 of H+ and OH-.</p>
@@ -151,14 +153,25 @@ cannot be neglected.</p>
 
 <dl class="method">
 <dt id="ionize.Solution.kohlrausch">
-<tt class="descname">kohlrausch</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Solution.kohlrausch" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">kohlrausch</tt><big>(</big><big>)</big><a class="headerlink" href="#ionize.Solution.kohlrausch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the Kohlrausch regulating function (KRF) value of a solution.</p>
 <p>Throw a warning if the ions in the solution are not near fully ionized.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ionize.Solution.titrate">
+<tt class="descname">titrate</tt><big>(</big><em>titrant</em>, <em>target</em>, <em>titration_property='pH'</em>, <em>return_c=False</em><big>)</big><a class="headerlink" href="#ionize.Solution.titrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Solution titrated to the target pH using the titrant.</p>
+<p>Titrate uses root finding to determine the concentration of titrant
+to add to achieve the desired pH. If the desired pH cannot be achieved
+by addition of the titrant, titrate raises an error.</p>
+<p>To titrate to a target property other than pH, simply set the property
+to a property of the Solution class.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ionize.Solution.transference">
-<tt class="descname">transference</tt><big>(</big><em>obj</em><big>)</big><a class="headerlink" href="#ionize.Solution.transference" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">transference</tt><big>(</big><big>)</big><a class="headerlink" href="#ionize.Solution.transference" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the fraction of charge carried by each of the ions as a list.</p>
 <p>Should not precisely add to 1, because some charge is carried by protons
 and hydroxyls.</p>
@@ -166,7 +179,7 @@ and hydroxyls.</p>
 
 <dl class="method">
 <dt id="ionize.Solution.zone_transfer">
-<tt class="descname">zone_transfer</tt><big>(</big><em>obj</em>, <em>vol</em><big>)</big><a class="headerlink" href="#ionize.Solution.zone_transfer" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">zone_transfer</tt><big>(</big><em>vol</em><big>)</big><a class="headerlink" href="#ionize.Solution.zone_transfer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the zone transfer charge of the solution at a given volume.</p>
 <p>The volume of the solution is specified in liters.</p>
 </dd></dl>

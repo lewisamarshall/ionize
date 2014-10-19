@@ -75,14 +75,16 @@ in degrees C.</p>
 </dd>
 <dt>Raises:</dt>
 <dd>None</dd>
-</dl>
-<p>To to initialize an Ion, call as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ionize</span><span class="o">.</span><span class="n">Ion</span><span class="p">(</span><span class="s">&#39;my_acid&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">10e-8</span><span class="p">,</span> <span class="o">-</span><span class="mf">21e-8</span><span class="p">])</span>
+<dt>Example:</dt>
+<dd><p class="first">To to initialize an Ion, call as:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ionize</span><span class="o">.</span><span class="n">Ion</span><span class="p">(</span><span class="s">&#39;my_acid&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">10e-8</span><span class="p">,</span> <span class="o">-</span><span class="mf">21e-8</span><span class="p">])</span>
 </pre></div>
 </div>
+</dd>
+</dl>
 <dl class="method">
 <dt id="ionize.Ion.effective_mobility">
-<tt class="descname">effective_mobility</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.effective_mobility" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">effective_mobility</tt><big>(</big><em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.effective_mobility" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the effective mobility of the ion at a given pH and I.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -101,7 +103,7 @@ otherwise, the Robinson-Stokes mobility estimate is used.</p>
 
 <dl class="method">
 <dt id="ionize.Ion.ionization_fraction">
-<tt class="descname">ionization_fraction</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.ionization_fraction" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">ionization_fraction</tt><big>(</big><em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.ionization_fraction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the ionization fractions of an ion.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -118,7 +120,7 @@ otherwise, the Robinson-Stokes mobility estimate is used.</p>
 
 <dl class="method">
 <dt id="ionize.Ion.molar_conductivity">
-<tt class="descname">molar_conductivity</tt><big>(</big><em>obj</em>, <em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.molar_conductivity" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">molar_conductivity</tt><big>(</big><em>pH=None</em>, <em>I=None</em><big>)</big><a class="headerlink" href="#ionize.Ion.molar_conductivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retun the molar conductivity of the ion based on the pH and I.</p>
 <p>Provides conducitivity in Siemens per meter per mole.</p>
 <dl class="docutils">
@@ -138,7 +140,7 @@ otherwise, the Robinson-Stokes mobility estimate is used.</p>
 
 <dl class="method">
 <dt id="ionize.Ion.robinson_stokes_mobility">
-<tt class="descname">robinson_stokes_mobility</tt><big>(</big><em>obj</em>, <em>I=None</em>, <em>T=25</em><big>)</big><a class="headerlink" href="#ionize.Ion.robinson_stokes_mobility" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">robinson_stokes_mobility</tt><big>(</big><em>I=None</em>, <em>T=25</em><big>)</big><a class="headerlink" href="#ionize.Ion.robinson_stokes_mobility" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the Robinson-Stokes correction to fully ionized mobility.</p>
 <p>This correction is appropriate if a generic ionic strength is known,
 but the specific ions in solution are unknown.</p>
@@ -146,7 +148,7 @@ but the specific ions in solution are unknown.</p>
 
 <dl class="method">
 <dt id="ionize.Ion.set_T">
-<tt class="descname">set_T</tt><big>(</big><em>obj</em>, <em>T</em><big>)</big><a class="headerlink" href="#ionize.Ion.set_T" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_T</tt><big>(</big><em>T</em><big>)</big><a class="headerlink" href="#ionize.Ion.set_T" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new ion at the specified temperature.</p>
 </dd></dl>
 
