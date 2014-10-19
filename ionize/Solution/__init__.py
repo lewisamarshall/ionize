@@ -195,6 +195,10 @@ class Solution(Aqueous):
         return OH_conductivity
 
     def debye(self):
+        """Return the Debye length of the solution.
+
+        Uses the Debye-Huckel approximation for the calculation
+        """
         dielectric = self._dielectric(self.T)
         viscosity = self._viscosity(self.T)
         epsilon = dielectric * self._permittivity
