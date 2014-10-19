@@ -32,7 +32,7 @@ for key, file in files:
 
     fit_dict[key] = numpy.polyfit(nightingale_dict[key][0],
                                   nightingale_dict[key][1],
-                                  deg=7
+                                  deg=6
                                   )
 
 if __name__ == '__main__':
