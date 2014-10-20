@@ -13,7 +13,7 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-
+# Note: if you're having problems building the docs, use the virtual env
 
 import sys
 import os
