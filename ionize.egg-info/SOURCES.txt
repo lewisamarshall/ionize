@@ -21,6 +21,7 @@ ionize/Ion/L.py
 ionize/Ion/__init__.py
 ionize/Ion/activity_coefficient.py
 ionize/Ion/correct_pKa.py
+ionize/Ion/diffusivity.py
 ionize/Ion/effective_mobility.py
 ionize/Ion/ionization_fraction.py
 ionize/Ion/molar_conductivity.py
