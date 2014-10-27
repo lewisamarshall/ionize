@@ -59,6 +59,7 @@ class Ion(Aqueous):
     _F = 96485.34         # Faraday's const.[C/mol]
     _Lpm3 = 1000.0        # Conversion from liters to m^3
     _R = 8.314             # J/mol-K
+    _kB = 8.617e-6        # EV/K
 
     # The following are constants in eqtn 6 of Bahga 2010.
     # _Adh is updated for temperature on initialize.
@@ -236,6 +237,7 @@ class Ion(Aqueous):
     from .molar_conductivity import molar_conductivity
     from .robinson_stokes_mobility import robinson_stokes_mobility
     from .correct_pKa import _correct_pKa, _vant_hoff, _clark_glew
+    from .diffusivity import diffusivity
 
 if __name__ == '__main__':
     pass
