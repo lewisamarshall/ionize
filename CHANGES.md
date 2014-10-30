@@ -1,9 +1,13 @@
 Ionize Changelog
 ================
 
+0.7.0
+-----
+Added get_concentration as a method for Solutions.
+
 0.6.0
 -----
-Added diffusivity as a method for Ions. 
+Added diffusivity as a method for Ions.
 
 0.5.3
 -----
