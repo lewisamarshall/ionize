@@ -205,6 +205,13 @@ class Solution(Aqueous):
         lamda = (epsilon*self._k*self.T/self._e**2/self.I/self._Na)**.5
         return lamda
 
+    def get_concentration(self, ion):
+        if not ion in self.ions:
+            return 0
+        else:
+            idx = self.ions.index(ion)
+            return self.concentrations[idx]
+
     def __add__(self, other):
         new_i = self.ions[:]
         new_c = self.concentrations[:]
