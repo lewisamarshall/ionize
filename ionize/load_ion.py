@@ -31,8 +31,8 @@ def load_ion(ion_name, solvation=True):
                        ion_entry[0], ion_entry[1], ion_entry[2], ion_entry[3],
                        ion_entry[4], nightingale_function)
     else:
-        warnings.warn('Ion not found in database. Returning None.')
-        return None
+        # warnings.warn('Ion not found in database.)
+        raise NameError(ion_name)
 
 if __name__ == "__main__":
     ions = get_db()
