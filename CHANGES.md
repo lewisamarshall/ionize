@@ -1,6 +1,11 @@
 Ionize Changelog
 ================
 
+0.8.0
+-----
+Fixes to diffusivity for partially ionized species.
+Using load_ion with an invalid key will now raise an error instead of returning None.
+
 0.7.0
 -----
 Added get_concentration as a method for Solutions.
@@ -25,7 +30,6 @@ Corrected a problem in which the nucleic acid mobility was inaccurate.
 -----
 Added Debye length as a property of Solutions.
 Added Solution.set_T().
-
 
 0.4.0
 -----
