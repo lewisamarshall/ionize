@@ -1,6 +1,12 @@
+"""Create the Aqueous class to hold the properties of water."""
+
+
 class Aqueous(object):
 
+    """Describe the properties of water."""
+
     def __init__(self):
+        """Initialize."""
         pass
 
     def _dielectric(self, T=None):
@@ -23,8 +29,3 @@ class Aqueous(object):
         Tk = T+273.15
         v = (2.414e-5)*10**(247.8/(Tk-140))
         return v
-
-if __name__ == '__main__':
-    water = Aqueous()
-    print water.viscosity(50)
-    print water.dielectric(45)
