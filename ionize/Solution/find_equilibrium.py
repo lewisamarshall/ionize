@@ -1,5 +1,6 @@
 from scipy.optimize import newton, brentq
 import warnings
+# pylint: disable=W0212
 
 
 def find_equilibrium(self):

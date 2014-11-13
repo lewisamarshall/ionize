@@ -1,3 +1,6 @@
+# pylint: disable=W0212
+
+
 def equil_offset(self, I_i):
     """Return the error in ionic strength.
 

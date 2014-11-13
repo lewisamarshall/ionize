@@ -6,10 +6,10 @@ def conductivity(self):
 
     The conductivity is returned in Seimens per meter.
     """
-    con = 0
+    conduct = 0
     for c, i in zip(self.concentrations, self.ions):
-        con += c * i.molar_conductivity()
+        conduct += c * i.molar_conductivity()
 
-    con += self.OH_conductivity()    # Add OH- contribution.
-    con += self.H_conductivity()     # Add H+ contribution.
-    return con
+    conduct += self.OH_conductivity()    # Add OH- contribution.
+    conduct += self.H_conductivity()     # Add H+ contribution.
+    return conduct
