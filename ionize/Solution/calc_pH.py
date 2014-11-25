@@ -21,14 +21,12 @@ def calc_pH(self, I=0):
 
     # Set up the matrix of Ls, the multiplication
     # of acidity coefficients for each ion.
-    l_matrix = numpy.zeros([n_ions, max_columns])
-
-    for i in range(n_ions):
-        l_matrix[i, 0:len(self.ions[i].z)+1] = self.ions[i].L(I)
+    l_matrix = numpy.array([numpy.resize(i.L(I),
+                           [max_columns]) for i in self.ions])
 
     # Construct Q vector.
     Q = 1.0
-    for j in range(l_matrix.shape[0]):
+    for j in range(n_ions):
         Q = numpy.convolve(Q, l_matrix[j, :])
 
     # Convolve with water dissociation.
@@ -37,41 +35,40 @@ def calc_pH(self, I=0):
     # Construct P matrix
     PMat = []
     for i in range(n_ions):
-        z_list = self.ions[i].z0
+        z_list = numpy.resize(self.ions[i].z0, [max_columns])
 
-        tmp = numpy.zeros([1, l_matrix.shape[1]])
-        tmp[0, 0:len(z_list)] = z_list
         Mmod = l_matrix.copy()
-        Mmod[i, :] = Mmod[i, :] * tmp
+        Mmod[i, :] *= numpy.array(z_list)
 
-        Pi = 1
-        for kl in range(Mmod.shape[0]):
+        Pi = 1.
+        for kl in range(n_ions):
             Pi = numpy.convolve(Pi, Mmod[kl, :])
 
         Pi = numpy.convolve([0.0, 1.0], Pi)  # Convolve with P2
         PMat.append(Pi)
 
-    PMat = numpy.array(PMat, ndmin=2)
-
     # Multiply P matrix by concentrations, and sum.
-    C = numpy.tile((self.concentrations), ((PMat.shape[1], 1))).transpose()
-    P = numpy.sum(PMat*C, 0)
+    P = numpy.sum(numpy.array(PMat, ndmin=2) *
+                  numpy.array(self.concentrations)[:, numpy.newaxis], 0)
 
-    # Construct polynomial. Change the shapes as needed.
+    # Construct polynomial. Change the shapes as needed, then reverse the order
     if len(P) < len(Q):
         P.resize(Q.shape)
     elif len(P) > len(Q):
         Q.resize(P.shape)
-
-    poly = numpy.add(P, Q)
+    poly = (P+Q)[::-1]
 
     # Solve Polynomial for concentration
     # reverse order for poly function
-    roo = numpy.roots(poly[::-1])
+    cH = numpy.roots(poly)
 
-    roo_reduced = [r for r in roo if r.real > 0 and r.imag == 0]
-    if roo_reduced:
-        cH = float(roo_reduced[-1].real)
+    # Parse the real roots of the root finding algorithms
+    cH = [c for c in cH if c.real > 0 and c.imag == 0]
+    if len(cH) == 1:
+        cH = float(cH[0])
+    elif len(cH) > 1:
+        print 'Found multiple possible pH solutions. Choosing one.'
+        cH = float(cH[0])
     else:
         print 'Failed to find pH.'
 
