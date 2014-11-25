@@ -28,16 +28,3 @@ def L(self, I=None):
         [1/prod(Ka[index_0:i+1]) for i in range(len(Ka)) if i >= index_0]
 
     return L
-
-if __name__ == '__main__':
-    def a():
-        pass
-
-    def z0():
-        return[-1, 0, 1, 2]
-
-    def Ka_eff(I):
-        return [4.677351412871981e-10, 9.120108393559096e-07, 0.01]
-    a.Ka_eff = Ka_eff
-    a.z0 = z0
-    print L(a)
