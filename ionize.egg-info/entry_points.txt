@@ -1,3 +1,0 @@
-[gui_scripts]
-ionize_calculator = ionize_calculator
-
