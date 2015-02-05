@@ -64,4 +64,8 @@ def jovin(self):
 
 
 def gas(self):
-    pass
+    alberty = self.alberty()
+    jovin = self.jovin()
+    gas = [alberty - jovin / self._H.effective_mobility(self.pH),
+           alberty - jovin / self._OH.effective_mobility(self.pH)]
+    return tuple(gas)

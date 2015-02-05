@@ -29,4 +29,4 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
         else:
             return (self + (titrant, c))
     else:
-        raise
+        raise RuntimeError('Solver did not converge.')

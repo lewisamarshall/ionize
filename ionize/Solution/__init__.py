@@ -268,5 +268,5 @@ class Solution(Aqueous):
     from .onsager_fuoss import onsager_fuoss as _onsager_fuoss
     from .transference import transference
     from .zone_transfer import zone_transfer
-    from .conservation import kohlrausch, alberty, jovin
+    from .conservation import kohlrausch, alberty, jovin, gas
     from .titrate import titrate
