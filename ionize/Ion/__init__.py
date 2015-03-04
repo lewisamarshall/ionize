@@ -122,20 +122,7 @@ class Ion(Aqueous):
         except:
             self._absolute_mobility_ref = [absolute_mobility_ref]
 
-        # Temperature adjust the ion.
-        self._set_Adh()
-        if T == T_ref:
-            self.pKa = self._pKa_ref
-            self.absolute_mobility = self._absolute_mobility_ref
-        else:
-            self.pKa = self._correct_pKa()
-            if self.nightingale_function:
-                self.absolute_mobility = [self.nightingale_function(self.T).tolist()] *\
-                    len(self.z)
-            else:
-                self.absolute_mobility =\
-                    [self._viscosity(self._T_ref)/self._viscosity(self.T)*m
-                     for m in self._absolute_mobility_ref]
+        self.temperature_adjust()
 
         # Force the sign of the fully ionized mobilities to match the sign of
         # the charge. This command provides a warning.
@@ -155,6 +142,23 @@ class Ion(Aqueous):
         assert len(self.absolute_mobility) == len(self.z), '''absolute_mobility is not
                                                     the same length as z'''
 
+
+
+    def temperature_adjust(self):
+        """Temperature adjust the ion."""
+        self._set_Adh()
+        if self.T == self._T_ref:
+            self.pKa = self._pKa_ref
+            self.absolute_mobility = self._absolute_mobility_ref
+        else:
+            self.pKa = self._correct_pKa()
+            if self.nightingale_function:
+                self.absolute_mobility = [self.nightingale_function(self.T).tolist()] *\
+                    len(self.z)
+            else:
+                self.absolute_mobility =\
+                    [self._viscosity(self._T_ref)/self._viscosity(self.T)*m
+                     for m in self._absolute_mobility_ref]
         # After storing the ion properties, ensure that the properties are
         # sorted in order of charge. All other ion methods assume that the
         # states will be sorted by charge.
@@ -202,10 +206,9 @@ class Ion(Aqueous):
 
     def set_T(self, T):
         """Return a new ion at the specified temperature."""
-        return Ion(self.name, self.z, self._pKa_ref,
-                   self._absolute_mobility_ref, self.dH, self.dCp,
-                   self.nightingale_function,
-                   T=T, T_ref=self._T_ref)
+        self.T = T
+        self.temperature_adjust()
+        return self
 
     def __str__(self):
         """Return a string representing the ion."""
