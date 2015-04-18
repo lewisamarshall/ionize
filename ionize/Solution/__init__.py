@@ -2,6 +2,7 @@ from ..Ion import Ion
 from math import log, log10, sqrt
 from ..Aqueous import Aqueous
 from ..load_ion import load_ion
+import warnings
 
 
 class Solution(Aqueous):
@@ -105,6 +106,9 @@ class Solution(Aqueous):
         else:
             self.pH = -log10(sqrt(self._Kw))
             self.I = self._calc_I(self.pH)
+
+        if self.I > 1:
+            warnings.warn('Ionic strength > 1M. Ionic stregth correction may be inaccurate.')
 
         for ion in self.ions:
             ion._I = self.I
