@@ -13,6 +13,9 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
     To titrate to a target property other than pH, simply set the property
     to a property of the Solution class.
     """
+    if isinstance(target, basestring):
+        target = load_ion(target)
+
     att = getattr(self, titration_property)
     if isinstance(att, numbers.Number):
         min_func = lambda c:\
