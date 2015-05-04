@@ -2,6 +2,7 @@ from math import copysign
 import shelve
 from load_steep_db import load_steep_db
 import json
+from process_nightingale import fit_dict
 
 
 def make_database():
@@ -69,15 +70,37 @@ def make_database():
         if state[4] and len(state[4]) < len(state[2]):
             state[4].append(0)
 
+        if name in fit_dict.keys():
+            nightingale_function = fit_dict[name]
+        else:
+            nightingale_function = None
         # Add the result to the ion dictionary.
-        ion_dict[name] = state
-    ion_dict['taps'][4] = [15.0]
+        serial_ion = {'type': 'ionize ion',
+                      'name': name,
+                      'z': state[0],
+                      'pKa_ref': state[1],
+                      'absolute_mobility_ref': state[2],
+                      'dH': dH,
+                      'dCp': dCp,
+                      'nightingale_function': nightingale_function}
+
+        ion_dict[name] = serial_ion
+    ion_dict['taps']['dCp'] = [15.0]
     # print ion_dict['taps']
     # print ion_dict['tartaric acid']
     # boric acid is uniquely in the STEEP database but not the Spresso database
     # add manually.
     steep_db['boric acid'][2][0] *= -1
-    ion_dict['boric acid'] = steep_db['boric acid']
+    boric = steep_db['boric acid']
+    ion_dict['boric acid'] = {'type': 'ionize ion',
+                              'name': 'boric acid',
+                              'z': boric[0],
+                              'pKa_ref': boric[1],
+                              'absolute_mobility_ref': boric[2],
+                              'dH': boric[3],
+                              'dCp': boric[4],
+                              'nightingale_function': None}
+
     n_steep += 1
     steep_common.append('boric acid')
 
@@ -98,10 +121,10 @@ def make_database():
             print name, 'in Steep database not added'
 
     # make sure that the length of dCp is the same as the length of z
-    for ion in sorted(ion_dict.keys()):
-        if ion_dict[ion][3]:
-            if len(ion_dict[ion][3]) != len(ion_dict[ion][0]):
-                print ion, ion_dict[ion]
+    # for ion in sorted(ion_dict.keys()):
+    #     if ion_dict[ion][3]:
+    #         if len(ion_dict[ion][3]) != len(ion_dict[ion][0]):
+    #             print ion, ion_dict[ion]
 
 if __name__ == "__main__":
     make_database()

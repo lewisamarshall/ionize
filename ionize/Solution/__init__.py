@@ -3,6 +3,7 @@ from math import log, log10, sqrt
 from ..Aqueous import Aqueous
 from ..load_ion import load_ion
 import warnings
+import json
 
 
 class Solution(Aqueous):
@@ -262,6 +263,19 @@ class Solution(Aqueous):
 
     def __len__(self):
         return len(self.ions)
+
+    def serialize(self):
+        serial = {'type': 'ionize solution',
+                  'ions': [ion.serialize() for ion in self.ions],
+                  'concentrations': self.concentrations,
+                  'T': self.T
+                  }
+
+        return serial
+
+    def save(self, filename):
+        with open(filename, 'w') as file:
+            json.dump(self.serialize(), file)
 
     from .calc_I import calc_I as _calc_I
     from .calc_pH import calc_pH as _calc_pH

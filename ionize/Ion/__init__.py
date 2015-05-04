@@ -1,6 +1,8 @@
 import warnings
 from math import copysign
 from ..Aqueous import Aqueous
+import json
+import numpy as np
 
 
 class Ion(Aqueous):
@@ -103,7 +105,11 @@ class Ion(Aqueous):
         self._T_ref = T_ref
         self.dH = dH
         self.dCp = dCp
-        self.nightingale_function = nightingale_function
+        self.nightingale_data = nightingale_function
+        if self.nightingale_data:
+            self.nightingale_function = np.poly1d(self.nightingale_data['fit'])
+        else:
+            self.nightingale_function = None
 
         # Copy in the properties that should be lists, as long as they are
         # single values or iterables.
@@ -153,8 +159,11 @@ class Ion(Aqueous):
         else:
             self.pKa = self._correct_pKa()
             if self.nightingale_function:
-                self.absolute_mobility = [self.nightingale_function(self.T).tolist()] *\
-                    len(self.z)
+                self.absolute_mobility = [self.nightingale_function(self.T).tolist()
+                                          *10.35e-11 * z /self._viscosity(self.T) for z in self.z ]
+                if (self.T > self.nightingale_data['max']) or \
+                   (self.T < self.nightingale_data['min']):
+                   warnings.warn('Temperature outside range for nightingale data.')
             else:
                 self.absolute_mobility =\
                     [self._viscosity(self._T_ref)/self._viscosity(self.T)*m
@@ -231,6 +240,31 @@ class Ion(Aqueous):
             return True
         else:
             return False
+
+    def serialize(self):
+        serial = {'type': 'ionize ion',
+                  'name': self.name,
+                  'z': self.z,
+                  'pKa_ref': self._pKa_ref,
+                  'absolute_mobility_ref': self._absolute_mobility_ref,
+                  'dH': self.dH,
+                  'dCp': self.dCp,
+                  'nightingale_function': None}
+        return serial
+
+    def deserialize(self, serial):
+        return Ion(serial['name'],
+                   serial['z'],
+                   serial['pKa_ref'],
+                   serial['absolute_mobility_ref'],
+                   serial['dH'],
+                   serial['dCp'],
+                   serial['nightingale_function'],
+                   T=25.0, T_ref=25.0)
+
+    def save(self, filename):
+        with open(filename, 'w') as file:
+            json.dump(self.serialize(), file)
 
     from .ionization_fraction import ionization_fraction
     from .activity_coefficient import activity_coefficient

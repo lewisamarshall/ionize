@@ -4,6 +4,16 @@ from get_db import get_db
 from load_nightingale import load_nightingale
 
 
+def deserialize_ion(serial):
+        return Ion(serial['name'],
+                   serial['z'],
+                   serial['pKa_ref'],
+                   serial['absolute_mobility_ref'],
+                   serial['dH'],
+                   serial['dCp'],
+                   serial['nightingale_function'],
+                   T=25.0, T_ref=25.0)
+
 def load_ion(ion_name, solvation=True):
     """Return an ion by name from the database.
 
@@ -17,19 +27,7 @@ def load_ion(ion_name, solvation=True):
     if ion_name in ion_list.keys():
         ion_entry = ion_list[ion_name]
 
-        if solvation:
-            nightingale_function = load_nightingale(ion_name)
-        else:
-            nightingale_function = None
-
-        if len(ion_entry) == 3:
-            return Ion(ion_name.lower(),
-                       ion_entry[0], ion_entry[1], ion_entry[2],
-                       nightingale_function)
-        elif len(ion_entry) == 5:
-            return Ion(ion_name.lower(),
-                       ion_entry[0], ion_entry[1], ion_entry[2], ion_entry[3],
-                       ion_entry[4], nightingale_function)
+        return deserialize_ion(ion_entry)
     else:
         # warnings.warn('Ion not found in database.)
         raise NameError(ion_name)
