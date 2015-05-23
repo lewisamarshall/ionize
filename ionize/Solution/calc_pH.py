@@ -65,10 +65,10 @@ def calc_pH(self, I=0):
     # Parse the real roots of the root finding algorithms
     cH = [c for c in cH if c.real > 0 and c.imag == 0]
     if len(cH) == 1:
-        cH = float(cH[0])
+        cH = numpy.real(cH)[0]
     elif len(cH) > 1:
         print 'Found multiple possible pH solutions. Choosing one.'
-        cH = float(cH[0])
+        cH = numpy.real(cH)[0]
     else:
         print 'Failed to find pH.'
 

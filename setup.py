@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(name='ionize',
-      version='0.10.0',
+      version='0.10.1',
       author='Lewis A. Marshall',
       author_email='lewis.a.marshall@gmail.com',
       url="http://lewisamarshall.github.io/ionize/",
