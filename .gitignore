@@ -54,4 +54,4 @@ docs/venv/
 target/
 
 # Tutorial save files
-*.json
+tris_caproic.json
