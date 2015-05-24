@@ -68,6 +68,7 @@ def calc_pH(self, I=0):
         cH = numpy.real(cH)[0]
     elif len(cH) > 1:
         print 'Found multiple possible pH solutions. Choosing one.'
+        print 'Possible pHs: {}'.format([-log10(c) for c in numpy.real(cH)])
         cH = numpy.real(cH)[0]
     else:
         print 'Failed to find pH.'
