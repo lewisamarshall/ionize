@@ -62,7 +62,5 @@ the Spresso and STEEP databases. This database can be accessed through the
 [peakmaster]: http://web.natur.cuni.cz/gas/ "Peakmaster"
 [Spresso]: http://stanfordspresso.blogspot.com/ "Spresso"
 [STEEP]: http://microfluidics.stanford.edu/download/ "STEEP"
-[tutorial]: http://nbviewer.ipython.org/github/lewisamarshall/ionize/blob/master/tutorial.ipynb  "ionize Tutorial"
-[examples]: http://nbviewer.ipython.org/github/lewisamarshall/ionize/blob/master/examples.ipynb  "ionize Examples"
-
- <!-- This is a comment. -->
+[tutorial]: ./tutorial.ipynb  "ionize Tutorial"
+[examples]: ./examples.ipynb  "ionize Examples"

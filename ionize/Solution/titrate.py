@@ -1,6 +1,7 @@
 from scipy.optimize import newton, brentq
 import numbers
 from ..Ion import Ion
+from ..load_ion import load_ion
 
 
 def titrate(self, titrant, target, titration_property='pH', return_c=False):
@@ -13,8 +14,8 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
     To titrate to a target property other than pH, simply set the property
     to a property of the Solution class.
     """
-    if isinstance(target, basestring):
-        target = load_ion(target)
+    if isinstance(titrant, basestring):
+        titrant = load_ion(titrant)
 
     att = getattr(self, titration_property)
     if isinstance(att, numbers.Number):
