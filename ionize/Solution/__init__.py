@@ -109,7 +109,8 @@ class Solution(Aqueous):
             self.I = self._calc_I(self.pH)
 
         if self.I > 1:
-            warnings.warn('Ionic strength > 1M. Ionic stregth correction may be inaccurate.')
+            warnings.warn(('Ionic strength > 1M. '
+                          'Ionic stregth correction may be inaccurate.'))
 
         for ion in self.ions:
             ion._I = self.I
@@ -211,7 +212,7 @@ class Solution(Aqueous):
         return lamda
 
     def get_concentration(self, ion):
-        if not ion in self.ions:
+        if ion not in self.ions:
             return 0
         else:
             idx = self.ions.index(ion)

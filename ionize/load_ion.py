@@ -14,6 +14,7 @@ def deserialize_ion(serial):
                    serial['nightingale_function'],
                    T=25.0, T_ref=25.0)
 
+
 def load_ion(ion_name, solvation=True):
     """Return an ion by name from the database.
 

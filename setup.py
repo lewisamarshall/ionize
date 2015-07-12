@@ -25,5 +25,4 @@ setup(name='ionize',
       package_data={'ionize': ['ions_db.json',
                                'nightingale_data/*.txt'],
                     },
-      entry_points={'gui_scripts': ['ionize_calculator = ionize_calculator']}
       )
