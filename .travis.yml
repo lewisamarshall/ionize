@@ -1,3 +1,4 @@
+sudo: false
 language: python
 python:
   - 2.7
@@ -16,6 +17,5 @@ install:
   - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy nose
   - python setup.py install
 
-# Run test
 script:
   - nosetests --logging-level=INFO
