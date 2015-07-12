@@ -18,4 +18,4 @@ install:
   - python setup.py install
 
 script:
-  - nosetests --logging-level=INFO
+  - python -m ionize.tests
