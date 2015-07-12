@@ -18,4 +18,4 @@ install:
   - python setup.py install
 
 script:
-  - python -m ionize.tests
+  - python setup.py test
