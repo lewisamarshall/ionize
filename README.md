@@ -24,13 +24,12 @@ One-line install using [pip](https://pypi.python.org/pypi/pip):
 
 Tutorial
 --------
-Want to use **ionize**? Read the [tutorial][tutorial], written with iPython
-Notebook.
+Want to use **ionize**? Read the [tutorial][tutorial].
 
 Examples
 --------
 Want to see some examples of **ionize** in action? Take a look at the
-[examples][examples], displayed with iPython Notebook.
+[examples][examples].
 
 ionize Components
 -----------------
