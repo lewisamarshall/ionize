@@ -88,8 +88,8 @@ def onsager_fuoss(self):
     # A_prime = self._F*0.78420
     # B_prime = 31.41e-9
 
-    mob_new = (self._F*omega-(A_prime*z_list*factor*omega+B_prime)*sqrt(self.I) /
-               (1+1.5*sqrt(self.I)))*z_list
+    mob_new = (self._F * omega - (A_prime*z_list*factor*omega+B_prime) *
+               sqrt(self.I) / (1+1.5*sqrt(self.I))) * z_list
 
     # transfer the new mobilities from a numpy array back to alist.
     mob_new = mob_new.tolist()

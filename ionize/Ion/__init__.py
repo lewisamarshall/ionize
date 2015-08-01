@@ -148,8 +148,6 @@ class Ion(Aqueous):
         assert len(self.absolute_mobility) == len(self.z), '''absolute_mobility is not
                                                     the same length as z'''
 
-
-
     def temperature_adjust(self):
         """Temperature adjust the ion."""
         self._set_Adh()
@@ -159,11 +157,13 @@ class Ion(Aqueous):
         else:
             self.pKa = self._correct_pKa()
             if self.nightingale_function:
-                self.absolute_mobility = [self.nightingale_function(self.T).tolist()
-                                          *10.35e-11 * z /self._viscosity(self.T) for z in self.z ]
+                self.absolute_mobility = \
+                    [self.nightingale_function(self.T).tolist()
+                     * 10.35e-11 * z / self._viscosity(self.T) for z in self.z]
                 if (self.T > self.nightingale_data['max']) or \
-                   (self.T < self.nightingale_data['min']):
-                   warnings.warn('Temperature outside range for nightingale data.')
+                        (self.T < self.nightingale_data['min']):
+                    warnings.warn('Temperature outside range'
+                                  'for nightingale data.')
             else:
                 self.absolute_mobility =\
                     [self._viscosity(self._T_ref)/self._viscosity(self.T)*m

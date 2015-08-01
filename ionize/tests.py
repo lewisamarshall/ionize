@@ -6,6 +6,7 @@ from .search_ion import search_ion
 from .nucleic_acid import nucleic_acid
 import unittest
 
+
 class TestIon(unittest.TestCase):
 
     def setUp(self):
@@ -15,6 +16,7 @@ class TestIon(unittest.TestCase):
         for ion_name in self.db.keys():
             ion = load_ion(ion_name)
             ion.molar_conductivity(7, 0.1)
+
 
 class TestSolution(unittest.TestCase):
 
