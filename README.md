@@ -9,7 +9,7 @@ A unified Python package for calculating buffer properties.
 aqueous solution, as well as aqueous solutions containing arbitrary
 sets of ions.
 
-The **ionize** model is based on techniques previously demonstrated by
+The **ionize** model uses techniques demonstrated by
 [Peakmaster][peakmaster], [Spresso][Spresso], and [STEEP][STEEP]. The **ionize**
 model takes into account pH, ionic strength, and temperature effects, including
 the  most up-to-date temperature model published in STEEP. The **ionize** object
@@ -33,7 +33,7 @@ Want to see some examples of **ionize** in action? Take a look at the
 
 ionize Components
 -----------------
-**ionize** is composed of three main components:
+**ionize** has two main components:
 
 ###The Ion Class
 The core of **ionize** is the **Ion** class, which  represents a single ionic
@@ -44,18 +44,13 @@ an absolute mobility. An ionization  state may also include values for
 correction.
 
 ###The Solution Class
-The **Solution** class is used to represent an aqueous solution containing any
+The **Solution** class represents an aqueous solution containing any
 number of ionic species. A **Solution** contains a list of **Ion** objects, and
 a second list containing the concentrations of each species. **Solution** can
 also take an optional temperature parameter. **Solution** solves for pH,
-iteratively accounting for the ionic strength. The ionic strength and pH are
-used to calculate the properties of the **Ions**, and bulk properties of the
-solution such as conductivity.
-
-###The ionize Database
-**ionize** also contains its own database, containing the combined entries of
-the Spresso and STEEP databases. This database can be accessed through the
-**load_ion**() and **search_ion**() functions.
+iteratively accounting for the ionic strength. Based on ionic strength and pH,
+the **Ions** calculate their own properties, and the **Solution** calculates
+bulk properties like conductivity.
 
 
 [peakmaster]: http://web.natur.cuni.cz/gas/ "Peakmaster"

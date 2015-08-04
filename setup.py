@@ -1,5 +1,6 @@
 #!/usr/bin/python
 from setuptools import setup, find_packages
+import pypandoc
 
 setup(name='ionize',
       version='0.10.4',
@@ -19,7 +20,7 @@ setup(name='ionize',
       use_2to3=True,
       license='LICENSE',
       description='A package for calculating electrolyte properties.',
-      long_description=open('README.txt').read(),
+      long_description=pypandoc.convert('README.md', 'rst'),
       packages=find_packages(),
       requires=['numpy', 'scipy'],
       package_data={'ionize': ['ions_db.json',
