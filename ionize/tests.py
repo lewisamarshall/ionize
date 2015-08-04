@@ -25,8 +25,7 @@ class TestSolution(unittest.TestCase):
         self.tris = load_ion('tris')
 
     def test_titration(self):
-        print 'Titrating buffer.'
-        c_tris = 1.0
+        c_tris = 0.3
         pH_old = 14
         n = 100
         c_hcl_set = [c_tris * i * 2.0 / n for i in range(n)]
