@@ -101,6 +101,8 @@ def make_database():
                               'dCp': boric[4],
                               'nightingale_function': None}
 
+    # Remove valences to fix ion search
+    # TODO: Undo this.
     ion_dict['uranyl'] = ion_dict.pop('uranyl(vi)')
     ion_dict['iron'] = ion_dict.pop('iron(ii)')
 
