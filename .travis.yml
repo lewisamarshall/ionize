@@ -16,9 +16,10 @@ before_install:
   - export PATH=/home/travis/miniconda/bin:$PATH
   - conda update --yes conda
   - pip install coveralls
+  - pip install pypandoc
 
 install:
-  - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy nose coverage pypandoc
+  - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy nose coverage
 
 script:
   - coverage run --source=ionize setup.py test
