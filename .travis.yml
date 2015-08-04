@@ -18,7 +18,7 @@ before_install:
   - pip install coveralls
 
 install:
-  - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy nose coverage
+  - conda install --yes python=$TRAVIS_PYTHON_VERSION numpy scipy nose coverage pypandoc
 
 script:
   - coverage run --source=ionize setup.py test
