@@ -25,7 +25,7 @@ def search_ion(searchstring=None, z_search=None):
             z_range = [z_search]
 
         for name in ion_list.keys():
-            z = ion_list[name][0]
+            z = ion_list[name]['z']
             if not any([zp in z_range for zp in z]):
                 ion_list.pop(name)
 

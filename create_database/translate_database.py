@@ -8,7 +8,7 @@ from process_nightingale import fit_dict
 def make_database():
     """Make the ionize database.
 
-    The ionize database is drawn from the STEEP and Spresso databases. These old
+    The ionize database is drawn from the STEEP and Spresso databases. These
     database files are housed in csv files. These databases are translated,
     combined, and housed in a shelve database.
 
@@ -100,6 +100,11 @@ def make_database():
                               'dH': boric[3],
                               'dCp': boric[4],
                               'nightingale_function': None}
+
+    # Remove valences to fix ion search
+    # TODO: Undo this.
+    ion_dict['uranyl'] = ion_dict.pop('uranyl(vi)')
+    ion_dict['iron'] = ion_dict.pop('iron(ii)')
 
     n_steep += 1
     steep_common.append('boric acid')
