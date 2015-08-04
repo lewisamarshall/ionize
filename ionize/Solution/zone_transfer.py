@@ -4,7 +4,7 @@ def zone_transfer(self):
     transference = self.transference()
     for i in range(len(Qi)):
         if self.concentrations[i] == 0:
-            Q[i] = 0
+            Qi[i] = 0
         else:
             Qi[i] = (self.ions[i].molar_conductivity(self.pH, self.I) *
                      self.concentrations[i]/transference[i] /
