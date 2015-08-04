@@ -6,6 +6,10 @@ python:
   - 2.7
   - 3.4
 
+addons:
+  apt_packages:
+    - pandoc
+    
 notifications:
   email: false
 
