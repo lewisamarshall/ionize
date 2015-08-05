@@ -1,7 +1,6 @@
 ionize
 =====
-[![Build Status](https://travis-ci.org/lewisamarshall/ionize.svg?branch=master)](https://travis-ci.org/lewisamarshall/ionize)
-[![Docs Status](https://readthedocs.org/projects/ionize/badge/?version=latest)](https://ionize.readthedocs.org)
+[![Code Climate](https://codeclimate.com/github/lewisamarshall/ionize/badges/gpa.svg)](https://codeclimate.com/github/lewisamarshall/ionize) [![Build Status](https://travis-ci.org/lewisamarshall/ionize.svg?branch=master)](https://travis-ci.org/lewisamarshall/ionize)  [![Coverage Status](https://coveralls.io/repos/lewisamarshall/ionize/badge.svg?branch=master&service=github)](https://coveralls.io/github/lewisamarshall/ionize?branch=master) [![Docs Status](https://readthedocs.org/projects/ionize/badge/?version=latest)](https://ionize.readthedocs.org)
 
 A unified Python package for calculating buffer properties.
 
