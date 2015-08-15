@@ -75,8 +75,7 @@ def make_database():
         else:
             nightingale_function = None
         # Add the result to the ion dictionary.
-        serial_ion = {'type': 'ionize ion',
-                      'name': name,
+        serial_ion = {'name': name,
                       'z': state[0],
                       'pKa_ref': state[1],
                       'absolute_mobility_ref': state[2],
@@ -92,8 +91,7 @@ def make_database():
     # add manually.
     steep_db['boric acid'][2][0] *= -1
     boric = steep_db['boric acid']
-    ion_dict['boric acid'] = {'type': 'ionize ion',
-                              'name': 'boric acid',
+    ion_dict['boric acid'] = {'name': 'boric acid',
                               'z': boric[0],
                               'pKa_ref': boric[1],
                               'absolute_mobility_ref': boric[2],
@@ -112,6 +110,9 @@ def make_database():
     # ions = shelve.open('ionize/ions_shelve')
     # ions.update(ion_dict)
     # ions.close()
+
+    for key in ion_dict.keys():
+        ion_dict[key]['__ion__'] = True
 
     with open('ionize/ions_db.json', 'wb') as ion_db:
         json.dump(ion_dict, ion_db,
