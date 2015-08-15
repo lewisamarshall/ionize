@@ -85,8 +85,7 @@ class Ion(Aqueous):
     dCp = None
     z0 = None
     T = 25
-    # _dielectric = dielectric
-    # _viscosity = viscosity
+
     # If the Ion is in a solution object, copy the pH and I of the Solution
     # locally for reference, in a private variable. Also store the Onsager-
     # Fouss mobility in actual_mobility.
@@ -158,8 +157,8 @@ class Ion(Aqueous):
             self.pKa = self._correct_pKa()
             if self.nightingale_function:
                 self.absolute_mobility = \
-                    [self.nightingale_function(self.T).tolist()
-                     * 10.35e-11 * z / self._viscosity(self.T) for z in self.z]
+                    [self.nightingale_function(self.T).tolist() *
+                     10.35e-11 * z / self._viscosity(self.T) for z in self.z]
                 if (self.T > self.nightingale_data['max']) or \
                         (self.T < self.nightingale_data['min']):
                     warnings.warn('Temperature outside range'
