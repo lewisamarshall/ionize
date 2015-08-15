@@ -43,11 +43,11 @@ class Solution(Aqueous):
         appropriate method.
     """
 
+    _solvant = Aqueous()
+
     _F = 96485.3415        # Faraday's const.           [C/mol]
     _R = 8.31              # Universal gas const.       [J/mol*K]
-    _Kw_ref = 1E-14        # Water equilibrium constant [mol^2]
     _Lpm3 = 1000.0         # Liters per meter^3         []
-    _visc = 1E-3           # Dynamic viscosity (water)  [Pa s]
     _Adh = 0.512           # L^1/2 / mol^1/2, approximate for room temperature
     _aD = 1.5              # mol^-1/2 mol^-3/2, approximation
     _permittivity = 8.85e-12   # permittivity of free space
@@ -65,17 +65,15 @@ class Solution(Aqueous):
     T = 25                 # Temperature in C
     _T_ref = 25            # reference temperature
 
-    _dHw = 55.815e3
-    _dCpw = -224
 
     def __init__(self, ions=[], concentrations=[], T=25):
         """Initialize a solution object."""
 
         self.T = float(T)
         if self.T == self._T_ref:
-            self._Kw = self._Kw_ref
+            self._Kw = self._solvent._Kw_ref
         else:
-            self._Kw = self.adjust_Kw()
+            self._Kw = self._solvent.dissociation(self.T)
 
         if isinstance(ions, basestring):
             ions = [ions]
@@ -127,15 +125,6 @@ class Solution(Aqueous):
     def set_T(self, T):
         return Solution(self.ions, self.concentrations, T=T)
 
-    def adjust_Kw(self):
-        pKw_ref = -log10(self._Kw_ref)
-        T_ref = self._T_ref + 273.15
-        T = self.T + 273.15
-        pKw = pKw_ref -\
-            (self._dHw/2.303/self._R)*(1.0/T_ref - 1.0/T) -\
-            (self._dCpw/2.303/self._R)*(T_ref/T-1.0+log(T/T_ref))
-        Kw = 10.0**(-pKw)
-        return Kw
 
     def buffering_capacity(self):
         """Return the buffering capacity of the solution.
