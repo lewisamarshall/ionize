@@ -43,7 +43,7 @@ class Solution(Aqueous):
         appropriate method.
     """
 
-    _solvant = Aqueous()
+    _solvent = Aqueous()
 
     _F = 96485.3415        # Faraday's const.           [C/mol]
     _R = 8.31              # Universal gas const.       [J/mol*K]
@@ -194,8 +194,8 @@ class Solution(Aqueous):
 
         Uses the Debye-Huckel approximation for the calculation
         """
-        dielectric = self._dielectric(self.T)
-        viscosity = self._viscosity(self.T)
+        dielectric = self._solvent.dielectric(self.T)
+        viscosity = self._solvent.viscosity(self.T)
         epsilon = dielectric * self._permittivity
         lamda = (epsilon*self._k*self.T/self._e**2/self.I/self._Na)**.5
         return lamda
@@ -256,8 +256,9 @@ class Solution(Aqueous):
 
     def serialize(self, nested=False):
         serial = {'__solution__': True}
-        serial.update(self.__dict__)
+        serial['concentrations'] = self.concentrations
         serial['ions'] = [ion.serialize(nested=True) for ion in self.ions]
+        serial['T'] = self.T
 
         if __nested__:
             return serial
