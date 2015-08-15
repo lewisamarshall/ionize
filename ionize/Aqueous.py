@@ -1,5 +1,5 @@
 """Create the Aqueous class to hold the properties of water."""
-
+from math import log10, log
 
 class Aqueous(object):
 
@@ -42,6 +42,6 @@ class Aqueous(object):
         T += 273.15
         pKw = pKw_ref -\
             (self._dHw/2.303/self._R)*(1.0/T_ref - 1.0/T) -\
-            (self._dCpw/2.303/self._R)*(T_ref/T-1.0+log(T/T_ref))
+            (self._dCpw/2.303/self._R)*(T_ref/T-1.0+log10(T/T_ref))
         Kw = 10.0**(-pKw)
         return Kw

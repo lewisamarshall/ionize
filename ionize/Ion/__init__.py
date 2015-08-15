@@ -57,6 +57,8 @@ class Ion(Aqueous):
 
         >>> ionize.Ion('my_acid', [-1, -2], [1.2, 3.4], [-10e-8, -21e-8])
     """
+    _solvent = Aqueous()
+
     # These are constants and should not change.
     _F = 96485.34         # Faraday's const.[C/mol]
     _Lpm3 = 1000.0        # Conversion from liters to m^3
@@ -158,14 +160,14 @@ class Ion(Aqueous):
             if self.nightingale_function:
                 self.absolute_mobility = \
                     [self.nightingale_function(self.T).tolist() *
-                     10.35e-11 * z / self._viscosity(self.T) for z in self.z]
+                     10.35e-11 * z / self._solvent.viscosity(self.T) for z in self.z]
                 if (self.T > self.nightingale_data['max']) or \
                         (self.T < self.nightingale_data['min']):
                     warnings.warn('Temperature outside range'
                                   'for nightingale data.')
             else:
                 self.absolute_mobility =\
-                    [self._viscosity(self._T_ref)/self._viscosity(self.T)*m
+                    [self._solvent.viscosity(self._T_ref)/self._solvent.viscosity(self.T)*m
                      for m in self._absolute_mobility_ref]
         # After storing the ion properties, ensure that the properties are
         # sorted in order of charge. All other ion methods assume that the
@@ -207,8 +209,8 @@ class Ion(Aqueous):
             T = self.T
         T_ref = 25
         Adh_ref = 0.5102
-        d = self._dielectric(T)
-        d_ref = self._dielectric(T)
+        d = self._solvent.dielectric(T)
+        d_ref = self._solvent.dielectric(T)
         self._Adh = Adh_ref * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
         return None
 
