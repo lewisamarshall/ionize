@@ -240,16 +240,13 @@ class Ion(Aqueous):
         else:
             return False
 
-    def serialize(self):
-        serial = {'type': 'ionize ion',
-                  'name': self.name,
-                  'z': self.z,
-                  'pKa_ref': self._pKa_ref,
-                  'absolute_mobility_ref': self._absolute_mobility_ref,
-                  'dH': self.dH,
-                  'dCp': self.dCp,
-                  'nightingale_function': None}
-        return serial
+    def serialize(self, nested=False):
+        serial = {'__ion__': True}
+        serial.update(self.__dict__)
+        if nested:
+            return serial
+        else:
+            return json.dumps(serial)
 
     def deserialize(self, serial):
         return Ion(serial['name'],

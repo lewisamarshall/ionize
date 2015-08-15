@@ -254,14 +254,16 @@ class Solution(Aqueous):
     def __len__(self):
         return len(self.ions)
 
-    def serialize(self):
-        serial = {'type': 'ionize solution',
-                  'ions': [ion.serialize() for ion in self.ions],
-                  'concentrations': self.concentrations,
-                  'T': self.T
-                  }
+    def serialize(self, nested=False):
+        serial = {'__solution__': True}
+        serial.update(self.__dict__)
+        serial['ions'] = [ion.serialize(nested=True) for ion in self.ions]
 
-        return serial
+        if __nested__:
+            return serial
+        else:
+            return json.dumps(serial)
+
 
     def save(self, filename):
         with open(filename, 'w') as file:
