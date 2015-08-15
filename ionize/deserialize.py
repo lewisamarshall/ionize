@@ -3,7 +3,7 @@ from .Ion import Ion
 import json
 
 def deserialize(serial):
-        serial = json.loads(serial, _object_hook=_object_hook)
+        serial = json.loads(serial, object_hook=_object_hook)
 
 
 def _object_hook(obj):
