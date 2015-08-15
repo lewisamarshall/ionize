@@ -265,7 +265,6 @@ class Solution(Aqueous):
         else:
             return json.dumps(serial)
 
-
     def save(self, filename):
         with open(filename, 'w') as file:
             json.dump(self.serialize(), file)

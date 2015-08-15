@@ -245,20 +245,13 @@ class Ion(Aqueous):
     def serialize(self, nested=False):
         serial = {'__ion__': True}
         serial.update(self.__dict__)
+        if 'nightingale_function' in serial:
+            serial.pop('nightingale_function')
+
         if nested:
             return serial
         else:
             return json.dumps(serial)
-
-    def deserialize(self, serial):
-        return Ion(serial['name'],
-                   serial['z'],
-                   serial['pKa_ref'],
-                   serial['absolute_mobility_ref'],
-                   serial['dH'],
-                   serial['dCp'],
-                   serial['nightingale_function'],
-                   T=25.0, T_ref=25.0)
 
     def save(self, filename):
         with open(filename, 'w') as file:
