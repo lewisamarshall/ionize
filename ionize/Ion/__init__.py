@@ -5,7 +5,8 @@ import json
 import numpy as np
 
 
-class Ion(Aqueous):
+
+class Ion(BaseIon):
 
     """Describe an ion dissolved in aqueous solution.
 
@@ -219,28 +220,6 @@ class Ion(Aqueous):
         self.T = T
         self.temperature_adjust()
         return self
-
-    def __str__(self):
-        """Return a string representing the ion."""
-        obj_str = "Ion('{}', z={})".format(self.name, self.z)
-        return obj_str
-
-    def __repr__(self):
-        """Return a representation of the ion."""
-        return self.__str__()
-
-    def __eq__(self, other):
-        if self.name == other.name and\
-                self.z == other.z and \
-                self._pKa_ref == other._pKa_ref and\
-                self._absolute_mobility_ref == other._absolute_mobility_ref and\
-                self.dH == other.dH and\
-                self.dCp == other.dCp and\
-                self._T_ref == other._T_ref:
-                # self.nightingale_function == other.nightingale_function and\
-            return True
-        else:
-            return False
 
     def serialize(self, nested=False):
         serial = {'__ion__': True}

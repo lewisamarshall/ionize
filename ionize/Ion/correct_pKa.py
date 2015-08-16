@@ -1,5 +1,6 @@
 import warnings
 from math import log
+from ..constants import gas_constant
 
 
 def _correct_pKa(self):
@@ -29,7 +30,7 @@ def _vant_hoff(self):
     pKa_ref = self._pKa_ref
     dH = self.dH
     if dH and len(dH) == len(pKa_ref):
-        pKa = [p - h/(2.303 * self._R)*(1/T_ref - 1/T)
+        pKa = [p - h/(2.303 * gas_constant)*(1/T_ref - 1/T)
                for p, h in zip(pKa_ref, dH)]
     else:
         warnings.warn('No dH available. Returning uncorrected pKa.')
@@ -46,8 +47,8 @@ def _clark_glew(self):
     dH = self.dH
     dCp = self.dCp
     if dH and dCp and len(dH) == len(pKa_ref) == len(dCp):
-        pKa = [p - h/(2.303 * self._R)*(1/T_ref - 1/T)
-               - c/(2.303 * self._R) * (T_ref/T - 1 - log(T/T_ref))
+        pKa = [p - h/(2.303 * gas_constant)*(1/T_ref - 1/T) -
+               c/(2.303 * gas_constant) * (T_ref/T - 1 - log(T/T_ref))
                for p, h, c in zip(pKa_ref, dH, dCp)]
     else:
         warnings.warn('No dCp available. Returning uncorrected pKa.')

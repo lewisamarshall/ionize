@@ -1,3 +1,6 @@
+from ..constants import faraday, lpm3
+
+
 def molar_conductivity(self, pH=None, I=None):
     """Retun the molar conductivity of the ion based on the pH and I.
 
@@ -34,7 +37,7 @@ def molar_conductivity(self, pH=None, I=None):
 
     i_frac = self.ionization_fraction(pH, I)
 
-    m_conductivity = (self._Lpm3 * self._F *
+    m_conductivity = (lpm3 * faraday *
                       sum(z * f * m for (z, f, m)
                           in zip(self.z, i_frac, actual_mobility)))
 

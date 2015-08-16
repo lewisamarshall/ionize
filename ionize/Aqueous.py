@@ -1,5 +1,7 @@
 """Create the Aqueous class to hold the properties of water."""
 from math import log10, log
+from .constants import gas_constant
+
 
 class Aqueous(object):
 
@@ -9,7 +11,6 @@ class Aqueous(object):
     _dHw = 55.815e3
     _dCpw = -224
     _T_ref = 25.
-    _R = 8.31              # Universal gas const.       [J/mol*K]
 
     def dielectric(self, T=None):
         """Return the dielectric constant of water at a specified temperature.
@@ -41,7 +42,7 @@ class Aqueous(object):
         T_ref = self._T_ref + 273.15
         T += 273.15
         pKw = pKw_ref -\
-            (self._dHw/2.303/self._R)*(1.0/T_ref - 1.0/T) -\
-            (self._dCpw/2.303/self._R)*(T_ref/T-1.0+log10(T/T_ref))
+            (self._dHw/2.303/gas_constant)*(1.0/T_ref - 1.0/T) -\
+            (self._dCpw/2.303/gas_constant)*(T_ref/T-1.0+log10(T/T_ref))
         Kw = 10.0**(-pKw)
         return Kw

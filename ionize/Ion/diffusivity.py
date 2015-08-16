@@ -1,3 +1,6 @@
+from ..constants import boltzmann
+
+
 def diffusivity(self, pH):
     """Return the diffusivity of the species at a specified pH.
 
@@ -7,6 +10,6 @@ def diffusivity(self, pH):
                       m, f, z in zip(self.absolute_mobility,
                                      self.ionization_fraction(pH),
                                      self.z
-                                     )]) * self._kB * (self.T + 273.15)
+                                     )]) * boltzmann * (self.T + 273.15)
     diffusivity /= sum(self.ionization_fraction(pH))
     return diffusivity

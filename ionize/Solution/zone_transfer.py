@@ -1,3 +1,5 @@
+from ..constants import lpm3
+
 def zone_transfer(self):
     """Return the zone transfer charge of the solution per liter."""
     Qi = [0]*len(self.ions)
@@ -10,5 +12,5 @@ def zone_transfer(self):
                      self.concentrations[i]/transference[i] /
                      abs(self.ions[i].effective_mobility(self.pH, self.I)))
 
-    Qi = [Qp/self._Lpm3 for Qp in Qi]
+    Qi = [Qp/lpm3 for Qp in Qi]
     return Qi
