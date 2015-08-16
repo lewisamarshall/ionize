@@ -1,5 +1,6 @@
 import warnings
 from numpy import mean
+from ..constants import lpm3
 
 
 def kohlrausch(self):
@@ -12,7 +13,7 @@ def kohlrausch(self):
     for ion, c in zip(self.ions, self.concentrations):
         z_eff = (mean([z*f for z, f in
                  zip(ion.z, ion.ionization_fraction())]))
-        KRF += abs(z_eff) * c * ion._Lpm3 / ion.effective_mobility()
+        KRF += abs(z_eff) * c * lpm3 / ion.effective_mobility()
         if max(ion.ionization_fraction()) < .9:
             warnings.warn('ions are not fully ionized. KRF is a poor approx.')
 
@@ -29,14 +30,14 @@ def alberty(self):
 
     for ion, c in zip(self.ions, self.concentrations):
         if len(ion.actual_mobility) == 1:
-            al += c * ion._Lpm3 / abs(ion.actual_mobility[0])
+            al += c * lpm3 / abs(ion.actual_mobility[0])
         else:
             f = ion.ionization_fraction()
             if max(f)/sum(f) < .9:
                 warnings.warn('Ion not in single valance. Alberty invalid.')
             elif abs(ion.z[f.index(max(f))]) != 1:
                 warnings.warn('Ion valance is not 1. Alberty invalid.')
-            al += c * ion._Lpm3 / abs(ion.actual_mobility[f.index(max(f))])
+            al += c * lpm3 / abs(ion.actual_mobility[f.index(max(f))])
 
     return al
 
@@ -66,6 +67,6 @@ def jovin(self):
 def gas(self):
     alberty = self.alberty()
     jovin = self.jovin()
-    gas = [alberty - jovin / self._H.effective_mobility(self.pH),
-           alberty - jovin / self._OH.effective_mobility(self.pH)]
+    gas = [alberty - jovin / self._hydronium.effective_mobility(self.pH),
+           alberty - jovin / self._hydroxide.effective_mobility(self.pH)]
     return tuple(gas)

@@ -55,3 +55,6 @@ target/
 
 # Tutorial save files
 tris_caproic.json
+
+# checkpoints
+.ipynb_checkpoints

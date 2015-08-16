@@ -1,5 +1,6 @@
 {
     "1,1-cyclobutanedicarboxylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.110000000000001e-08,
             -2.55e-08
@@ -15,13 +16,13 @@
             5.879,
             3.127
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "1,1-cyclohexanedicarboxylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.8000000000000006e-08,
             -2.4000000000000003e-08
@@ -37,13 +38,13 @@
             4.11,
             3.451
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "1,1-cyclopentanedicarboxylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.0000000000000004e-08,
             -2.5000000000000002e-08
@@ -59,13 +60,13 @@
             4.08,
             3.23
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "2,3-dibromopropionic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.23e-08
         ],
@@ -76,12 +77,12 @@
         "pKa_ref": [
             2.201
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,3-dimethylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7100000000000004e-08
         ],
@@ -92,12 +93,12 @@
         "pKa_ref": [
             3.738
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,3-dimethylpyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.49e-08
         ],
@@ -108,12 +109,12 @@
         "pKa_ref": [
             6.57
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "2,3-dinitrophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -124,12 +125,12 @@
         "pKa_ref": [
             4.018
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,4,6-trimethylaniline": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.44e-08
         ],
@@ -140,12 +141,12 @@
         "pKa_ref": [
             4.38
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "2,4,6-trimethylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.47e-08
         ],
@@ -156,12 +157,12 @@
         "pKa_ref": [
             3.437
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,4,6-trimethylpyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.18e-08
         ],
@@ -172,12 +173,12 @@
         "pKa_ref": [
             6.688
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "2,4-dichlorophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -188,12 +189,12 @@
         "pKa_ref": [
             7.699
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,4-dichlorophenoxyacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.5000000000000002e-08
         ],
@@ -204,12 +205,12 @@
         "pKa_ref": [
             1.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,4-dihydroxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.2e-08
         ],
@@ -220,12 +221,12 @@
         "pKa_ref": [
             3.395
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,4-dimethylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7100000000000004e-08
         ],
@@ -236,12 +237,12 @@
         "pKa_ref": [
             4.182
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,4-dimethylpyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.49e-08
         ],
@@ -252,12 +253,12 @@
         "pKa_ref": [
             6.99
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "2,4-dinitrophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -270,12 +271,12 @@
         "pKa_ref": [
             4.11
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,5-dihydroxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -286,12 +287,12 @@
         "pKa_ref": [
             2.975
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,5-dimethylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7100000000000004e-08
         ],
@@ -302,12 +303,12 @@
         "pKa_ref": [
             3.977
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,5-dimethylpyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.49e-08
         ],
@@ -318,12 +319,12 @@
         "pKa_ref": [
             6.43
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "2,5-dinitrophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -336,12 +337,12 @@
         "pKa_ref": [
             5.216
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,6-dihydroxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.72e-08
         ],
@@ -352,12 +353,12 @@
         "pKa_ref": [
             1.301
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,6-dimethylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7100000000000004e-08
         ],
@@ -368,12 +369,12 @@
         "pKa_ref": [
             3.246
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,6-dimethylpyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.49e-08
         ],
@@ -384,12 +385,12 @@
         "pKa_ref": [
             6.75
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "2,6-dinitrobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -400,12 +401,12 @@
         "pKa_ref": [
             1.14
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2,6-dinitrophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -416,12 +417,12 @@
         "pKa_ref": [
             3.706
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-amino-2-methyl-1-propanol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.33e-08
         ],
@@ -436,12 +437,12 @@
         "pKa_ref": [
             9.72
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "2-bromobutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.23e-08
         ],
@@ -452,12 +453,12 @@
         "pKa_ref": [
             2.987
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-bromopropionic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -468,12 +469,12 @@
         "pKa_ref": [
             2.975
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-chloro-3-oh-butyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -484,12 +485,12 @@
         "pKa_ref": [
             2.602
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-chlorobutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -500,12 +501,12 @@
         "pKa_ref": [
             2.839
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-chlorocrotonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.54e-08
         ],
@@ -516,12 +517,12 @@
         "pKa_ref": [
             3.155
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-chloroisocrotonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.54e-08
         ],
@@ -532,12 +533,12 @@
         "pKa_ref": [
             2.81
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-chloropropionic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.69e-08
         ],
@@ -550,12 +551,12 @@
         "pKa_ref": [
             2.796
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-ethylbutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.02e-08
         ],
@@ -566,12 +567,12 @@
         "pKa_ref": [
             4.734
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-hydroxy-3-chlorobutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -582,12 +583,12 @@
         "pKa_ref": [
             3.092
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-hydroxy-3-cl-isobutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -598,12 +599,12 @@
         "pKa_ref": [
             3.208
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-hydroxy-3-cl-propionic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.65e-08
         ],
@@ -614,12 +615,12 @@
         "pKa_ref": [
             3.124
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-hydroxy-m-toluic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -630,12 +631,12 @@
         "pKa_ref": [
             3.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-hydroxybutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4299999999999996e-08
         ],
@@ -646,12 +647,12 @@
         "pKa_ref": [
             3.979
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-hydroxyisobutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.35e-08
         ],
@@ -662,12 +663,12 @@
         "pKa_ref": [
             3.971
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-hydroxyvaleric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.23e-08
         ],
@@ -678,12 +679,12 @@
         "pKa_ref": [
             3.886
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-ketoglutaric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.9000000000000006e-08,
             -3.36e-08
@@ -696,13 +697,13 @@
             5.006,
             2.8
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "2-methylpyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.01e-08
         ],
@@ -713,12 +714,12 @@
         "pKa_ref": [
             6.2
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "2-naphtalenesulfonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -729,12 +730,12 @@
         "pKa_ref": [
             0.167
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-nitro-3-bromobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.82e-08
         ],
@@ -745,12 +746,12 @@
         "pKa_ref": [
             2.495
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-nitro-3-chlorobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -761,12 +762,12 @@
         "pKa_ref": [
             2.398
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "2-phenylpropionic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.6500000000000002e-08
         ],
@@ -777,12 +778,12 @@
         "pKa_ref": [
             2.237
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3,4-dihydroxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -793,12 +794,12 @@
         "pKa_ref": [
             4.509
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3,4-dimethylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7100000000000004e-08
         ],
@@ -809,12 +810,12 @@
         "pKa_ref": [
             4.408
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3,4-dimethylpyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.49e-08
         ],
@@ -825,12 +826,12 @@
         "pKa_ref": [
             6.47
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "3,4-dinitrophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -841,12 +842,12 @@
         "pKa_ref": [
             5.424
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3,5-dihydroxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -857,12 +858,12 @@
         "pKa_ref": [
             4.051
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3,5-dimethylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7100000000000004e-08
         ],
@@ -873,12 +874,12 @@
         "pKa_ref": [
             4.301
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3,5-dimethylpyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.49e-08
         ],
@@ -889,12 +890,12 @@
         "pKa_ref": [
             6.15
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "3,5-dinitrobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.93e-08
         ],
@@ -905,12 +906,12 @@
         "pKa_ref": [
             2.824
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3,5-dinitrophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -923,12 +924,12 @@
         "pKa_ref": [
             6.699
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-chlorobutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -939,12 +940,12 @@
         "pKa_ref": [
             4.056
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-chlorocrotonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.54e-08
         ],
@@ -955,12 +956,12 @@
         "pKa_ref": [
             3.848
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-chloropropionic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.69e-08
         ],
@@ -971,12 +972,12 @@
         "pKa_ref": [
             3.867
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-ethylglutaric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.0000000000000004e-08,
             -2.5000000000000002e-08
@@ -989,13 +990,13 @@
             5.329,
             4.287
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "3-hydroxy-o-toluic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -1006,12 +1007,12 @@
         "pKa_ref": [
             2.983
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-hydroxy-p-toluic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -1022,12 +1023,12 @@
         "pKa_ref": [
             3.143
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-hydroxybutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4299999999999996e-08
         ],
@@ -1038,12 +1039,12 @@
         "pKa_ref": [
             4.519
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-iodopropionic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.65e-08
         ],
@@ -1056,12 +1057,12 @@
         "pKa_ref": [
             4.056
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-methoxypiridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.0000000000000004e-08
         ],
@@ -1072,12 +1073,12 @@
         "pKa_ref": [
             4.91
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "3-methylpyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.01e-08
         ],
@@ -1090,12 +1091,12 @@
         "pKa_ref": [
             5.52
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "3-nitro-2-bromobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.82e-08
         ],
@@ -1106,12 +1107,12 @@
         "pKa_ref": [
             2.979
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-nitro-4-bromobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.82e-08
         ],
@@ -1122,12 +1123,12 @@
         "pKa_ref": [
             3.377
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-nitro-4-chlorobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -1138,12 +1139,12 @@
         "pKa_ref": [
             3.357
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-nitro-5-chlorobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -1154,12 +1155,12 @@
         "pKa_ref": [
             3.13
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-phenylpropionic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.6500000000000002e-08
         ],
@@ -1170,12 +1171,12 @@
         "pKa_ref": [
             4.664
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "3-propylglutaric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.7000000000000004e-08,
             -2.3500000000000002e-08
@@ -1188,13 +1189,13 @@
             5.386,
             4.312
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "4-bromobutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -1205,12 +1206,12 @@
         "pKa_ref": [
             4.585
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "4-hydroxy-m-toluic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -1221,12 +1222,12 @@
         "pKa_ref": [
             3.066
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "4-hydroxybutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4299999999999996e-08
         ],
@@ -1237,12 +1238,12 @@
         "pKa_ref": [
             4.721
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "4-hydroxyvaleric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.23e-08
         ],
@@ -1253,12 +1254,12 @@
         "pKa_ref": [
             4.699
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "4-iodobutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -1269,12 +1270,12 @@
         "pKa_ref": [
             4.638
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "4-methoxypyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.0000000000000004e-08
         ],
@@ -1285,12 +1286,12 @@
         "pKa_ref": [
             6.47
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "4-methylpyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.01e-08
         ],
@@ -1301,12 +1302,12 @@
         "pKa_ref": [
             6.08
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "4-phenylbutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.47e-08
         ],
@@ -1317,12 +1318,12 @@
         "pKa_ref": [
             4.757
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "5-bromo-2.4-dihydroxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.0700000000000004e-08,
             -2.7600000000000002e-08
@@ -1335,13 +1336,13 @@
             7.6,
             3.0
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "5-bromovaleric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.23e-08
         ],
@@ -1352,12 +1353,12 @@
         "pKa_ref": [
             4.721
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "5-chlorovaleric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.23e-08
         ],
@@ -1368,12 +1369,12 @@
         "pKa_ref": [
             4.697
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "5-iodovaleric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.23e-08
         ],
@@ -1384,12 +1385,12 @@
         "pKa_ref": [
             4.77
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "6-hydroxy-o-toluic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -1400,12 +1401,12 @@
         "pKa_ref": [
             3.321
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "acetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.24e-08
         ],
@@ -1422,12 +1423,12 @@
         "pKa_ref": [
             4.756
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "acrylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.2700000000000005e-08
         ],
@@ -1444,12 +1445,12 @@
         "pKa_ref": [
             4.258
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "adipic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.24e-08,
             -2.4600000000000002e-08
@@ -1469,13 +1470,13 @@
             5.277,
             4.43
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "adp": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.3700000000000004e-08,
             -3.6700000000000004e-08,
@@ -1498,7 +1499,6 @@
             4.101,
             0.0
         ],
-        "type": "ionize ion",
         "z": [
             -3,
             -2,
@@ -1506,6 +1506,7 @@
         ]
     },
     "alanine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.2200000000000004e-08,
             3.4e-08
@@ -1525,13 +1526,13 @@
             9.857,
             2.33
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "alexa fluor 488": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.6000000000000005e-08
         ],
@@ -1542,12 +1543,12 @@
         "pKa_ref": [
             2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "allylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.39e-08
         ],
@@ -1558,12 +1559,12 @@
         "pKa_ref": [
             4.674
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "allylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.43e-08
         ],
@@ -1576,12 +1577,12 @@
         "pKa_ref": [
             9.69
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "aluminium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.1100000000000004e-08,
             4.2100000000000006e-08,
@@ -1596,7 +1597,6 @@
             6.0,
             4.9
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -1604,6 +1604,7 @@
         ]
     },
     "amediol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.35e-08
         ],
@@ -1614,12 +1615,12 @@
         "pKa_ref": [
             8.78
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "ammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             7.620000000000001e-08
         ],
@@ -1635,12 +1636,12 @@
         "pKa_ref": [
             9.25
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "amp": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.95e-08,
             -2.2600000000000004e-08
@@ -1659,13 +1660,13 @@
             6.791,
             3.981
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "amylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.41e-08
         ],
@@ -1676,12 +1677,12 @@
         "pKa_ref": [
             10.63
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "amylbutylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.4800000000000004e-08
         ],
@@ -1692,12 +1693,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "amylbutylpropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.38e-08
         ],
@@ -1708,12 +1709,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "amyldiethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.84e-08
         ],
@@ -1724,12 +1725,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "amyldipropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.5100000000000003e-08
         ],
@@ -1740,12 +1741,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "amylheptylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.14e-08
         ],
@@ -1756,12 +1757,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "amylhexylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.24e-08
         ],
@@ -1772,12 +1773,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "amylmethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.0100000000000005e-08
         ],
@@ -1788,12 +1789,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "amylocaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.55e-08
         ],
@@ -1804,12 +1805,12 @@
         "pKa_ref": [
             7.96
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "amylpropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.6300000000000004e-08
         ],
@@ -1820,12 +1821,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "amyltrimethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.26e-08
         ],
@@ -1836,12 +1837,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "aniline": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.0000000000000004e-08
         ],
@@ -1854,12 +1855,12 @@
         "pKa_ref": [
             4.596
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "arginine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.69e-08,
             2.69e-08,
@@ -1878,7 +1879,6 @@
             8.919,
             1.78
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1,
@@ -1886,6 +1886,7 @@
         ]
     },
     "arsenic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -7e-08,
             -3.5200000000000004e-08
@@ -1901,13 +1902,13 @@
             6.94,
             2.19
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "ascorbic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.1e-08,
             -2.55e-08
@@ -1920,13 +1921,13 @@
             10.5,
             4.25
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "asparagine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.1600000000000005e-08,
             3.06e-08
@@ -1942,13 +1943,13 @@
             9.03,
             2.12
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "aspartic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.53e-08,
             -3.0100000000000005e-08,
@@ -1967,7 +1968,6 @@
             3.9,
             2.28
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1,
@@ -1975,6 +1975,7 @@
         ]
     },
     "aspirin": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.67e-08
         ],
@@ -1985,12 +1986,12 @@
         "pKa_ref": [
             3.485
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "azelaic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.59e-08,
             -2.2000000000000002e-08
@@ -2003,13 +2004,13 @@
             5.333,
             4.55
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "b-alanine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.0800000000000004e-08,
             3.85e-08
@@ -2025,13 +2026,13 @@
             10.241,
             3.43
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "b-eucaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.32e-08
         ],
@@ -2042,12 +2043,12 @@
         "pKa_ref": [
             9.5
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "barium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.3000000000000004e-08,
             6.600000000000001e-08
@@ -2060,13 +2061,13 @@
             13.7,
             13.2
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "benzenesulfonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.87e-08
         ],
@@ -2077,12 +2078,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "benzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.36e-08
         ],
@@ -2095,12 +2096,12 @@
         "pKa_ref": [
             4.203
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "benzylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.4700000000000006e-08
         ],
@@ -2113,12 +2114,12 @@
         "pKa_ref": [
             9.33
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "benzylasparatic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.5800000000000003e-08
         ],
@@ -2129,12 +2130,12 @@
         "pKa_ref": [
             4.855
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "benzyldiethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.4600000000000002e-08
         ],
@@ -2145,12 +2146,12 @@
         "pKa_ref": [
             9.48
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "beryllium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.3300000000000003e-08,
             4.660000000000001e-08
@@ -2163,13 +2164,13 @@
             4.2,
             3.2
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "bis-tris": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.6e-08
         ],
@@ -2184,12 +2185,12 @@
         "pKa_ref": [
             6.4
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "boric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.65e-08
         ],
@@ -2204,12 +2205,12 @@
         "pKa_ref": [
             9.237
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "bromic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.78e-08
         ],
@@ -2224,12 +2225,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "bromoacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.0600000000000006e-08
         ],
@@ -2244,12 +2245,12 @@
         "pKa_ref": [
             2.901
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "bupivacaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.12e-08
         ],
@@ -2260,12 +2261,12 @@
         "pKa_ref": [
             8.19
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "butylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.770000000000001e-08
         ],
@@ -2276,12 +2277,12 @@
         "pKa_ref": [
             10.59
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "butyldiethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.04e-08
         ],
@@ -2292,12 +2293,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "butyldipropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.6600000000000003e-08
         ],
@@ -2308,12 +2309,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "butylethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.0100000000000005e-08
         ],
@@ -2324,12 +2325,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "butylethylpropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.84e-08
         ],
@@ -2340,12 +2341,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "butylhexylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.3500000000000002e-08
         ],
@@ -2356,12 +2357,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "butylpropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.8000000000000003e-08
         ],
@@ -2372,12 +2373,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "butyltriethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.84e-08
         ],
@@ -2388,12 +2389,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "butyltrimethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.4500000000000005e-08
         ],
@@ -2404,12 +2405,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "butyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.38e-08
         ],
@@ -2422,12 +2423,12 @@
         "pKa_ref": [
             4.82
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "cacodylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.99e-08
         ],
@@ -2442,12 +2443,12 @@
         "pKa_ref": [
             6.184
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "cadmium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.8000000000000003e-08,
             5.6000000000000005e-08
@@ -2460,13 +2461,13 @@
             8.6,
             7.6
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "calcium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.09e-08,
             6.17e-08
@@ -2493,13 +2494,13 @@
             13.6,
             12.6
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "capric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.2100000000000003e-08
         ],
@@ -2510,12 +2511,12 @@
         "pKa_ref": [
             5.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "caproic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.02e-08
         ],
@@ -2528,12 +2529,12 @@
         "pKa_ref": [
             4.857
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "caprylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.74e-08
         ],
@@ -2546,12 +2547,12 @@
         "pKa_ref": [
             4.894
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "carbonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -7.180000000000001e-08,
             -4.61e-08
@@ -2570,13 +2571,13 @@
             10.329,
             6.352
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "cdp": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.7300000000000004e-08,
             -4e-08,
@@ -2591,7 +2592,6 @@
             4.782,
             0.0
         ],
-        "type": "ionize ion",
         "z": [
             -3,
             -2,
@@ -2599,6 +2599,7 @@
         ]
     },
     "cerium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.4100000000000004e-08,
             4.83e-08,
@@ -2613,7 +2614,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -2621,6 +2621,7 @@
         ]
     },
     "cesium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             8.01e-08
         ],
@@ -2645,12 +2646,12 @@
         "pKa_ref": [
             13.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "ches": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.5000000000000002e-08
         ],
@@ -2665,12 +2666,12 @@
         "pKa_ref": [
             9.55
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "chloric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.7e-08
         ],
@@ -2681,12 +2682,12 @@
         "pKa_ref": [
             -2.7
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "chloroacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.370000000000001e-08
         ],
@@ -2697,12 +2698,12 @@
         "pKa_ref": [
             2.865
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "chlorodibromoacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.65e-08
         ],
@@ -2713,12 +2714,12 @@
         "pKa_ref": [
             1.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "chlorodifluoroacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.86e-08
         ],
@@ -2729,12 +2730,12 @@
         "pKa_ref": [
             1.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "chlorous acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.39e-08
         ],
@@ -2745,12 +2746,12 @@
         "pKa_ref": [
             1.96
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "chromic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -8.11e-08,
             -5.93e-08
@@ -2763,13 +2764,13 @@
             6.49,
             0.745
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "chromium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.3100000000000002e-08,
             4.63e-08,
@@ -2784,7 +2785,6 @@
             5.5,
             3.95
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -2792,6 +2792,7 @@
         ]
     },
     "cinchocaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             1.97e-08
         ],
@@ -2802,12 +2803,12 @@
         "pKa_ref": [
             8.5
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "cinnamic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.8300000000000002e-08
         ],
@@ -2820,12 +2821,12 @@
         "pKa_ref": [
             4.438
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "cis-cinnamic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.8300000000000002e-08
         ],
@@ -2836,12 +2837,12 @@
         "pKa_ref": [
             3.879
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "citraconic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.6000000000000005e-08,
             -2.8000000000000003e-08
@@ -2854,13 +2855,13 @@
             6.146,
             2.458
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "citric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -7.44e-08,
             -5.470000000000001e-08,
@@ -2883,7 +2884,6 @@
             4.761,
             3.128
         ],
-        "type": "ionize ion",
         "z": [
             -3,
             -2,
@@ -2891,6 +2891,7 @@
         ]
     },
     "cmp": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.0600000000000006e-08,
             -2.37e-08
@@ -2903,13 +2904,13 @@
             6.705,
             4.468
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "cobalt": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.85e-08,
             5.7e-08
@@ -2922,13 +2923,13 @@
             12.2,
             11.2
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "cocaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.4000000000000003e-08
         ],
@@ -2939,12 +2940,12 @@
         "pKa_ref": [
             8.69
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "copper": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.23e-08,
             5.560000000000001e-08
@@ -2957,13 +2958,13 @@
             8.5,
             7.3
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "creatinine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.72e-08
         ],
@@ -2974,12 +2975,12 @@
         "pKa_ref": [
             4.828
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "cresol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -2990,12 +2991,12 @@
         "pKa_ref": [
             7.377
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "crotonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.35e-08
         ],
@@ -3006,12 +3007,12 @@
         "pKa_ref": [
             4.705
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "cyanic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.7e-08
         ],
@@ -3024,12 +3025,12 @@
         "pKa_ref": [
             3.47
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "cyanoacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.5000000000000006e-08
         ],
@@ -3040,12 +3041,12 @@
         "pKa_ref": [
             2.469
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "cyclohexylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.25e-08
         ],
@@ -3056,12 +3057,12 @@
         "pKa_ref": [
             10.66
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "cysteine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.270000000000001e-08,
             -3.17e-08,
@@ -3080,7 +3081,6 @@
             8.6,
             1.94
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1,
@@ -3088,6 +3088,7 @@
         ]
     },
     "cystine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.39e-08,
             -2.7e-08,
@@ -3104,7 +3105,6 @@
             2.26,
             1.65
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1,
@@ -3113,6 +3113,7 @@
         ]
     },
     "decamethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.55e-08,
             4.8500000000000004e-08
@@ -3125,13 +3126,13 @@
             11.0,
             10.5
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "decylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.62e-08
         ],
@@ -3142,12 +3143,12 @@
         "pKa_ref": [
             10.64
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "decylsulfonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.69e-08
         ],
@@ -3158,12 +3159,12 @@
         "pKa_ref": [
             1.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "deta": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.5000000000000002e-08,
             5.86e-08,
@@ -3178,7 +3179,6 @@
             9.11,
             4.36
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -3186,6 +3186,7 @@
         ]
     },
     "diamylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.2100000000000003e-08
         ],
@@ -3196,12 +3197,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "diamylethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.38e-08
         ],
@@ -3212,12 +3213,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "dibromofluoroacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.86e-08
         ],
@@ -3228,12 +3229,12 @@
         "pKa_ref": [
             1.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "dibutylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.5600000000000004e-08
         ],
@@ -3244,12 +3245,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "dibutylethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.6600000000000003e-08
         ],
@@ -3260,12 +3261,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "dibutylpropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.5100000000000003e-08
         ],
@@ -3276,12 +3277,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "dichloroacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.9700000000000005e-08
         ],
@@ -3292,12 +3293,12 @@
         "pKa_ref": [
             1.257
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "dichlorofluoroacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.65e-08
         ],
@@ -3308,12 +3309,12 @@
         "pKa_ref": [
             1.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "dichromic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -8.21e-08,
             -5.8900000000000005e-08
@@ -3326,13 +3327,13 @@
             6.723,
             0.745
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "diethylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.03e-08
         ],
@@ -3345,12 +3346,12 @@
         "pKa_ref": [
             4.734
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "diethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.64e-08
         ],
@@ -3363,12 +3364,12 @@
         "pKa_ref": [
             10.93
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "diethyldimethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.84e-08
         ],
@@ -3379,12 +3380,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "diethylmalonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.95e-08,
             -2.5000000000000002e-08
@@ -3397,13 +3398,13 @@
             7.29,
             2.211
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "diethylmethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.9000000000000005e-08
         ],
@@ -3414,12 +3415,12 @@
         "pKa_ref": [
             10.43
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "diethylpropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.27e-08
         ],
@@ -3430,12 +3431,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "difluoroacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.0600000000000006e-08
         ],
@@ -3446,12 +3447,12 @@
         "pKa_ref": [
             1.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "dihexylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.2100000000000003e-08
         ],
@@ -3462,12 +3463,12 @@
         "pKa_ref": [
             11.01
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "dihydroxytartaric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.000000000000001e-08,
             -3.2e-08
@@ -3480,13 +3481,13 @@
             4.004,
             1.947
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "diisoamylaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.4600000000000002e-08
         ],
@@ -3497,12 +3498,12 @@
         "pKa_ref": [
             10.98
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "diisobutylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.77e-08
         ],
@@ -3513,12 +3514,12 @@
         "pKa_ref": [
             10.68
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "dimethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             5.39e-08
         ],
@@ -3531,12 +3532,12 @@
         "pKa_ref": [
             10.77
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "dimethylbenzylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.97e-08
         ],
@@ -3547,12 +3548,12 @@
         "pKa_ref": [
             8.93
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "dimethylmalonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.110000000000001e-08,
             -2.55e-08
@@ -3565,13 +3566,13 @@
             6.059,
             3.166
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "diocaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.02e-08
         ],
@@ -3582,12 +3583,12 @@
         "pKa_ref": [
             9.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "diperodone": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             1.99e-08
         ],
@@ -3598,12 +3599,12 @@
         "pKa_ref": [
             6.8
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "diphenylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.62e-08
         ],
@@ -3614,12 +3615,12 @@
         "pKa_ref": [
             3.939
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "dipropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.97e-08
         ],
@@ -3630,12 +3631,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "dipropylmalonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.6e-08,
             -2.3e-08
@@ -3648,13 +3649,13 @@
             7.51,
             2.067
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "dithionic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -9.640000000000002e-08,
             -4.820000000000001e-08
@@ -3667,13 +3668,13 @@
             3.4,
             0.2
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "dithionous acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.890000000000001e-08,
             -3.4500000000000005e-08
@@ -3686,13 +3687,13 @@
             2.5,
             0.3
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "dodecamethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.42e-08,
             4.59e-08
@@ -3705,13 +3706,13 @@
             11.0,
             10.7
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "dodecylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.47e-08
         ],
@@ -3722,12 +3723,12 @@
         "pKa_ref": [
             10.63
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "dodecylsulfonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.49e-08
         ],
@@ -3738,12 +3739,12 @@
         "pKa_ref": [
             1.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "dysprosium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.27e-08,
             4.53e-08,
@@ -3758,7 +3759,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -3766,6 +3766,7 @@
         ]
     },
     "e-aminocaproic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.8800000000000003e-08
         ],
@@ -3778,12 +3779,12 @@
         "pKa_ref": [
             4.373
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "enanthylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.84e-08
         ],
@@ -3794,12 +3795,12 @@
         "pKa_ref": [
             4.893
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "erbium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.2800000000000002e-08,
             4.5500000000000004e-08,
@@ -3814,7 +3815,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -3822,6 +3822,7 @@
         ]
     },
     "ethanolamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.43e-08
         ],
@@ -3836,12 +3837,12 @@
         "pKa_ref": [
             9.498
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "ethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.89e-08
         ],
@@ -3856,12 +3857,12 @@
         "pKa_ref": [
             10.63
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "ethyldipropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.04e-08
         ],
@@ -3872,12 +3873,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "ethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.23e-08,
             8.03e-08
@@ -3890,13 +3891,13 @@
             9.96,
             6.838
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "ethylfumaric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.92e-08
         ],
@@ -3907,12 +3908,12 @@
         "pKa_ref": [
             3.325
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "ethylmaleic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.92e-08
         ],
@@ -3923,12 +3924,12 @@
         "pKa_ref": [
             2.959
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "ethylmalonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.1e-08,
             -2.55e-08
@@ -3941,13 +3942,13 @@
             5.833,
             2.988
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "ethylmethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.03e-08
         ],
@@ -3958,12 +3959,12 @@
         "pKa_ref": [
             10.8
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "ethylmethylpropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.55e-08
         ],
@@ -3974,12 +3975,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "ethylpropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.27e-08
         ],
@@ -3990,12 +3991,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "ethylpropylmalonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.7000000000000004e-08,
             -2.3500000000000002e-08
@@ -4008,13 +4009,13 @@
             7.43,
             2.145
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "ethylsulfonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.1e-08
         ],
@@ -4025,12 +4026,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "ethyltrimethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.2000000000000006e-08
         ],
@@ -4041,12 +4042,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "ethyltripropylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.67e-08
         ],
@@ -4057,12 +4058,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "europium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.34e-08,
             4.69e-08,
@@ -4077,7 +4078,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -4085,6 +4085,7 @@
         ]
     },
     "fluorescein": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.3000000000000004e-08,
             -1.9e-08
@@ -4097,13 +4098,13 @@
             6.8,
             4.4
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "fluoroacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.6e-08
         ],
@@ -4114,12 +4115,12 @@
         "pKa_ref": [
             2.584
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "formic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.6600000000000004e-08
         ],
@@ -4132,12 +4133,12 @@
         "pKa_ref": [
             3.752
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "fructose": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.0000000000000004e-08
         ],
@@ -4148,12 +4149,12 @@
         "pKa_ref": [
             12.03
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "fumaric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.12e-08,
             -3.1e-08
@@ -4166,13 +4167,13 @@
             4.384,
             3.019
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "gaba": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.0000000000000004e-08
         ],
@@ -4183,12 +4184,12 @@
         "pKa_ref": [
             4.02
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "gadolinium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.3300000000000003e-08,
             4.6500000000000006e-08,
@@ -4203,7 +4204,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -4211,6 +4211,7 @@
         ]
     },
     "gallic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -4223,12 +4224,12 @@
         "pKa_ref": [
             4.469
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "gluconic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7200000000000002e-08
         ],
@@ -4239,12 +4240,12 @@
         "pKa_ref": [
             3.662
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "glucose": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.0000000000000004e-08
         ],
@@ -4257,12 +4258,12 @@
         "pKa_ref": [
             12.28
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "glucuronic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.67e-08
         ],
@@ -4273,12 +4274,12 @@
         "pKa_ref": [
             3.677
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "glutaconic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.6000000000000005e-08,
             -2.8000000000000003e-08
@@ -4291,13 +4292,13 @@
             5.077,
             3.767
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "glutamic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.43e-08,
             -2.74e-08,
@@ -4316,7 +4317,6 @@
             4.324,
             2.16
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1,
@@ -4324,6 +4324,7 @@
         ]
     },
     "glutamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.8800000000000003e-08,
             2.8100000000000003e-08
@@ -4339,13 +4340,13 @@
             9.224,
             2.15
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "glutaric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.560000000000001e-08,
             -2.6600000000000003e-08
@@ -4361,13 +4362,13 @@
             5.272,
             4.343
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "glyceric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.64e-08
         ],
@@ -4378,12 +4379,12 @@
         "pKa_ref": [
             3.737
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "glycine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.7400000000000004e-08,
             3.95e-08
@@ -4402,13 +4403,13 @@
             9.78,
             2.32
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "glycolic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.24e-08
         ],
@@ -4424,12 +4425,12 @@
         "pKa_ref": [
             3.886
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "glyoxylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.9600000000000004e-08
         ],
@@ -4440,12 +4441,12 @@
         "pKa_ref": [
             3.337
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "gmp": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.43e-08,
             -3.8e-08,
@@ -4460,7 +4461,6 @@
             6.512,
             2.845
         ],
-        "type": "ionize ion",
         "z": [
             -3,
             -2,
@@ -4468,6 +4468,7 @@
         ]
     },
     "hepes": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.3500000000000002e-08
         ],
@@ -4482,12 +4483,12 @@
         "pKa_ref": [
             7.5
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "heptamethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.97e-08,
             5.64e-08
@@ -4500,13 +4501,13 @@
             11.0,
             9.9
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "heptylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.06e-08
         ],
@@ -4517,12 +4518,12 @@
         "pKa_ref": [
             10.66
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "heptyltrimethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.84e-08
         ],
@@ -4533,12 +4534,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "hexamethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.17e-08,
             6.03e-08
@@ -4551,13 +4552,13 @@
             10.93,
             9.84
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "hexylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.35e-08
         ],
@@ -4568,12 +4569,12 @@
         "pKa_ref": [
             10.64
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "hexyltrimethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.03e-08
         ],
@@ -4584,12 +4585,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "hippuric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.5100000000000004e-08,
             -2.53e-08
@@ -4602,13 +4603,13 @@
             7.271,
             2.7
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "histidine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.8300000000000002e-08,
             2.8800000000000003e-08,
@@ -4631,7 +4632,6 @@
             6.04,
             2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1,
@@ -4639,6 +4639,7 @@
         ]
     },
     "holmium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.29e-08,
             4.58e-08,
@@ -4653,7 +4654,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -4661,6 +4661,7 @@
         ]
     },
     "hydrobromic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -8.100000000000001e-08
         ],
@@ -4671,12 +4672,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "hydrochloric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -7.91e-08
         ],
@@ -4703,12 +4704,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "hydrocyanic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -8.090000000000002e-08
         ],
@@ -4719,12 +4720,12 @@
         "pKa_ref": [
             9.4
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "hydrofluoric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.7400000000000004e-08
         ],
@@ -4735,12 +4736,12 @@
         "pKa_ref": [
             3.173
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "hydrogen": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.625e-07
         ],
@@ -4751,12 +4752,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "hydrogen hexafluorophosphide": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.9000000000000006e-08
         ],
@@ -4767,12 +4768,12 @@
         "pKa_ref": [
             0.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "hydrogen sulfide": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.740000000000001e-08
         ],
@@ -4785,12 +4786,12 @@
         "pKa_ref": [
             6.96
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "hydroiodic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -7.96e-08
         ],
@@ -4801,12 +4802,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "hydroxylysine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.29e-08,
             2.29e-08,
@@ -4821,7 +4822,6 @@
             8.62,
             2.13
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1,
@@ -4829,6 +4829,7 @@
         ]
     },
     "hydroxyproline": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.0100000000000005e-08,
             2.7100000000000004e-08
@@ -4841,13 +4842,13 @@
             9.816,
             1.89
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "hydroxytrimethylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -4858,12 +4859,12 @@
         "pKa_ref": [
             4.863
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "hypophosphorous acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.510000000000001e-08
         ],
@@ -4874,12 +4875,12 @@
         "pKa_ref": [
             1.1
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "imidazole": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             5.2e-08
         ],
@@ -4894,12 +4895,12 @@
         "pKa_ref": [
             7.15
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "imp": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.39e-08,
             -3.8200000000000005e-08,
@@ -4914,7 +4915,6 @@
             6.545,
             2.575
         ],
-        "type": "ionize ion",
         "z": [
             -3,
             -2,
@@ -4922,6 +4922,7 @@
         ]
     },
     "iodic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.2000000000000006e-08
         ],
@@ -4932,12 +4933,12 @@
         "pKa_ref": [
             0.77
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "iodoacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.2100000000000006e-08
         ],
@@ -4948,12 +4949,12 @@
         "pKa_ref": [
             3.174
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "iron": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.8000000000000003e-08,
             5.6000000000000005e-08
@@ -4966,13 +4967,13 @@
             9.3,
             8.3
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "isoamylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.49e-08
         ],
@@ -4983,12 +4984,12 @@
         "pKa_ref": [
             10.6
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "isobutylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.94e-08
         ],
@@ -4999,12 +5000,12 @@
         "pKa_ref": [
             10.43
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "isobutyric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -5017,12 +5018,12 @@
         "pKa_ref": [
             4.86
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "isocaproic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.03e-08
         ],
@@ -5035,12 +5036,12 @@
         "pKa_ref": [
             4.845
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "isocitric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -7.4e-08,
             -5.5e-08,
@@ -5055,7 +5056,6 @@
             4.72,
             3.25
         ],
-        "type": "ionize ion",
         "z": [
             -3,
             -2,
@@ -5063,6 +5063,7 @@
         ]
     },
     "isoleucine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.67e-08,
             2.8300000000000002e-08
@@ -5078,13 +5079,13 @@
             9.765,
             2.3
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "isophtalic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.3000000000000005e-08,
             -2.8000000000000003e-08
@@ -5097,13 +5098,13 @@
             4.6,
             3.72
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "isopropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.13e-08
         ],
@@ -5114,12 +5115,12 @@
         "pKa_ref": [
             10.72
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "isopropylmalonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.2e-08,
             -2.6e-08
@@ -5132,13 +5133,13 @@
             5.879,
             2.943
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "isovaleric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.21e-08
         ],
@@ -5151,12 +5152,12 @@
         "pKa_ref": [
             4.78
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "itaconic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.6000000000000005e-08,
             -2.8000000000000003e-08
@@ -5169,13 +5170,13 @@
             5.449,
             3.815
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "lactic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.65e-08
         ],
@@ -5188,12 +5189,12 @@
         "pKa_ref": [
             3.86
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "lanthanum": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.4100000000000004e-08,
             4.820000000000001e-08,
@@ -5208,7 +5209,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -5216,6 +5216,7 @@
         ]
     },
     "laurylsulfonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.29e-08
         ],
@@ -5226,12 +5227,12 @@
         "pKa_ref": [
             1.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "lead": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.6000000000000005e-08,
             7.200000000000001e-08
@@ -5244,13 +5245,13 @@
             9.9,
             7.8
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "leucine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.64e-08,
             2.7600000000000002e-08
@@ -5266,13 +5267,13 @@
             9.728,
             2.31
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "leucinocaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.17e-08
         ],
@@ -5283,12 +5284,12 @@
         "pKa_ref": [
             9.2
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "levulinic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -5299,12 +5300,12 @@
         "pKa_ref": [
             4.602
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "lidocaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.3600000000000003e-08
         ],
@@ -5315,12 +5316,12 @@
         "pKa_ref": [
             7.85
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "lithium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.01e-08
         ],
@@ -5345,12 +5346,12 @@
         "pKa_ref": [
             13.8
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "lutetium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.23e-08,
             4.47e-08,
@@ -5365,7 +5366,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -5373,6 +5373,7 @@
         ]
     },
     "lysine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.64e-08,
             2.7600000000000002e-08,
@@ -5391,7 +5392,6 @@
             9.127,
             1.7
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1,
@@ -5399,6 +5399,7 @@
         ]
     },
     "m-bromobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.1500000000000004e-08
         ],
@@ -5409,12 +5410,12 @@
         "pKa_ref": [
             3.812
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-chlorobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.2e-08
         ],
@@ -5425,12 +5426,12 @@
         "pKa_ref": [
             3.83
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-chlorophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -5443,12 +5444,12 @@
         "pKa_ref": [
             9.023
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-cresol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -5459,12 +5460,12 @@
         "pKa_ref": [
             7.77
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-cyanobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -5475,12 +5476,12 @@
         "pKa_ref": [
             3.598
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-fluorobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -5491,12 +5492,12 @@
         "pKa_ref": [
             3.865
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-hydroxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.2e-08,
             -3.4e-08
@@ -5509,13 +5510,13 @@
             9.609,
             4.082
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "m-hydroxycinnamic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7e-08
         ],
@@ -5526,12 +5527,12 @@
         "pKa_ref": [
             4.397
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-iodobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -5542,12 +5543,12 @@
         "pKa_ref": [
             3.851
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-iodophenylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4299999999999996e-08
         ],
@@ -5558,12 +5559,12 @@
         "pKa_ref": [
             4.159
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-methoxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.8300000000000002e-08
         ],
@@ -5574,12 +5575,12 @@
         "pKa_ref": [
             4.088
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-nitrobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.23e-08
         ],
@@ -5590,12 +5591,12 @@
         "pKa_ref": [
             3.493
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-nitrophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -5606,12 +5607,12 @@
         "pKa_ref": [
             8.399
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-sulfanilic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -5622,12 +5623,12 @@
         "pKa_ref": [
             3.74
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-toluic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.9100000000000002e-08
         ],
@@ -5638,12 +5639,12 @@
         "pKa_ref": [
             4.272
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "m-toluidine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.0000000000000004e-08
         ],
@@ -5654,12 +5655,12 @@
         "pKa_ref": [
             4.683
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "magnesium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.75e-08,
             5.5e-08
@@ -5686,13 +5687,13 @@
             12.2,
             11.4
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "maleic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.24e-08,
             -4.13e-08
@@ -5711,13 +5712,13 @@
             6.225,
             1.921
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "malic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.9000000000000006e-08,
             -3.26e-08
@@ -5736,13 +5737,13 @@
             5.05,
             3.46
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "malonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.7e-08,
             -4.070000000000001e-08
@@ -5761,13 +5762,13 @@
             5.696,
             2.847
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "mandelic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.8300000000000002e-08
         ],
@@ -5778,12 +5779,12 @@
         "pKa_ref": [
             3.411
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "manganese": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.77e-08,
             5.54e-08
@@ -5796,13 +5797,13 @@
             11.6,
             10.6
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "mes": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.8000000000000003e-08
         ],
@@ -5817,12 +5818,12 @@
         "pKa_ref": [
             6.095
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "mesaconic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.6000000000000005e-08,
             -2.8000000000000003e-08
@@ -5835,13 +5836,13 @@
             4.75,
             3.098
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "mesotartaric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.06e-08,
             -3.24e-08
@@ -5854,13 +5855,13 @@
             4.815,
             3.222
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "methacrylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.6700000000000004e-08
         ],
@@ -5871,12 +5872,12 @@
         "pKa_ref": [
             4.483
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "methionine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.93e-08,
             2.77e-08
@@ -5889,13 +5890,13 @@
             9.344,
             2.17
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "methoxyacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.65e-08
         ],
@@ -5906,12 +5907,12 @@
         "pKa_ref": [
             3.57
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "methylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             6.04e-08
         ],
@@ -5926,12 +5927,12 @@
         "pKa_ref": [
             10.62
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "methyldipropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.27e-08
         ],
@@ -5942,12 +5943,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "methylethylmalonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.0000000000000004e-08,
             -2.5000000000000002e-08
@@ -5960,13 +5961,13 @@
             6.413,
             2.86
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "methylmalonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.85e-08,
             -2.93e-08
@@ -5979,13 +5980,13 @@
             5.787,
             3.072
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "methylpropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.5900000000000004e-08
         ],
@@ -5996,12 +5997,12 @@
         "pKa_ref": [
             10.9
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "methylsulfonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.06e-08
         ],
@@ -6012,12 +6013,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "methyltripropylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.84e-08
         ],
@@ -6028,12 +6029,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "mops": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.69e-08
         ],
@@ -6048,12 +6049,12 @@
         "pKa_ref": [
             7.2
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "morpholine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.13e-08
         ],
@@ -6068,12 +6069,12 @@
         "pKa_ref": [
             8.33
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "neodymium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.4000000000000003e-08,
             4.8000000000000006e-08,
@@ -6088,7 +6089,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -6096,6 +6096,7 @@
         ]
     },
     "nickel": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.69e-08,
             5.39e-08
@@ -6108,13 +6109,13 @@
             10.6,
             9.3
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "nicotinic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4600000000000005e-08
         ],
@@ -6127,12 +6128,12 @@
         "pKa_ref": [
             4.819
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "nitric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -7.41e-08
         ],
@@ -6143,12 +6144,12 @@
         "pKa_ref": [
             -1.37
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "nitrous acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -7.459999999999999e-08
         ],
@@ -6161,12 +6162,12 @@
         "pKa_ref": [
             3.22
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "nonamethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.7100000000000004e-08,
             5.1400000000000004e-08
@@ -6179,13 +6180,13 @@
             11.0,
             10.4
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "nonylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.74e-08
         ],
@@ -6196,12 +6197,12 @@
         "pKa_ref": [
             10.64
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "o-aminobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.1600000000000005e-08
         ],
@@ -6214,12 +6215,12 @@
         "pKa_ref": [
             4.939
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-bromobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.1500000000000004e-08
         ],
@@ -6230,12 +6231,12 @@
         "pKa_ref": [
             2.854
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-bromophenylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.14e-08
         ],
@@ -6246,12 +6247,12 @@
         "pKa_ref": [
             4.054
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-chlorobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.38e-08
         ],
@@ -6262,12 +6263,12 @@
         "pKa_ref": [
             2.943
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-chlorophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -6278,12 +6279,12 @@
         "pKa_ref": [
             8.477
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-ethoxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.6600000000000003e-08
         ],
@@ -6294,12 +6295,12 @@
         "pKa_ref": [
             4.208
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-ethylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.6500000000000002e-08
         ],
@@ -6310,12 +6311,12 @@
         "pKa_ref": [
             3.793
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-fluorobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -6326,12 +6327,12 @@
         "pKa_ref": [
             3.267
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-hydroxycinnamic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7e-08
         ],
@@ -6342,12 +6343,12 @@
         "pKa_ref": [
             4.613
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-iodobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -6358,12 +6359,12 @@
         "pKa_ref": [
             2.863
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-iodophenylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4299999999999996e-08
         ],
@@ -6374,12 +6375,12 @@
         "pKa_ref": [
             4.038
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-isopropylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.47e-08
         ],
@@ -6390,12 +6391,12 @@
         "pKa_ref": [
             3.635
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-methoxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.8300000000000002e-08
         ],
@@ -6406,12 +6407,12 @@
         "pKa_ref": [
             4.094
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-nitrobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.36e-08
         ],
@@ -6422,12 +6423,12 @@
         "pKa_ref": [
             2.173
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-nitrophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -6438,12 +6439,12 @@
         "pKa_ref": [
             7.234
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-sulfanilic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -6454,12 +6455,12 @@
         "pKa_ref": [
             7.488
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-t-butylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.32e-08
         ],
@@ -6470,12 +6471,12 @@
         "pKa_ref": [
             3.535
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-toluic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.9100000000000002e-08
         ],
@@ -6486,12 +6487,12 @@
         "pKa_ref": [
             3.908
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "o-toluidine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.0000000000000004e-08
         ],
@@ -6502,12 +6503,12 @@
         "pKa_ref": [
             4.394
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "octamethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.8300000000000002e-08,
             5.38e-08
@@ -6520,13 +6521,13 @@
             11.0,
             10.1
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "octylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.9100000000000002e-08
         ],
@@ -6537,12 +6538,12 @@
         "pKa_ref": [
             10.65
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "octylsulfonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.0100000000000005e-08
         ],
@@ -6553,12 +6554,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "octyltrimethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.7200000000000002e-08
         ],
@@ -6569,12 +6570,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "ornitine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.84e-08,
             2.84e-08,
@@ -6589,7 +6590,6 @@
             8.712,
             1.705
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1,
@@ -6597,6 +6597,7 @@
         ]
     },
     "orotic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.3100000000000005e-08
         ],
@@ -6607,12 +6608,12 @@
         "pKa_ref": [
             2.803
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "oxalic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -7.7e-08,
             -4.24e-08
@@ -6631,13 +6632,13 @@
             4.266,
             1.271
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "oxaloacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.6000000000000005e-08,
             -2.8000000000000003e-08
@@ -6650,13 +6651,13 @@
             4.37,
             2.555
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "p-aminobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.1600000000000005e-08
         ],
@@ -6669,12 +6670,12 @@
         "pKa_ref": [
             4.853
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-bromobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.1500000000000004e-08
         ],
@@ -6685,12 +6686,12 @@
         "pKa_ref": [
             3.971
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-chlorobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -6701,12 +6702,12 @@
         "pKa_ref": [
             3.977
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-chlorophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -6717,12 +6718,12 @@
         "pKa_ref": [
             9.378
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-chlorophenylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4500000000000005e-08
         ],
@@ -6733,12 +6734,12 @@
         "pKa_ref": [
             4.19
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-cresol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -6749,12 +6750,12 @@
         "pKa_ref": [
             7.959
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-ethoxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.6600000000000003e-08
         ],
@@ -6765,12 +6766,12 @@
         "pKa_ref": [
             4.796
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-ethylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.6500000000000002e-08
         ],
@@ -6781,12 +6782,12 @@
         "pKa_ref": [
             4.353
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-fluorobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.42e-08
         ],
@@ -6797,12 +6798,12 @@
         "pKa_ref": [
             4.142
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-hydroxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.2e-08,
             -3.4e-08
@@ -6815,13 +6816,13 @@
             9.31,
             4.53
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "p-hydroxycinnamic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7e-08
         ],
@@ -6832,12 +6833,12 @@
         "pKa_ref": [
             4.678
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-hydroxyphenylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.69e-08
         ],
@@ -6848,12 +6849,12 @@
         "pKa_ref": [
             3.171
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-iodobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -6864,12 +6865,12 @@
         "pKa_ref": [
             3.93
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-iodophenylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4299999999999996e-08
         ],
@@ -6880,12 +6881,12 @@
         "pKa_ref": [
             4.178
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-isopropylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.47e-08
         ],
@@ -6896,12 +6897,12 @@
         "pKa_ref": [
             4.354
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-methoxybenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.0000000000000004e-08
         ],
@@ -6912,12 +6913,12 @@
         "pKa_ref": [
             4.471
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-methoxyphenylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.97e-08
         ],
@@ -6928,12 +6929,12 @@
         "pKa_ref": [
             4.361
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-nitrobenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.23e-08
         ],
@@ -6944,12 +6945,12 @@
         "pKa_ref": [
             3.523
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-nitrophenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -6962,12 +6963,12 @@
         "pKa_ref": [
             7.149
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-tertbutylbenzoic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.32e-08
         ],
@@ -6978,12 +6979,12 @@
         "pKa_ref": [
             4.4
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-toluenesulfonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.11e-08
         ],
@@ -6994,12 +6995,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-toluic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.9100000000000002e-08
         ],
@@ -7010,12 +7011,12 @@
         "pKa_ref": [
             4.373
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "p-toluidine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.0000000000000004e-08
         ],
@@ -7026,12 +7027,12 @@
         "pKa_ref": [
             5.091
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "p-tolyltrimethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.0600000000000006e-08
         ],
@@ -7042,12 +7043,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "pdc": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.0000000000000004e-08,
             -3.5e-08
@@ -7060,13 +7061,13 @@
             6.92,
             2.16
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "pelargonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.67e-08
         ],
@@ -7077,12 +7078,12 @@
         "pKa_ref": [
             4.955
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "pentamethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.33e-08,
             6.320000000000001e-08
@@ -7095,13 +7096,13 @@
             11.05,
             9.74
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "perchloric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.98e-08
         ],
@@ -7114,12 +7115,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "periodic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.65e-08
         ],
@@ -7130,12 +7131,12 @@
         "pKa_ref": [
             1.55
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "permanganic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.34e-08
         ],
@@ -7146,12 +7147,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "peroxysulfuric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -8.91e-08,
             -4.46e-08
@@ -7164,13 +7165,13 @@
             -1.0,
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "perrhenic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.6700000000000005e-08
         ],
@@ -7181,12 +7182,12 @@
         "pKa_ref": [
             0.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "phenol": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.4400000000000004e-08
         ],
@@ -7199,12 +7200,12 @@
         "pKa_ref": [
             9.998
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "phenoxyacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7800000000000004e-08
         ],
@@ -7215,12 +7216,12 @@
         "pKa_ref": [
             3.171
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "phenylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.17e-08
         ],
@@ -7231,12 +7232,12 @@
         "pKa_ref": [
             4.405
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "phenylalanine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.69e-08,
             2.6100000000000002e-08
@@ -7249,13 +7250,13 @@
             9.262,
             2.18
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "phosphoric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -7.15e-08,
             -6.140000000000001e-08,
@@ -7278,7 +7279,6 @@
             7.21,
             2.16
         ],
-        "type": "ionize ion",
         "z": [
             -3,
             -2,
@@ -7286,6 +7286,7 @@
         ]
     },
     "phosphorous acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.590000000000001e-08,
             -4e-08
@@ -7298,13 +7299,13 @@
             7.086,
             1.3
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "phthalic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.2900000000000004e-08,
             -2.8100000000000003e-08
@@ -7323,13 +7324,13 @@
             5.408,
             2.95
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "picric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.1500000000000004e-08
         ],
@@ -7340,12 +7341,12 @@
         "pKa_ref": [
             0.708
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "pimelic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.9900000000000003e-08,
             -2.4000000000000003e-08
@@ -7358,13 +7359,13 @@
             5.312,
             4.509
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "piperidine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.98e-08
         ],
@@ -7375,12 +7376,12 @@
         "pKa_ref": [
             11.12
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "potassium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             7.620000000000001e-08
         ],
@@ -7405,12 +7406,12 @@
         "pKa_ref": [
             13.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "praseodymium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.4100000000000004e-08,
             4.810000000000001e-08,
@@ -7425,7 +7426,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -7433,6 +7433,7 @@
         ]
     },
     "procaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.5700000000000002e-08
         ],
@@ -7443,12 +7444,12 @@
         "pKa_ref": [
             9.01
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "proline": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.69e-08,
             3.11e-08
@@ -7464,13 +7465,13 @@
             9.262,
             1.96
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "propionic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.71e-08
         ],
@@ -7481,12 +7482,12 @@
         "pKa_ref": [
             4.874
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "propylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.23e-08
         ],
@@ -7497,12 +7498,12 @@
         "pKa_ref": [
             10.53
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "propylmalonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.2e-08,
             -2.6e-08
@@ -7515,13 +7516,13 @@
             5.845,
             2.971
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "propylsulfonic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.85e-08
         ],
@@ -7532,12 +7533,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "psicaine-neu": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.19e-08
         ],
@@ -7548,12 +7549,12 @@
         "pKa_ref": [
             8.5
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "pyrazole-2.3-dicarboxylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.6000000000000005e-08,
             -3.38e-08
@@ -7566,13 +7567,13 @@
             4.228,
             1.0
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "pyridine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.0000000000000004e-08
         ],
@@ -7585,12 +7586,12 @@
         "pKa_ref": [
             5.18
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "pyruvic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.23e-08
         ],
@@ -7601,12 +7602,12 @@
         "pKa_ref": [
             2.49
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "radium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.4600000000000005e-08,
             6.920000000000001e-08
@@ -7619,13 +7620,13 @@
             13.5,
             13.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "rhodamine 6g": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             1.4000000000000001e-08
         ],
@@ -7636,12 +7637,12 @@
         "pKa_ref": [
             12.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "rubidium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             8.06e-08
         ],
@@ -7666,12 +7667,12 @@
         "pKa_ref": [
             13.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "saccharin": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.13e-08
         ],
@@ -7682,12 +7683,12 @@
         "pKa_ref": [
             2.432
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "salicylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.54e-08
         ],
@@ -7698,12 +7699,12 @@
         "pKa_ref": [
             3.107
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "samarium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.37e-08,
             4.74e-08,
@@ -7718,7 +7719,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -7726,6 +7726,7 @@
         ]
     },
     "scandium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.24e-08,
             4.47e-08,
@@ -7740,7 +7741,6 @@
             5.9,
             4.9
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -7748,6 +7748,7 @@
         ]
     },
     "sebacic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.49e-08,
             -2.07e-08
@@ -7760,13 +7761,13 @@
             5.38,
             4.53
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "sec-butylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.71e-08
         ],
@@ -7777,12 +7778,12 @@
         "pKa_ref": [
             10.6
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "selenic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -8.05e-08,
             -4.1e-08
@@ -7795,13 +7796,13 @@
             2.05,
             0.0
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "selenious acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.05e-08,
             -4.1200000000000005e-08
@@ -7817,13 +7818,13 @@
             8.45,
             2.62
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "selenocyanic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.71e-08
         ],
@@ -7834,12 +7835,12 @@
         "pKa_ref": [
             0.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "serine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.36e-08,
             3.2e-08
@@ -7855,13 +7856,13 @@
             9.302,
             2.17
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "silver": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             6.45e-08
         ],
@@ -7886,12 +7887,12 @@
         "pKa_ref": [
             11.7
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "sodium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             5.19e-08
         ],
@@ -7916,12 +7917,12 @@
         "pKa_ref": [
             13.7
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "sorbic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -7932,12 +7933,12 @@
         "pKa_ref": [
             4.77
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "strontium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.0800000000000004e-08,
             6.160000000000001e-08
@@ -7950,13 +7951,13 @@
             13.7,
             13.2
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "suberic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.7200000000000006e-08,
             -2.2500000000000003e-08
@@ -7972,13 +7973,13 @@
             5.403,
             4.517
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "succinic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.09e-08,
             -3.3000000000000004e-08
@@ -7997,13 +7998,13 @@
             5.638,
             4.207
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "sucrose": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.0000000000000004e-08
         ],
@@ -8014,12 +8015,12 @@
         "pKa_ref": [
             12.51
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "sulfanilic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.3700000000000004e-08
         ],
@@ -8030,12 +8031,12 @@
         "pKa_ref": [
             3.227
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "sulfuric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -8.290000000000001e-08,
             -5.2e-08
@@ -8068,13 +8069,13 @@
             1.921,
             -3.0
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "sulfurous acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -7.459999999999999e-08,
             -5.18e-08
@@ -8093,13 +8094,13 @@
             6.991,
             1.78
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "sulphamic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.03e-08
         ],
@@ -8110,12 +8111,12 @@
         "pKa_ref": [
             -2.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "taps": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.5000000000000002e-08
         ],
@@ -8130,12 +8131,12 @@
         "pKa_ref": [
             8.3
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "tartaric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.070000000000001e-08,
             -3.26e-08
@@ -8154,13 +8155,13 @@
             4.366,
             3.036
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "tartronic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.83e-08,
             -3.6000000000000005e-08
@@ -8173,13 +8174,13 @@
             4.735,
             2.366
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "taurine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.79e-08,
             3.79e-08
@@ -8192,13 +8193,13 @@
             9.182,
             1.5
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "terbium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.3e-08,
             4.6e-08,
@@ -8213,7 +8214,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -8221,6 +8221,7 @@
         ]
     },
     "terephtalic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.3000000000000005e-08,
             -2.8000000000000003e-08
@@ -8233,13 +8234,13 @@
             4.46,
             3.54
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "tert-butylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.71e-08
         ],
@@ -8250,12 +8251,12 @@
         "pKa_ref": [
             10.6
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "tetracaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.3300000000000003e-08
         ],
@@ -8266,12 +8267,12 @@
         "pKa_ref": [
             8.29
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "tetraethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.42e-08
         ],
@@ -8282,12 +8283,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "tetramethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.7000000000000004e-08
         ],
@@ -8298,12 +8299,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "tetramethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.57e-08,
             6.79e-08
@@ -8316,13 +8317,13 @@
             10.75,
             9.216
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "tetrapropylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.38e-08
         ],
@@ -8333,12 +8334,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "thallium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             7.74e-08
         ],
@@ -8349,12 +8350,12 @@
         "pKa_ref": [
             13.2
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "thioacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.370000000000001e-08
         ],
@@ -8365,12 +8366,12 @@
         "pKa_ref": [
             3.337
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "thiocyanic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -6.85e-08
         ],
@@ -8381,12 +8382,12 @@
         "pKa_ref": [
             0.848
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "thiocyanoacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.0600000000000006e-08
         ],
@@ -8397,12 +8398,12 @@
         "pKa_ref": [
             2.585
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "thioglycolic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.86e-08
         ],
@@ -8413,12 +8414,12 @@
         "pKa_ref": [
             3.545
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "thiosulfuric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -8.81e-08,
             -4.4000000000000004e-08
@@ -8431,13 +8432,13 @@
             1.72,
             0.6
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1
         ]
     },
     "threonine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.09e-08,
             2.9600000000000004e-08
@@ -8450,13 +8451,13 @@
             9.2,
             2.15
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "thulium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.2600000000000004e-08,
             4.520000000000001e-08,
@@ -8471,7 +8472,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -8479,6 +8479,7 @@
         ]
     },
     "tribromoacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.65e-08
         ],
@@ -8489,12 +8490,12 @@
         "pKa_ref": [
             1.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "tributylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.39e-08
         ],
@@ -8505,12 +8506,12 @@
         "pKa_ref": [
             11.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "trichloroacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.79e-08
         ],
@@ -8521,12 +8522,12 @@
         "pKa_ref": [
             0.635
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "trichloroacrylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.34e-08
         ],
@@ -8537,12 +8538,12 @@
         "pKa_ref": [
             0.0
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "trichlorolactic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.42e-08
         ],
@@ -8553,12 +8554,12 @@
         "pKa_ref": [
             2.347
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "tricine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.0000000000000004e-08
         ],
@@ -8573,12 +8574,12 @@
         "pKa_ref": [
             8.15
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "tridecamethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.34e-08,
             4.45e-08
@@ -8591,13 +8592,13 @@
             11.0,
             10.8
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "triethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.56e-08
         ],
@@ -8612,12 +8613,12 @@
         "pKa_ref": [
             10.86
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "triethylmethylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.5200000000000004e-08
         ],
@@ -8628,12 +8629,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "triethylphenylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.0800000000000004e-08
         ],
@@ -8644,12 +8645,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "triethylpropylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.04e-08
         ],
@@ -8660,12 +8661,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "trifluoroacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4.2700000000000005e-08
         ],
@@ -8676,12 +8677,12 @@
         "pKa_ref": [
             0.6
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "triisobutylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.2500000000000003e-08
         ],
@@ -8692,12 +8693,12 @@
         "pKa_ref": [
             10.41
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "trimecaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.24e-08
         ],
@@ -8708,12 +8709,12 @@
         "pKa_ref": [
             7.95
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "trimetaphosphoric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -8.37e-08,
             -0.0,
@@ -8728,7 +8729,6 @@
             0.0,
             0.0
         ],
-        "type": "ionize ion",
         "z": [
             -3,
             -2,
@@ -8736,6 +8736,7 @@
         ]
     },
     "trimethylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.18e-08
         ],
@@ -8748,12 +8749,12 @@
         "pKa_ref": [
             5.037
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "trimethylacrylic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.03e-08
         ],
@@ -8764,12 +8765,12 @@
         "pKa_ref": [
             4.42
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "trimethylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             4.970000000000001e-08
         ],
@@ -8780,12 +8781,12 @@
         "pKa_ref": [
             9.8
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "trimethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.95e-08,
             7.500000000000001e-08
@@ -8801,13 +8802,13 @@
             10.62,
             8.64
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "trimethylphenylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.56e-08
         ],
@@ -8818,12 +8819,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "trimethylpropylammonium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             3.84e-08
         ],
@@ -8834,12 +8835,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "trimetylpyruvic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.92e-08
         ],
@@ -8850,12 +8851,12 @@
         "pKa_ref": [
             1.469
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "tripropylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.7100000000000004e-08
         ],
@@ -8868,12 +8869,12 @@
         "pKa_ref": [
             10.74
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "tris": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.9500000000000003e-08
         ],
@@ -8888,12 +8889,12 @@
         "pKa_ref": [
             8.076
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "tropacocaine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.6e-08
         ],
@@ -8904,12 +8905,12 @@
         "pKa_ref": [
             9.36
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "tryptophane": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.54e-08,
             2.49e-08
@@ -8922,13 +8923,13 @@
             9.594,
             2.32
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "ttaoh": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.5000000000000002e-08
         ],
@@ -8939,12 +8940,12 @@
         "pKa_ref": [
             14.0
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "tyrosine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -4e-08,
             -2e-08,
@@ -8959,7 +8960,6 @@
             2.34,
             2.22
         ],
-        "type": "ionize ion",
         "z": [
             -2,
             -1,
@@ -8967,6 +8967,7 @@
         ]
     },
     "ump": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -5.6000000000000005e-08,
             -3.9700000000000005e-08,
@@ -8981,7 +8982,6 @@
             6.529,
             2.499
         ],
-        "type": "ionize ion",
         "z": [
             -3,
             -2,
@@ -8989,6 +8989,7 @@
         ]
     },
     "undecamethylenediamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.5000000000000002e-08,
             4.75e-08
@@ -9001,13 +9002,13 @@
             11.0,
             10.6
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "undecylamine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.5100000000000003e-08
         ],
@@ -9018,12 +9019,12 @@
         "pKa_ref": [
             10.63
         ],
-        "type": "ionize ion",
         "z": [
             1
         ]
     },
     "uranyl": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             1.6600000000000003e-08,
             3.3200000000000006e-08
@@ -9036,13 +9037,13 @@
             9.0,
             8.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2
         ]
     },
     "valeric acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.1600000000000005e-08
         ],
@@ -9055,12 +9056,12 @@
         "pKa_ref": [
             4.842
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "valine": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.84e-08,
             2.9600000000000004e-08
@@ -9076,13 +9077,13 @@
             9.71,
             2.26
         ],
-        "type": "ionize ion",
         "z": [
             -1,
             1
         ]
     },
     "vanillic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -2.7100000000000004e-08
         ],
@@ -9095,12 +9096,12 @@
         "pKa_ref": [
             4.523
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "vinylacetic acid": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             -3.86e-08
         ],
@@ -9111,12 +9112,12 @@
         "pKa_ref": [
             4.342
         ],
-        "type": "ionize ion",
         "z": [
             -1
         ]
     },
     "ytterbium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.2500000000000003e-08,
             4.5000000000000006e-08,
@@ -9131,7 +9132,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -9139,6 +9139,7 @@
         ]
     },
     "yttrium": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.16e-08,
             4.33e-08,
@@ -9153,7 +9154,6 @@
             7.0,
             6.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2,
@@ -9161,6 +9161,7 @@
         ]
     },
     "zinc": {
+        "__ion__": true,
         "absolute_mobility_ref": [
             2.74e-08,
             5.470000000000001e-08
@@ -9173,7 +9174,6 @@
             9.7,
             9.0
         ],
-        "type": "ionize ion",
         "z": [
             1,
             2

@@ -1,5 +1,6 @@
 import numpy
 from math import sqrt
+from ..constants import faraday
 
 
 def onsager_fuoss(self):
@@ -20,15 +21,15 @@ def onsager_fuoss(self):
 
     # populate them.
     for i in range(len(self.ions)):
-        omega.extend([m/self._F/z for m, z in
+        omega.extend([m/faraday/z for m, z in
                      zip(self.ions[i].absolute_mobility, self.ions[i].z)])
         z_list.extend(self.ions[i].z)
         conc_list.extend([self.concentrations[i]*f for f in
                           self.ions[i].ionization_fraction(self.pH, self.I)])
 
     # add H+ and OH- ions
-    omega.extend([self._H.absolute_mobility[0]/self._F/1.0,
-                  self._OH.absolute_mobility[0]/self._F/-1.0])
+    omega.extend([self._hydronium.absolute_mobility[0]/faraday/1.0,
+                  self._hydroxide.absolute_mobility[0]/faraday/-1.0])
     z_list.extend([1, -1])
     conc_list.extend([self.cH(), self.cOH()])
 
@@ -76,19 +77,16 @@ def onsager_fuoss(self):
 
     T = self.T
     T_ref = 25
-    d = self._dielectric(T)
-    d_ref = self._dielectric(T_ref)
+    d = self._solvent.dielectric(T)
+    d_ref = self._solvent.dielectric(T_ref)
 
     # New temperature corrected coefficients.
     # Temperature corrections are based on the reference values.
-    A_prime = self._F*0.78420*((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
+    A_prime = faraday*0.78420*((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
     B_prime = 31.410e-9 * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-0.5) *\
-        self._viscosity(T_ref)/self._viscosity(T)
+        self._solvent.viscosity(T_ref)/self._solvent.viscosity(T)
 
-    # A_prime = self._F*0.78420
-    # B_prime = 31.41e-9
-
-    mob_new = (self._F * omega - (A_prime*z_list*factor*omega+B_prime) *
+    mob_new = (faraday * omega - (A_prime*z_list*factor*omega+B_prime) *
                sqrt(self.I) / (1+1.5*sqrt(self.I))) * z_list
 
     # transfer the new mobilities from a numpy array back to alist.

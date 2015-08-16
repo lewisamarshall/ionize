@@ -77,5 +77,17 @@ class TestSolution(unittest.TestCase):
             buf.jovin()
             buf.gas()
 
+    def test_water_properties(self):
+        water = Solution([], [])
+        self.assertAlmostEqual(water.pH, 7.0, 2)
+        self.assertAlmostEqual(water.I, 0, 4)
+
+
+class TestNucleicAcid(unittest.TestCase):
+
+    def test_nucleic_acid(self):
+        nucleic_acid()
+        [nucleic_acid(n) for n in [10, 100, 1000, 10000, 100000]]
+
 if __name__ == '__main__':
     unittest.main()

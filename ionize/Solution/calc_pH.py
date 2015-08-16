@@ -74,5 +74,5 @@ def calc_pH(self, I=0):
         print 'Failed to find pH.'
 
     # Convert to pH. Use the activity to correct the calculation.
-    pH = -log10(cH * self._H.activity_coefficient(I, [1])[0])
+    pH = -log10(cH * self._hydronium.activity_coefficient(I, [1])[0])
     return pH

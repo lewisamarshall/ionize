@@ -7,7 +7,7 @@ except:
     long_description = None
 
 setup(name='ionize',
-      version='0.10.4',
+      version='0.11.0',
       author='Lewis A. Marshall',
       author_email='lewis.a.marshall@gmail.com',
       url="http://lewisamarshall.github.io/ionize/",
@@ -16,7 +16,6 @@ setup(name='ionize',
           "Development Status :: 3 - Alpha",
           "Environment :: Console",
           "Intended Audience :: Science/Research",
-          "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
           "Operating System :: OS Independent",
           "Topic :: Software Development :: Libraries :: Python Modules",
           "Topic :: Scientific/Engineering :: Chemistry",

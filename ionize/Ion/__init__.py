@@ -1,11 +1,16 @@
 import warnings
 from math import copysign
-from ..Aqueous import Aqueous
 import json
 import numpy as np
 
+from ..Aqueous import Aqueous
+from ..BaseIon import BaseIon
 
-class Ion(Aqueous):
+
+from ..constants import faraday
+
+
+class Ion(BaseIon):
 
     """Describe an ion dissolved in aqueous solution.
 
@@ -57,11 +62,7 @@ class Ion(Aqueous):
 
         >>> ionize.Ion('my_acid', [-1, -2], [1.2, 3.4], [-10e-8, -21e-8])
     """
-    # These are constants and should not change.
-    _F = 96485.34         # Faraday's const.[C/mol]
-    _Lpm3 = 1000.0        # Conversion from liters to m^3
-    _R = 8.314             # J/mol-K
-    _kB = 8.617e-6        # EV/K
+    _solvent = Aqueous()
 
     # The following are constants in eqtn 6 of Bahga 2010.
     # _Adh is updated for temperature on initialize.
@@ -85,8 +86,7 @@ class Ion(Aqueous):
     dCp = None
     z0 = None
     T = 25
-    # _dielectric = dielectric
-    # _viscosity = viscosity
+
     # If the Ion is in a solution object, copy the pH and I of the Solution
     # locally for reference, in a private variable. Also store the Onsager-
     # Fouss mobility in actual_mobility.
@@ -158,15 +158,17 @@ class Ion(Aqueous):
             self.pKa = self._correct_pKa()
             if self.nightingale_function:
                 self.absolute_mobility = \
-                    [self.nightingale_function(self.T).tolist()
-                     * 10.35e-11 * z / self._viscosity(self.T) for z in self.z]
+                    [self.nightingale_function(self.T).tolist() *
+                     10.35e-11 * z / self._solvent.viscosity(self.T)
+                     for z in self.z]
                 if (self.T > self.nightingale_data['max']) or \
                         (self.T < self.nightingale_data['min']):
                     warnings.warn('Temperature outside range'
                                   'for nightingale data.')
             else:
                 self.absolute_mobility =\
-                    [self._viscosity(self._T_ref)/self._viscosity(self.T)*m
+                    [self._solvent.viscosity(self._T_ref) /
+                     self._solvent.viscosity(self.T)*m
                      for m in self._absolute_mobility_ref]
         # After storing the ion properties, ensure that the properties are
         # sorted in order of charge. All other ion methods assume that the
@@ -208,8 +210,8 @@ class Ion(Aqueous):
             T = self.T
         T_ref = 25
         Adh_ref = 0.5102
-        d = self._dielectric(T)
-        d_ref = self._dielectric(T)
+        d = self._solvent.dielectric(T)
+        d_ref = self._solvent.dielectric(T)
         self._Adh = Adh_ref * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
         return None
 
@@ -219,48 +221,16 @@ class Ion(Aqueous):
         self.temperature_adjust()
         return self
 
-    def __str__(self):
-        """Return a string representing the ion."""
-        obj_str = "Ion('{}', z={})".format(self.name, self.z)
-        return obj_str
+    def serialize(self, nested=False):
+        serial = {'__ion__': True}
+        serial.update(self.__dict__)
+        if 'nightingale_function' in serial:
+            serial.pop('nightingale_function')
 
-    def __repr__(self):
-        """Return a representation of the ion."""
-        return self.__str__()
-
-    def __eq__(self, other):
-        if self.name == other.name and\
-                self.z == other.z and \
-                self._pKa_ref == other._pKa_ref and\
-                self._absolute_mobility_ref == other._absolute_mobility_ref and\
-                self.dH == other.dH and\
-                self.dCp == other.dCp and\
-                self._T_ref == other._T_ref:
-                # self.nightingale_function == other.nightingale_function and\
-            return True
+        if nested:
+            return serial
         else:
-            return False
-
-    def serialize(self):
-        serial = {'type': 'ionize ion',
-                  'name': self.name,
-                  'z': self.z,
-                  'pKa_ref': self._pKa_ref,
-                  'absolute_mobility_ref': self._absolute_mobility_ref,
-                  'dH': self.dH,
-                  'dCp': self.dCp,
-                  'nightingale_function': None}
-        return serial
-
-    def deserialize(self, serial):
-        return Ion(serial['name'],
-                   serial['z'],
-                   serial['pKa_ref'],
-                   serial['absolute_mobility_ref'],
-                   serial['dH'],
-                   serial['dCp'],
-                   serial['nightingale_function'],
-                   T=25.0, T_ref=25.0)
+            return json.dumps(serial)
 
     def save(self, filename):
         with open(filename, 'w') as file:
