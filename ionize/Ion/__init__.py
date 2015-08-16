@@ -1,9 +1,11 @@
 import warnings
 from math import copysign
-from ..Aqueous import Aqueous
-from ..BaseIon import BaseIon
 import json
 import numpy as np
+
+from ..Aqueous import Aqueous
+from ..BaseIon import BaseIon
+
 
 from ..constants import faraday
 
