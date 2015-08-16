@@ -4,6 +4,7 @@ from .get_db import get_db
 from .load_ion import load_ion
 from .search_ion import search_ion
 from .nucleic_acid import nucleic_acid
+from .deserialize import deserialize
 
 import unittest
 import warnings
@@ -44,6 +45,18 @@ class TestIon(unittest.TestCase):
         for z in range(-2, 2):
             for name in search_ion(z_search=z):
                 self.assertTrue(z in load_ion(name).z)
+
+    def test_equality(self):
+        hcl = load_ion('hydrochloric acid')
+        sol = Solution([hcl], [0.1])
+        self.assertEqual(hcl, sol.ions[0])
+        self.assertIn(load_ion('hydrochloric acid'), sol.ions,
+                      [ion.__dict__ for ion in sol.ions])
+
+    def test_serialize(self):
+        for ion_name in self.db.keys():
+            ion = load_ion(ion_name)
+            self.assertEqual(ion, deserialize(ion.serialize()))
 
 
 class TestSolution(unittest.TestCase):

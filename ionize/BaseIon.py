@@ -11,7 +11,11 @@ class BaseIon(object):
         return "Ion('{}', z={})".format(self.name, self.charge)
 
     def __eq__(self, other):
-        return self.__dict__ == other.__dict__
+        selfstate, otherstate = [{k: v for k, v in obj.__dict__.items()
+                                  if not k.startswith('_')}
+                                 for obj in self, other]
+
+        return selfstate == otherstate
 
     def mobility(self):
         raise NotImplementedError

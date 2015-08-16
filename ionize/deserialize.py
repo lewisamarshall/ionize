@@ -3,8 +3,7 @@ from .Ion import Ion
 import json
 
 def deserialize(serial):
-        serial = json.loads(serial, object_hook=object_hook)
-
+        return json.loads(serial, object_hook=object_hook)
 
 def object_hook(obj):
     if '__ion__' in obj:

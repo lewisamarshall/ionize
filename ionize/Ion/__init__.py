@@ -32,7 +32,7 @@ class Ion(BaseIon):
         dCp (list): The change in heat capacity of dissociation of each\
         valence, at the reference temperature, as floats.
 
-        nightingale_function (function): A function describing absolute\
+        nightingale_data (function): A function describing absolute\
         mobility as a function of temperature, for special ions.
 
         T (float): The temperature to use to calculate the properties of the
@@ -80,7 +80,6 @@ class Ion(BaseIon):
     # These are the properties at the current temperature, or are treated
     # as temperature independant.
     pKa = None
-    Ka = None
     absolute_mobility = None
     dH = None
     dCp = None
@@ -89,13 +88,13 @@ class Ion(BaseIon):
 
     # If the Ion is in a solution object, copy the pH and I of the Solution
     # locally for reference, in a private variable. Also store the Onsager-
-    # Fouss mobility in actual_mobility.
+    # Fouss mobility in _actual_mobility.
     _pH = None
     _I = None
-    actual_mobility = None
+    _actual_mobility = None
 
     def __init__(self, name, z, pKa_ref, absolute_mobility_ref,
-                 dH=None, dCp=None, nightingale_function=None,
+                 dH=None, dCp=None, nightingale_data=None,
                  T=25.0, T_ref=25.0):
         """Initialize an Ion object."""
         # Copy properties into the ion.
@@ -105,11 +104,11 @@ class Ion(BaseIon):
         self._T_ref = T_ref
         self.dH = dH
         self.dCp = dCp
-        self.nightingale_data = nightingale_function
+        self.nightingale_data = nightingale_data
         if self.nightingale_data:
-            self.nightingale_function = np.poly1d(self.nightingale_data['fit'])
+            self._nightingale_function = np.poly1d(self.nightingale_data['fit'])
         else:
-            self.nightingale_function = None
+            self._nightingale_function = None
 
         # Copy in the properties that should be lists, as long as they are
         # single values or iterables.
@@ -156,9 +155,9 @@ class Ion(BaseIon):
             self.absolute_mobility = self._absolute_mobility_ref
         else:
             self.pKa = self._correct_pKa()
-            if self.nightingale_function:
+            if self._nightingale_function:
                 self.absolute_mobility = \
-                    [self.nightingale_function(self.T).tolist() *
+                    [self._nightingale_function(self.T).tolist() *
                      10.35e-11 * z / self._solvent.viscosity(self.T)
                      for z in self.z]
                 if (self.T > self.nightingale_data['max']) or \
@@ -174,7 +173,6 @@ class Ion(BaseIon):
         # sorted in order of charge. All other ion methods assume that the
         # states will be sorted by charge.
         self._z_sort()
-        self._set_Ka()
         self._set_z0()
 
     def _z_sort(self):
@@ -191,13 +189,12 @@ class Ion(BaseIon):
 
         return None
 
-    def _set_Ka(self):
+    def Ka(self):
         """Set the Kas based on the pKas.
 
         These values are not corrected for ionic strength.
         """
-        self.Ka = [10.**-p for p in self.pKa]
-        return None
+        return [10.**-p for p in self.pKa]
 
     def _set_z0(self):
         """Set the list of charge states with 0 inserted."""
@@ -222,10 +219,14 @@ class Ion(BaseIon):
         return self
 
     def serialize(self, nested=False):
-        serial = {'__ion__': True}
-        serial.update(self.__dict__)
-        if 'nightingale_function' in serial:
-            serial.pop('nightingale_function')
+        serial = {'__ion__': True,
+                  'name': self.name,
+                  'z': self.z,
+                  'pKa_ref': self._pKa_ref,
+                  'absolute_mobility_ref': self._absolute_mobility_ref,
+                  'dH': self.dH,
+                  'dCp': self.dCp,
+                  'nightingale_data': self.nightingale_data}
 
         if nested:
             return serial

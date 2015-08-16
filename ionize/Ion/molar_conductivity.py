@@ -30,15 +30,15 @@ def molar_conductivity(self, pH=None, I=None):
         else:
             I = 0
 
-    if self.actual_mobility:
-        actual_mobility = self.actual_mobility
+    if self._actual_mobility:
+        _actual_mobility = self._actual_mobility
     else:
-        actual_mobility = self.robinson_stokes_mobility(I)
+        _actual_mobility = self.robinson_stokes_mobility(I)
 
     i_frac = self.ionization_fraction(pH, I)
 
     m_conductivity = (lpm3 * faraday *
                       sum(z * f * m for (z, f, m)
-                          in zip(self.z, i_frac, actual_mobility)))
+                          in zip(self.z, i_frac, _actual_mobility)))
 
     return m_conductivity

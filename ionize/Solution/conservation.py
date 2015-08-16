@@ -29,15 +29,15 @@ def alberty(self):
     al = 0
 
     for ion, c in zip(self.ions, self.concentrations):
-        if len(ion.actual_mobility) == 1:
-            al += c * lpm3 / abs(ion.actual_mobility[0])
+        if len(ion._actual_mobility) == 1:
+            al += c * lpm3 / abs(ion._actual_mobility[0])
         else:
             f = ion.ionization_fraction()
             if max(f)/sum(f) < .9:
                 warnings.warn('Ion not in single valance. Alberty invalid.')
             elif abs(ion.z[f.index(max(f))]) != 1:
                 warnings.warn('Ion valance is not 1. Alberty invalid.')
-            al += c * lpm3 / abs(ion.actual_mobility[f.index(max(f))])
+            al += c * lpm3 / abs(ion._actual_mobility[f.index(max(f))])
 
     return al
 
@@ -51,7 +51,7 @@ def jovin(self):
     jov = 0
 
     for ion, c in zip(self.ions, self.concentrations):
-        if len(ion.actual_mobility) == 1:
+        if len(ion._actual_mobility) == 1:
             jov += c * ion.z[0]
         else:
             f = ion.ionization_fraction()

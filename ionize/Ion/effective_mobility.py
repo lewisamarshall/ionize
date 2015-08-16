@@ -25,12 +25,12 @@ def effective_mobility(self, pH=None, I=None):
         else:
             I = 0.0
 
-    if self.actual_mobility:
-        actual_mobility = self.actual_mobility
+    if self._actual_mobility:
+        _actual_mobility = self._actual_mobility
     else:
-        actual_mobility = self.robinson_stokes_mobility(I)
+        _actual_mobility = self.robinson_stokes_mobility(I)
 
     i_frac = self.ionization_fraction(pH, I)
-    effective_mobility = sum([f*m for (f, m) in zip(i_frac, actual_mobility)])
+    effective_mobility = sum([f*m for (f, m) in zip(i_frac, _actual_mobility)])
 
     return effective_mobility

@@ -17,7 +17,7 @@ def Ka_eff(self, I=None):
 
     # If the ionic strength is zero, simply return the Ka's.
     if I is 0:
-        return self.Ka[:]
+        return self.Ka()
 
     # Make the effective Ka vector the same size as the Ka vector.
     Ka_eff = []
@@ -27,7 +27,7 @@ def Ka_eff(self, I=None):
 
     # For each acidity coefficient, get the effective
     # coefficient by multiplying by activities.
-    for i, Kp in enumerate(self.Ka):
+    for i, Kp in enumerate(self.Ka()):
         Ka_eff.append(Kp*gam_i[i+1]/gam_i[i]/gam_h[0])
 
     return Ka_eff

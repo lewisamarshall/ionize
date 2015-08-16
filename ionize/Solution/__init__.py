@@ -110,10 +110,10 @@ class Solution(Aqueous):
         actual_mobilities = self._onsager_fuoss()
 
         for i in range(len(self.ions)):
-            self.ions[i].actual_mobility = actual_mobilities[i]
+            self.ions[i]._actual_mobility = actual_mobilities[i]
 
-        self._hydronium.actual_mobility = [actual_mobilities[-1][0]]
-        self._hydroxide.actual_mobility = [actual_mobilities[-1][1]]
+        self._hydronium._actual_mobility = [actual_mobilities[-1][0]]
+        self._hydroxide._actual_mobility = [actual_mobilities[-1][1]]
 
     def set_T(self, T):
         return Solution(self.ions, self.concentrations, T=T)
@@ -167,7 +167,8 @@ class Solution(Aqueous):
         Corrects for the mobility of the ion using the
         ion objects's actual mobility.
         """
-        H_conductivity = self.cH()*self._hydronium.molar_conductivity(self.pH, self.I)
+        H_conductivity = self.cH()*self._hydronium.molar_conductivity(self.pH,
+                                                                      self.I)
         return H_conductivity
 
     def OH_conductivity(self):

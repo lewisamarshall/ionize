@@ -81,7 +81,7 @@ def make_database():
                       'absolute_mobility_ref': state[2],
                       'dH': dH,
                       'dCp': dCp,
-                      'nightingale_function': nightingale_function}
+                      'nightingale_data': nightingale_function}
 
         ion_dict[name] = serial_ion
     ion_dict['taps']['dCp'] = [15.0]
@@ -97,7 +97,7 @@ def make_database():
                               'absolute_mobility_ref': boric[2],
                               'dH': boric[3],
                               'dCp': boric[4],
-                              'nightingale_function': None}
+                              'nightingale_data': None}
 
     # Remove valences to fix ion search
     # TODO: Undo this.

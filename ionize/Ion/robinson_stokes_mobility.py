@@ -27,11 +27,11 @@ def robinson_stokes_mobility(self, I=None, T=25):
     A = 0.2297*((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
     B = 31.410e-9 * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-0.5) *\
         self._solvent.viscosity(T_ref)/self._solvent.viscosity(T)
-    actual_mobility = []
+    _actual_mobility = []
     for abs_mob, z in zip(self.absolute_mobility, self.z):
-        actual_mobility.append(abs_mob -
+        _actual_mobility.append(abs_mob -
                                (A * abs_mob +
                                 B * copysign(1, z)) * sqrt(I) /
                                (1 + self._aD * sqrt(I)))
 
-    return actual_mobility
+    return _actual_mobility
