@@ -1,9 +1,11 @@
 import warnings
 from math import copysign
 from ..Aqueous import Aqueous
+from ..BaseIon import BaseIon
 import json
 import numpy as np
 
+from ..constants import faraday
 
 
 class Ion(BaseIon):
@@ -59,12 +61,6 @@ class Ion(BaseIon):
         >>> ionize.Ion('my_acid', [-1, -2], [1.2, 3.4], [-10e-8, -21e-8])
     """
     _solvent = Aqueous()
-
-    # These are constants and should not change.
-    _F = 96485.34         # Faraday's const.[C/mol]
-    _Lpm3 = 1000.0        # Conversion from liters to m^3
-    _R = 8.314             # J/mol-K
-    _kB = 8.617e-6        # EV/K
 
     # The following are constants in eqtn 6 of Bahga 2010.
     # _Adh is updated for temperature on initialize.
@@ -161,14 +157,16 @@ class Ion(BaseIon):
             if self.nightingale_function:
                 self.absolute_mobility = \
                     [self.nightingale_function(self.T).tolist() *
-                     10.35e-11 * z / self._solvent.viscosity(self.T) for z in self.z]
+                     10.35e-11 * z / self._solvent.viscosity(self.T)
+                     for z in self.z]
                 if (self.T > self.nightingale_data['max']) or \
                         (self.T < self.nightingale_data['min']):
                     warnings.warn('Temperature outside range'
                                   'for nightingale data.')
             else:
                 self.absolute_mobility =\
-                    [self._solvent.viscosity(self._T_ref)/self._solvent.viscosity(self.T)*m
+                    [self._solvent.viscosity(self._T_ref) /
+                     self._solvent.viscosity(self.T)*m
                      for m in self._absolute_mobility_ref]
         # After storing the ion properties, ensure that the properties are
         # sorted in order of charge. All other ion methods assume that the
