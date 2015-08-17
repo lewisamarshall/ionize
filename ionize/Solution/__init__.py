@@ -253,7 +253,7 @@ class Solution(Aqueous):
         serial['ions'] = [ion.serialize(nested=True) for ion in self.ions]
         serial['T'] = self.T
 
-        if __nested__:
+        if nested:
             return serial
         else:
             return json.dumps(serial)
