@@ -1,48 +1,54 @@
 """Create the Aqueous class to hold the properties of water."""
 from math import log10, log
-from .constants import gas_constant
+from .constants import gas_constant, reference_temperature, kelvin_conversion
 
 
 class Aqueous(object):
 
-    """Describe the properties of water."""
+    """Access the properties of water."""
 
-    _Kw_ref = 1E-14        # Water equilibrium constant [mol^2]
-    _dHw = 55.815e3
-    _dCpw = -224
-    _T_ref = 25.
+    _reference_dissociation = 1.E-14    # Water equilibrium constant [mol^2]
+    _reference_pKw = -log10(_reference_dissociation)
+    _enthalpy = 55.815e3                # enthalpy of dissociation water
+    _heat_capacity = -224.              # heat capacity of water
 
-    def dielectric(self, T=None):
+    def dielectric(self, temperature):
         """Return the dielectric constant of water at a specified temperature.
 
         The temperature should be specified in Celcius. Correlation is based on
         the CRC handbook.
         """
-        Tk = T+273.15  # Convert to Kalvin.
-        d = 249.21 - 0.79069*Tk + 0.72997e-3*Tk**2
-        return d
+        temperature = self.temperature_kelvin(temperature)
+        dielectric_ = 249.21 - 0.79069*temperature + 0.72997e-3*temperature**2
+        return dielectric_
 
-    def viscosity(self, T=None):
+    def viscosity(self, temperature):
         """Return the viscosity of water at the specified temperature.
 
-        The temperature should be specified in celcius. The function internally
-        converts the temperature to Kelvin. Correlation is based on Fox and
-        McDonald's Intro to FLuid Mechanics, as implimented in STEEP.
+        Correlation is based on Fox and McDonald's Intro to FLuid Mechanics.
         """
-        Tk = T+273.15
-        v = (2.414e-5)*10**(247.8/(Tk-140))
-        return v
+        temperature = self.temperature_kelvin(temperature)
+        viscosity_ = 2.414e-5 * 10**(247.8 / (temperature - 140))
+        return viscosity_
 
-    def dissociation(self, T=None):
+    def dissociation(self, temperature):
         """Return the dissociation constant of water."""
-        if not T:
-            return self._Kw_ref
+        reference_temperature_ = self.temperature_kelvin(reference_temperature)
 
-        pKw_ref = -log10(self._Kw_ref)
-        T_ref = self._T_ref + 273.15
-        T += 273.15
-        pKw = pKw_ref -\
-            (self._dHw/2.303/gas_constant)*(1.0/T_ref - 1.0/T) -\
-            (self._dCpw/2.303/gas_constant)*(T_ref/T-1.0+log10(T/T_ref))
-        Kw = 10.0**(-pKw)
-        return Kw
+        temperature = self.temperature_kelvin(temperature)
+
+        enthalpy_contribution = (self._enthalpy / 2.303 / gas_constant) * \
+            (1. / reference_temperature_ - 1. / temperature)
+
+        cp_contribution = (self._heat_capacity/2.303/gas_constant) * \
+            (reference_temperature_ / temperature - 1. +
+             log10(temperature / reference_temperature_))
+
+        pKw = self._reference_pKw - enthalpy_contribution - cp_contribution
+
+        dissociation_ = 10.0**(-pKw)
+        return dissociation_
+
+    def temperature_kelvin(self, temperature):
+        """Convert a temperature from Celsius to Kelvin."""
+        return temperature + kelvin_conversion

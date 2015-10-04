@@ -59,14 +59,11 @@ class Solution(Aqueous):
     T = 25                 # Temperature in C
     _T_ref = 25            # reference temperature
 
-    def __init__(self, ions=[], concentrations=[], T=25):
+    def __init__(self, ions=[], concentrations=[], T=25.):
         """Initialize a solution object."""
 
         self.T = float(T)
-        if self.T == self._T_ref:
-            self._Kw = self._solvent._Kw_ref
-        else:
-            self._Kw = self._solvent.dissociation(self.T)
+        self._Kw = self._solvent.dissociation(self.T)
 
         if isinstance(ions, basestring):
             ions = [ions]

@@ -1,3 +1,6 @@
+"""Test module for ionize."""
+
+from .Aqueous import Aqueous
 from .Ion import Ion
 from .Solution import Solution
 from .get_db import get_db
@@ -8,7 +11,41 @@ from .deserialize import deserialize
 
 import unittest
 import warnings
-import numpy
+import numpy as np
+
+
+class TestAqueous(unittest.TestCase):
+
+    """Test the Aqueous class."""
+
+    def setUp(self):
+        """Create an instance and a temperature range to test over."""
+        self.temperature_range = np.linspace(10, 90)
+        self.aqueous = Aqueous()
+
+    def test_dielectric(self):
+        """Test that dielectric constant is monotone decreasing."""
+        d = 100
+        for t in self.temperature_range:
+            d_new = self.aqueous.dielectric(t)
+            self.assertLess(d_new, d)
+            d = d_new
+
+    def test_viscosity(self):
+        """Test that viscosity  is monotone decreasing."""
+        v = 1
+        for t in self.temperature_range:
+            v_new = self.aqueous.viscosity(t)
+            self.assertLess(v_new, v)
+            v = v_new
+
+    def test_dissociation(self):
+        """Test that dissociation constant is monotone increasing."""
+        k = 0
+        for t in self.temperature_range:
+            k_new = self.aqueous.dissociation(t)
+            self.assertGreater(k_new, k)
+            k = k_new
 
 
 class TestIon(unittest.TestCase):
@@ -65,7 +102,7 @@ class TestSolution(unittest.TestCase):
         self.hcl = load_ion('hydrochloric acid')
         self.tris = load_ion('tris')
         self.solutions = [Solution([self.tris, self.hcl], [k, 0.1-k])
-                          for k in numpy.linspace(0, 0.1, 20)]
+                          for k in np.linspace(0, 0.1, 20)]
 
     def test_titration(self):
         c_tris = 0.3
