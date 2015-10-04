@@ -47,6 +47,14 @@ class TestAqueous(unittest.TestCase):
             self.assertGreater(k_new, k)
             k = k_new
 
+    def test_debye_huckel(self):
+        """Test that Debye-Huckel constant is monotone increasing."""
+        dh = 0
+        for t in self.temperature_range:
+            dh_new = self.aqueous.debye_huckel(t)
+            self.assertGreater(dh_new, dh)
+            dh = dh_new
+
 
 class TestIon(unittest.TestCase):
 

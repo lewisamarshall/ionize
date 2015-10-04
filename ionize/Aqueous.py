@@ -1,6 +1,8 @@
 """Create the Aqueous class to hold the properties of water."""
-from math import log10, log
-from .constants import gas_constant, reference_temperature, kelvin_conversion
+from math import log10, log, pi, sqrt
+from .constants import gas_constant, reference_temperature, \
+                       kelvin_conversion, elementary_charge, avagadro,\
+                       boltzmann, permittivity, lpm3
 
 
 class Aqueous(object):
@@ -48,6 +50,15 @@ class Aqueous(object):
 
         dissociation_ = 10.0**(-pKw)
         return dissociation_
+
+    def debye_huckel(self, temperature):
+        """Return the Debye-Huckel constant, in M^-(1/2)."""
+        debye_huckel_ = elementary_charge**3. * sqrt(avagadro) / 2**(5./2.) / pi / \
+            (self.dielectric(temperature) * permittivity *
+             boltzmann * self.temperature_kelvin(temperature))**(3./2.)
+
+        # Before returning answer, use log 10, convert from meter**3 to liter
+        return debye_huckel_ / log(10.) * sqrt(lpm3)
 
     def temperature_kelvin(self, temperature):
         """Convert a temperature from Celsius to Kelvin."""

@@ -4,7 +4,8 @@ from ..Aqueous import Aqueous
 from ..load_ion import load_ion
 import warnings
 import json
-from ..constants import permittivity, avagadro, boltzmann, elementary_charge
+from ..constants import permittivity, avagadro, boltzmann, \
+                        elementary_charge, lpm3
 
 
 class Solution(Aqueous):
@@ -186,8 +187,9 @@ class Solution(Aqueous):
         """
         dielectric = self._solvent.dielectric(self.T)
         viscosity = self._solvent.viscosity(self.T)
-        lamda = (dielectric * permittivity * boltzmann * self.T /
-                 elementary_charge ** 2 / self.I / avagadro) ** .5
+        temperature = self._solvent.temperature_kelvin(self.T)
+        lamda = (dielectric * permittivity * boltzmann * temperature /
+                 elementary_charge**2 / (self.I * lpm3) / avagadro) ** .5
         return lamda
 
     def get_concentration(self, ion):

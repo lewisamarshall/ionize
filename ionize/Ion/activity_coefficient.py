@@ -19,7 +19,7 @@ def activity_coefficient(self, I=None, z=None):
 
     # There are two coefficients that are used repeatedly.
     # Specified in Bahga.
-    A = self._Adh*sqrt(I)/(1.0+self._aD*sqrt(I))
+    A = self._solvent.debye_huckel(self.T)*sqrt(I)/(1.0+self._aD*sqrt(I))
     B = 0.1*I  # Matching STEEP implementation.
 
     # Use them to calculate the activity coefficients.

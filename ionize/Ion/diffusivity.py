@@ -1,4 +1,4 @@
-from ..constants import boltzmann
+from ..constants import boltzmann, elementary_charge
 
 
 def diffusivity(self, pH):
@@ -10,6 +10,6 @@ def diffusivity(self, pH):
                       m, f, z in zip(self.absolute_mobility,
                                      self.ionization_fraction(pH),
                                      self.z
-                                     )]) * boltzmann * (self.T + 273.15)
+                                     )]) * boltzmann * (self.T + 273.15) / elementary_charge
     diffusivity /= sum(self.ionization_fraction(pH))
     return diffusivity

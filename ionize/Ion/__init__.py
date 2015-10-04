@@ -64,9 +64,6 @@ class Ion(BaseIon):
     """
     _solvent = Aqueous()
 
-    # The following are constants in eqtn 6 of Bahga 2010.
-    # _Adh is updated for temperature on initialize.
-    _Adh = 0.5102         # L^1/2 / mol^1/2, approximate for RT
     # _aD is treated as a constant, though it does vary slightly with temp.
     _aD = 1.5             # L^3/2 mol^-1
 
@@ -149,7 +146,6 @@ class Ion(BaseIon):
 
     def temperature_adjust(self):
         """Temperature adjust the ion."""
-        self._set_Adh()
         if self.T == self._T_ref:
             self.pKa = self._pKa_ref
             self.absolute_mobility = self._absolute_mobility_ref
@@ -199,17 +195,6 @@ class Ion(BaseIon):
     def _set_z0(self):
         """Set the list of charge states with 0 inserted."""
         self.z0 = sorted([0]+self.z)
-        return None
-
-    def _set_Adh(self, T=None):
-        """Account for the temperature dependance of Adh."""
-        if not T:
-            T = self.T
-        T_ref = 25
-        Adh_ref = 0.5102
-        d = self._solvent.dielectric(T)
-        d_ref = self._solvent.dielectric(T)
-        self._Adh = Adh_ref * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
         return None
 
     def set_T(self, T):

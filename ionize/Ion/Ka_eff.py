@@ -4,7 +4,7 @@ def Ka_eff(self, I=None):
     Args:
         I (float): The ambiant ionic strength.
 
-    This function correct the Ka for ionic strength, using the Dubye-Huckle
+    This function correct the Ka for ionic strength, using the Dubye-Huckel
     theory to calculate activity coefficients. If no ionic strength is
     supplied, and the Ion is nested in a Solution, the solution ionic
     strength will be used. Otherwise, the ionic strength is assumed to be 0.
