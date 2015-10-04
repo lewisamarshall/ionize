@@ -64,14 +64,11 @@ class Ion(BaseIon):
     """
     _solvent = Aqueous()
 
-    # _aD is treated as a constant, though it does vary slightly with temp.
-    _aD = 1.5             # L^3/2 mol^-1
-
     # The reference properties of the ion are stored and used to calculate
     # properties at the current temperature.
     _pKa_ref = []
     _absolute_mobility_ref = []  # m^2/V/s.
-    _T_ref = 25
+    _T_ref = 25.
 
     # The properties of the ions are stored in public variables.
     # These are the properties at the current temperature, or are treated

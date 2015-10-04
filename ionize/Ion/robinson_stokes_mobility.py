@@ -1,6 +1,8 @@
 from math import copysign, sqrt
 import warnings
 
+from ..constants import pitts
+
 
 def robinson_stokes_mobility(self, I=None, T=25):
     """Return the Robinson-Stokes correction to fully ionized mobility.
@@ -32,6 +34,6 @@ def robinson_stokes_mobility(self, I=None, T=25):
         _actual_mobility.append(abs_mob -
                                (A * abs_mob +
                                 B * copysign(1, z)) * sqrt(I) /
-                               (1 + self._aD * sqrt(I)))
+                               (1. + pitts * sqrt(I)))
 
     return _actual_mobility

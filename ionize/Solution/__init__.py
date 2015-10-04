@@ -46,10 +46,6 @@ class Solution(Aqueous):
     """
 
     _solvent = Aqueous()
-
-    _Adh = 0.512           # L^1/2 / mol^1/2, approximate for room temperature
-    _aD = 1.5              # mol^-1/2 mol^-3/2, approximation
-
     _hydronium = Ion('H+', [1], [100], [362E-9])
     _hydroxide = Ion('OH-', [-1], [-100], [-205E-9])
 
