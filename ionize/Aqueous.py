@@ -1,7 +1,7 @@
 """Create the Aqueous class to hold the properties of water."""
 from math import log10, log, pi, sqrt
 from .constants import gas_constant, reference_temperature, \
-                       kelvin_conversion, elementary_charge, avagadro,\
+                       kelvin, elementary_charge, avagadro,\
                        boltzmann, permittivity, lpm3
 
 
@@ -20,7 +20,7 @@ class Aqueous(object):
         The temperature should be specified in Celcius. Correlation is based on
         the CRC handbook.
         """
-        temperature = self.temperature_kelvin(temperature)
+        temperature = kelvin(temperature)
         dielectric_ = 249.21 - 0.79069*temperature + 0.72997e-3*temperature**2
         return dielectric_
 
@@ -29,15 +29,15 @@ class Aqueous(object):
 
         Correlation is based on Fox and McDonald's Intro to FLuid Mechanics.
         """
-        temperature = self.temperature_kelvin(temperature)
+        temperature = kelvin(temperature)
         viscosity_ = 2.414e-5 * 10**(247.8 / (temperature - 140))
         return viscosity_
 
     def dissociation(self, temperature):
         """Return the dissociation constant of water."""
-        reference_temperature_ = self.temperature_kelvin(reference_temperature)
+        reference_temperature_ = kelvin(reference_temperature)
 
-        temperature = self.temperature_kelvin(temperature)
+        temperature = kelvin(temperature)
 
         enthalpy_contribution = (self._enthalpy / 2.303 / gas_constant) * \
             (1. / reference_temperature_ - 1. / temperature)
@@ -55,11 +55,7 @@ class Aqueous(object):
         """Return the Debye-Huckel constant, in M^-(1/2)."""
         debye_huckel_ = elementary_charge**3. * sqrt(avagadro) / 2**(5./2.) / pi / \
             (self.dielectric(temperature) * permittivity *
-             boltzmann * self.temperature_kelvin(temperature))**(3./2.)
+             boltzmann * kelvin(temperature))**(3./2.)
 
         # Before returning answer, use log 10, convert from meter**3 to liter
         return debye_huckel_ / log(10.) * sqrt(lpm3)
-
-    def temperature_kelvin(self, temperature):
-        """Convert a temperature from Celsius to Kelvin."""
-        return temperature + kelvin_conversion

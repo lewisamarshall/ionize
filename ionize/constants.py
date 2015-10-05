@@ -10,7 +10,7 @@ avagadro = 6.02e23              # Avagadro's number, 1/mol
 elementary_charge = 1.602e-19   # Charge of a proton, [C]
 
 # Temperature Information
-reference_temperature = 25.
+reference_temperature = 25.      # Reference temperature (Celsius)
 kelvin_conversion = 273.15
 
 # Ion information
@@ -20,3 +20,13 @@ pitts = 1.5                     # Finite ion radius correction. [(mol/L)**.5]
 # oh_mobility = 205E-9/faraday  # Mobility of Hydronium   % [m^2/s*V]/F
 # h_diffusivity = h_mobility / 1 * boltzmann * (temperature_K)
 # oh_diffusivity = oh_mobility / -1 * boltzmann * (temperature_K)
+
+
+def kelvin(temperature):
+    """Convert Celsius to Kelvin."""
+    return temperature + kelvin_conversion
+
+
+def celsius(temperature_kelvin):
+    """Convert Kelvin to Celsius."""
+    return temperature_kelvin - kelvin_conversion
