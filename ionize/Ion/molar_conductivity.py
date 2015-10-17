@@ -1,7 +1,7 @@
 from ..constants import faraday, lpm3
 
 
-def molar_conductivity(self, pH=None, I=None):
+def molar_conductivity(self, pH=None, ionic_strength=None, temperature=None):
     """Retun the molar conductivity of the ion based on the pH and I.
 
     Provides conducitivity in Siemens per meter per mole.
@@ -20,25 +20,15 @@ def molar_conductivity(self, pH=None, I=None):
 
     Otherwise, always call with a pH argument.
     """
-    if pH is None:
-        assert self._pH, 'requires an input pH'
-        pH = self._pH
+    pH, ionic_strength, temperature = \
+        self._resolve_context(pH, ionic_strength, temperature)
 
-    if I is None:
-        if self._I:
-            I = self._I
-        else:
-            I = 0
+    actual_mobility = self.actual_mobility(ionic_strength, temperature)
 
-    if self._actual_mobility:
-        _actual_mobility = self._actual_mobility
-    else:
-        _actual_mobility = self.robinson_stokes_mobility(I)
-
-    i_frac = self.ionization_fraction(pH, I)
+    i_frac = self.ionization_fraction(pH, ionic_strength, temperature)
 
     m_conductivity = (lpm3 * faraday *
                       sum(z * f * m for (z, f, m)
-                          in zip(self.z, i_frac, _actual_mobility)))
+                          in zip(self.valence, i_frac, actual_mobility)))
 
     return m_conductivity

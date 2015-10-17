@@ -1,7 +1,6 @@
-from numpy import prod
+import numpy as np
 
-
-def L(self, I=None):
+def L(self, ionic_strength=None, temperature=None):
     """Return the L products of acidity constants.
 
     Args:
@@ -14,17 +13,14 @@ def L(self, I=None):
 
     L is used by Solution selfects to calculate equilibrium pH.
     """
-    if I is None:
-        if self._I:
-            I = self._I
-        else:
-            I = 0.0
+    _, ionic_strength, temperature = \
+        self._resolve_context(None, ionic_strength, temperature)
 
-    Ka = self.Ka_eff(I)
-    index_0 = self.z0.index(0)
+    Ka = self.Ka(ionic_strength, temperature)
+    index_0 = list(self._valence_zero()).index(0)
     Ka.insert(index_0, 1)
 
-    L = [prod(Ka[i:index_0]) for i in range(len(Ka)) if i < index_0] +\
-        [1/prod(Ka[index_0:i+1]) for i in range(len(Ka)) if i >= index_0]
+    L = [np.prod(Ka[i:index_0]) for i in range(len(Ka)) if i < index_0] +\
+        [1/np.prod(Ka[index_0:i+1]) for i in range(len(Ka)) if i >= index_0]
 
     return L

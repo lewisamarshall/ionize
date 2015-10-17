@@ -109,6 +109,9 @@ class Solution(Aqueous):
         self._hydronium._actual_mobility = [actual_mobilities[-1][0]]
         self._hydroxide._actual_mobility = [actual_mobilities[-1][1]]
 
+    def equilibrate_CO2(self):
+        raise NotImplementedError
+
     def set_T(self, T):
         return Solution(self.ions, self.concentrations, T=T)
 
@@ -141,7 +144,7 @@ class Solution(Aqueous):
         if not I:
             I = self.I
 
-        cH = 10**(-pH)/self._hydronium.activity_coefficient(I, [1])[0]
+        cH = 10**(-pH)/self._hydronium.activity(I, [1])[0]
         return cH
 
     def cOH(self, pH=None, I=None):

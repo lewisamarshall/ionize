@@ -3,7 +3,43 @@ from math import log
 from ..constants import gas_constant, kelvin
 
 
+def Ka(self, ionic_strength=None, temperature=None):
+    """Return the effective Ka values for the ion.
+
+    Args:
+        I (float): The ambiant ionic strength.
+
+    This function correct the Ka for ionic strength, using the Dubye-Huckel
+    theory to calculate activity coefficients. If no ionic strength is
+    supplied, and the Ion is nested in a Solution, the solution ionic
+    strength will be used. Otherwise, the ionic strength is assumed to be 0.
+    """
+    _, ionic_strength, temperature = \
+        self._resolve_context(None, ionic_strength, temperature)
+
+    # Make the effective Ka vector the same size as the Ka vector.
+    Ka_eff = []
+
+    gam_i = self.activity(None, ionic_strength, temperature)
+    gam_h, = self.activity(1, ionic_strength, temperature)
+
+    # For each acidity coefficient, get the effective
+    # coefficient by multiplying by activities.
+    for i, Kp in enumerate(self.mid_Ka(ionic_strength, temperature)):
+        Ka_eff.append(Kp*gam_i[i+1]/gam_i[i]/gam_h)
+
+    return Ka_eff
+
 def pKa(self, ionic_strength=None, temperature=None):
+    _, ionic_strength, temperature = \
+        self._resolve_context(None, ionic_strength, temperature)
+
+
+def mid_Ka(self, ionic_strength, temperature):
+    return 10**(-self.mid_pKa(ionic_strength, temperature))
+
+
+def mid_pKa(self, ionic_strength=None, temperature=None):
     """Return the pKa corrected for temperature.
 
     If dCp for the ion is available, returns the Clark-Glew correction, which
@@ -14,13 +50,13 @@ def pKa(self, ionic_strength=None, temperature=None):
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)
 
-    if self.dH and self.dCp:
+    if self.enthalpy and self.heat_capacity:
         return _clark_glew(self, temperature)
-    elif self.dH and not self.dCp:
+    elif self.enthalpy and not self.heat_capacity:
         return _vant_hoff(self, temperature)
     else:
         warnings.warn('No data available to correct pKa for temperature.')
-        return self._pKa_ref
+        return self.reference_pKa
 
 
 def _vant_hoff(self, temprature):
@@ -39,9 +75,10 @@ def _vant_hoff(self, temprature):
            for p, h in zip(pKa_ref, dH)]
     return pKa
 
-def _clark_glew(self):
-    T = self.T + 273.15
-    T_ref = self._T_ref + 273.15
+
+def _clark_glew(self, temperature):
+    T = kelvin(temperature)
+    T_ref = kelvin(self.reference_temperature)
     if abs(T-T_ref) > 100:
         warnings.warn('Using the Clark-Glew correction for dT > 100 deg.')
     pKa_ref = self._pKa_ref

@@ -1,3 +1,4 @@
+"""Module containing the Ion class."""
 import warnings
 from math import copysign
 import json
@@ -5,14 +6,12 @@ import numpy as np
 
 from ..Aqueous import Aqueous
 from ..BaseIon import BaseIon
-
-
-from ..constants import faraday
+from ..constants import reference_temperature
 
 
 class Ion(BaseIon):
 
-    """Describe an ion dissolved in aqueous solution.
+    r"""Describe an ion dissolved in aqueous solution.
 
     Args:
         name (str): The chemical name of the ion.
@@ -62,106 +61,95 @@ class Ion(BaseIon):
 
         >>> ionize.Ion('my_acid', [-1, -2], [1.2, 3.4], [-10e-8, -21e-8])
     """
-    _solvent = Aqueous()
+
+    _state = ('name',
+              'valence',
+              'reference_pKa',
+              'reference_mobility',
+              'enthalpy',
+              'heat_capacity',
+              'nightingale_data')
 
     # The reference properties of the ion are stored and used to calculate
     # properties at the current temperature.
-    _pKa_ref = []
-    _absolute_mobility_ref = []  # m^2/V/s.
-    _T_ref = 25.
+    reference_pKa = None
+    reference_mobility = None
+    reference_temperature = reference_temperature
 
     # The properties of the ions are stored in public variables.
     # These are the properties at the current temperature, or are treated
     # as temperature independant.
     pKa = None
     absolute_mobility = None
-    dH = None
-    dCp = None
-    z0 = None
-    T = 25
+    enthalpy = None
+    heat_capacity = None
+    nightingale_data = None
 
-    # If the Ion is in a solution object, copy the pH and I of the Solution
-    # locally for reference, in a private variable. Also store the Onsager-
-    # Fouss mobility in _actual_mobility.
-    _pH = None
-    _I = None
-    _actual_mobility = None
-
-    def __init__(self, name, z, pKa_ref, absolute_mobility_ref,
-                 dH=None, dCp=None, nightingale_data=None,
-                 T=25.0, T_ref=25.0):
+    def __init__(self, name, valence, reference_pKa, reference_mobility,
+                 reference_temperature=None, enthalpy=None, heat_capacity=None,
+                 nightingale_data=None):
         """Initialize an Ion object."""
-        # Copy properties into the ion.
 
         self.name = name
-        self.T = T
-        self._T_ref = T_ref
-        self.dH = dH
-        self.dCp = dCp
-        self.nightingale_data = nightingale_data
-        if self.nightingale_data:
-            self._nightingale_function = np.poly1d(self.nightingale_data['fit'])
+        self.valence = np.int_(valence)
+        self.reference_pKa = np.float_(reference_pKa)
+        self.reference_mobility = np.float_(reference_mobility)
+
+        if reference_temperature is not None:
+            self.reference_temperature = float(reference_temperature)
+
+        if enthalpy is not None:
+            self.enthalpy = np.float_(enthalpy)
+
+        if heat_capacity is not None:
+            self.heat_capacity = np.float_(heat_capacity)
+
+        if nightingale_data is not None:
+            self.nightingale_data = nightingale_data
+            self._nightingale_function = \
+                np.poly1d(self.nightingale_data['fit'])
+
+    def absolute_mobility(self, temperature):
+        if self._nightingale_function:
+            absolute_mobility = \
+                [self._nightingale_function(self.T).tolist() *
+                 10.35e-11 * z / self._solvent.viscosity(self.T)
+                 for z in self.z]
+            if (self.T > self.nightingale_data['max']) or \
+                    (self.T < self.nightingale_data['min']):
+                warnings.warn('Temperature outside range'
+                              'for nightingale data.')
         else:
-            self._nightingale_function = None
+            absolute_mobility =\
+                [self._solvent.viscosity(self._T_ref) /
+                 self._solvent.viscosity(self.T)*m
+                 for m in self._absolute_mobility_ref]
+        return absolute_mobility
 
-        # Copy in the properties that should be lists, as long as they are
-        # single values or iterables.
-        try:
-            self.z = [zp for zp in z]
-        except:
-            self.z = [z]
-
-        try:
-            self._pKa_ref = [p for p in pKa_ref]
-        except:
-            self._pKa_ref = [pKa_ref]
-
-        try:
-            self._absolute_mobility_ref = [m for m in absolute_mobility_ref]
-        except:
-            self._absolute_mobility_ref = [absolute_mobility_ref]
-
-        self.temperature_adjust()
-
-        # Force the sign of the fully ionized mobilities to match the sign of
-        # the charge. This command provides a warning.
-        if not all([copysign(z, m) == z for z, m in zip(self.z,
-                    self.absolute_mobility)]):
-            self.absolute_mobility = [copysign(m, z) for z, m in zip(self.z,
-                                      self.absolute_mobility)]
-            warnings.warn("Mobility signs and charge signs don't match.")
-
-        # Check that z is a vector of integers
-        assert all([isinstance(zp, int) for zp in self.z]), \
-            "z contains non-integer"
-
-        # Check that the pKa is a vector of numbers of the same length as z.
-        assert len(self.pKa) == len(self.z), "pKa is not the same length as z"
-
-        assert len(self.absolute_mobility) == len(self.z), '''absolute_mobility is not
-                                                    the same length as z'''
+    def pKa(self, temperature):
+        pass
 
     def temperature_adjust(self):
         """Temperature adjust the ion."""
-        if self.T == self._T_ref:
-            self.pKa = self._pKa_ref
-            self.absolute_mobility = self._absolute_mobility_ref
-        else:
-            self.pKa = self._correct_pKa()
-            if self._nightingale_function:
-                self.absolute_mobility = \
-                    [self._nightingale_function(self.T).tolist() *
-                     10.35e-11 * z / self._solvent.viscosity(self.T)
-                     for z in self.z]
-                if (self.T > self.nightingale_data['max']) or \
-                        (self.T < self.nightingale_data['min']):
-                    warnings.warn('Temperature outside range'
-                                  'for nightingale data.')
-            else:
-                self.absolute_mobility =\
-                    [self._solvent.viscosity(self._T_ref) /
-                     self._solvent.viscosity(self.T)*m
-                     for m in self._absolute_mobility_ref]
+        # if self.T == self._T_ref:
+        #     self.pKa = self._pKa_ref
+        #     self.absolute_mobility = self._absolute_mobility_ref
+        # else:
+        #     self.pKa = self._correct_pKa()
+        #     if self._nightingale_function:
+        #         self.absolute_mobility = \
+        #             [self._nightingale_function(self.T).tolist() *
+        #              10.35e-11 * z / self._solvent.viscosity(self.T)
+        #              for z in self.z]
+        #         if (self.T > self.nightingale_data['max']) or \
+        #                 (self.T < self.nightingale_data['min']):
+        #             warnings.warn('Temperature outside range'
+        #                           'for nightingale data.')
+        #     else:
+        #         self.absolute_mobility =\
+        #             [self._solvent.viscosity(self._T_ref) /
+        #              self._solvent.viscosity(self.T)*m
+        #              for m in self._absolute_mobility_ref]
         # After storing the ion properties, ensure that the properties are
         # sorted in order of charge. All other ion methods assume that the
         # states will be sorted by charge.
@@ -182,52 +170,56 @@ class Ion(BaseIon):
 
         return None
 
-    def Ka(self):
-        """Set the Kas based on the pKas.
+    def acidity(self):
+        """Return the acidity constant, Ka, based on the pKa."""
+        return 10**(-self.pKa())
 
-        These values are not corrected for ionic strength.
+    def _valence_zero(self):
+        """Create a list of charge states with 0 inserted."""
+        return np.sort(np.append(self.valence, [0]))
+
+    def diffusivity(self, pH=None, ionic_strength=None, temperature=None):
+        """Return the diffusivity of the species at a specified pH and temperature.
+
+        The diffusivity is returned in units of m^2/s.
         """
-        return [10.**-p for p in self.pKa]
+        pH, ionic_strength, temperature = self._resolve_context(pH,
+                                                                ionic_strength,
+                                                                temperature)
+        actual_mobility = self.actual_mobility(ionic_strength, temperature)
+        ionization_fraction = self.ionization_fraction(pH,
+                                                       ionic_strength,
+                                                       temperature)
 
-    def _set_z0(self):
-        """Set the list of charge states with 0 inserted."""
-        self.z0 = sorted([0]+self.z)
-        return None
+        diffusivity = np.sum(actual_mobility *
+                             ionization_fraction /
+                             self.valence *
+                             boltzmann * kelvin(temperature) /
+                             elementary_charge) / \
+            np.sum(ionization_fraction)
+        return diffusivity
 
-    def set_T(self, T):
-        """Return a new ion at the specified temperature."""
-        self.T = T
-        self.temperature_adjust()
-        return self
+    def actual_mobility(self, ionic_strength=None, temperature=None):
+        if ionic_strength is None and \
+                temperature is None and \
+                self.context() is not None:
+            try:
+                return self.context().actual_mobility(self)
+            except:
+                warnings.warn('Context failed to return an actual mobility.')
+        return self.robinson_stokes_mobility(ionic_strength, temperature)
 
-    def serialize(self, nested=False):
-        serial = {'__ion__': True,
-                  'name': self.name,
-                  'z': self.z,
-                  'pKa_ref': self._pKa_ref,
-                  'absolute_mobility_ref': self._absolute_mobility_ref,
-                  'dH': self.dH,
-                  'dCp': self.dCp,
-                  'nightingale_data': self.nightingale_data}
-
-        if nested:
-            return serial
-        else:
-            return json.dumps(serial)
-
-    def save(self, filename):
-        with open(filename, 'w') as file:
-            json.dump(self.serialize(), file)
 
     from .ionization_fraction import ionization_fraction
-    from .activity_coefficient import activity_coefficient
+    from .activity import activity
     from .effective_mobility import effective_mobility
-    from .Ka_eff import Ka_eff
+    # from .Ka_eff import Ka_eff
+    from .pKa import pKa, Ka
     from .L import L
     from .molar_conductivity import molar_conductivity
     from .robinson_stokes_mobility import robinson_stokes_mobility
-    from .correct_pKa import _correct_pKa, _vant_hoff, _clark_glew
-    from .diffusivity import diffusivity
+    # from .correct_pKa import pKa, _vant_hoff, _clark_glew
+    from .pKa import pKa, Ka, mid_Ka, mid_pKa
 
 if __name__ == '__main__':
     pass

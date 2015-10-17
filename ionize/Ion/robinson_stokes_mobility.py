@@ -4,7 +4,7 @@ import warnings
 from ..constants import pitts
 
 
-def robinson_stokes_mobility(self, I=None, T=25):
+def robinson_stokes_mobility(self, ionic_strength=0., temperature=25.):
     """Return the Robinson-Stokes correction to fully ionized mobility.
 
     This correction is appropriate if a generic ionic strength is known,
@@ -14,26 +14,21 @@ def robinson_stokes_mobility(self, I=None, T=25):
     # uses twice the ionic strength. This appears to work, and follows the
     # SPRESSO implimentation.
     # Likely typo in paper.
-    if I is None:
-        if self._I:
-            I = self._I
-        else:
-            I = 0
+    _, ionic_strength, temperature = \
+        self._resolve_context(None, ionic_strength, temperature)
 
-    if not T:
-        T = self.T
-    T_ref = 25
-    d = self._solvent.dielectric(T)
-    d_ref = self._solvent.dielectric(self._T_ref)
+    reference_temperature = self.reference_temperature
+    d = self._solvent.dielectric(temperature)
+    d_ref = self._solvent.dielectric(reference_temperature)
 
-    A = 0.2297*((T_ref+273.15)*d_ref/(T+273.15)/d)**(-1.5)
-    B = 31.410e-9 * ((T_ref+273.15)*d_ref/(T+273.15)/d)**(-0.5) *\
-        self._solvent.viscosity(T_ref)/self._solvent.viscosity(T)
+    A = 0.2297*((reference_temperature+273.15)*d_ref/(temperature+273.15)/d)**(-1.5)
+    B = 31.410e-9 * ((reference_temperature+273.15)*d_ref/(temperature+273.15)/d)**(-0.5) *\
+        self._solvent.viscosity(reference_temperature)/self._solvent.viscosity(temperature)
     _actual_mobility = []
-    for abs_mob, z in zip(self.absolute_mobility, self.z):
+    for abs_mob, z in zip(self.reference_mobility, self.valence):
         _actual_mobility.append(abs_mob -
-                               (A * abs_mob +
-                                B * copysign(1, z)) * sqrt(I) /
-                               (1. + pitts * sqrt(I)))
+                                (A * abs_mob +
+                                 B * copysign(1, z)) * sqrt(ionic_strength) /
+                                (1. + pitts * sqrt(ionic_strength)))
 
     return _actual_mobility
