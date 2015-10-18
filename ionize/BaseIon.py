@@ -36,14 +36,12 @@ class BaseIon(object):
     def __str__(self):
         return "{}('{}')".format(type(self).__name__, self.name)
 
-    # TODO: should use _state for the comparison
     def __eq__(self, other):
         """Equality compares type and state."""
-        # selfstate, otherstate = [{k: v for k, v in obj.__dict__.items()
-        #                           if not k.startswith('_')}
-        #                          for obj in self, other]
-
-        return self.serialize() == other.serialize()
+        try:
+            return self.serialize() == other.serialize()
+        except:
+            return False
 
     def serialize(self, nested=False, compact=False):
         """Return a serialized representation of the ion.

@@ -1,10 +1,11 @@
 from math import copysign, sqrt
 import warnings
+import numpy as np
 
 from ..constants import pitts
 
 
-def robinson_stokes_mobility(self, ionic_strength=0., temperature=25.):
+def robinson_stokes_mobility(self, ionic_strength=None, temperature=None):
     """Return the Robinson-Stokes correction to fully ionized mobility.
 
     This correction is appropriate if a generic ionic strength is known,
@@ -31,4 +32,4 @@ def robinson_stokes_mobility(self, ionic_strength=0., temperature=25.):
                                  B * copysign(1, z)) * sqrt(ionic_strength) /
                                 (1. + pitts * sqrt(ionic_strength)))
 
-    return _actual_mobility
+    return np.array(_actual_mobility)

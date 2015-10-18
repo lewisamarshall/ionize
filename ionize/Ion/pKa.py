@@ -35,6 +35,8 @@ def pKa(self, ionic_strength=None, temperature=None):
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)
 
+    return -np.log10(self.acidity())
+
 
 def mid_Ka(self, ionic_strength, temperature):
     return 10**(-self.mid_pKa(ionic_strength, temperature))
@@ -87,7 +89,9 @@ def _clark_glew(self, temperature):
     pKa_ref = self.reference_pKa
     dH = self.enthalpy
     dCp = self.heat_capacity
-    if dH is not None and dCp is not None and len(dH) == len(pKa_ref) == len(dCp):
+    if dH is not None and \
+       dCp is not None and \
+       len(dH) == len(pKa_ref) == len(dCp):
         pKa = [p - h/(2.303 * gas_constant)*(1/T_ref - 1/T) -
                c/(2.303 * gas_constant) * (T_ref/T - 1 - log(T/T_ref))
                for p, h, c in zip(pKa_ref, dH, dCp)]

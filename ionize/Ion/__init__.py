@@ -71,8 +71,7 @@ class Ion(BaseIon):
               'heat_capacity',
               'nightingale_data')
 
-    # The reference properties of the ion are stored and used to calculate
-    # properties at the current temperature.
+    # The reference properties of the ion are stored.
     reference_pKa = None
     reference_mobility = None
     reference_temperature = reference_temperature
