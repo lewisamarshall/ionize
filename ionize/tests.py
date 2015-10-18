@@ -32,7 +32,7 @@ class TestAqueous(unittest.TestCase):
             d = d_new
 
     def test_viscosity(self):
-        """Test that viscosity  is monotone decreasing."""
+        """Test that viscosity is monotone decreasing."""
         v = 1
         for t in self.temperature_range:
             v_new = self.aqueous.viscosity(t)
@@ -66,6 +66,17 @@ class TestIon(unittest.TestCase):
         for ion_name in self.db.keys():
             ion = load_ion(ion_name)
 
+    def test_acidity(self):
+        """Test that all acidities are computable."""
+        ionic_strength_list = [0, .01, .1]
+        temperature_list = [20., 25., 30.]
+        for ion_name in self.db.keys():
+            ion = load_ion(ion_name)
+            for T in temperature_list:
+                for I in ionic_strength_list:
+                    ion.pKa(I, T)
+                    ion.acidity(I, T)
+
     def test_properties(self):
         pH_list = [5, 7, 9]
         I_list = [0, .01, .1]
@@ -79,6 +90,28 @@ class TestIon(unittest.TestCase):
                         ion.effective_mobility(pH, I, T)
                         ion.diffusivity(pH, I, T)
 
+
+    def test_equality(self):
+        hcl = load_ion('hydrochloric acid')
+        hcl2 = load_ion('hydrochloric acid')
+        hcl2.context({'pH': 8, 'ionic_strength': 0.1, 'temperature': 28})
+        # sol = Solution([hcl], [0.1])
+        self.assertEqual(hcl, hcl2)
+
+
+    def test_serialize(self):
+        for ion_name in self.db.keys():
+            ion = load_ion(ion_name)
+            self.assertEqual(ion, deserialize(ion.serialize()))
+
+    def test_reorder(self):
+        pass
+
+class TestSearch(unittest.TestCase):
+    def setUp(self):
+        self.db = get_db()
+        warnings.filterwarnings('ignore')
+
     def test_name_search(self):
         for ion_name in self.db.keys():
             if ion_name not in search_ion(ion_name):
@@ -87,20 +120,10 @@ class TestIon(unittest.TestCase):
 
     def test_z_search(self):
         for z in range(-2, 2):
-            for name in search_ion(z_search=z):
-                self.assertTrue(z in load_ion(name).z)
+            for name in search_ion(valence_search=z):
+                self.assertTrue(z in load_ion(name).valence)
 
-    def test_equality(self):
-        hcl = load_ion('hydrochloric acid')
-        sol = Solution([hcl], [0.1])
-        self.assertEqual(hcl, sol.ions[0])
-        self.assertIn(load_ion('hydrochloric acid'), sol.ions,
-                      [ion.__dict__ for ion in sol.ions])
 
-    def test_serialize(self):
-        for ion_name in self.db.keys():
-            ion = load_ion(ion_name)
-            self.assertEqual(ion, deserialize(ion.serialize()))
 
 
 # class TestSolution(unittest.TestCase):

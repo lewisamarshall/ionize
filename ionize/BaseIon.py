@@ -2,6 +2,8 @@
 from .Aqueous import Aqueous
 import json
 import numpy as np
+import contextlib
+
 
 def _encode(obj):
     if isinstance(obj, np.ndarray):
@@ -31,6 +33,9 @@ class BaseIon(object):
                                              self.name,
                                              self.valence)
 
+    def __str__(self):
+        return "{}('{}')".format(type(self).__name__, self.name)
+
     # TODO: should use _state for the comparison
     def __eq__(self, other):
         """Equality compares type and state."""
@@ -58,7 +63,7 @@ class BaseIon(object):
             return serial
         else:
             return json.dumps(serial, default=_encode, sort_keys=sort_keys,
-                          indent=indent, separators=separators)
+                              indent=indent, separators=separators)
 
     def save(self, filename):
         """Save a serialized version of the ion to a file."""

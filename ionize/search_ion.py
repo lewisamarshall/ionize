@@ -3,7 +3,7 @@ from get_db import get_db
 import collections
 
 
-def search_ion(searchstring=None, z_search=None):
+def search_ion(searchstring=None, valence_search=None):
     """Print the names of ions in the database that contain the search string.
     """
     ion_list = get_db()
@@ -15,18 +15,13 @@ def search_ion(searchstring=None, z_search=None):
             if not re.search(searchstring, name):
                 ion_list.pop(name)
 
-    if z_search is not None:
-        if isinstance(z_search, collections.Iterable):
-            if len(z_search) > 1:
-                z_range = range(min(z_search), max(z_search)+1)
-            else:
-                z_range = z_search
-        else:
-            z_range = [z_search]
+    if valence_search is not None:
+        if not isinstance(valence_search, collections.Iterable):
+            valence_search = [valence_search]
 
         for name in ion_list.keys():
-            z = ion_list[name]['z']
-            if not any([zp in z_range for zp in z]):
+            z = ion_list[name]['valence']
+            if not any([zp in valence_search for zp in z]):
                 ion_list.pop(name)
 
     ions = sorted([str(ion) for ion in ion_list.keys()])

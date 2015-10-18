@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def ionization_fraction(self, pH, ionic_strength=0., temperature=25.):
     """Return the ionization fractions of an ion.
 
@@ -29,4 +32,4 @@ def ionization_fraction(self, pH, ionic_strength=0., temperature=25.):
     i_frac = [i/denom for (i, z) in zip(i_frac_vector,
                                         self._valence_zero()) if z]
 
-    return i_frac
+    return np.array(i_frac)

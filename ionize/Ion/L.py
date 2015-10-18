@@ -16,7 +16,7 @@ def L(self, ionic_strength=None, temperature=None):
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)
 
-    Ka = self.Ka(ionic_strength, temperature)
+    Ka = self.acidity(ionic_strength, temperature).tolist()
     index_0 = list(self._valence_zero()).index(0)
     Ka.insert(index_0, 1)
 

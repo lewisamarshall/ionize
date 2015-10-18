@@ -6,6 +6,7 @@ import warnings
 import json
 from ..constants import permittivity, avagadro, boltzmann, \
                         elementary_charge, lpm3
+import copy
 
 
 class Solution(Aqueous):
@@ -73,7 +74,8 @@ class Solution(Aqueous):
             if isinstance(ion, basestring):
                 self.ions[idx] = load_ion(ion)
 
-        self.ions = [i.set_T(self.T) for i in self.ions]
+        self.ions = tuple([copy.deepcopy(ion) for i in ions])
+        [ion.context(self) for ion in self.ions]
 
         try:
             self.concentrations = [c for c in concentrations]

@@ -1411,9 +1411,7 @@
             -410.0
         ],
         "heat_capacity": [
-            -142.0,
-            0,
-            0
+            -142.0
         ],
         "name": "acetic acid",
         "nightingale_data": null,
@@ -1432,11 +1430,7 @@
         "enthalpy": [
             1862.0
         ],
-        "heat_capacity": [
-            -142.0,
-            0,
-            0
-        ],
+        "heat_capacity": null,
         "name": "acrylic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1455,11 +1449,7 @@
             -2678.0,
             -4184.0
         ],
-        "heat_capacity": [
-            -142.0,
-            0,
-            0
-        ],
+        "heat_capacity": null,
         "name": "adipic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1482,11 +1472,7 @@
             17154.0,
             0
         ],
-        "heat_capacity": [
-            -142.0,
-            0,
-            0
-        ],
+        "heat_capacity": null,
         "name": "adp",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1511,11 +1497,7 @@
             44936.0,
             3368.0
         ],
-        "heat_capacity": [
-            -142.0,
-            0,
-            0
-        ],
+        "heat_capacity": null,
         "name": "alanine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1625,8 +1607,7 @@
             51950.0
         ],
         "heat_capacity": [
-            8.0,
-            0
+            8.0
         ],
         "name": "ammonium",
         "nightingale_data": null,
@@ -1646,10 +1627,7 @@
             -7531.0,
             17573.0
         ],
-        "heat_capacity": [
-            8.0,
-            0
-        ],
+        "heat_capacity": null,
         "name": "amp",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2214,9 +2192,7 @@
         "enthalpy": [
             5464.0
         ],
-        "heat_capacity": [
-            27.0
-        ],
+        "heat_capacity": null,
         "name": "bromic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2234,9 +2210,7 @@
         "enthalpy": [
             -5020.0
         ],
-        "heat_capacity": [
-            27.0
-        ],
+        "heat_capacity": null,
         "name": "bromoacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3846,9 +3820,7 @@
         "enthalpy": [
             57362.0
         ],
-        "heat_capacity": [
-            26.0
-        ],
+        "heat_capacity": null,
         "name": "ethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4413,10 +4385,7 @@
         "enthalpy": [
             628.0
         ],
-        "heat_capacity": [
-            -57.0,
-            -139.0
-        ],
+        "heat_capacity": null,
         "name": "glycolic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5661,7 +5630,7 @@
     },
     "magnesium": {
         "__ion__": true,
-        "enthalpy": [],
+        "enthalpy": null,
         "heat_capacity": null,
         "name": "magnesium",
         "nightingale_data": {
@@ -5723,10 +5692,7 @@
             1180.0,
             2954.0
         ],
-        "heat_capacity": [
-            -31.0,
-            -21.0
-        ],
+        "heat_capacity": null,
         "name": "malic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5748,10 +5714,7 @@
             -2008.0,
             1213.0
         ],
-        "heat_capacity": [
-            -31.0,
-            -21.0
-        ],
+        "heat_capacity": null,
         "name": "malonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6058,9 +6021,7 @@
         "enthalpy": [
             39037.0
         ],
-        "heat_capacity": [
-            25.0
-        ],
+        "heat_capacity": null,
         "name": "morpholine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7382,7 +7343,7 @@
     },
     "potassium": {
         "__ion__": true,
-        "enthalpy": [],
+        "enthalpy": null,
         "heat_capacity": null,
         "name": "potassium",
         "nightingale_data": {
@@ -7893,7 +7854,7 @@
     },
     "sodium": {
         "__ion__": true,
-        "enthalpy": [],
+        "enthalpy": null,
         "heat_capacity": null,
         "name": "sodium",
         "nightingale_data": {
@@ -8141,10 +8102,7 @@
             992.0,
             -3180.0
         ],
-        "heat_capacity": [
-            15.0,
-            0
-        ],
+        "heat_capacity": null,
         "name": "tartaric acid",
         "nightingale_data": null,
         "reference_mobility": [

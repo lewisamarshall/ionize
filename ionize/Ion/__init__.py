@@ -6,7 +6,8 @@ import numpy as np
 
 from ..Aqueous import Aqueous
 from ..BaseIon import BaseIon
-from ..constants import reference_temperature
+from ..constants import reference_temperature, boltzmann, kelvin, \
+                        elementary_charge
 
 
 class Ion(BaseIon):
@@ -75,10 +76,6 @@ class Ion(BaseIon):
     reference_pKa = None
     reference_mobility = None
     reference_temperature = reference_temperature
-
-    # The properties of the ions are stored in public variables.
-    # These are the properties at the current temperature, or are treated
-    # as temperature independant.
     pKa = None
     absolute_mobility = None
     enthalpy = None
@@ -126,36 +123,6 @@ class Ion(BaseIon):
                  for m in self._absolute_mobility_ref]
         return absolute_mobility
 
-    def pKa(self, temperature):
-        pass
-
-    def temperature_adjust(self):
-        """Temperature adjust the ion."""
-        # if self.T == self._T_ref:
-        #     self.pKa = self._pKa_ref
-        #     self.absolute_mobility = self._absolute_mobility_ref
-        # else:
-        #     self.pKa = self._correct_pKa()
-        #     if self._nightingale_function:
-        #         self.absolute_mobility = \
-        #             [self._nightingale_function(self.T).tolist() *
-        #              10.35e-11 * z / self._solvent.viscosity(self.T)
-        #              for z in self.z]
-        #         if (self.T > self.nightingale_data['max']) or \
-        #                 (self.T < self.nightingale_data['min']):
-        #             warnings.warn('Temperature outside range'
-        #                           'for nightingale data.')
-        #     else:
-        #         self.absolute_mobility =\
-        #             [self._solvent.viscosity(self._T_ref) /
-        #              self._solvent.viscosity(self.T)*m
-        #              for m in self._absolute_mobility_ref]
-        # After storing the ion properties, ensure that the properties are
-        # sorted in order of charge. All other ion methods assume that the
-        # states will be sorted by charge.
-        self._z_sort()
-        self._set_z0()
-
     def _z_sort(self):
         """Sort the charge states from lowest to highest."""
         # Zip the lists together and sort them by z.
@@ -169,10 +136,6 @@ class Ion(BaseIon):
         assert set(self.z) ^ full == set(), "Charge states missing."
 
         return None
-
-    def acidity(self):
-        """Return the acidity constant, Ka, based on the pKa."""
-        return 10**(-self.pKa())
 
     def _valence_zero(self):
         """Create a list of charge states with 0 inserted."""
@@ -214,12 +177,12 @@ class Ion(BaseIon):
     from .activity import activity
     from .effective_mobility import effective_mobility
     # from .Ka_eff import Ka_eff
-    from .pKa import pKa, Ka
+    # from .pKa import pKa, Ka
     from .L import L
     from .molar_conductivity import molar_conductivity
     from .robinson_stokes_mobility import robinson_stokes_mobility
     # from .correct_pKa import pKa, _vant_hoff, _clark_glew
-    from .pKa import pKa, Ka, mid_Ka, mid_pKa
+    from .pKa import pKa, acidity, mid_Ka, mid_pKa
 
 if __name__ == '__main__':
     pass
