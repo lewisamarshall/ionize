@@ -41,6 +41,8 @@ def make_database():
             dH = steep_db[name][3]
             if steep_db[name][4]:
                 dCp = steep_db[name][4]
+            else:
+                dCp = None
         else:
             dH = None
             dCp = None
