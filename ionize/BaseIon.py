@@ -3,7 +3,8 @@ from .Aqueous import Aqueous
 import json
 import numpy as np
 import contextlib
-
+import operator
+from fixed_state import fixed_state
 
 def _encode(obj):
     if isinstance(obj, np.ndarray):
@@ -11,7 +12,7 @@ def _encode(obj):
     # Let the base class default method raise the TypeError
     return json.JSONEncoder().default(obj)
 
-
+@fixed_state
 class BaseIon(object):
 
     """BaseIon class describing basic ion properties.
@@ -20,10 +21,11 @@ class BaseIon(object):
     """
 
     _solvent = Aqueous()
-    name = 'BaseIon'
-    valence = None
 
     _state = ('name', 'valence')
+    _name = 'BaseIon'
+    _valence = None
+
     _context = None
 
     # TODO: should list all parameters in state
@@ -92,12 +94,11 @@ class BaseIon(object):
         return manager
 
     def _resolve_context(self, pH, ionic_strength, temperature):
-        try:
-            pH = pH or self.context().pH
-        except AttributeError:
-            pH = None
-            # raise RuntimeError('Input pH is none, and context has no pH.')
-
+        if pH is None:
+            try:
+                pH = self.context().pH
+            except AttributeError:
+                pH = None
         try:
             ionic_strength = ionic_strength or self.context().ionic_strength or 0.
         except AttributeError:
@@ -107,4 +108,7 @@ class BaseIon(object):
             temperature = temperature or self.context().temperature or self.reference_temperature
         except AttributeError:
             temperature = self.reference_temperature
+        # print "Context(pH: {}, I: {}, T: {})".format(pH,
+        #                                              ionic_strength,
+        #                                              temperature)
         return pH, ionic_strength, temperature

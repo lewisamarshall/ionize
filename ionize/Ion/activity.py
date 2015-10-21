@@ -26,8 +26,7 @@ def activity(self, valence=None, ionic_strength=None,
     B = 0.1*ionic_strength  # Matching STEEP implementation.
 
     # Use them to calculate the activity coefficients.
-    # These coefficients are for z=+-1, for H+ and OH-
     # gamma = [10**(v**2*(B-A)) for v in valence]
-    gamma = 10**((valence**2)*(B-1))
+    gamma = 10**((valence**2)*(B-A))
 
     return gamma

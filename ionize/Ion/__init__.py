@@ -8,8 +8,9 @@ from ..Aqueous import Aqueous
 from ..BaseIon import BaseIon
 from ..constants import reference_temperature, boltzmann, kelvin, \
                         elementary_charge
+from ..fixed_state import fixed_state
 
-
+@fixed_state
 class Ion(BaseIon):
 
     r"""Describe an ion dissolved in aqueous solution.
@@ -67,41 +68,43 @@ class Ion(BaseIon):
               'valence',
               'reference_pKa',
               'reference_mobility',
+              'reference_temperature',
               'enthalpy',
               'heat_capacity',
               'nightingale_data')
 
     # The reference properties of the ion are stored.
-    reference_pKa = None
-    reference_mobility = None
-    reference_temperature = reference_temperature
-    pKa = None
-    absolute_mobility = None
-    enthalpy = None
-    heat_capacity = None
-    nightingale_data = None
+    _reference_pKa = None
+    _reference_mobility = None
+    _reference_temperature = reference_temperature
+    _pKa = None
+    _absolute_mobility = None
+    _enthalpy = None
+    _heat_capacity = None
+    _nightingale_data = None
 
     def __init__(self, name, valence, reference_pKa, reference_mobility,
                  reference_temperature=None, enthalpy=None, heat_capacity=None,
                  nightingale_data=None):
         """Initialize an Ion object."""
 
-        self.name = name
-        self.valence = np.int_(valence)
-        self.reference_pKa = np.float_(reference_pKa)
-        self.reference_mobility = np.float_(reference_mobility)
+        self._name = name
+        self._valence = np.int_(valence)
+        self._reference_pKa = np.float_(reference_pKa)
+        self._reference_mobility = np.float_(reference_mobility)
 
         if reference_temperature is not None:
-            self.reference_temperature = float(reference_temperature)
+            self._reference_temperature = float(reference_temperature)
 
         if enthalpy is not None:
-            self.enthalpy = np.float_(enthalpy)
+            self._enthalpy = np.float_(enthalpy)
+            assert len(enthalpy) == len(self.reference_pKa)
 
         if heat_capacity is not None:
-            self.heat_capacity = np.float_(heat_capacity)
+            self._heat_capacity = np.float_(heat_capacity)
 
         if nightingale_data is not None:
-            self.nightingale_data = nightingale_data
+            self._nightingale_data = nightingale_data
             self._nightingale_function = \
                 np.poly1d(self.nightingale_data['fit'])
 
@@ -175,12 +178,9 @@ class Ion(BaseIon):
     from .ionization_fraction import ionization_fraction
     from .activity import activity
     from .effective_mobility import effective_mobility
-    # from .Ka_eff import Ka_eff
-    # from .pKa import pKa, Ka
     from .L import L
     from .molar_conductivity import molar_conductivity
     from .robinson_stokes_mobility import robinson_stokes_mobility
-    # from .correct_pKa import pKa, _vant_hoff, _clark_glew
     from .pKa import pKa, acidity, mid_Ka, mid_pKa
 
 if __name__ == '__main__':

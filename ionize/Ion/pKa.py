@@ -31,6 +31,7 @@ def acidity(self, ionic_strength=None, temperature=None):
 
     return np.array(Ka_eff)
 
+
 def pKa(self, ionic_strength=None, temperature=None):
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)
@@ -70,8 +71,8 @@ def _vant_hoff(self, temperature):
         warnings.warn("Using the van't Hoff correction for dT > 20 deg.")
 
     if len(self.enthalpy) != len(self.reference_pKa):
-        raise RuntimeError('Enthalpy must have an entry for each pKa. ' +
-                           'Name: {}, pKa: {}, enthalpy: {}'.format(self.name, self.reference_pKa, self.enthalpy))
+        raise RuntimeError('Enthalpy must have an entry for each pKa.'
+                           + repr(self))
 
     pKa_ref = self.reference_pKa
     dH = self.enthalpy
