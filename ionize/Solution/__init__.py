@@ -46,7 +46,7 @@ class Solution(Aqueous):
         appropriate method.
     """
 
-    _solvent = Aqueous()
+    _solvent = Aqueous
     _hydronium = Ion('H+', [1], [100], [362E-9])
     _hydroxide = Ion('OH-', [-1], [-100], [-205E-9])
 

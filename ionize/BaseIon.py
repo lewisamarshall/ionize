@@ -20,7 +20,7 @@ class BaseIon(object):
     All ions on ionize should be subclassed from BaseIon.
     """
 
-    _solvent = Aqueous()
+    _solvent = Aqueous
 
     _state = ('name', 'valence')
     _name = 'BaseIon'

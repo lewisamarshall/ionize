@@ -14,6 +14,10 @@ class Aqueous(object):
     _enthalpy = 55.815e3                # enthalpy of dissociation water
     _heat_capacity = -224.              # heat capacity of water
 
+    def __new__(cls, *args, **kwargs):
+        raise TypeError('Solvents may not be intantiated.')
+
+    @classmethod
     def dielectric(self, temperature):
         """Return the dielectric constant of water at a specified temperature.
 
@@ -24,6 +28,7 @@ class Aqueous(object):
         dielectric_ = 249.21 - 0.79069*temperature + 0.72997e-3*temperature**2
         return dielectric_
 
+    @classmethod
     def viscosity(self, temperature):
         """Return the viscosity of water at the specified temperature.
 
@@ -33,6 +38,7 @@ class Aqueous(object):
         viscosity_ = 2.414e-5 * 10**(247.8 / (temperature - 140))
         return viscosity_
 
+    @classmethod
     def dissociation(self, temperature):
         """Return the dissociation constant of water."""
         reference_temperature_ = kelvin(reference_temperature)
@@ -51,6 +57,7 @@ class Aqueous(object):
         dissociation_ = 10.0**(-pKw)
         return dissociation_
 
+    @classmethod
     def debye_huckel(self, temperature):
         """Return the Debye-Huckel constant, in M^-(1/2)."""
         debye_huckel_ = elementary_charge**3. * sqrt(avagadro) / 2**(5./2.) / pi / \

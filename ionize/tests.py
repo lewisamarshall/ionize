@@ -21,7 +21,7 @@ class TestAqueous(unittest.TestCase):
     def setUp(self):
         """Create an instance and a temperature range to test over."""
         self.temperature_range = np.linspace(10, 90)
-        self.aqueous = Aqueous()
+        self.aqueous = Aqueous
 
     def test_dielectric(self):
         """Test that dielectric constant is monotone decreasing."""
