@@ -22,7 +22,7 @@ def acidity(self, ionic_strength=None, temperature=None):
     Ka_eff = []
 
     gam_i = self.activity(None, ionic_strength, temperature)
-    gam_h, = self.activity(1, ionic_strength, temperature)
+    gam_h = self.activity(1, ionic_strength, temperature)
 
     # For each acidity coefficient, get the effective
     # coefficient by multiplying by activities.

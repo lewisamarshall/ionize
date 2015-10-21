@@ -12,10 +12,7 @@ def activity(self, valence=None, ionic_strength=None,
     if valence is None:
         valence = self._valence_zero()
     else:
-        try:
-            valence = np.array([v for v in valence])
-        except:
-            valence = np.array([valence])
+        valence = np.int_(valence)
 
     # There are two coefficients that are used repeatedly.
     # Specified in Bahga.
@@ -26,7 +23,6 @@ def activity(self, valence=None, ionic_strength=None,
     B = 0.1*ionic_strength  # Matching STEEP implementation.
 
     # Use them to calculate the activity coefficients.
-    # gamma = [10**(v**2*(B-A)) for v in valence]
     gamma = 10**((valence**2)*(B-A))
 
     return gamma

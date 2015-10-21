@@ -23,12 +23,14 @@ def molar_conductivity(self, pH=None, ionic_strength=None, temperature=None):
     pH, ionic_strength, temperature = \
         self._resolve_context(pH, ionic_strength, temperature)
 
-    actual_mobility = self.actual_mobility(ionic_strength, temperature)
-
-    i_frac = self.ionization_fraction(pH, ionic_strength, temperature)
-
     m_conductivity = (lpm3 * faraday *
-                      sum(z * f * m for (z, f, m)
-                          in zip(self.valence, i_frac, actual_mobility)))
+                      sum(self.valence *
+                          self.ionization_fraction(pH,
+                                                   ionic_strength,
+                                                   temperature) *
+                          self.actual_mobility(ionic_strength,
+                                               temperature)
+                          )
+                      )
 
     return m_conductivity

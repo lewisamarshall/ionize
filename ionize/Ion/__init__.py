@@ -10,59 +10,11 @@ from ..constants import reference_temperature, boltzmann, kelvin, \
                         elementary_charge
 from ..fixed_state import fixed_state
 
+
 @fixed_state
 class Ion(BaseIon):
 
-    r"""Describe an ion dissolved in aqueous solution.
-
-    Args:
-        name (str): The chemical name of the ion.
-
-        z (list): A list of valence states for the ion, as integers.
-
-        pKa_ref (list): The pKa of each valence at the refernce temperature,\
-        as floats.
-
-        absolute_mobility_ref (list): The signed absolute mobility of each\
-        valence at the reference temperature, as floats, in units\
-        of m^2/V/s. Expect O(10^-8).
-
-        dH (list): The enthalpy of dissociation of each valence, at the\
-        reference temperature, as floats.
-
-        dCp (list): The change in heat capacity of dissociation of each\
-        valence, at the reference temperature, as floats.
-
-        nightingale_data (function): A function describing absolute\
-        mobility as a function of temperature, for special ions.
-
-        T (float): The temperature to use to calculate the properties of the
-        ions, in degrees C.
-
-        T_ref (float): The reference temperature for the reference properties,
-        in degrees C.
-
-    Attributes:
-        z (list): A list of valence states for the ion, as integers.
-
-        pKa (list): The pKa of each valence at the refernce temperature,\
-            as floats.
-
-        absolute_mobility (list): The signed absolute mobility of each\
-            valence at the reference temperature, as floats, in units\
-            of m^2/V/s. Expect O(10^-8).
-
-        T (float): The temperature to use to calculate the properties of the\
-            ions, in degrees C.
-
-    Raises:
-        None
-
-    Example:
-        To to initialize an Ion, call as:
-
-        >>> ionize.Ion('my_acid', [-1, -2], [1.2, 3.4], [-10e-8, -21e-8])
-    """
+    """Describe an ion dissolved in aqueous solution."""
 
     _state = ('name',
               'valence',
@@ -90,6 +42,10 @@ class Ion(BaseIon):
 
         self._name = name
         self._valence = np.int_(valence)
+
+        # TODO: Re-impliment sorting?
+        assert np.all(np.diff(self.valence) > 0), 'Valences must be sorted.'
+
         self._reference_pKa = np.float_(reference_pKa)
         self._reference_mobility = np.float_(reference_mobility)
 
@@ -124,20 +80,6 @@ class Ion(BaseIon):
                  self._solvent.viscosity(self.T)*m
                  for m in self._absolute_mobility_ref]
         return absolute_mobility
-
-    def _z_sort(self):
-        """Sort the charge states from lowest to highest."""
-        # Zip the lists together and sort them by z.
-        self.z, self.pKa, self.absolute_mobility =\
-            zip(*sorted(zip(self.z, self.pKa, self.absolute_mobility)))
-        self.z = list(self.z)
-        self.pKa = list(self.pKa)
-        self.absolute_mobility = list(self.absolute_mobility)
-
-        full = set(range(min(self.z), max(self.z)+1, 1)) - set([0])
-        assert set(self.z) ^ full == set(), "Charge states missing."
-
-        return None
 
     def _valence_zero(self):
         """Create a list of charge states with 0 inserted."""
@@ -174,7 +116,6 @@ class Ion(BaseIon):
                 warnings.warn('Context failed to return an actual mobility.')
         return self.robinson_stokes_mobility(ionic_strength, temperature)
 
-
     from .ionization_fraction import ionization_fraction
     from .activity import activity
     from .effective_mobility import effective_mobility
@@ -182,6 +123,10 @@ class Ion(BaseIon):
     from .molar_conductivity import molar_conductivity
     from .robinson_stokes_mobility import robinson_stokes_mobility
     from .pKa import pKa, acidity, mid_Ka, mid_pKa
+
+    # from .mobility import absolute_mobility, actual_mobility, mobility, robinson_stokes_mobility
+    # from .acidity import pKa, acidity
+    # from .ionization import L,ionization_fraction
 
 if __name__ == '__main__':
     pass

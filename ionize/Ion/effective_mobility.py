@@ -21,9 +21,7 @@ def effective_mobility(self, pH=None, ionic_strength=None, temperature=None):
     ionization_fraction = self.ionization_fraction(pH, ionic_strength,
                                                    temperature)
     actual_mobility = self.actual_mobility(ionic_strength, temperature)
-    effective_mobility = sum([f*m for (f, m) in
-                              zip(ionization_fraction,
-                                  actual_mobility)
-                              ])
+
+    effective_mobility = sum(ionization_fraction * actual_mobility)
 
     return effective_mobility

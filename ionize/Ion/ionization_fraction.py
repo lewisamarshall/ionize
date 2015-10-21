@@ -21,7 +21,7 @@ def ionization_fraction(self, pH, ionic_strength=0., temperature=25.):
     # Get the vector of products of acidity constants.
     L = self.L(ionic_strength, temperature)
     # Compute the concentration of H+ from the pH.
-    cH, = 10**(-pH)/self.activity(1, ionic_strength, temperature)
+    cH = 10**(-pH)/self.activity(1, ionic_strength, temperature)
 
     # Calculate the numerator of the function for ionization fraction.
     i_frac_vector = [Lp * cH ** z for (Lp, z) in zip(L, self._valence_zero())]

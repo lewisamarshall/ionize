@@ -33,6 +33,8 @@ class TestAqueous(unittest.TestCase):
 
     def test_viscosity(self):
         """Test that viscosity is monotone decreasing."""
+        self.assertAlmostEqual(self.aqueous.viscosity(25.),
+                               8.9e-4, places=5)
         v = 1
         for t in self.temperature_range:
             v_new = self.aqueous.viscosity(t)
@@ -42,6 +44,8 @@ class TestAqueous(unittest.TestCase):
     def test_dissociation(self):
         """Test that dissociation constant is monotone increasing."""
         k = 0
+        self.assertAlmostEqual(self.aqueous.viscosity(25.),
+                               8.9e-4, places=5)
         for t in self.temperature_range:
             k_new = self.aqueous.dissociation(t)
             self.assertGreater(k_new, k)
