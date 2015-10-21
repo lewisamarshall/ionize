@@ -4,7 +4,7 @@ from .constants import gas_constant, reference_temperature, \
                        kelvin, elementary_charge, avagadro,\
                        boltzmann, permittivity, lpm3
 
-
+# TODO: Make a solvent base class.
 class Aqueous(object):
 
     """Access the properties of water."""

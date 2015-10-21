@@ -35,6 +35,9 @@ class Ion(BaseIon):
     _heat_capacity = None
     _nightingale_data = None
 
+    # Polynomial function is a derived part of state.
+    _nightingale_function = None
+
     def __init__(self, name, valence, reference_pKa, reference_mobility,
                  reference_temperature=None, enthalpy=None, heat_capacity=None,
                  nightingale_data=None):
@@ -64,23 +67,6 @@ class Ion(BaseIon):
             self._nightingale_function = \
                 np.poly1d(self.nightingale_data['fit'])
 
-    def absolute_mobility(self, temperature):
-        if self._nightingale_function:
-            absolute_mobility = \
-                [self._nightingale_function(self.T).tolist() *
-                 10.35e-11 * z / self._solvent.viscosity(self.T)
-                 for z in self.z]
-            if (self.T > self.nightingale_data['max']) or \
-                    (self.T < self.nightingale_data['min']):
-                warnings.warn('Temperature outside range'
-                              'for nightingale data.')
-        else:
-            absolute_mobility =\
-                [self._solvent.viscosity(self._T_ref) /
-                 self._solvent.viscosity(self.T)*m
-                 for m in self._absolute_mobility_ref]
-        return absolute_mobility
-
     def _valence_zero(self):
         """Create a list of charge states with 0 inserted."""
         return np.sort(np.append(self.valence, [0]))
@@ -106,27 +92,14 @@ class Ion(BaseIon):
             np.sum(ionization_fraction)
         return diffusivity
 
-    def actual_mobility(self, ionic_strength=None, temperature=None):
-        if ionic_strength is None and \
-                temperature is None and \
-                self.context() is not None:
-            try:
-                return self.context().actual_mobility(self)
-            except:
-                warnings.warn('Context failed to return an actual mobility.')
-        return self.robinson_stokes_mobility(ionic_strength, temperature)
+    from .acidity import pKa, acidity, mid_Ka, mid_pKa, activity
+    # from .acidity import pKa, acidity, activity
+    from .ionization import L, ionization_fraction
 
-    from .ionization_fraction import ionization_fraction
-    from .activity import activity
-    from .effective_mobility import effective_mobility
-    from .L import L
+    from .mobility import absolute_mobility, actual_mobility, \
+        mobility, robinson_stokes_mobility
+
     from .molar_conductivity import molar_conductivity
-    from .robinson_stokes_mobility import robinson_stokes_mobility
-    from .pKa import pKa, acidity, mid_Ka, mid_pKa
-
-    # from .mobility import absolute_mobility, actual_mobility, mobility, robinson_stokes_mobility
-    # from .acidity import pKa, acidity
-    # from .ionization import L,ionization_fraction
 
 if __name__ == '__main__':
     pass

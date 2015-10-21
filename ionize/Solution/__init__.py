@@ -9,7 +9,7 @@ from ..constants import permittivity, avagadro, boltzmann, \
 import copy
 
 
-class Solution(Aqueous):
+class Solution(object):
 
     """Describe an aqueous solution.
 

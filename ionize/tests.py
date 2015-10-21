@@ -91,9 +91,8 @@ class TestIon(unittest.TestCase):
                 for pH in pH_list:
                     for I in I_list:
                         ion.molar_conductivity(pH, I, T)
-                        ion.effective_mobility(pH, I, T)
+                        ion.mobility(pH, I, T)
                         ion.diffusivity(pH, I, T)
-
 
     def test_equality(self):
         hcl = load_ion('hydrochloric acid')
@@ -102,14 +101,21 @@ class TestIon(unittest.TestCase):
         # sol = Solution([hcl], [0.1])
         self.assertEqual(hcl, hcl2)
 
-
     def test_serialize(self):
         for ion_name in self.db.keys():
             ion = load_ion(ion_name)
             self.assertEqual(ion, deserialize(ion.serialize()))
 
-    def test_reorder(self):
-        pass
+    def test_order(self):
+        with self.assertRaises(AssertionError):
+            Ion('badIon', [3, 1, 2], [0, 0, 0], [0, 0, 0])
+
+    def test_immutable(self):
+        """Test that parts of ion state are immutable."""
+        ion = load_ion('histidine')
+        for prop in ion._state:
+            with self.assertRaises(AttributeError):
+                setattr(ion, prop, None)
 
 class TestSearch(unittest.TestCase):
     def setUp(self):
