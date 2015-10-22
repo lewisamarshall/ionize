@@ -12,6 +12,7 @@ from .deserialize import deserialize
 import unittest
 import warnings
 import numpy as np
+from copy import copy
 
 
 class TestAqueous(unittest.TestCase):
@@ -69,6 +70,24 @@ class TestIon(unittest.TestCase):
     def test_import(self):
         for ion_name in self.db.keys():
             ion = load_ion(ion_name)
+
+    def test_malformed(self):
+        good_prop = range(1, 4)
+        bad_prop = range(1, 3)
+        properties = ('valence',
+                      'reference_pKa',
+                      'reference_mobility',
+                      'enthalpy',
+                      'heat_capacity')
+
+        base_initializer = {prop: good_prop for prop in properties}
+
+        for prop in properties:
+            initializer = copy(base_initializer)
+            initializer['name'] = 'bad_{}'.format(prop)
+            initializer[prop] = bad_prop
+            with self.assertRaises(AssertionError):
+                Ion(**initializer)
 
     def test_acidity(self):
         """Test that all acidities are computable."""

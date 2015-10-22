@@ -62,6 +62,14 @@ class Ion(BaseIon):
         if heat_capacity is not None:
             self._heat_capacity = np.float_(heat_capacity)
 
+        for prop in ('reference_pKa',
+                     'reference_mobility',
+                     'enthalpy',
+                     'heat_capacity'):
+            if getattr(self, prop) is not None:
+                assert getattr(self, prop).shape == self.valence.shape, \
+                    '{} must have the same shape as valence.'.format(prop)
+
         if nightingale_data is not None:
             self._nightingale_data = nightingale_data
             self._nightingale_function = \

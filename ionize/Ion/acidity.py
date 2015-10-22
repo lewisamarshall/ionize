@@ -71,11 +71,6 @@ def _vant_hoff_pKa(self, temperature):
     if abs(temperature - reference_temperature) > 20:
         warnings.warn("Using the van't Hoff correction for dT > 20 deg.")
 
-    # TODO: Move check to main function
-    if len(self.enthalpy) != len(self.reference_pKa):
-        raise RuntimeError('Enthalpy must have an entry for each pKa.' +
-                           repr(self))
-
     pKa = (self.reference_pKa -
            self.enthalpy / (2.303 * gas_constant) *
            (1/reference_temperature - 1/temperature))
