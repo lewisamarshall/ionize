@@ -43,49 +43,28 @@ def acidity(self, ionic_strength=None, temperature=None):
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)
 
+    if self.enthalpy is not None and self.heat_capacity is not None:
+        acidity = self._clark_glew_acidity(temperature)
+    elif self.enthalpy is not None and self.heat_capacity is None:
+        acidity = self._vant_hoff_acidity(temperature)
+    else:
+        if temperature != self.reference_temperature:
+            warnings.warn('No data available to correct pKa for temperature.')
+        acidity = 10**(-self.reference_pKa)
+
+    # Correct for the activity of ion and H+
     gam_i = self.activity(None, ionic_strength, temperature)
     gam_h = self.activity(1, ionic_strength, temperature)
+    acidity = acidity * gam_i[1:] / gam_i[:-1] / gam_h
 
-    # For each acidity coefficient, get the effective
-    # coefficient by multiplying by activities.
-    Ka_eff = (self.mid_Ka(ionic_strength, temperature) *
-              gam_i[1:]/ gam_i[:-1] / gam_h)
-
-    return Ka_eff
+    return acidity
 
 
 def pKa(self, ionic_strength=None, temperature=None):
-    _, ionic_strength, temperature = \
-        self._resolve_context(None, ionic_strength, temperature)
-
     return -np.log10(self.acidity(ionic_strength, temperature))
 
 
-def mid_Ka(self, ionic_strength, temperature):
-    return 10**(-self.mid_pKa(ionic_strength, temperature))
-
-
-def mid_pKa(self, ionic_strength=None, temperature=None):
-    """Return the pKa corrected for temperature.
-
-    If dCp for the ion is available, returns the Clark-Glew correction, which
-    is most accurate. If only dH is available, returns the van't Hoff
-    correction, which is less accurate. If neither is available, returns the
-    original pKa, with a warning.
-    """
-    _, ionic_strength, temperature = \
-        self._resolve_context(None, ionic_strength, temperature)
-
-    if self.enthalpy is not None and self.heat_capacity is not None:
-        return _clark_glew(self, temperature)
-    elif self.enthalpy is not None and self.heat_capacity is None:
-        return _vant_hoff(self, temperature)
-    else:
-        warnings.warn('No data available to correct pKa for temperature.')
-        return self.reference_pKa
-
-
-def _vant_hoff(self, temperature):
+def _vant_hoff_pKa(self, temperature):
     temperature = kelvin(temperature)
     reference_temperature = kelvin(self.reference_temperature)
 
@@ -103,27 +82,24 @@ def _vant_hoff(self, temperature):
     return pKa
 
 
-def _clark_glew(self, temperature):
+def _vant_hoff_acidity(self, temperature):
+    return 10.**(-self._vant_hoff_pKa(temperature))
+
+
+def _clark_glew_pKa(self, temperature):
     T = kelvin(temperature)
     T_ref = kelvin(self.reference_temperature)
+
     if abs(T-T_ref) > 100:
         warnings.warn('Using the Clark-Glew correction for dT > 100 deg.')
 
-    pKa_ref = self.reference_pKa
-    dH = self.enthalpy
-    dCp = self.heat_capacity
-
-    # TODO: Remove check and send to __init__.
-    if dH is not None and \
-       dCp is not None and \
-       len(dH) == len(pKa_ref) == len(dCp):
-
-        pKa = (_vant_hoff(self, temperature) -
-               self.heat_capacity /
-               (2.303 * gas_constant) * (T_ref/T - 1 - log(T/T_ref))
-               )
-    else:
-        warnings.warn('No dCp available. Returning uncorrected pKa.')
-        pKa = pKa_ref
+    pKa = (self._vant_hoff_pKa(temperature) -
+           self.heat_capacity /
+           (2.303 * gas_constant) * (T_ref/T - 1 - log(T/T_ref))
+           )
 
     return pKa
+
+
+def _clark_glew_acidity(self, temperature):
+    return 10.**(-self._clark_glew_pKa(temperature))

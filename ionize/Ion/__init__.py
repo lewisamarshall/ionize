@@ -71,8 +71,9 @@ class Ion(BaseIon):
         """Create a list of charge states with 0 inserted."""
         return np.sort(np.append(self.valence, [0]))
 
-    from .acidity import pKa, acidity, mid_Ka, mid_pKa, activity
-    # from .acidity import pKa, acidity, activity
+    from .acidity import pKa, acidity, activity, _clark_glew_pKa, \
+        _clark_glew_acidity, _vant_hoff_acidity, _vant_hoff_pKa
+
     from .ionization import acidity_product, ionization_fraction
 
     from .mobility import absolute_mobility, actual_mobility, \
