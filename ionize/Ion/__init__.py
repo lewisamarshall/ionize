@@ -94,7 +94,7 @@ class Ion(BaseIon):
 
     from .acidity import pKa, acidity, mid_Ka, mid_pKa, activity
     # from .acidity import pKa, acidity, activity
-    from .ionization import L, ionization_fraction
+    from .ionization import acidity_product, ionization_fraction
 
     from .mobility import absolute_mobility, actual_mobility, \
         mobility, robinson_stokes_mobility

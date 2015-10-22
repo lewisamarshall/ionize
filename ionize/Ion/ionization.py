@@ -19,7 +19,7 @@ def ionization_fraction(self, pH, ionic_strength=0., temperature=25.):
         self._resolve_context(pH, ionic_strength, temperature)
 
     # Get the vector of products of acidity constants.
-    L = self.L(ionic_strength, temperature)
+    L = self.acidity_product(ionic_strength, temperature)
     # Compute the concentration of H+ from the pH.
     cH = 10**(-pH)/self.activity(1, ionic_strength, temperature)
 
@@ -34,7 +34,7 @@ def ionization_fraction(self, pH, ionic_strength=0., temperature=25.):
 
     return np.array(i_frac)
 
-def L(self, ionic_strength=None, temperature=None):
+def acidity_product(self, ionic_strength=None, temperature=None):
     """Return the L products of acidity constants.
 
     Args:

@@ -21,7 +21,7 @@ def calc_pH(self, I=0):
 
     # Set up the matrix of Ls, the multiplication
     # of acidity coefficients for each ion.
-    l_matrix = numpy.array([numpy.resize(i.L(I),
+    l_matrix = numpy.array([numpy.resize(i.acidity_product(I),
                            [max_columns]) for i in self.ions])
 
     # Construct Q vector.
