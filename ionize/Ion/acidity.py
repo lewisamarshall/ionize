@@ -1,11 +1,11 @@
 import warnings
 from math import log, sqrt
-from ..constants import gas_constant, kelvin, pitts
 import numpy as np
 
+from ..constants import gas_constant, kelvin, pitts
 
-def activity(self, valence=None, ionic_strength=None,
-                         temperature=None):
+
+def activity(self, valence=None, ionic_strength=None, temperature=None):
     """Return activity coefficients of a charge state at ionic strength I."""
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)
@@ -28,6 +28,7 @@ def activity(self, valence=None, ionic_strength=None,
 
     return gamma
 
+
 def acidity(self, ionic_strength=None, temperature=None):
     """Return the effective Ka values for the ion.
 
@@ -42,25 +43,22 @@ def acidity(self, ionic_strength=None, temperature=None):
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)
 
-    # Make the effective Ka vector the same size as the Ka vector.
-    Ka_eff = []
-
     gam_i = self.activity(None, ionic_strength, temperature)
     gam_h = self.activity(1, ionic_strength, temperature)
 
     # For each acidity coefficient, get the effective
     # coefficient by multiplying by activities.
-    for i, Kp in enumerate(self.mid_Ka(ionic_strength, temperature)):
-        Ka_eff.append(Kp*gam_i[i+1]/gam_i[i]/gam_h)
+    Ka_eff = (self.mid_Ka(ionic_strength, temperature) *
+              gam_i[1:]/ gam_i[:-1] / gam_h)
 
-    return np.array(Ka_eff)
+    return Ka_eff
 
 
 def pKa(self, ionic_strength=None, temperature=None):
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)
 
-    return -np.log10(self.acidity())
+    return -np.log10(self.acidity(ionic_strength, temperature))
 
 
 def mid_Ka(self, ionic_strength, temperature):
@@ -94,16 +92,15 @@ def _vant_hoff(self, temperature):
     if abs(temperature - reference_temperature) > 20:
         warnings.warn("Using the van't Hoff correction for dT > 20 deg.")
 
+    # TODO: Move check to main function
     if len(self.enthalpy) != len(self.reference_pKa):
-        raise RuntimeError('Enthalpy must have an entry for each pKa.'
-                           + repr(self))
+        raise RuntimeError('Enthalpy must have an entry for each pKa.' +
+                           repr(self))
 
-    pKa_ref = self.reference_pKa
-    dH = self.enthalpy
-    pKa = [p - h/(2.303 * gas_constant)*(1/reference_temperature -
-                                         1/temperature)
-           for p, h in zip(pKa_ref, dH)]
-    return np.array(pKa)
+    pKa = (self.reference_pKa -
+           self.enthalpy / (2.303 * gas_constant) *
+           (1/reference_temperature - 1/temperature))
+    return pKa
 
 
 def _clark_glew(self, temperature):
@@ -111,16 +108,22 @@ def _clark_glew(self, temperature):
     T_ref = kelvin(self.reference_temperature)
     if abs(T-T_ref) > 100:
         warnings.warn('Using the Clark-Glew correction for dT > 100 deg.')
+
     pKa_ref = self.reference_pKa
     dH = self.enthalpy
     dCp = self.heat_capacity
+
+    # TODO: Remove check and send to __init__.
     if dH is not None and \
        dCp is not None and \
        len(dH) == len(pKa_ref) == len(dCp):
-        pKa = [p - h/(2.303 * gas_constant)*(1/T_ref - 1/T) -
-               c/(2.303 * gas_constant) * (T_ref/T - 1 - log(T/T_ref))
-               for p, h, c in zip(pKa_ref, dH, dCp)]
+
+        pKa = (_vant_hoff(self, temperature) -
+               self.heat_capacity /
+               (2.303 * gas_constant) * (T_ref/T - 1 - log(T/T_ref))
+               )
     else:
         warnings.warn('No dCp available. Returning uncorrected pKa.')
         pKa = pKa_ref
-    return np.array(pKa)
+
+    return pKa
