@@ -71,27 +71,6 @@ class Ion(BaseIon):
         """Create a list of charge states with 0 inserted."""
         return np.sort(np.append(self.valence, [0]))
 
-    def diffusivity(self, pH=None, ionic_strength=None, temperature=None):
-        """Return the diffusivity of the species at a specified pH and temperature.
-
-        The diffusivity is returned in units of m^2/s.
-        """
-        pH, ionic_strength, temperature = self._resolve_context(pH,
-                                                                ionic_strength,
-                                                                temperature)
-        actual_mobility = self.actual_mobility(ionic_strength, temperature)
-        ionization_fraction = self.ionization_fraction(pH,
-                                                       ionic_strength,
-                                                       temperature)
-
-        diffusivity = np.sum(actual_mobility *
-                             ionization_fraction /
-                             self.valence *
-                             boltzmann * kelvin(temperature) /
-                             elementary_charge) / \
-            np.sum(ionization_fraction)
-        return diffusivity
-
     from .acidity import pKa, acidity, mid_Ka, mid_pKa, activity
     # from .acidity import pKa, acidity, activity
     from .ionization import acidity_product, ionization_fraction
@@ -99,7 +78,7 @@ class Ion(BaseIon):
     from .mobility import absolute_mobility, actual_mobility, \
         mobility, robinson_stokes_mobility
 
-    from .molar_conductivity import molar_conductivity
+    from .transport import molar_conductivity, diffusivity
 
 if __name__ == '__main__':
     pass

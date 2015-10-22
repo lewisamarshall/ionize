@@ -1,4 +1,5 @@
-from ..constants import faraday, lpm3
+from ..constants import faraday, lpm3, boltzmann, kelvin, elementary_charge
+import numpy as np
 
 
 def molar_conductivity(self, pH=None, ionic_strength=None, temperature=None):
@@ -34,3 +35,25 @@ def molar_conductivity(self, pH=None, ionic_strength=None, temperature=None):
                       )
 
     return m_conductivity
+
+
+def diffusivity(self, pH=None, ionic_strength=None, temperature=None):
+    """Return the diffusivity of the species at a specified pH and temperature.
+
+    The diffusivity is returned in units of m^2/s.
+    """
+    pH, ionic_strength, temperature = self._resolve_context(pH,
+                                                            ionic_strength,
+                                                            temperature)
+    actual_mobility = self.actual_mobility(ionic_strength, temperature)
+    ionization_fraction = self.ionization_fraction(pH,
+                                                   ionic_strength,
+                                                   temperature)
+
+    diffusivity = np.sum(actual_mobility *
+                         ionization_fraction /
+                         self.valence *
+                         boltzmann * kelvin(temperature) /
+                         elementary_charge) / \
+        np.sum(ionization_fraction)
+    return diffusivity
