@@ -18,21 +18,19 @@ def ionization_fraction(self, pH, ionic_strength=0., temperature=25.):
     pH, ionic_strength, temperature = \
         self._resolve_context(pH, ionic_strength, temperature)
 
-    # Get the vector of products of acidity constants.
-    L = self.acidity_product(ionic_strength, temperature)
     # Compute the concentration of H+ from the pH.
     cH = 10**(-pH)/self.activity(1, ionic_strength, temperature)
 
     # Calculate the numerator of the function for ionization fraction.
-    i_frac_vector = [Lp * cH ** z for (Lp, z) in zip(L, self._valence_zero())]
+    i_frac_vector = (self.acidity_product(ionic_strength, temperature) *
+                     cH ** self._valence_zero())
 
     # Calculate the vector of ionization fractions
     # Filter out the neutral fraction
-    denom = sum(i_frac_vector)
-    i_frac = [i/denom for (i, z) in zip(i_frac_vector,
-                                        self._valence_zero()) if z]
+    i_frac = i_frac_vector[self._valence_zero()!=0] / i_frac_vector.sum()
 
-    return np.array(i_frac)
+    return i_frac
+
 
 def acidity_product(self, ionic_strength=None, temperature=None):
     """Return the L products of acidity constants.
@@ -54,7 +52,10 @@ def acidity_product(self, ionic_strength=None, temperature=None):
     index_0 = list(self._valence_zero()).index(0)
     Ka.insert(index_0, 1)
 
-    L = [np.prod(Ka[i:index_0]) for i in range(len(Ka)) if i < index_0] +\
-        [1/np.prod(Ka[index_0:i+1]) for i in range(len(Ka)) if i >= index_0]
+    Lp = np.cumprod(Ka)
+    Lpp = np.cumprod(Ka[::-1])[::-1]
+    L = np.where(self._valence_zero() >= 0,
+                 Lp[self._valence_zero() == 0] / Lp,
+                 Lpp / Lpp[self._valence_zero() == 0])
 
     return L
