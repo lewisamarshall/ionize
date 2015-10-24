@@ -25,9 +25,8 @@ def ionization_fraction(self, pH, ionic_strength=0., temperature=25.):
     i_frac_vector = (self.acidity_product(ionic_strength, temperature) *
                      cH ** self._valence_zero())
 
-    # Calculate the vector of ionization fractions
     # Filter out the neutral fraction
-    i_frac = i_frac_vector[self._valence_zero()!=0] / i_frac_vector.sum()
+    i_frac = i_frac_vector[self._valence_zero() != 0] / i_frac_vector.sum()
 
     return i_frac
 
