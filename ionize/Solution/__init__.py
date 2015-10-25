@@ -4,6 +4,7 @@ from collections import OrderedDict
 import numbers
 import contextlib
 import operator
+import numpy as np
 
 from ..Ion import Ion
 from ..Aqueous import Aqueous
@@ -64,13 +65,13 @@ class Solution(object):
 
     @property
     def concentrations(self):
-        return self._contents.values()
+        return np.array(self._contents.values())
 
     pH = property(operator.attrgetter("_pH"))
     ionic_strength = property(operator.attrgetter("_ionic_strength"))
 
 
-    def __init__(self, ions=[], concentrations=[]):
+    def __init__(self, ions=[], concentrations=[], temperature=None):
         """Initialize a solution object."""
 
         try:
@@ -96,6 +97,8 @@ class Solution(object):
             assert concentration >= 0, 'Concentrations must be positive.'
             self._contents[ion] = concentration
 
+        if temperature is not None:
+            self.temperature(temperature)
         self._equilibrate()
 
     def temperature(self, temperature=None):
@@ -104,14 +107,8 @@ class Solution(object):
         elif temperature == self.temperature():
             pass
         else:
-            old_temperature = self._temperature
             self._temperature = float(temperature)
             self._equilibrate()
-
-            @contextlib.contextmanager
-            def manager():
-                yield self._temperature
-                self.temperature(old_temperature)
 
     def cH(self, pH=None, ionic_strength=None):
         """Return the concentration of protons in solution."""
@@ -135,29 +132,17 @@ class Solution(object):
         cOH = self.effective_dissociation(ionic_strength)/self.cH(pH)
         return cOH
 
-    def debye(self):
-        """Return the Debye length of the solution.
-
-        Uses the Debye-Huckel approximation for the calculation
-        """
-        dielectric = self._solvent.dielectric(self.T)
-        viscosity = self._solvent.viscosity(self.T)
-        temperature = self._solvent.temperature_kelvin(self.T)
-        lamda = (dielectric * permittivity * boltzmann * temperature /
-                 elementary_charge**2 / (self.ionic_strength * lpm3) / avagadro) ** .5
-        return lamda
-
     def concentration(self, ion):
         if ion in ('H+', self._hydronium):
-            pass
+            raise NotImplementedError
         elif ion in ('OH-', self._hydroxide):
-            pass
+            raise NotImplementedError
         else:
             return self._contents.get(ion, 0)
 
     def __add__(self, other):
         new_i = self.ions[:]
-        new_c = self.concentrations[:]
+        new_c = self.concentrations.tolist()
         if isinstance(other, Solution):
             for ion, c in zip(other.ions, other.concentrations):
                 if ion in self.ions:
@@ -217,17 +202,11 @@ class Solution(object):
         with open(filename, 'w') as file:
             json.dump(self.serialize(), file)
 
-    from .titrate import titrate, buffering_capacity
+    from .equilibrium import _equilibrate, equilibrate_CO2, \
+                            effective_dissociation
     from .conductivity import conductivity, hydroxide_conductivity, \
                               hydronium_conductivity
+    from .titrate import titrate, buffering_capacity
+    from .debye import debye
     from .transference import transference, zone_transfer
     from .conservation import kohlrausch, alberty, jovin, gas
-    from equilibrium import _equilibrate, equilibrate_CO2, \
-                            effective_dissociation
-
-    # from .calc_I import calc_I as _calc_I
-    # from .calc_pH import calc_pH as _calc_pH
-    # from .equil_offset import equil_offset as _equil_offset
-    # from .find_equilibrium import find_equilibrium as _find_equilibrium
-    # from .Kw_eff import Kw_eff
-    # from .onsager_fuoss import onsager_fuoss as _onsager_fuoss

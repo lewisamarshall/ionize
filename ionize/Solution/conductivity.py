@@ -24,6 +24,7 @@ def hydronium_conductivity(self):
         self._hydronium.molar_conductivity(self.pH, self.ionic_strength)
     return H_conductivity
 
+
 def hydroxide_conductivity(self):
     """Return the conductivity of hydroxyls in solution.
 
