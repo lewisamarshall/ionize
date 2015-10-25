@@ -12,8 +12,8 @@ def kohlrausch(self):
 
     for ion, c in zip(self.ions, self.concentrations):
         z_eff = (mean([z*f for z, f in
-                 zip(ion.z, ion.ionization_fraction())]))
-        KRF += abs(z_eff) * c * lpm3 / ion.effective_mobility()
+                 zip(ion.valence, ion.ionization_fraction())]))
+        KRF += abs(z_eff) * c * lpm3 / ion.mobility()
         if max(ion.ionization_fraction()) < .9:
             warnings.warn('ions are not fully ionized. KRF is a poor approx.')
 
@@ -29,13 +29,13 @@ def alberty(self):
     al = 0
 
     for ion, c in zip(self.ions, self.concentrations):
-        if len(ion._actual_mobility) == 1:
+        if len(ion.reference_mobility) == 1:
             al += c * lpm3 / abs(ion._actual_mobility[0])
         else:
             f = ion.ionization_fraction()
             if max(f)/sum(f) < .9:
                 warnings.warn('Ion not in single valance. Alberty invalid.')
-            elif abs(ion.z[f.index(max(f))]) != 1:
+            elif abs(ion.valence[f.index(max(f))]) != 1:
                 warnings.warn('Ion valance is not 1. Alberty invalid.')
             al += c * lpm3 / abs(ion._actual_mobility[f.index(max(f))])
 
@@ -51,15 +51,15 @@ def jovin(self):
     jov = 0
 
     for ion, c in zip(self.ions, self.concentrations):
-        if len(ion._actual_mobility) == 1:
-            jov += c * ion.z[0]
+        if len(ion.reference_mobility) == 1:
+            jov += c * ion.valence[0]
         else:
             f = ion.ionization_fraction()
             if max(f)/sum(f) < .9:
                 warnings.warn('Ion not in single valance. Jovin invalid.')
-            elif abs(ion.z[f.index(max(f))]) != 1:
+            elif abs(ion.valence[f.index(max(f))]) != 1:
                 warnings.warn('Ion valance is not 1. Jovin invalid.')
-            jov += c * ion.z[f.index(max(f))]
+            jov += c * ion.valence[f.index(max(f))]
 
     return jov
 
@@ -67,6 +67,6 @@ def jovin(self):
 def gas(self):
     alberty = self.alberty()
     jovin = self.jovin()
-    gas = [alberty - jovin / self._hydronium.effective_mobility(self.pH),
-           alberty - jovin / self._hydroxide.effective_mobility(self.pH)]
+    gas = [alberty - jovin / self._hydronium.mobility(self.pH),
+           alberty - jovin / self._hydroxide.mobility(self.pH)]
     return tuple(gas)

@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def ionization_fraction(self, pH, ionic_strength=0., temperature=25.):
+def ionization_fraction(self, pH=None, ionic_strength=None, temperature=None):
     """Return the ionization fractions of an ion.
 
     Args:

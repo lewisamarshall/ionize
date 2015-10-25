@@ -1,16 +1,19 @@
 """Module containing the BaseIon class."""
-from .Aqueous import Aqueous
 import json
 import numpy as np
 import contextlib
 import operator
-from fixed_state import fixed_state
+
+from ..fixed_state import fixed_state
+from ..Aqueous import Aqueous
+
 
 def _encode(obj):
     if isinstance(obj, np.ndarray):
         return obj.tolist()
     # Let the base class default method raise the TypeError
     return json.JSONEncoder().default(obj)
+
 
 @fixed_state
 class BaseIon(object):
@@ -105,7 +108,9 @@ class BaseIon(object):
             ionic_strength = 0.
 
         try:
-            temperature = temperature or self.context().temperature or self.reference_temperature
+            temperature = temperature or \
+                          self.context().temperature() or \
+                          self.reference_temperature
         except AttributeError:
             temperature = self.reference_temperature
         # print "Context(pH: {}, I: {}, T: {})".format(pH,

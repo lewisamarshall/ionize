@@ -5,7 +5,7 @@ import json
 import numpy as np
 
 from ..Aqueous import Aqueous
-from ..BaseIon import BaseIon
+from .BaseIon import BaseIon
 from ..constants import reference_temperature, boltzmann, kelvin, \
                         elementary_charge
 from ..fixed_state import fixed_state
@@ -35,7 +35,7 @@ class Ion(BaseIon):
     _heat_capacity = None
     _nightingale_data = None
 
-    # Polynomial function is a derived part of state.
+    # Polynomial function is a derived parameter.
     _nightingale_function = None
 
     def __init__(self, name, valence, reference_pKa, reference_mobility,
