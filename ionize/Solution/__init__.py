@@ -51,6 +51,7 @@ class Solution(object):
     """
 
     _solvent = Aqueous
+    # TODO: H+ and OH- context may be incorrect.
     _hydronium = Ion('H+', [1], [100], [362E-9])
     _hydroxide = Ion('OH-', [-1], [-100], [-205E-9])
 
@@ -104,11 +105,17 @@ class Solution(object):
     def temperature(self, temperature=None):
         if temperature is None:
             return self._temperature
-        elif temperature == self.temperature():
-            pass
         else:
-            self._temperature = float(temperature)
-            self._equilibrate()
+            old_temperature = self._temperature
+            if temperature != old_temperature:
+                self._temperature = float(temperature)
+                self._equilibrate()
+        return self._manage_temperature(old_temperature)
+
+    @contextlib.contextmanager
+    def _manage_temperature(self, old_temperature):
+        yield
+        self.temperature(old_temperature)
 
     def cH(self, pH=None, ionic_strength=None):
         """Return the concentration of protons in solution."""
