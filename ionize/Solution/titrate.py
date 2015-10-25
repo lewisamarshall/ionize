@@ -1,5 +1,6 @@
 from scipy.optimize import newton, brentq
 import numbers
+
 from ..Ion import Ion
 from ..load_ion import load_ion
 
