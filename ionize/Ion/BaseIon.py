@@ -41,6 +41,10 @@ class BaseIon(object):
     def __str__(self):
         return "{}('{}')".format(type(self).__name__, self.name)
 
+
+    def __hash__(self):
+        return hash(repr(self))
+
     def __eq__(self, other):
         """Equality compares type and state."""
         try:
