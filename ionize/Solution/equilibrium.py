@@ -38,7 +38,7 @@ def calculate_pH(self, ionic_strength):
     # of acidity coefficients for each ion.
     l_matrix = np.array([np.resize(ion.acidity_product(ionic_strength),
                                          [max_columns])
-                            for ion in self.ions])
+                         for ion in self.ions])
 
     # Construct Q vector.
     Q = 1.0
@@ -53,7 +53,7 @@ def calculate_pH(self, ionic_strength):
     # Construct P matrix
     PMat = []
     for i in range(n_ions):
-        z_list = np.resize(self.ions[i].valence, [max_columns])
+        z_list = np.resize(self.ions[i]._valence_zero(), [max_columns])
 
         Mmod = l_matrix.copy()
         Mmod[i, :] *= np.array(z_list)
