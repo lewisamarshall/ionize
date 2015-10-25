@@ -19,11 +19,12 @@ def buffering_capacity(self):
     # If the buffering capacity is measured as above the insult c,
     # make the insult c lower.
     while Cb < c:
-        new_sol = self + (Ion('Acid Insult', -1, -2, -1), c)
+        new_sol = self + (Ion('Acid Insult', [-1], [-2], [-1]), c)
         # Find the slope of the pH.
         Cb = abs(c/(self.pH-new_sol.pH))
         c = 0.01 * Cb
     return Cb
+
 
 def titrate(self, titrant, target, titration_property='pH', return_c=False):
     """Return a Solution titrated to the target pH using the titrant.
@@ -41,7 +42,7 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
     att = getattr(self, titration_property)
     if isinstance(att, numbers.Number):
         min_func = lambda c:\
-            (self + (titrant, c)).__dict__[titration_property]-target
+            getattr(self + (titrant, c), titration_property)-target
     else:
         min_func = lambda c: \
             getattr(self + (titrant, c), titration_property)()-target
