@@ -6,6 +6,7 @@ import operator
 
 from .fixed_state import fixed_state
 from ..Aqueous import Aqueous
+from ..constants import reference_temperature
 
 
 def _encode(obj):
@@ -25,8 +26,9 @@ class BaseIon(object):
 
     _solvent = Aqueous
 
-    _state = ('name')
+    _state = ('name', 'reference_temperature')
     _name = 'BaseIon'
+    _reference_temperature = reference_temperature
 
     _context = None
 

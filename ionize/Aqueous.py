@@ -4,8 +4,46 @@ from .constants import gas_constant, reference_temperature, \
                        kelvin, elementary_charge, avagadro,\
                        boltzmann, permittivity, lpm3
 
-# TODO: Make a solvent base class.
-class Aqueous(object):
+
+class Solvent(object):
+
+    def __new__(cls, *args, **kwargs):
+        raise TypeError('Solvents may not be intantiated.')
+
+    @classmethod
+    def dielectric(self, temperature):
+        raise NotImplementedError
+
+    @classmethod
+    def viscosity(self, temperature):
+        raise NotImplementedError
+
+    @classmethod
+    def dissociation(self, temperature):
+        raise NotImplementedError
+
+    @classmethod
+    def debye(self, ionic_strength, temperature):
+        dielectric = self.dielectric(temperature)
+        viscosity = self.viscosity(temperature)
+        lamda = (dielectric * permittivity * boltzmann * kelvin(temperature) /
+                 elementary_charge**2 /
+                 (ionic_strength * lpm3) / avagadro) ** .5
+        return lamda
+
+
+    @classmethod
+    def debye_huckel(self, temperature):
+        """Return the Debye-Huckel constant, in M^-(1/2)."""
+        dh = elementary_charge**3. * sqrt(avagadro) / 2**(5./2.) / pi / \
+            (self.dielectric(temperature) * permittivity *
+             boltzmann * kelvin(temperature))**(3./2.)
+
+        # Before returning answer, use log 10, convert from meter**3 to liter
+        return dh / log(10.) * sqrt(lpm3)
+
+
+class Aqueous(Solvent):
 
     """Access the properties of water."""
 
@@ -13,9 +51,6 @@ class Aqueous(object):
     _reference_pKw = -log10(_reference_dissociation)
     _enthalpy = 55.815e3                # enthalpy of dissociation water
     _heat_capacity = -224.              # heat capacity of water
-
-    def __new__(cls, *args, **kwargs):
-        raise TypeError('Solvents may not be intantiated.')
 
     @classmethod
     def dielectric(self, temperature):
@@ -56,13 +91,3 @@ class Aqueous(object):
 
         dissociation_ = 10.0**(-pKw)
         return dissociation_
-
-    @classmethod
-    def debye_huckel(self, temperature):
-        """Return the Debye-Huckel constant, in M^-(1/2)."""
-        debye_huckel_ = elementary_charge**3. * sqrt(avagadro) / 2**(5./2.) / pi / \
-            (self.dielectric(temperature) * permittivity *
-             boltzmann * kelvin(temperature))**(3./2.)
-
-        # Before returning answer, use log 10, convert from meter**3 to liter
-        return debye_huckel_ / log(10.) * sqrt(lpm3)

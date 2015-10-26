@@ -2,7 +2,7 @@ from .PolyIon import PolyIon
 from ..Ion import fixed_state
 
 @fixed_state
-class Nucleic Acid(PolyIon):
+class NucleicAcid(PolyIon):
 
     _state = ('name',
               'size',

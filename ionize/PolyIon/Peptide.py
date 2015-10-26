@@ -26,39 +26,35 @@ class Peptide(PolyIon):
     _sequence = None
     _analysis = None
 
-    h_max = 1
-    h_min = 2./3.
-    h = 5./6.
+    _h_max = 1
+    _h_min = 2./3.
+    _h = 5./6.
 
 
     def __init__(self, name=None, sequence=None):
-        self.name = name
+        self._name = name
         if sequence is None:
-            self.get_file()
-            self.set_structure()
-            self.set_sequence()
+            self._get_sequence()
         else:
             self._sequence = sequence
 
-        # TODO: Fix that this only looks at first sequence
-        self._analysis = ProteinAnalysis(str(self.sequence[0]))
+        self._analysis = ProteinAnalysis(str(self.sequence))
 
     def _get_sequence(self):
-        self.file = lister.retrieve_pdb_file(self.name)
-        self.structure = parser.get_structure(self.name, self.file)
-        self._sequence = [pp.get_sequence()
-                          for pp in
-                          builder.build_peptides(self.structure)]
+        temploc = tempfile.mkdtemp()
+        file_ = lister.retrieve_pdb_file(self.name, pdir=temploc)
+        structure = parser.get_structure(self.name, file_)
+        # TODO: Fix that this only looks at first sequence
+        self._sequence = builder.build_peptides(structure)[0].get_sequence()
 
     def molecular_weight(self):
-        return np.array([SeqUtils.molecular_weight(sequence, 'protein')
-                         for sequence in self.sequence])
+        return SeqUtils.molecular_weight(self.sequence, 'protein')
 
     def charge(self, pH=None, ionic_strength=None, temperature=None):
         pH, ionic_strength, temperature = \
             self._resolve_context(pH, ionic_strength, temperature)
 
-        amino_acid_count = self._analysis.count_amino_acids
+        amino_acid_count = self._analysis.count_amino_acids()
 
         pos_pKs = dict(positive_pKs)
         neg_pKs = dict(negative_pKs)
@@ -70,33 +66,35 @@ class Peptide(PolyIon):
             pos_pKs['Nterm'] = pKnterminal[nterm]
         if cterm in pKcterminal:
             neg_pKs['Cterm'] = pKcterminal[cterm]
+
         return IsoelectricPoint(self.sequence,
-                                self.amino_acid_count)._chargeR(pH,
-                                                                pos_pKs,
-                                                                neg_pKs)
+                                amino_acid_count)._chargeR(pH,
+                                                           pos_pKs,
+                                                           neg_pKs)
 
     def isoelectric_point(self, ionic_strength=None, temperature=None):
+        # _, ionic_strength, temperature = \
+        #     self._resolve_context(None, ionic_strength, temperature)
+        return self._analysis.isoelectric_point()
+
+    def volume(self):
+        v = self.molecular_weight() / avagadro / self.density() / (100**3)
+        return v
+
+    def radius(self):
+        return (self.volume() * 3. / 4. / pi) ** (1. / 3.)
+
+    def density(self):
+        return 1.410 + 0.145 * exp(-self.molecular_weight() / 13.)
+
+    def mobility(self, pH=None, ionic_strength=None, temperature=None):
         pH, ionic_strength, temperature = \
             self._resolve_context(pH, ionic_strength, temperature)
 
-        return self.analysis.isoelectric_point()
-
-    def volume(self):
-        return self.mw[0]/self.density()
-
-    def radius(self):
-        self.radius = self.volume() * 3. / 4. / pi ** (1. / 3.) / 100.
-
-    def density(self):
-        return 1.410 + 0.145 * exp(-self.molecular_weight[0] / 13.)
-
-    def mobility(self, pH, ionic_strength, temperature):
-        mobility = self.charge(pH) /\
+        mobility = self.charge(pH) * elementary_charge /\
             (6 * pi * self._solvent.viscosity(temperature) * self.radius() *
-             (1 + self.kappa * self.radius()))*self.h
+             (1 + self.radius() /
+              self._solvent.debye(ionic_strength, temperature)
+              )
+             ) * self._h
         return mobility
-
-    # def set_debye(self):
-    #     I = 0.001 * 1000
-    #     self.lamda = (self.epsilon*self.k*self.T/self.e**2/I/self.Na)**.5
-    #     self.kappa = 1./self.lamda

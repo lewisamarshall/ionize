@@ -5,6 +5,7 @@ import numpy as np
 from ..constants import gas_constant, kelvin, pitts
 
 
+# TODO: bring activity coefficient down into solvent
 def activity(self, valence=None, ionic_strength=None, temperature=None):
     """Return activity coefficients of a charge state at ionic strength I."""
     _, ionic_strength, temperature = \
