@@ -8,9 +8,11 @@ import numpy as np
 
 from ..Ion import Ion
 from ..Aqueous import Aqueous
-from ..load_ion import load_ion
+from ..Database import Database
 from ..constants import permittivity, avagadro, boltzmann, \
                         elementary_charge, lpm3, reference_temperature
+
+database = Database()
 
 
 class Solution(object):
@@ -91,7 +93,7 @@ class Solution(object):
         self._contents = OrderedDict()
         for ion, concentration in zip(ions, concentrations):
             if isinstance(ion, basestring):
-                ion = load_ion(ion)
+                ion = database.load(ion)
             else:
                 ion = copy.copy(ion)
             ion.context(self)

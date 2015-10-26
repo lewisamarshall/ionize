@@ -2,7 +2,9 @@ from scipy.optimize import newton, brentq
 import numbers
 
 from ..Ion import Ion
-from ..load_ion import load_ion
+from ..Database import Database
+
+database = Database()
 
 
 def buffering_capacity(self):
@@ -38,7 +40,7 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
     to a property of the Solution class.
     """
     if isinstance(titrant, basestring):
-        titrant = load_ion(titrant)
+        titrant = database.load(titrant)
 
     att = getattr(self, titration_property)
     if isinstance(att, numbers.Number):

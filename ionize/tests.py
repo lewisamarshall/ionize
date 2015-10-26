@@ -3,9 +3,8 @@
 from .Aqueous import Aqueous
 from .Ion import Ion
 from .Solution import Solution
-from .get_db import get_db
-from .load_ion import load_ion
-from .search_ion import search_ion
+
+from .Database import Database
 from .nucleic_acid import nucleic_acid
 from .deserialize import deserialize
 
@@ -64,12 +63,8 @@ class TestAqueous(unittest.TestCase):
 class TestIon(unittest.TestCase):
 
     def setUp(self):
-        self.db = get_db()
+        self.database = Database()
         warnings.filterwarnings('ignore')
-
-    def test_import(self):
-        for ion_name in self.db.keys():
-            ion = load_ion(ion_name)
 
     def test_malformed(self):
         good_prop = range(1, 4)
@@ -93,8 +88,8 @@ class TestIon(unittest.TestCase):
         """Test that all acidities are computable."""
         ionic_strength_list = [0, .01, .1]
         temperature_list = [20., 25., 30.]
-        for ion_name in self.db.keys():
-            ion = load_ion(ion_name)
+        for name in self.database.keys():
+            ion = self.database.load(name)
             for T in temperature_list:
                 for I in ionic_strength_list:
                     ion.pKa(I, T)
@@ -104,8 +99,8 @@ class TestIon(unittest.TestCase):
         pH_list = [5, 7, 9]
         I_list = [0, .01, .1]
         T_list = [20., 25., 30.]
-        for ion_name in self.db.keys():
-            ion = load_ion(ion_name)
+        for ion_name in self.database.keys():
+            ion = self.database.load(ion_name)
             for T in T_list:
                 for pH in pH_list:
                     for I in I_list:
@@ -114,51 +109,51 @@ class TestIon(unittest.TestCase):
                         ion.diffusivity(pH, I, T)
 
     def test_equality(self):
-        hcl = load_ion('hydrochloric acid')
-        hcl2 = load_ion('hydrochloric acid')
+        hcl = self.database.load('hydrochloric acid')
+        hcl2 = self.database.load('hydrochloric acid')
         hcl2.context({'pH': 8, 'ionic_strength': 0.1, 'temperature': 28})
-        # sol = Solution([hcl], [0.1])
+        sol = Solution([hcl], [0.1])
         self.assertEqual(hcl, hcl2)
 
     def test_serialize(self):
-        for ion_name in self.db.keys():
-            ion = load_ion(ion_name)
+        for ion_name in self.database.keys():
+            ion = self.database.load(ion_name)
             self.assertEqual(ion, deserialize(ion.serialize()))
 
     def test_order(self):
+        """Ensures that valence order is enforced."""
         with self.assertRaises(AssertionError):
             Ion('badIon', [3, 1, 2], [0, 0, 0], [0, 0, 0])
 
     def test_immutable(self):
         """Test that parts of ion state are immutable."""
-        ion = load_ion('histidine')
+        ion = self.database.load('histidine')
         for prop in ion._state:
             with self.assertRaises(AttributeError):
                 setattr(ion, prop, None)
 
-class TestSearch(unittest.TestCase):
+
+class TestDatabase(unittest.TestCase):
+
     def setUp(self):
-        self.db = get_db()
+        self.database = Database()
         warnings.filterwarnings('ignore')
 
-    def test_name_search(self):
-        for ion_name in self.db.keys():
-            if ion_name not in search_ion(ion_name):
-                print ion_name, search_ion(ion_name)
-            self.assertTrue(ion_name in search_ion(ion_name))
+    def test_import(self):
+        for ion_name in self.database.data.keys():
+            ion = self.database.load(ion_name)
 
-    def test_z_search(self):
-        for z in range(-2, 2):
-            for name in search_ion(valence_search=z):
-                self.assertTrue(z in load_ion(name).valence)
+    def test_search(self):
+        for ion_name in self.database.keys():
+            search_result = self.database.search(ion_name)
+            self.assertTrue(ion_name in search_result,
+                            '{} not in {}'.format(ion_name, search_result))
 
 
 class TestSolution(unittest.TestCase):
 
     def setUp(self):
-        self.hcl = load_ion('hydrochloric acid')
-        self.tris = load_ion('tris')
-        self.solutions = [Solution([self.tris, self.hcl], [k, 0.1-k])
+        self.solutions = [Solution(['tris', 'hydrochloric acid'], [k, 0.1-k])
                           for k in np.linspace(0, 0.1, 20)]
 
     def test_titration(self):
@@ -167,7 +162,7 @@ class TestSolution(unittest.TestCase):
         n = 100
         c_hcl_set = [c_tris * i * 2.0 / n for i in range(n)]
         for c_hcl in c_hcl_set:
-            buf = Solution([self.tris, self.hcl], [c_tris, c_hcl])
+            buf = Solution(['tris', 'hydrochloric acid'], [c_tris, c_hcl])
             self.assertTrue(buf.pH < pH_old)
             self.solutions.append(buf)
 

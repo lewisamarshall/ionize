@@ -4,7 +4,7 @@ import numpy as np
 import contextlib
 import operator
 
-from ..fixed_state import fixed_state
+from .fixed_state import fixed_state
 from ..Aqueous import Aqueous
 
 

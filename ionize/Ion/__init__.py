@@ -8,7 +8,7 @@ from ..Aqueous import Aqueous
 from .BaseIon import BaseIon
 from ..constants import reference_temperature, boltzmann, kelvin, \
                         elementary_charge
-from ..fixed_state import fixed_state
+from .fixed_state import fixed_state
 
 
 @fixed_state
