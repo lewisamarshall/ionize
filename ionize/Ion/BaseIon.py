@@ -25,18 +25,16 @@ class BaseIon(object):
 
     _solvent = Aqueous
 
-    _state = ('name', 'valence')
+    _state = ('name')
     _name = 'BaseIon'
-    _valence = None
 
     _context = None
 
     # TODO: should list all parameters in state
     def __repr__(self):
         """Return a representation of the ion."""
-        return "{}('{}', valence={})".format(type(self).__name__,
-                                             self.name,
-                                             self.valence)
+        return "{}('{}')".format(type(self).__name__,
+                                             self.name)
 
     def __str__(self):
         return "{}('{}')".format(type(self).__name__, self.name)

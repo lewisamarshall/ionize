@@ -26,6 +26,7 @@ class Ion(BaseIon):
               'nightingale_data')
 
     # The reference properties of the ion are stored.
+    _valence = None
     _reference_pKa = None
     _reference_mobility = None
     _reference_temperature = reference_temperature
