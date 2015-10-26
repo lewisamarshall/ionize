@@ -10,6 +10,28 @@ def conductivity(self):
     for c, i in zip(self.concentrations, self.ions):
         conduct += c * i.molar_conductivity()
 
-    conduct += self.OH_conductivity()    # Add OH- contribution.
-    conduct += self.H_conductivity()     # Add H+ contribution.
+    conduct += self.hydronium_conductivity() + self.hydroxide_conductivity()
     return conduct
+
+
+def hydronium_conductivity(self):
+    """Return the conductivity of protons in solution.
+
+    Corrects for the mobility of the ion using the
+    ion objects's actual mobility.
+    """
+    H_conductivity = self.cH() * \
+        self._hydronium.molar_conductivity(self.pH, self.ionic_strength)
+    return H_conductivity
+
+
+def hydroxide_conductivity(self):
+    """Return the conductivity of hydroxyls in solution.
+
+    Corrects for the mobility of the ion using the
+    ion object's actual mobility.
+    """
+    OH_conductivity = self.cOH() *\
+        self._hydroxide.molar_conductivity(self.pH, self.ionic_strength)
+
+    return OH_conductivity
