@@ -156,7 +156,8 @@ class TestSolution(unittest.TestCase):
         self.solutions = [Solution(['tris', 'hydrochloric acid'], [k, 0.1-k])
                           for k in np.linspace(0, 0.1, 20)]
 
-    def test_titration(self):
+    def test_walk_concentration(self):
+        """Increase Acid concentration and observe pH decrease."""
         c_tris = 0.3
         pH_old = 14
         n = 100
@@ -166,11 +167,20 @@ class TestSolution(unittest.TestCase):
             self.assertTrue(buf.pH < pH_old)
             self.solutions.append(buf)
 
+    def test_titrate(self):
+        """Test pH titration."""
+        base = Solution(['tris'], [0.1])
+        for pH in (1, 3, 5, 7):
+            self.assertAlmostEqual(base.titrate('hydrochloric acid', pH).pH,
+                                   pH)
+
     def test_solution_properties(self):
         for buf in self.solutions:
             buf.zone_transfer()
             buf.conductivity()
             buf.transference()
+            buf.debye()
+            buf.buffering_capacity()
 
     def test_conservation_functions(self):
         for buf in self.solutions:
