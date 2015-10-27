@@ -3,18 +3,14 @@ from ..constants import boltzmann, kelvin, reference_temperature, \
                         elementary_charge, avagadro
 from ..Ion import fixed_state
 
-from Bio import PDB, SeqUtils
 from math import pi, exp
+import numpy as np
+
+from Bio import SeqUtils
 from Bio.SeqUtils.IsoelectricPoint import IsoelectricPoint, \
                                           positive_pKs, negative_pKs, \
                                           pKcterminal, pKnterminal
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
-import tempfile
-import numpy as np
-
-lister = PDB.PDBList()
-parser = PDB.PDBParser()
-builder = PDB.PPBuilder()
 
 
 @fixed_state
@@ -26,26 +22,15 @@ class Peptide(PolyIon):
     _sequence = None
     _analysis = None
 
+    # TODO: move h to function or constants
     _h_max = 1
     _h_min = 2./3.
     _h = 5./6.
 
-
     def __init__(self, name=None, sequence=None):
         self._name = name
-        if sequence is None:
-            self._get_sequence()
-        else:
-            self._sequence = sequence
-
+        self._sequence = sequence
         self._analysis = ProteinAnalysis(str(self.sequence))
-
-    def _get_sequence(self):
-        temploc = tempfile.mkdtemp()
-        file_ = lister.retrieve_pdb_file(self.name, pdir=temploc)
-        structure = parser.get_structure(self.name, file_)
-        # TODO: Fix that this only looks at first sequence
-        self._sequence = builder.build_peptides(structure)[0].get_sequence()
 
     def molecular_weight(self):
         return SeqUtils.molecular_weight(self.sequence, 'protein')

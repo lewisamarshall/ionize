@@ -3,6 +3,7 @@
 from .Solvent import Aqueous
 from .Ion import Ion
 from .PolyIon import NucleicAcid, Peptide
+from .IonComplex import Protein
 from .Solution import Solution
 
 from .Database import Database
@@ -204,11 +205,13 @@ class TestNucleicAcid(unittest.TestCase):
             self.assertGreater(mup, mu, "Mobility didn't increase with size")
             mu = mup
 
+
 class TestPeptide(unittest.TestCase):
 
-    def test_download(self):
-        Peptide('2AVI').mobility(8, 0.1)
-        Peptide('3V03').mobility(4, 0.1)
+    def test_serialize(self):
+        Peptide('2AVI').serialize()
+        Peptide(sequence='DTHKSEIAHRFKDLGEEHFKGL'
+                         'VLIAFSQYLQQCPFDEHVKLVNE').serialize()
 
     def test_sequence_input(self):
         pep = Peptide(sequence='DTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNE')
@@ -216,7 +219,7 @@ class TestPeptide(unittest.TestCase):
 
     def test_mobility(self):
         avi = Peptide(sequence='RETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDE'
-                                'FKADEKKFWGKYLYEIARRHPYFYAPELLYYANKY')
+                               'FKADEKKFWGKYLYEIARRHPYFYAPELLYYANKY')
         mu = avi.mobility(0, 0.01)
         for pH in range(1, 12):
             mup = avi.mobility(pH, 0.01)
@@ -230,6 +233,16 @@ class TestPeptide(unittest.TestCase):
         avi.radius()
         avi.volume()
         avi.molecular_weight()
+
+
+class TestProtein(unittest.TestCase):
+    def test_download(self):
+        for name in ['2AVI', '3V03']:
+            Protein(name)
+
+    def test_membership(self):
+        for peptide in Protein('2AVI'):
+            self.assertTrue(isinstance(peptide, Peptide))
 
 
 if __name__ == '__main__':
