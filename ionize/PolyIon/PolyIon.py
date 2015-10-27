@@ -2,4 +2,6 @@ from ..Ion import BaseIon
 
 
 class PolyIon(BaseIon):
-    pass
+
+    def molecular_weight(self):
+        raise NotImplementedError

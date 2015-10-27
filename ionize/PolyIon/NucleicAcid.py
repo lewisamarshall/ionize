@@ -14,7 +14,7 @@ class NucleicAcid(PolyIon):
     _species = 'DNA'
     _sequence = None
 
-    __species_options = ('DNA', 'RNA', 'dsDNA', 'ssDNA', 'ssRNA', '')
+    __species_options = ('DNA', 'RNA', 'dsDNA', 'ssDNA', 'ssRNA')
 
 
     def __init__(self, name=None,
