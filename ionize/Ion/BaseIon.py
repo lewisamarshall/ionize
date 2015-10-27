@@ -33,11 +33,12 @@ class BaseIon(object):
 
     _context = None
 
-    # TODO: should list all parameters in state
+    # TODO: downconvert unicode and numpy arrays
     def __repr__(self):
         """Return a representation of the ion."""
-        return "{}('{}')".format(type(self).__name__,
-                                 self.name)
+        inner = ', '.join(['{}={}'.format(str(prop), repr(getattr(self, prop)))
+                           for prop in self._state])
+        return '{}({})'.format(type(self).__name__, inner)
 
     def __str__(self):
         return "{}('{}')".format(type(self).__name__, self.name)

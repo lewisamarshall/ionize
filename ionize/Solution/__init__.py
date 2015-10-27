@@ -73,7 +73,6 @@ class Solution(object):
     pH = property(operator.attrgetter("_pH"))
     ionic_strength = property(operator.attrgetter("_ionic_strength"))
 
-
     def __init__(self, ions=[], concentrations=[], temperature=None):
         """Initialize a solution object."""
 
@@ -212,9 +211,9 @@ class Solution(object):
             json.dump(self.serialize(), file)
 
     from .equilibrium import _equilibrate, equilibrate_CO2, \
-                            effective_dissociation
+        effective_dissociation
     from .conductivity import conductivity, hydroxide_conductivity, \
-                              hydronium_conductivity
+        hydronium_conductivity
     from .titrate import titrate, buffering_capacity
     from .debye import debye
     from .transference import transference, zone_transfer
