@@ -3,6 +3,7 @@ import json
 import numpy as np
 import contextlib
 import operator
+from math import sqrt
 
 from .fixed_state import fixed_state
 from ..Solvent import Aqueous
@@ -36,11 +37,10 @@ class BaseIon(object):
     def __repr__(self):
         """Return a representation of the ion."""
         return "{}('{}')".format(type(self).__name__,
-                                             self.name)
+                                 self.name)
 
     def __str__(self):
         return "{}('{}')".format(type(self).__name__, self.name)
-
 
     def __hash__(self):
         return hash(repr(self))
@@ -85,6 +85,9 @@ class BaseIon(object):
         """Diffusivity must be overridden by subclasses."""
         raise NotImplementedError
 
+    def molar_conductivity(self):
+        raise NotImplementedError
+
     def context(self, context=False):
         """Set or get the context."""
         if context is False:
@@ -106,10 +109,6 @@ class BaseIon(object):
                 pH = self.context().pH
             except AttributeError:
                 pH = None
-        try:
-            ionic_strength = ionic_strength or self.context().ionic_strength or 0.
-        except AttributeError:
-            ionic_strength = 0.
 
         try:
             temperature = temperature or \
@@ -117,7 +116,17 @@ class BaseIon(object):
                           self.reference_temperature
         except AttributeError:
             temperature = self.reference_temperature
-        # print "Context(pH: {}, I: {}, T: {})".format(pH,
-        #                                              ionic_strength,
-        #                                              temperature)
+
+        try:
+            ionic_strength = ionic_strength or \
+                             self.context().ionic_strength or \
+                             10**-pH
+        except AttributeError:
+            try:
+                ionic_strength = 10**-pH
+            except:
+                ionic_strength = sqrt(self._solvent.dissociation(temperature))
+        except TypeError:
+            ionic_strength = sqrt(self._solvent.dissociation(temperature))
+
         return pH, ionic_strength, temperature
