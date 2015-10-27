@@ -4,7 +4,6 @@ from math import copysign
 import json
 import numpy as np
 
-from ..Aqueous import Aqueous
 from .BaseIon import BaseIon
 from ..constants import reference_temperature, boltzmann, kelvin, \
                         elementary_charge

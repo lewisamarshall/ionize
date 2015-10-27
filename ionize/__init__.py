@@ -11,8 +11,9 @@ Function search_ion searches the database.
 Function get_db returns the database as a dictionary.
 """
 
-from .Aqueous import Aqueous
+from .Solvent import Aqueous
 from .Ion import Ion
+from .PolyIon import NucleicAcid, Peptide
 from .Solution import Solution
 from .deserialize import deserialize
 from .Database import Database

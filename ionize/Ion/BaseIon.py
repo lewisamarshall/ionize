@@ -5,7 +5,7 @@ import contextlib
 import operator
 
 from .fixed_state import fixed_state
-from ..Aqueous import Aqueous
+from ..Solvent import Aqueous
 from ..constants import reference_temperature
 
 
