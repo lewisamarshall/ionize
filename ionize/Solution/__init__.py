@@ -7,7 +7,7 @@ import operator
 import numpy as np
 
 from ..Ion import Ion
-from ..Aqueous import Aqueous
+from ..Solvent import Aqueous
 from ..Database import Database
 from ..constants import permittivity, avagadro, boltzmann, \
                         elementary_charge, lpm3, reference_temperature

@@ -1,11 +1,11 @@
 """Test module for ionize."""
 
-from .Aqueous import Aqueous
+from .Solvent import Aqueous
 from .Ion import Ion
+from .PolyIon import NucleicAcid, Peptide
 from .Solution import Solution
 
 from .Database import Database
-from .nucleic_acid import nucleic_acid
 from .deserialize import deserialize
 
 import unittest
@@ -194,12 +194,43 @@ class TestSolution(unittest.TestCase):
         self.assertAlmostEqual(water.pH, 7.0, 2)
         self.assertAlmostEqual(water.ionic_strength, 0, 4)
 
-#
-# class TestNucleicAcid(unittest.TestCase):
-#
-#     def test_nucleic_acid(self):
-#         nucleic_acid()
-#         [nucleic_acid(n) for n in [10, 100, 1000, 10000, 100000]]
+
+class TestNucleicAcid(unittest.TestCase):
+
+    def test_mobility(self):
+        mu = 0
+        for n in [10, 100, 1000, 10000, 100000, None]:
+            mup = NucleicAcid(size=n).mobility()
+            self.assertGreater(mup, mu, "Mobility didn't increase with size")
+            mu = mup
+
+class TestPeptide(unittest.TestCase):
+
+    def test_download(self):
+        Peptide('2AVI').mobility(8, 0.1)
+        Peptide('3V03').mobility(4, 0.1)
+
+    def test_sequence_input(self):
+        pep = Peptide(sequence='DTHKSEIAHRFKDLGEEHFKGLVLIAFSQYLQQCPFDEHVKLVNE')
+        pep.mobility(7, 0.01)
+
+    def test_mobility(self):
+        avi = Peptide(sequence='RETYGDMADCCEKQEPERNECFLSHKDDSPDLPKLKPDPNTLCDE'
+                                'FKADEKKFWGKYLYEIARRHPYFYAPELLYYANKY')
+        mu = avi.mobility(0, 0.01)
+        for pH in range(1, 12):
+            mup = avi.mobility(pH, 0.01)
+            self.assertLess(mup, mu,
+                            "Mobility didn't decrease with pH.")
+            mu = mup
+
+    def test_physical(self):
+        avi = Peptide(sequence='HKECCHGDLLECADDRADLAKYICDNQDTISSKLKECCDKPL'
+                               'LEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQE')
+        avi.radius()
+        avi.volume()
+        avi.molecular_weight()
+
 
 if __name__ == '__main__':
     unittest.main()
