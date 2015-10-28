@@ -4,7 +4,7 @@ from ..Ion import fixed_state
 
 from Bio import PDB
 import tempfile
-lister = PDB.PDBList()
+lister = PDB.PDBList(obsolete_pdb='override')
 parser = PDB.PDBParser()
 builder = PDB.PPBuilder()
 

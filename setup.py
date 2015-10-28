@@ -7,7 +7,7 @@ except:
     long_description = None
 
 setup(name='ionize',
-      version='0.11.5',
+      version='0.13.0',
       author='Lewis A. Marshall',
       author_email='lewis.a.marshall@gmail.com',
       url="http://lewisamarshall.github.io/ionize/",

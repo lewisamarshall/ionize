@@ -33,12 +33,18 @@ class BaseIon(object):
 
     _context = None
 
-    # TODO: downconvert unicode and numpy arrays
     def __repr__(self):
         """Return a representation of the ion."""
-        inner = ', '.join(['{}={}'.format(str(prop), repr(getattr(self, prop)))
-                           for prop in self._state])
-        return '{}({})'.format(type(self).__name__, inner)
+        inner = []
+        for prop in self._state:
+            prop = str(prop)  # convert unicode to string
+            value = getattr(self, prop)
+            if isinstance(value, np.ndarray):
+                value = value.tolist()
+            elif isinstance(value, basestring):
+                value = str(value)
+            inner.append('{}={}'.format(str(prop), repr(value)))
+        return '{}({})'.format(type(self).__name__, ', '.join(inner))
 
     def __str__(self):
         return "{}('{}')".format(type(self).__name__, self.name)
@@ -105,8 +111,9 @@ class BaseIon(object):
         def manager():
             yield
             self._context = old_context
-        return manager
+        return manager()
 
+    # TODO: Resolve strange behavior if ionic strength < 10**pH
     def _resolve_context(self, pH, ionic_strength, temperature):
         if pH is None:
             try:
@@ -124,13 +131,14 @@ class BaseIon(object):
         try:
             ionic_strength = ionic_strength or \
                              self.context().ionic_strength or \
-                             10**-pH
+                             self._solvent.ionic_strength(pH, temperature)
         except AttributeError:
             try:
                 ionic_strength = 10**-pH
             except:
-                ionic_strength = sqrt(self._solvent.dissociation(temperature))
+                ionic_strength = sqrt(self._solvent.dissociation(0.,
+                                                                 temperature))
         except TypeError:
-            ionic_strength = sqrt(self._solvent.dissociation(temperature))
+            ionic_strength = sqrt(self._solvent.dissociation(0., temperature))
 
         return pH, ionic_strength, temperature
