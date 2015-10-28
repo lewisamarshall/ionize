@@ -16,14 +16,18 @@ def conductivity(self):
 
 def hydronium_conductivity(self):
     """Return the conductivity of protons in solution."""
-    H_conductivity = self.cH() * \
-        self._hydronium.molar_conductivity(self.pH, self.ionic_strength)
+    H_conductivity = self.concentration('H+') * \
+        self._hydronium.molar_conductivity(self.pH,
+                                           self.ionic_strength,
+                                           self.temperature())
     return H_conductivity
 
 
 def hydroxide_conductivity(self):
     """Return the conductivity of hydroxyls in solution."""
-    OH_conductivity = self.cOH() *\
-        self._hydroxide.molar_conductivity(self.pH, self.ionic_strength)
+    OH_conductivity = self.concentration('OH-')  *\
+        self._hydroxide.molar_conductivity(self.pH,
+                                           self.ionic_strength,
+                                           self.temperature())
 
     return OH_conductivity

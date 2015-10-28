@@ -118,33 +118,27 @@ class Solution(object):
         yield
         self.temperature(old_temperature)
 
-    def cH(self, pH=None, ionic_strength=None):
+    def _cH(self):
         """Return the concentration of protons in solution."""
-        if pH is None:
-            pH = self.pH
-
-        if ionic_strength is None:
-            ionic_strength = self.ionic_strength
-
-        cH = 10**(-pH)/self._hydronium.activity([1], ionic_strength)[0]
+        cH = 10**(-self.pH)/self._solvent.activity(1, self.ionic_strength,
+                                                   self.temperature())
         return cH
 
-    def cOH(self, pH=None, ionic_strength=None):
+    def _cOH(self):
         """Return the concentration of hydroxyls in solution."""
-        if pH is None:
-            pH = self.pH
-
-        if ionic_strength is None:
-            ionic_strength = self.ionic_strength
-
-        cOH = self.effective_dissociation(ionic_strength)/self.cH(pH)
+        cOH = (self._solvent.dissociation(self.ionic_strength,
+                                          self.temperature()) /
+               self._cH() /
+               self._solvent.activity(1, self.ionic_strength,
+                                      self.temperature()) ** 2.)
         return cOH
 
+    # TODO: insert a name lookup dictionary
     def concentration(self, ion):
         if ion in ('H+', self._hydronium):
-            raise NotImplementedError
+            return self._cH()
         elif ion in ('OH-', self._hydroxide):
-            raise NotImplementedError
+            return self._cOH()
         else:
             return self._contents.get(ion, 0)
 
@@ -210,8 +204,7 @@ class Solution(object):
         with open(filename, 'w') as file:
             json.dump(self.serialize(), file)
 
-    from .equilibrium import _equilibrate, equilibrate_CO2, \
-        effective_dissociation
+    from .equilibrium import _equilibrate, equilibrate_CO2
     from .conductivity import conductivity, hydroxide_conductivity, \
         hydronium_conductivity
     from .titrate import titrate, buffering_capacity

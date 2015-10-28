@@ -13,7 +13,7 @@ def calculate_ionic_strength(self, pH, guess):
              for ion in self.ions]) / 2.
 
     # Add the ionic strength due to water dissociation.
-    I += (self.cH(pH, guess) + self.cOH(pH, guess))/2
+    I += (self.concentration('H+') + self.concentration('OH-'))/2
     return I
 
 
