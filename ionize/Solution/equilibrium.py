@@ -7,9 +7,10 @@ import warnings
 def calculate_ionic_strength(self, pH, guess):
     # For each ion, add the contribution to ionic strength to the sum.
 
-    I = sum([self.concentration(ion) *
-             np.sum(ion.valence**2 *
-                    ion.ionization_fraction(pH, guess))
+    self._pH = pH
+    self._ionic_strength = guess
+
+    I = sum([self.concentration(ion) * ion.charge(moment=2)
              for ion in self.ions]) / 2.
 
     # Add the ionic strength due to water dissociation.

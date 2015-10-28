@@ -31,6 +31,11 @@ def ionization_fraction(self, pH=None, ionic_strength=None, temperature=None):
     return i_frac
 
 
+def charge(self, pH=None, ionic_strength=None, temperature=None, moment=1):
+    fraction = self.ionization_fraction(pH, ionic_strength, temperature)
+    return np.sum(fraction * self.valence**moment)
+
+
 def acidity_product(self, ionic_strength=None, temperature=None):
     """Return the L products of acidity constants.
 

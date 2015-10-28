@@ -89,6 +89,9 @@ class BaseIon(object):
     def molar_conductivity(self):
         raise NotImplementedError
 
+    def charge(self, moment=1):
+        raise NotImplementedError
+
     def context(self, context=False):
         """Set or get the context."""
         if context is False:
