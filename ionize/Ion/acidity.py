@@ -5,31 +5,6 @@ import numpy as np
 from ..constants import gas_constant, kelvin, pitts
 
 
-# TODO: bring activity coefficient down into solvent
-def activity(self, valence=None, ionic_strength=None, temperature=None):
-    """Return activity coefficients of a charge state at ionic strength I."""
-    _, ionic_strength, temperature = \
-        self._resolve_context(None, ionic_strength, temperature)
-
-    if valence is None:
-        valence = self._valence_zero()
-    else:
-        valence = np.int_(valence)
-
-    # There are two coefficients that are used repeatedly.
-    # Specified in Bahga.
-    A = (self._solvent.debye_huckel(temperature)*sqrt(ionic_strength) /
-         (1. + pitts * sqrt(ionic_strength))
-         )
-    # TODO: check if this is right
-    B = 0.1*ionic_strength  # Matching STEEP implementation.
-
-    # Use them to calculate the activity coefficients.
-    gamma = 10**((valence**2)*(B-A))
-
-    return gamma
-
-
 def acidity(self, ionic_strength=None, temperature=None):
     """Return the effective Ka values for the ion.
 
@@ -54,8 +29,8 @@ def acidity(self, ionic_strength=None, temperature=None):
         acidity = 10**(-self.reference_pKa)
 
     # Correct for the activity of ion and H+
-    gam_i = self.activity(None, ionic_strength, temperature)
-    gam_h = self.activity(1, ionic_strength, temperature)
+    gam_i = self._solvent.activity(self._valence_zero(), ionic_strength, temperature)
+    gam_h = self._solvent.activity(1, ionic_strength, temperature)
     acidity = acidity * gam_i[1:] / gam_i[:-1] / gam_h
 
     return acidity

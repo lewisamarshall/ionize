@@ -46,7 +46,8 @@ def calculate_pH(self, ionic_strength):
         Q = np.convolve(Q, l_matrix[j, :])
 
     # Convolve with water dissociation.
-    Q = np.convolve(Q, [-self.effective_dissociation(ionic_strength),
+    Q = np.convolve(Q, [-self._solvent.dissociation(ionic_strength,
+                                                    self.temperature()),
                            0.0, 1.0])
 
 
@@ -90,7 +91,8 @@ def calculate_pH(self, ionic_strength):
         raise RuntimeError('Failed to find pH.')
 
     # Convert to pH. Use the activity to correct the calculation.
-    pH = -log10(cH * self._hydronium.activity([1], ionic_strength)[0])
+    pH = -log10(cH * self._solvent.activity(1, ionic_strength,
+                                            self.temperature()))
     return pH
 
 
@@ -118,7 +120,8 @@ def _equilibrate(self):
     """
 
     if not self.ions:
-        self._pH = -log10(sqrt(effective_dissociation(self)))
+        dissociation = self._solvent.dissociation(0, self.temperature())
+        self._pH = -log10(sqrt(dissociation))
         self._ionic_strength = calculate_ionic_strength(self, self.pH, 0)
         return
 
@@ -151,20 +154,6 @@ def _equilibrate(self):
 
     self._pH = pH
     self._ionic_strength = I
-
-
-def effective_dissociation(self, ionic_strength=None):
-    """Return the effective water dissociation constant.
-
-    Based on the activity corrections to H+ and OH-.
-    """
-    if not ionic_strength:
-        ionic_strength = self.ionic_strength
-
-    gam_h = self._hydronium.activity(1, ionic_strength=ionic_strength)
-    Kw_eff = self._solvent.dissociation(self.temperature())/gam_h**2
-    return Kw_eff
-
 
 def equilibrate_CO2(self):
     raise NotImplementedError

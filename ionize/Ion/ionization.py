@@ -19,7 +19,7 @@ def ionization_fraction(self, pH=None, ionic_strength=None, temperature=None):
         self._resolve_context(pH, ionic_strength, temperature)
 
     # Compute the concentration of H+ from the pH.
-    cH = 10**(-pH)/self.activity(1, ionic_strength, temperature)
+    cH = 10**(-pH)/self._solvent.activity(1, ionic_strength, temperature)
 
     # Calculate the numerator of the function for ionization fraction.
     i_frac_vector = (self.acidity_product(ionic_strength, temperature) *

@@ -48,7 +48,7 @@ class TestAqueous(unittest.TestCase):
         self.assertAlmostEqual(self.aqueous.viscosity(25.),
                                8.9e-4, places=5)
         for t in self.temperature_range:
-            k_new = self.aqueous.dissociation(t)
+            k_new = self.aqueous.dissociation(0, t)
             self.assertGreater(k_new, k)
             k = k_new
 

@@ -46,8 +46,9 @@ class Ion(BaseIon):
         self._name = name
         self._valence = np.int_(valence)
 
-        # TODO: Re-impliment sorting?
-        assert np.all(np.diff(self.valence) > 0), 'Valences must be sorted.'
+        if len(self.valence) > 1:
+            assert np.all(np.diff(self.valence) > 0), \
+                'Valences must be sorted.'
 
         self._reference_pKa = np.float_(reference_pKa)
         self._reference_mobility = np.float_(reference_mobility)
@@ -79,10 +80,10 @@ class Ion(BaseIon):
         """Create a list of charge states with 0 inserted."""
         return np.sort(np.append(self.valence, [0]))
 
-    from .acidity import pKa, acidity, activity, _clark_glew_pKa, \
+    from .acidity import pKa, acidity, _clark_glew_pKa, \
         _clark_glew_acidity, _vant_hoff_acidity, _vant_hoff_pKa
 
-    from .ionization import acidity_product, ionization_fraction
+    from .ionization import acidity_product, ionization_fraction, charge
 
     from .mobility import absolute_mobility, actual_mobility, \
         mobility, robinson_stokes_mobility
