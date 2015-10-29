@@ -67,7 +67,8 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
 def equilibrate_CO2(self):
     CO2 = database['carbonic acid']
     CO2.context(self)
-    eq = 0.000014
+    atmospheric_CO2 = 0.0004
+    eq = atmospheric_CO2 * self._solvent.henry_CO2(self.temperature())
 
     def min_func(concentration):
         self._contents[CO2] = concentration

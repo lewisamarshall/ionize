@@ -1,5 +1,5 @@
 """Create the Aqueous class to hold the properties of water."""
-from math import log10, log, pi, sqrt
+from math import log10, log, pi, sqrt, exp
 from .constants import gas_constant, reference_temperature, \
                        kelvin, elementary_charge, avagadro,\
                        boltzmann, permittivity, lpm3, pitts
@@ -132,3 +132,10 @@ class Aqueous(Solvent):
         temperature = kelvin(temperature)
         viscosity_ = 2.414e-5 * 10**(247.8 / (temperature - 140))
         return viscosity_
+
+    @classmethod
+    def henry_CO2(self, temperature):
+        temperature = kelvin(temperature)
+        reference = kelvin(reference_temperature)
+        H = 0.034 * exp(2400. * (1./temperature - 1./reference))
+        return H
