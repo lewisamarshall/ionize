@@ -155,6 +155,3 @@ def _equilibrate(self):
 
     self._pH = pH
     self._ionic_strength = I
-
-def equilibrate_CO2(self):
-    raise NotImplementedError

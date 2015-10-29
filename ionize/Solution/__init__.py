@@ -225,10 +225,10 @@ class Solution(object):
         with open(filename, 'w') as file:
             json.dump(self.serialize(), file)
 
-    from .equilibrium import _equilibrate, equilibrate_CO2
+    from .equilibrium import _equilibrate
     from .conductivity import conductivity, hydroxide_conductivity, \
         hydronium_conductivity
-    from .titrate import titrate, buffering_capacity
+    from .titrate import titrate, buffering_capacity, equilibrate_CO2
     from .debye import debye
     from .transference import transference, zone_transfer
     from .conservation import kohlrausch, alberty, jovin, gas

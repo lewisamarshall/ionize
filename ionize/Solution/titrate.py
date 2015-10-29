@@ -1,5 +1,6 @@
 from scipy.optimize import newton, brentq
 import numbers
+import warnings
 
 from ..Ion import Ion
 from ..Database import Database
@@ -50,7 +51,9 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
         min_func = lambda c: \
             getattr(self + (titrant, c), titration_property)()-target
 
-    c, r = brentq(min_func, 0, 55, full_output=True)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        c, r = brentq(min_func, 0, 55, full_output=True)
 
     if r.converged:
         if return_c:
@@ -59,3 +62,24 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
             return (self + (titrant, c))
     else:
         raise RuntimeError('Solver did not converge.')
+
+
+def equilibrate_CO2(self):
+    CO2 = database['carbonic acid']
+    CO2.context(self)
+    eq = 0.000014
+
+    def min_func(concentration):
+        self._contents[CO2] = concentration
+        self._equilibrate()
+        deionized = concentration * (1-sum(CO2.ionization_fraction()))
+        return deionized - eq
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        c, r = brentq(min_func, 0, 1., full_output=True)
+
+    if r.converged:
+        self._contents[CO2] = c
+    else:
+        raise RuntimeError('Solver did not converge')

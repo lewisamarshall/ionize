@@ -11,4 +11,4 @@ def debye(self, temperature=None):
         temperature = self.temperature()
 
     with self.temperature(temperature):
-        return self._solvent.debye(self.temperature(), self.ionic_strength)
+        return self._solvent.debye(self.ionic_strength, self.temperature())
