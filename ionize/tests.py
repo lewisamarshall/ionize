@@ -133,6 +133,12 @@ class TestIon(unittest.TestCase):
             with self.assertRaises(AttributeError):
                 setattr(ion, prop, None)
 
+    def test_repr(self):
+        for name in self.database.keys():
+            ion = self.database.load(name)
+            self.assertEqual(ion, eval(repr(ion)),
+                             'Evaluating repr({}) was malformed.'.format(name))
+
 
 class TestDatabase(unittest.TestCase):
 
@@ -194,6 +200,25 @@ class TestSolution(unittest.TestCase):
         water = Solution([], [])
         self.assertAlmostEqual(water.pH, 7.0, 2)
         self.assertAlmostEqual(water.ionic_strength, 0, 4)
+
+    def test_equality(self):
+        sol = Solution(['tris', 'hydrochloric acid'],
+                       [0.1, 0.05])
+
+        sol2 = Solution(['tris', 'hydrochloric acid'],
+                       [0.1, 0.05])
+
+        template = 'Solution equality failed. {} != {}'
+        self.assertEqual(sol, sol2,
+                         template.format(sol.serialize(),
+                                         sol2.serialize())
+                         )
+
+    def test_repr(self):
+        sol = Solution(['tris', 'hydrochloric acid'],
+                       [0.1, 0.05])
+        self.assertEqual(sol, eval(repr(sol)),
+                         'Solution malformed by repr.')
 
 
 class TestNucleicAcid(unittest.TestCase):

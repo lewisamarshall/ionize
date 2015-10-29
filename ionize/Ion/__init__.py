@@ -43,7 +43,7 @@ class Ion(BaseIon):
                  nightingale_data=None):
         """Initialize an Ion object."""
 
-        self._name = name
+        self._name = str(name)
         self._valence = np.int_(valence)
 
         if len(self.valence) > 1:

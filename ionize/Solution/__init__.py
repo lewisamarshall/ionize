@@ -9,6 +9,7 @@ import numpy as np
 from ..Ion import Ion
 from ..Solvent import Aqueous
 from ..Database import Database
+from ..serialize import _serialize
 from ..constants import permittivity, avagadro, boltzmann, \
                         elementary_charge, lpm3, reference_temperature
 
@@ -53,14 +54,19 @@ class Solution(object):
     """
 
     _solvent = Aqueous
-    # TODO: H+ and OH- context may be incorrect.
+    # TODO: move these into solvent.
     _hydronium = Ion('H+', [1], [100], [362E-9])
     _hydroxide = Ion('OH-', [-1], [-100], [-205E-9])
 
-    _contents = OrderedDict()
     _pH = 7.                # Normal pH units.
     _ionic_strength = 0.    # Expected in molar.
     _temperature = reference_temperature  # Temperature in C
+
+    # Ions and concentrations fully represent state.
+    # class uses _contents internally to enforce consistency
+    # and help with lookups
+    _state = ('ions', 'concentrations')
+    _contents = OrderedDict()
 
     @property
     def ions(self):
@@ -99,11 +105,21 @@ class Solution(object):
             assert concentration >= 0, 'Concentrations must be positive.'
             self._contents[ion] = concentration
 
+        self._hydronium = copy.copy(self._hydronium)
+        self._hydroxide = copy.copy(self._hydroxide)
+        self._hydronium.context(self)
+        self._hydroxide.context(self)
+
         if temperature is not None:
             self.temperature(temperature)
         self._equilibrate()
 
     def temperature(self, temperature=None):
+        """Set or get the temperature of the solution.
+
+        If a temperature is supplied, returns a context manager that reverts
+        to the original temperature.
+        """
         if temperature is None:
             return self._temperature
         else:
@@ -185,20 +201,25 @@ class Solution(object):
 
     def __repr__(self):
         """Return a representation of the Solution."""
-        return self.__str__()
+        template = "Solution(ions={}, concentrations={}, temperature={})"
+        return template.format([ion.name for ion in self.ions],
+                               self.concentrations.tolist(),
+                               self.temperature())
 
     def __len__(self):
         return len(self.ions)
 
-    def serialize(self, nested=False):
+    def __eq__(self, other):
+        try:
+            return self.serialize() == other.serialize()
+        except:
+            return False
+
+    def serialize(self, nested=False, compact=False):
         serial = {'__solution__': True}
         serial['concentrations'] = self.concentrations
-        serial['ions'] = [ion.serialize(nested=True) for ion in self.ions]
-
-        if nested:
-            return serial
-        else:
-            return json.dumps(serial)
+        serial['ions'] = self.ions
+        return _serialize(serial, nested, compact)
 
     def save(self, filename):
         with open(filename, 'w') as file:

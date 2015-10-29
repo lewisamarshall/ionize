@@ -4,17 +4,12 @@ import numpy as np
 import contextlib
 import operator
 from math import sqrt
+import warnings
 
 from .fixed_state import fixed_state
 from ..Solvent import Aqueous
 from ..constants import reference_temperature
-
-
-def _encode(obj):
-    if isinstance(obj, np.ndarray):
-        return obj.tolist()
-    # Let the base class default method raise the TypeError
-    return json.JSONEncoder().default(obj)
+from ..serialize import _serialize
 
 
 @fixed_state
@@ -68,17 +63,9 @@ class BaseIon(object):
         serial = {key: getattr(self, key) for key in self._state}
         serial['__ion__'] = type(self).__name__
 
-        if compact:
-            sort_keys, indent, separators = True, None, (',', ':')
-        else:
-            sort_keys, indent, separators = True, 4, (', ', ': ')
+        return _serialize(serial, nested, compact)
 
-        if nested:
-            return serial
-        else:
-            return json.dumps(serial, default=_encode, sort_keys=sort_keys,
-                              indent=indent, separators=separators)
-
+    # TODO: figure out why this dumps text
     def save(self, filename):
         """Save a serialized version of the ion to a file."""
         with open(filename, 'w') as file:
@@ -128,17 +115,15 @@ class BaseIon(object):
         except AttributeError:
             temperature = self.reference_temperature
 
-        try:
-            ionic_strength = ionic_strength or \
-                             self.context().ionic_strength or \
-                             self._solvent.ionic_strength(pH, temperature)
-        except AttributeError:
+        if pH is not None:
+            lower_limit = self._solvent.ionic_strength(pH, temperature)
+        else:
+            lower_limit = sqrt(self._solvent.dissociation(0., temperature))
+
+        if ionic_strength is None:
             try:
-                ionic_strength = 10**-pH
-            except:
-                ionic_strength = sqrt(self._solvent.dissociation(0.,
-                                                                 temperature))
-        except TypeError:
-            ionic_strength = sqrt(self._solvent.dissociation(0., temperature))
+                ionic_strength = self.context().ionic_strength
+            except AttributeError:
+                ionic_strength = lower_limit
 
         return pH, ionic_strength, temperature
