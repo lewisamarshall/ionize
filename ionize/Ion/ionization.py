@@ -18,6 +18,8 @@ def ionization_fraction(self, pH=None, ionic_strength=None, temperature=None):
     pH, ionic_strength, temperature = \
         self._resolve_context(pH, ionic_strength, temperature)
 
+    assert pH is not None, 'Calculation requires a pH.'
+
     # Compute the concentration of H+ from the pH.
     cH = 10**(-pH)/self._solvent.activity(1, ionic_strength, temperature)
 

@@ -4,6 +4,7 @@ import numpy as np
 
 from ..constants import pitts
 
+
 def mobility(self, pH=None, ionic_strength=None, temperature=None):
     """Return the effective mobility of the ion at a given pH and I.
 
@@ -32,6 +33,7 @@ def mobility(self, pH=None, ionic_strength=None, temperature=None):
 
     return effective_mobility
 
+
 def actual_mobility(self, ionic_strength=None, temperature=None):
     if ionic_strength is None and \
             temperature is None and \
@@ -41,6 +43,7 @@ def actual_mobility(self, ionic_strength=None, temperature=None):
         except:
             warnings.warn('Context failed to return an actual mobility.')
     return self.robinson_stokes_mobility(ionic_strength, temperature)
+
 
 def absolute_mobility(self, temperature):
     _, _, temperature = \
@@ -63,6 +66,7 @@ def absolute_mobility(self, temperature):
              self._solvent.viscosity(temperature)*self.reference_mobility)
 
     return absolute_mobility
+
 
 def robinson_stokes_mobility(self, ionic_strength=None, temperature=None):
     """Return the Robinson-Stokes correction to fully ionized mobility.
