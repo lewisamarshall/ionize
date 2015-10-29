@@ -1,13 +1,22 @@
-from ..Ion import Ion
-from math import log, log10, sqrt
-from ..Aqueous import Aqueous
-from ..load_ion import load_ion
-import warnings
 import json
-from ..constants import permittivity, avagadro, boltzmann, elementary_charge
+import copy
+from collections import OrderedDict
+import numbers
+import contextlib
+import operator
+import numpy as np
+
+from ..Ion import Ion
+from ..Solvent import Aqueous
+from ..Database import Database
+from ..serialize import _serialize
+from ..constants import permittivity, avagadro, boltzmann, \
+                        elementary_charge, lpm3, reference_temperature
+
+database = Database()
 
 
-class Solution(Aqueous):
+class Solution(object):
 
     """Describe an aqueous solution.
 
@@ -44,164 +53,114 @@ class Solution(Aqueous):
         appropriate method.
     """
 
-    _solvent = Aqueous()
-
-    _Adh = 0.512           # L^1/2 / mol^1/2, approximate for room temperature
-    _aD = 1.5              # mol^-1/2 mol^-3/2, approximation
-
+    _solvent = Aqueous
+    # TODO: move these into solvent.
     _hydronium = Ion('H+', [1], [100], [362E-9])
     _hydroxide = Ion('OH-', [-1], [-100], [-205E-9])
 
-    ions = []              # Should be a list of ion objects.
-    concentrations = []    # A list of concentrations in molar.
-    pH = 7.0               # Normal pH units.
-    I = 0.0                # Expected in molar.
-    T = 25                 # Temperature in C
-    _T_ref = 25            # reference temperature
+    _pH = 7.                # Normal pH units.
+    _ionic_strength = 0.    # Expected in molar.
+    _temperature = reference_temperature  # Temperature in C
 
-    def __init__(self, ions=[], concentrations=[], T=25):
+    # Ions and concentrations fully represent state.
+    # class uses _contents internally to enforce consistency
+    # and help with lookups
+    _state = ('ions', 'concentrations')
+    _contents = OrderedDict()
+
+    @property
+    def ions(self):
+        return self._contents.keys()
+
+    @property
+    def concentrations(self):
+        return np.array(self._contents.values())
+
+    pH = property(operator.attrgetter("_pH"))
+    ionic_strength = property(operator.attrgetter("_ionic_strength"))
+
+    def __init__(self, ions=[], concentrations=[], temperature=None):
         """Initialize a solution object."""
 
-        self.T = float(T)
-        if self.T == self._T_ref:
-            self._Kw = self._solvent._Kw_ref
-        else:
-            self._Kw = self._solvent.dissociation(self.T)
-
-        if isinstance(ions, basestring):
-            ions = [ions]
         try:
-            self.ions = [i for i in ions]
+            len(ions)
         except:
-            self.ions = [ions]
+            ions = (ions,)
 
-        for idx, ion in enumerate(self.ions):
+        try:
+            len(concentrations)
+        except:
+            concentrations = (concentrations,)
+
+        assert len(ions) == len(concentrations), \
+            'There must be an ion for each concentration.'
+
+        self._contents = OrderedDict()
+        for ion, concentration in zip(ions, concentrations):
             if isinstance(ion, basestring):
-                self.ions[idx] = load_ion(ion)
+                ion = database.load(ion)
+            else:
+                ion = copy.copy(ion)
+            ion.context(self)
+            assert concentration >= 0, 'Concentrations must be positive.'
+            self._contents[ion] = concentration
 
-        self.ions = [i.set_T(self.T) for i in self.ions]
+        self._hydronium = copy.copy(self._hydronium)
+        self._hydroxide = copy.copy(self._hydroxide)
+        self._hydronium.context(self)
+        self._hydroxide.context(self)
 
-        try:
-            self.concentrations = [c for c in concentrations]
-        except:
-            self.concentrations = [concentrations]
+        if temperature is not None:
+            self.temperature(temperature)
+        self._equilibrate()
 
-        assert len(self.ions) == len(self.concentrations),\
-            """Must be initialized with the same number of ions and concentrations.
+    def temperature(self, temperature=None):
+        """Set or get the temperature of the solution.
+
+        If a temperature is supplied, returns a context manager that reverts
+        to the original temperature.
         """
-
-        assert all([c >= 0 for c in self.concentrations]),\
-            """Concentrations must be positive."""
-
-        if self.ions:
-            (self.pH, self.I) = self._find_equilibrium()
+        if temperature is None:
+            return self._temperature
         else:
-            self.pH = -log10(sqrt(self._Kw))
-            self.I = self._calc_I(self.pH)
+            old_temperature = self._temperature
+            if temperature != old_temperature:
+                self._temperature = float(temperature)
+                self._equilibrate()
+        return self._manage_temperature(old_temperature)
 
-        if self.I > 1:
-            warnings.warn(('Ionic strength > 1M. '
-                          'Ionic stregth correction may be inaccurate.'))
+    @contextlib.contextmanager
+    def _manage_temperature(self, old_temperature):
+        yield
+        self.temperature(old_temperature)
 
-        for ion in self.ions:
-            ion._I = self.I
-            ion._pH = self.pH
-
-        actual_mobilities = self._onsager_fuoss()
-
-        for i in range(len(self.ions)):
-            self.ions[i].actual_mobility = actual_mobilities[i]
-
-        self._hydronium.actual_mobility = [actual_mobilities[-1][0]]
-        self._hydroxide.actual_mobility = [actual_mobilities[-1][1]]
-
-    def set_T(self, T):
-        return Solution(self.ions, self.concentrations, T=T)
-
-    def buffering_capacity(self):
-        """Return the buffering capacity of the solution.
-
-        This function generates an approximate solution to the buffering
-        capacity by finding the derivative of the pH with respect to
-        the addition of an acid insult at small concentration.
-        """
-        # Remove any ions at concentration 0.
-        c = 0.001*min([cp for cp in self.concentrations if cp > 0])
-        Cb = 0
-
-        # Add an acid insult at 0.1% the lowest concentration in the solution.
-        # If the buffering capacity is measured as above the insult c,
-        # make the insult c lower.
-        while Cb < c:
-            new_sol = self + (Ion('Acid Insult', -1, -2, -1), c)
-            # Find the slope of the pH.
-            Cb = abs(c/(self.pH-new_sol.pH))
-            c = 0.01 * Cb
-        return Cb
-
-    def cH(self, pH=None, I=None):
+    def _cH(self):
         """Return the concentration of protons in solution."""
-        if not pH:
-            pH = self.pH
-
-        if not I:
-            I = self.I
-
-        cH = 10**(-pH)/self._hydronium.activity_coefficient(I, [1])[0]
+        cH = 10**(-self.pH)/self._solvent.activity(1, self.ionic_strength,
+                                                   self.temperature())
         return cH
 
-    def cOH(self, pH=None, I=None):
+    def _cOH(self):
         """Return the concentration of hydroxyls in solution."""
-        if not pH:
-            pH = self.pH
-
-        if not I:
-            I = self.I
-
-        cOH = self.Kw_eff(I)/self.cH(pH)
+        cOH = (self._solvent.dissociation(self.ionic_strength,
+                                          self.temperature()) /
+               self._cH() /
+               self._solvent.activity(1, self.ionic_strength,
+                                      self.temperature()) ** 2.)
         return cOH
 
-    def H_conductivity(self):
-        """Return the conductivity of protons in solution.
-
-        Corrects for the mobility of the ion using the
-        ion objects's actual mobility.
-        """
-        H_conductivity = self.cH()*self._hydronium.molar_conductivity(self.pH, self.I)
-        return H_conductivity
-
-    def OH_conductivity(self):
-        """Return the conductivity of hydroxyls in solution.
-
-        Corrects for the mobility of the ion using the
-        ion object's actual mobility.
-        """
-        OH_conductivity = self.cOH() *\
-            self._hydroxide.molar_conductivity(self.pH, self.I)
-
-        return OH_conductivity
-
-    def debye(self):
-        """Return the Debye length of the solution.
-
-        Uses the Debye-Huckel approximation for the calculation
-        """
-        dielectric = self._solvent.dielectric(self.T)
-        viscosity = self._solvent.viscosity(self.T)
-        lamda = (dielectric * permittivity * boltzmann * self.T /
-                 elementary_charge ** 2 / self.I / avagadro) ** .5
-        return lamda
-
-    def get_concentration(self, ion):
-        if ion not in self.ions:
-            return 0
+    # TODO: insert a name lookup dictionary
+    def concentration(self, ion):
+        if ion in ('H+', self._hydronium):
+            return self._cH()
+        elif ion in ('OH-', self._hydroxide):
+            return self._cOH()
         else:
-            idx = self.ions.index(ion)
-            return self.concentrations[idx]
+            return self._contents.get(ion, 0)
 
     def __add__(self, other):
         new_i = self.ions[:]
-        new_c = self.concentrations[:]
+        new_c = self.concentrations.tolist()
         if isinstance(other, Solution):
             for ion, c in zip(other.ions, other.concentrations):
                 if ion in self.ions:
@@ -222,7 +181,7 @@ class Solution(Aqueous):
                 new_c.append(c)
             return Solution(new_i, new_c)
         else:
-            raise NotImplementedError
+            raise TypeError
 
     __radd__ = __add__
 
@@ -231,44 +190,45 @@ class Solution(Aqueous):
             return Solution(self.ions,
                             [c * other for c in self.concentrations])
         else:
-            raise NotImplementedError
+            raise TypeError
 
     __rmul__ = __mul__
 
     def __str__(self):
         """Return a string representing the Solution."""
-        return "Solution(pH={:.3g}, I={:.3g} M)".format(self.pH, self.I)
+        return "Solution(pH={:.3g}, I={:.3g} M)".format(self.pH,
+                                                        self.ionic_strength)
 
     def __repr__(self):
         """Return a representation of the Solution."""
-        return self.__str__()
+        template = "Solution(ions={}, concentrations={}, temperature={})"
+        return template.format([ion.name for ion in self.ions],
+                               self.concentrations.tolist(),
+                               self.temperature())
 
     def __len__(self):
         return len(self.ions)
 
-    def serialize(self, nested=False):
+    def __eq__(self, other):
+        try:
+            return self.serialize() == other.serialize()
+        except:
+            return False
+
+    def serialize(self, nested=False, compact=False):
         serial = {'__solution__': True}
         serial['concentrations'] = self.concentrations
-        serial['ions'] = [ion.serialize(nested=True) for ion in self.ions]
-        serial['T'] = self.T
-
-        if __nested__:
-            return serial
-        else:
-            return json.dumps(serial)
+        serial['ions'] = self.ions
+        return _serialize(serial, nested, compact)
 
     def save(self, filename):
         with open(filename, 'w') as file:
             json.dump(self.serialize(), file)
 
-    from .calc_I import calc_I as _calc_I
-    from .calc_pH import calc_pH as _calc_pH
-    from .conductivity import conductivity
-    from .equil_offset import equil_offset as _equil_offset
-    from .find_equilibrium import find_equilibrium as _find_equilibrium
-    from .Kw_eff import Kw_eff
-    from .onsager_fuoss import onsager_fuoss as _onsager_fuoss
-    from .transference import transference
-    from .zone_transfer import zone_transfer
+    from .equilibrium import _equilibrate
+    from .conductivity import conductivity, hydroxide_conductivity, \
+        hydronium_conductivity
+    from .titrate import titrate, buffering_capacity, equilibrate_CO2
+    from .debye import debye
+    from .transference import transference, zone_transfer
     from .conservation import kohlrausch, alberty, jovin, gas
-    from .titrate import titrate

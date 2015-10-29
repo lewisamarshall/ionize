@@ -3,6 +3,7 @@ from math import sqrt
 from ..constants import faraday
 
 
+# TODO: Impliment Solution.actual_mobility(ion)
 def onsager_fuoss(self):
     """Return the Onsager-Fuoss correction to the mobilities of ions.
 

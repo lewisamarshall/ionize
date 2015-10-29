@@ -1,5 +1,4 @@
 from math import copysign
-import shelve
 from load_steep_db import load_steep_db
 import json
 from process_nightingale import fit_dict
@@ -15,7 +14,6 @@ def make_database():
     Note that the shelve backend is different for OSX and Windows, so separate
     shelves are created for each system.
     """
-
     # Open the files from the spresso database.
     z = open('create_database/z.csv', 'r')
     namelist = open('create_database/name.csv', 'r')
@@ -43,6 +41,8 @@ def make_database():
             dH = steep_db[name][3]
             if steep_db[name][4]:
                 dCp = steep_db[name][4]
+            else:
+                dCp = None
         else:
             dH = None
             dCp = None
@@ -76,15 +76,15 @@ def make_database():
             nightingale_function = None
         # Add the result to the ion dictionary.
         serial_ion = {'name': name,
-                      'z': state[0],
-                      'pKa_ref': state[1],
-                      'absolute_mobility_ref': state[2],
-                      'dH': dH,
-                      'dCp': dCp,
-                      'nightingale_function': nightingale_function}
+                      'valence': state[0],
+                      'reference_pKa': state[1],
+                      'reference_mobility': state[2],
+                      'enthalpy': dH,
+                      'heat_capacity': dCp,
+                      'nightingale_data': nightingale_function}
 
         ion_dict[name] = serial_ion
-    ion_dict['taps']['dCp'] = [15.0]
+    ion_dict['taps']['heat_capacity'] = [15.0]
     # print ion_dict['taps']
     # print ion_dict['tartaric acid']
     # boric acid is uniquely in the STEEP database but not the Spresso database
@@ -92,12 +92,12 @@ def make_database():
     steep_db['boric acid'][2][0] *= -1
     boric = steep_db['boric acid']
     ion_dict['boric acid'] = {'name': 'boric acid',
-                              'z': boric[0],
-                              'pKa_ref': boric[1],
-                              'absolute_mobility_ref': boric[2],
-                              'dH': boric[3],
-                              'dCp': boric[4],
-                              'nightingale_function': None}
+                              'valence': boric[0],
+                              'reference_pKa': boric[1],
+                              'reference_mobility': boric[2],
+                              'enthalpy': boric[3],
+                              'heat_capacity': boric[4],
+                              'nightingale_data': None}
 
     # Remove valences to fix ion search
     # TODO: Undo this.
@@ -107,7 +107,6 @@ def make_database():
     n_steep += 1
     steep_common.append('boric acid')
 
-    # ions = shelve.open('ionize/ions_shelve')
     # ions.update(ion_dict)
     # ions.close()
 

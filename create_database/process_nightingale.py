@@ -31,10 +31,10 @@ for key, file in files:
         nightingale_dict[key][0].append(float(line[0].strip()))
         nightingale_dict[key][1].append(float(line[1].strip()))
 
-    fit_dict[key] = {'fit':numpy.polyfit(nightingale_dict[key][0],
-                                  nightingale_dict[key][1],
-                                  deg=8
-                                  ).tolist(),
+    fit_dict[key] = {'fit': numpy.polyfit(nightingale_dict[key][0],
+                                          nightingale_dict[key][1],
+                                          deg=8
+                                          ).tolist(),
                      'min': min(nightingale_dict[key][0]),
                      'max': max(nightingale_dict[key][0])
                      }
@@ -48,7 +48,8 @@ if __name__ == '__main__':
         plot.plot(nightingale_dict[key][0],
                   nightingale_dict[key][1],
                   label=key)
-        xpl = [x for x in xp if fit_dict[key]['min']<x<fit_dict[key]['max']]
+        xpl = [x for x in xp if
+               fit_dict[key]['min'] < x < fit_dict[key]['max']]
 
         plot.plot(xpl, numpy.poly1d(fit_dict[key]['fit'])(xpl), 'k--')
 
