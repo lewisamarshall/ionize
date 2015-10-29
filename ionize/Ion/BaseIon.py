@@ -100,7 +100,6 @@ class BaseIon(object):
             self._context = old_context
         return manager()
 
-    # TODO: Resolve strange behavior if ionic strength < 10**pH
     def _resolve_context(self, pH, ionic_strength, temperature):
         if pH is None:
             try:

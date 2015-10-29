@@ -16,6 +16,7 @@ kelvin_conversion = 273.15
 # Ion information
 pitts = 1.5                     # Finite ion radius correction. [(mol/L)**.5]
 
+# TODO: Move this information into solvent.
 # h_mobility = 362E-9/faraday   # Mobility of Hydroxide   # [m^2/s*V]/F
 # oh_mobility = 205E-9/faraday  # Mobility of Hydronium   % [m^2/s*V]/F
 # h_diffusivity = h_mobility / 1 * boltzmann * (temperature_K)
