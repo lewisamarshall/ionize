@@ -220,6 +220,11 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(sol, eval(repr(sol)),
                          'Solution malformed by repr.')
 
+    def test_equilibrate_CO2(self):
+        sol = Solution()
+        sol.equilibrate_CO2()
+        self.assertAlmostEqual(sol.pH, 5.6, 1)
+
 
 class TestNucleicAcid(unittest.TestCase):
 
