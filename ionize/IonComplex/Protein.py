@@ -2,8 +2,9 @@ from .IonComplex import IonComplex
 from ..PolyIon import Peptide
 from ..Ion import fixed_state
 
-from Bio import PDB
 import tempfile
+from string import ascii_uppercase
+from Bio import PDB
 lister = PDB.PDBList(obsolete_pdb='override')
 parser = PDB.PDBParser()
 builder = PDB.PPBuilder()
@@ -12,27 +13,37 @@ builder = PDB.PPBuilder()
 @fixed_state
 class Protein(IonComplex):
 
-    _state = ('name', 'members', 'sequences', )
+    _state = ('name', 'members')
 
     sequences = tuple()
 
-    def __init__(self, name=None, sequences=None):
+    def __init__(self, name=None, ids=None, sequences=None, members=None):
         self._name = name
 
+        if members is not None:
+            self._members = tuple(members)
+            return
+
         if sequences is None:
-            self._get_sequences()
-        else:
-            self._sequences = sequences
+            ids, sequences = self._from_pdb()
+        elif ids is None:
+            ids = tuple(['{}:{}'.format(self.name, ascii_uppercase[idx])
+                         for idx in range(len(sequences))])
 
-        self._members = tuple([Peptide(name='{}:{}'.format(self.name, idx),
+        self._members = tuple([Peptide(name=id,
                                        sequence=sequence)
-                               for idx, sequence
-                               in enumerate(self._sequences)])
+                               for id, sequence
+                               in zip(ids, sequences)])
 
-    def _get_sequences(self):
+    def _from_pdb(self):
         temploc = tempfile.mkdtemp()
         file_ = lister.retrieve_pdb_file(self.name, pdir=temploc)
         structure = parser.get_structure(self.name, file_)
-        sequences = [str(peptide.get_sequence()) for
-                     peptide in builder.build_peptides(structure)]
-        self._sequences = tuple(sequences)
+
+        ids = []
+        sequences = []
+        for chain in structure.get_chains():
+            ids.append('{}:{}'.format(self.name, chain.id))
+            sequences.append(str(builder.build_peptides(chain)[0].get_sequence()))
+
+        return tuple(ids), tuple(sequences)

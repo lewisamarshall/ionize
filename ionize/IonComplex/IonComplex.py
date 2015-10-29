@@ -18,14 +18,18 @@ class IonComplex(Ion):
         [member.context(context) for member in self.members]
         self._context = context
 
+    def charge(self, pH, ionic_strength, temperature):
+        return sum([member.charge(pH, ionic_strength, temperature) for
+                    member in self.members])
+
     def mobility(self, pH, ionic_strength, temperature):
         raise NotImplementedError
 
     def diffusivity(self, pH, ionic_strength, temperature):
-        raise NotimplimentedError
+        raise NotImplementedError
 
     def molar_conductivity(self, pH, ionic_strength, temperature):
-        raise NotimplimentedError
+        raise NotImplementedError
 
     def molecular_weight(self):
         return sum([member.molecular_weight() for member in self.members])

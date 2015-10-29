@@ -181,7 +181,7 @@ class Solution(object):
                 new_c.append(c)
             return Solution(new_i, new_c)
         else:
-            raise NotImplementedError
+            raise TypeError
 
     __radd__ = __add__
 
@@ -190,7 +190,7 @@ class Solution(object):
             return Solution(self.ions,
                             [c * other for c in self.concentrations])
         else:
-            raise NotImplementedError
+            raise TypeError
 
     __rmul__ = __mul__
 

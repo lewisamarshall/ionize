@@ -15,7 +15,11 @@ class NucleicAcid(PolyIon):
     _species = 'DNA'
     _sequence = None
 
-    __species_options = ('DNA', 'RNA', 'dsDNA', 'ssDNA', 'ssRNA')
+    __species_options = {'DNA': {'duplex': True},
+                         'RNA': {'duplex': False},
+                         'dsDNA': {'duplex': True},
+                         'ssDNA': {'duplex': False},
+                         'ssRNA': {'duplex': False}}
 
 
     def __init__(self, name=None,
@@ -26,7 +30,7 @@ class NucleicAcid(PolyIon):
         self._size = size or self.size
         self._sequence = sequence or self.sequence
 
-        assert species in self.__species_options
+        assert species in self.__species_options.keys()
         self._species = species or self.species
 
     def mobility(self):
@@ -34,7 +38,8 @@ class NucleicAcid(PolyIon):
         return mu
 
     def charge(self):
-        raise NotImplementedError
+        # return self.size * (1 + self.__species_options[self.species]['duplex'])
+        raise NotImplementedError 
 
     def diffusivity(self):
         raise NotImplementedError
