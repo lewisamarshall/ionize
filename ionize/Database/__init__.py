@@ -41,3 +41,10 @@ class Database(object):
 
     def keys(self):
         return sorted(self.data.keys())
+
+    def __getitem__(self, key):
+        return self.load(key)
+
+    def __iter__(self):
+        for key in self.keys():
+            yield self[key]
