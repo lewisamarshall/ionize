@@ -45,7 +45,7 @@ def actual_mobility(self, ionic_strength=None, temperature=None):
     return self.robinson_stokes_mobility(ionic_strength, temperature)
 
 
-def absolute_mobility(self, temperature):
+def absolute_mobility(self, temperature=None):
     _, _, temperature = \
         self._resolve_context(None, None, temperature)
 

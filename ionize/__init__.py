@@ -14,7 +14,7 @@ Function get_db returns the database as a dictionary.
 from .Solvent import Aqueous
 from .Ion import Ion
 from .PolyIon import NucleicAcid, Peptide
-from IonComplex import IonComplex, Protein
+from .IonComplex import IonComplex, Protein
 from .Solution import Solution
 from .deserialize import deserialize
 from .Database import Database

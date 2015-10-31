@@ -29,20 +29,27 @@ class Solvent(object):
     @classmethod
     def dissociation(self, ionic_strength, temperature):
         """Return the dissociation constant of water."""
-        reference_temperature_k = kelvin(reference_temperature)
+        if temperature == reference_temperature:
+            dissociation_ = self.reference_dissociation
+        else:
+            reference_temperature_k = kelvin(reference_temperature)
 
-        temperature_k = kelvin(temperature)
+            temperature_k = kelvin(temperature)
 
-        enthalpy_contribution = (self.enthalpy / log(10.) / gas_constant) * \
-            (1. / reference_temperature_k - 1. / temperature_k)
+            enthalpy_contribution = (self.enthalpy / log(10.) /
+                                     gas_constant) * \
+                (1. / reference_temperature_k - 1. / temperature_k)
 
-        cp_contribution = (self.heat_capacity / log(10.) / gas_constant) * \
-            (reference_temperature_k / temperature_k - 1. +
-             log10(temperature_k / reference_temperature_k))
+            cp_contribution = (self.heat_capacity / log(10.) /
+                               gas_constant) * \
+                (reference_temperature_k / temperature_k - 1. +
+                 log10(temperature_k / reference_temperature_k))
 
-        pKs = self.reference_pKs() - enthalpy_contribution - cp_contribution
+            pKs = (self.reference_pKs() -
+                   enthalpy_contribution -
+                   cp_contribution)
 
-        dissociation_ = 10.0**(-pKs)
+            dissociation_ = 10.0**(-pKs)
 
         # correct for ionic strength
         dissociation_ /= self.activity(1., ionic_strength=ionic_strength,

@@ -3,7 +3,7 @@ from load_steep_db import load_steep_db
 import json
 from process_nightingale import fit_dict
 
-
+# TODO: Complete rewrite
 def make_database():
     """Make the ionize database.
 

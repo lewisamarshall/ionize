@@ -206,7 +206,7 @@ class TestSolution(unittest.TestCase):
                        [0.1, 0.05])
 
         sol2 = Solution(['tris', 'hydrochloric acid'],
-                       [0.1, 0.05])
+                        [0.1, 0.05])
 
         template = 'Solution equality failed. {} != {}'
         self.assertEqual(sol, sol2,
