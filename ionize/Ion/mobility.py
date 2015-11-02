@@ -112,7 +112,7 @@ def onsager_fuoss_mobility(self):
         (kelvin(temperature) * dielectric)**(3./2.)
 
     # TODO: Check this scaling. Based on magnitude, unsure on units.
-    beta = (28.98 * sqrt(2) * faraday * elementary_charge * lpm3 * gpkg /
+    beta = (28.98 * sqrt(2) * faraday * elementary_charge * lpm3 /
             sqrt(kelvin(temperature) * dielectric) / viscosity)
 
     mobility = self.absolute_mobility()
