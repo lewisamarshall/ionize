@@ -92,10 +92,10 @@ def robinson_stokes_mobility(self, ionic_strength=None, temperature=None):
 
     mobility = self.absolute_mobility(temperature)
     mobility -= (alpha * mobility +
-                        beta * np.sign(self.valence)
-                        ) * (sqrt(ionic_strength) /
-                             (1. + pitts * sqrt(ionic_strength))
-                             )
+                 beta * np.sign(self.valence)
+                 ) * (sqrt(ionic_strength) /
+                      (1. + pitts * sqrt(ionic_strength))
+                      )
     return mobility
 
 

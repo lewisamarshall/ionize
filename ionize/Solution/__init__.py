@@ -70,6 +70,10 @@ class Solution(object):
     _contents = OrderedDict()
 
     @property
+    def _name_lookup(self):
+        return {ion.name: ion for ion in self.ions}
+
+    @property
     def ions(self):
         return self._contents.keys()
 
@@ -150,13 +154,13 @@ class Solution(object):
                                       self.temperature()) ** 2.)
         return cOH
 
-    # TODO: insert a name lookup dictionary
     def concentration(self, ion):
         if ion in ('H+', self._hydronium):
             return self._cH()
         elif ion in ('OH-', self._hydroxide):
             return self._cOH()
         else:
+            ion = self._name_lookup.get(ion, ion)
             return self._contents.get(ion, 0)
 
     def __add__(self, other):

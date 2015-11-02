@@ -218,9 +218,20 @@ class TestSolution(unittest.TestCase):
                                          sol2.serialize())
                          )
 
+    def test_lookup(self):
+        sol = Solution(['tris', 'hydrochloric acid'],
+                       [0.1, 0.05])
+
+        self.assertEqual(sol.concentration('tris'), 0.1,
+                         'Failed to find tris by name.')
+
+        self.assertEqual(sol.concentration(sol.ions[0]), 0.1,
+                         'Failed to find tris by ion.')
+
     def test_repr(self):
         sol = Solution(['tris', 'hydrochloric acid'],
                        [0.1, 0.05])
+
         self.assertEqual(sol, eval(repr(sol)),
                          'Solution malformed by repr.')
 

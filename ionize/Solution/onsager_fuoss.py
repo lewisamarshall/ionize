@@ -18,7 +18,7 @@ def interaction(self, ion):
     ion_index = ions.index(ion)
     if ion_index != 0:
         start_index = len(np.concatenate([ion_.valence
-                                      for ion_ in ions[:ion_index]]))
+                                          for ion_ in ions[:ion_index]]))
     else:
         start_index = 0
     end_index = start_index + len(ion.valence)
