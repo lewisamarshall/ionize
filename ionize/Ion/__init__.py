@@ -71,6 +71,10 @@ class Ion(BaseIon):
                 assert getattr(self, prop).shape == self.valence.shape, \
                     '{} must have the same shape as valence.'.format(prop)
 
+        assert np.all((self.reference_mobility / self.valence) >= 0.), \
+            'Mobilities must be signed. {}, {}'.format(self.reference_mobility,
+                                                       self.valence)
+
         if nightingale_data is not None:
             self._nightingale_data = nightingale_data
             self._nightingale_function = \

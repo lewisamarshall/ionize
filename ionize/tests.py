@@ -85,6 +85,10 @@ class TestIon(unittest.TestCase):
             with self.assertRaises(AssertionError):
                 Ion(**initializer)
 
+    def test_bad_sign(self):
+        with self.assertRaises(AssertionError):
+            Ion('bad_sign', [-1, 1], [5, 5], [1e-9, -1e-9])
+
     def test_acidity(self):
         """Test that all acidities are computable."""
         ionic_strength_list = [0, .01, .1]
