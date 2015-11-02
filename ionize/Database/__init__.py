@@ -48,3 +48,9 @@ class Database(object):
     def __iter__(self):
         for key in self.keys():
             yield self[key]
+
+    def __repr__(self):
+        return 'Database("{}")'.format(self.source)
+
+    def __str__(self):
+        return 'Database: {} entries'.format(len(self.keys()))
