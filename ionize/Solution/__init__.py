@@ -10,7 +10,7 @@ from ..Ion import Ion
 from ..Solvent import Aqueous
 from ..Database import Database
 from ..serialize import _serialize
-from ..constants import permittivity, avagadro, boltzmann, \
+from ..constants import permittivity, avogadro, boltzmann, \
                         elementary_charge, lpm3, reference_temperature
 
 database = Database()
@@ -60,6 +60,7 @@ class Solution(object):
 
     _pH = 7.                # Normal pH units.
     _ionic_strength = 0.    # Expected in molar.
+    _interaction_matrix = None
     _temperature = reference_temperature  # Temperature in C
 
     # Ions and concentrations fully represent state.
@@ -232,3 +233,4 @@ class Solution(object):
     from .debye import debye
     from .transference import transference, zone_transfer
     from .conservation import kohlrausch, alberty, jovin, gas
+    from .onsager_fuoss import interaction

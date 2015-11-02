@@ -86,7 +86,7 @@ class Ion(BaseIon):
     from .ionization import acidity_product, ionization_fraction, charge
 
     from .mobility import absolute_mobility, actual_mobility, \
-        mobility, robinson_stokes_mobility
+        mobility, robinson_stokes_mobility, onsager_fuoss_mobility
 
     from .transport import molar_conductivity, diffusivity
 

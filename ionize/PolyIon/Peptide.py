@@ -1,6 +1,6 @@
 from .PolyIon import PolyIon
 from ..constants import boltzmann, kelvin, reference_temperature, \
-                        elementary_charge, avagadro
+                        elementary_charge, avogadro, lpm3, gpkg
 from ..Ion import fixed_state
 
 from math import pi, exp
@@ -63,7 +63,7 @@ class Peptide(PolyIon):
         return self._analysis.isoelectric_point()
 
     def volume(self):
-        v = self.molecular_weight() / avagadro / self.density() / (100**3)
+        v = self.molecular_weight() / avogadro / self.density() / lpm3 / gpkg
         return v
 
     def radius(self):

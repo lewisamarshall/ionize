@@ -1,7 +1,3 @@
-from ..constants import permittivity, boltzmann, kelvin, elementary_charge, \
-                        lpm3, avagadro
-
-
 def debye(self, temperature=None):
     """Return the Debye length of the solution.
 

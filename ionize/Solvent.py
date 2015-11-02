@@ -1,7 +1,7 @@
 """Create the Aqueous class to hold the properties of water."""
 from math import log10, log, pi, sqrt, exp
 from .constants import gas_constant, reference_temperature, \
-                       kelvin, elementary_charge, avagadro,\
+                       kelvin, elementary_charge, avogadro,\
                        boltzmann, permittivity, lpm3, pitts
 
 
@@ -62,13 +62,13 @@ class Solvent(object):
         viscosity = self.viscosity(temperature)
         lamda = (dielectric * permittivity * boltzmann * kelvin(temperature) /
                  elementary_charge**2. /
-                 (ionic_strength * lpm3) / avagadro) ** .5
+                 (ionic_strength * lpm3) / avogadro) ** .5
         return lamda
 
     @classmethod
     def debye_huckel(self, temperature):
         """Return the Debye-Huckel constant, in M^-(1/2)."""
-        dh = elementary_charge**3. * sqrt(avagadro) / 2.**(5./2.) / pi / \
+        dh = elementary_charge**3. * sqrt(avogadro) / 2.**(5./2.) / pi / \
             (self.dielectric(temperature) * permittivity *
              boltzmann * kelvin(temperature))**(3./2.)
 
