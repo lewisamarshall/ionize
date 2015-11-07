@@ -105,7 +105,7 @@ def onsager_fuoss_mobility(self):
 
     dielectric = self._solvent.dielectric(temperature)
     viscosity = self._solvent.viscosity(temperature)
-    interaction = _interaction(self.context(), self)
+    interaction = _interaction(self, self.context())
 
     # New temperature corrected coefficients.
     alpha = 1.971e6 * sqrt(2) /\
@@ -123,15 +123,15 @@ def onsager_fuoss_mobility(self):
     return mobility
 
 
-def _interaction(self, ion):
+def _interaction(ion, solution):
     """Return the Onsager-Fuoss correction to the mobilities of ions.
 
     This function returns a list of all corrected actual mobilities.
     These mobilities are automatically assigned to the correct ions when
     a solution is initialized."""
 
-    ions = [ion_ for ion_ in self.ions if self.concentration(ion_) > 0] + \
-           [self._hydroxide,  self._hydronium]
+    ions = [ion_ for ion_ in solution.ions if solution.concentration(ion_) > 0] + \
+           [solution._hydroxide,  solution._hydronium]
 
     if ion not in ions:
         ions = ions + [ion]
@@ -151,11 +151,11 @@ def _interaction(self, ion):
                            'diverges for non-mobile ions. ')
 
     valences = np.concatenate([ion.valence for ion in ions])
-    concentrations = np.concatenate([self.concentration(ion) *
-                                     ion.ionization_fraction(self.pH)
+    concentrations = np.concatenate([solution.concentration(ion) *
+                                     ion.ionization_fraction(solution.pH)
                                      for ion in ions])
 
-    potential = concentrations * valences**2. / (2. * self.ionic_strength)
+    potential = concentrations * valences**2. / (2. * solution.ionic_strength)
 
     h = potential * omega / (omega + omega[:, np.newaxis])
     d = np.diag(np.sum(h, 1))
