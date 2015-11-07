@@ -93,6 +93,3 @@ class Ion(BaseIon):
         mobility, robinson_stokes_mobility, onsager_fuoss_mobility
 
     from .transport import molar_conductivity, diffusivity
-
-if __name__ == '__main__':
-    pass

@@ -237,4 +237,3 @@ class Solution(object):
     from .debye import debye
     from .transference import transference, zone_transfer
     from .conservation import kohlrausch, alberty, jovin, gas
-    from .onsager_fuoss import interaction
