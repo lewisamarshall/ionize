@@ -8679,13 +8679,13 @@
         "nightingale_data": null,
         "reference_mobility": [
             -8.37e-08,
-            -0.0,
-            -0.0
+            -5.58e-8,
+            -2.79e-8
         ],
         "reference_pKa": [
             2.05,
             0.0,
-            0.0
+            -1.0
         ],
         "valence": [
             -3,
