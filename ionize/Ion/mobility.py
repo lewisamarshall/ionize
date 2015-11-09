@@ -162,8 +162,8 @@ def _interaction(ion, solution):
     B = 2 * (h + d) - np.identity(len(omega))
 
     r = np.zeros([len(omega), 6])
-    r[:, 0] = (valences - (np.sum(valences*potential) /
-                           np.sum(potential/omega)) / omega)
+    r[:, 0] = (valences - (np.sum(valences * potential) /
+                           np.sum(potential / omega)) / omega)
 
     for i in range(1, 6):
         r[:, i] = np.dot(B, r[:, i-1])
