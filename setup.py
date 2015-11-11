@@ -7,7 +7,7 @@ except:
     long_description = None
 
 setup(name='ionize',
-      version='0.13.0',
+      version='0.14.0',
       author='Lewis A. Marshall',
       author_email='lewis.a.marshall@gmail.com',
       url="http://lewisamarshall.github.io/ionize/",
@@ -25,8 +25,8 @@ setup(name='ionize',
       description='A package for calculating electrolyte properties.',
       long_description=long_description,
       packages=find_packages(),
-      requires=['numpy', 'scipy', 'biopython'],
-      package_data={'ionize': ['Database/ion_data.json'],
-                    },
+      requires=['numpy', 'scipy', 'biopython', 'click'],
+      package_data={'ionize': ['Database/ion_data.json']},
+      entry_points={'console_scripts': ['ionize = ionize.__main__:cli']},
       test_suite="ionize.tests",
       )

@@ -54,3 +54,6 @@ class Database(object):
 
     def __str__(self):
         return 'Database: {} entries'.format(len(self.keys()))
+
+    def serialize(self):
+        return json.dumps(self.data)
