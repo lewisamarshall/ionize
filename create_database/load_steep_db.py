@@ -1,3 +1,4 @@
+from __future__ import print_function
 import csv
 
 
@@ -24,4 +25,4 @@ if __name__ == '__main__':
     data = load_steep_db()
     for ion in data:
         # if ion == 'taps':
-            print ion+':', data[ion]
+            print(ion+':', data[ion])
