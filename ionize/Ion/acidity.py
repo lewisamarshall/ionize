@@ -1,3 +1,4 @@
+from __future__ import division
 import warnings
 from math import log, sqrt
 import numpy as np

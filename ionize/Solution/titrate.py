@@ -1,3 +1,4 @@
+from __future__ import division
 from scipy.optimize import newton, brentq
 import numbers
 import warnings
@@ -40,7 +41,7 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
     To titrate to a target property other than pH, simply set the property
     to a property of the Solution class.
     """
-    if isinstance(titrant, basestring):
+    if isinstance(titrant, str):
         titrant = database.load(titrant)
 
     att = getattr(self, titration_property)

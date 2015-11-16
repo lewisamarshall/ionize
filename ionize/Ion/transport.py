@@ -1,3 +1,4 @@
+from __future__ import division
 from ..constants import faraday, lpm3, boltzmann, kelvin, elementary_charge
 import numpy as np
 

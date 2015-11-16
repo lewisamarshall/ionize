@@ -36,7 +36,7 @@ class BaseIon(object):
             value = getattr(self, prop)
             if isinstance(value, np.ndarray):
                 value = value.tolist()
-            elif isinstance(value, basestring):
+            elif isinstance(value, str):
                 value = str(value)
             inner.append('{}={}'.format(str(prop), repr(value)))
         return '{}({})'.format(type(self).__name__, ', '.join(inner))

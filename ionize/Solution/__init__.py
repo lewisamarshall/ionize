@@ -1,3 +1,4 @@
+from __future__ import division
 import json
 import copy
 from collections import OrderedDict
@@ -75,11 +76,11 @@ class Solution(object):
 
     @property
     def ions(self):
-        return self._contents.keys()
+        return tuple(self._contents.keys())
 
     @property
     def concentrations(self):
-        return np.array(self._contents.values())
+        return np.array(list(self._contents.values()))
 
     pH = property(operator.attrgetter("_pH"))
     ionic_strength = property(operator.attrgetter("_ionic_strength"))
@@ -102,7 +103,7 @@ class Solution(object):
 
         self._contents = OrderedDict()
         for ion, concentration in zip(ions, concentrations):
-            if isinstance(ion, basestring):
+            if isinstance(ion, str):
                 ion = database.load(ion)
             else:
                 ion = copy.copy(ion)
@@ -164,7 +165,7 @@ class Solution(object):
             return self._contents.get(ion, 0)
 
     def __add__(self, other):
-        new_i = self.ions[:]
+        new_i = list(self.ions)
         new_c = self.concentrations.tolist()
         if isinstance(other, Solution):
             for ion, c in zip(other.ions, other.concentrations):

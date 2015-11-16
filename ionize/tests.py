@@ -68,8 +68,8 @@ class TestIon(unittest.TestCase):
         warnings.filterwarnings('ignore')
 
     def test_malformed(self):
-        good_prop = range(1, 4)
-        bad_prop = range(1, 3)
+        good_prop = list(range(1, 4))
+        bad_prop = list(range(1, 3))
         properties = ('valence',
                       'reference_pKa',
                       'reference_mobility',
@@ -151,7 +151,7 @@ class TestDatabase(unittest.TestCase):
         warnings.filterwarnings('ignore')
 
     def test_import(self):
-        for ion_name in self.database.data.keys():
+        for ion_name in self.database.keys():
             ion = self.database.load(ion_name)
 
     def test_search(self):

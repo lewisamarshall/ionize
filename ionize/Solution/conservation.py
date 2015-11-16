@@ -1,3 +1,4 @@
+from __future__ import division
 import warnings
 from numpy import mean
 from ..constants import lpm3

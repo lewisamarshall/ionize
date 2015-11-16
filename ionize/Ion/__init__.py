@@ -1,4 +1,5 @@
 """Module containing the Ion class."""
+from __future__ import division
 import warnings
 from math import copysign
 import json

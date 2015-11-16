@@ -1,3 +1,4 @@
+from __future__ import division
 from math import copysign, sqrt
 import warnings
 import numpy as np

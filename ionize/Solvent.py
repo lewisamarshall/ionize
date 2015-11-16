@@ -1,4 +1,5 @@
 """Create the Aqueous class to hold the properties of water."""
+from __future__ import division
 from math import log10, log, pi, sqrt, exp
 from .constants import gas_constant, reference_temperature, \
                        kelvin, elementary_charge, avogadro,\
