@@ -221,6 +221,9 @@ class Solution(object):
         except:
             return False
 
+    def __contains__(self, other):
+        return other in self.ions or other in self._name_lookup.keys()
+
     def serialize(self, nested=False, compact=False):
         serial = {'__solution__': True}
         serial['concentrations'] = self.concentrations

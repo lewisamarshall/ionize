@@ -187,11 +187,29 @@ class TestSolution(unittest.TestCase):
 
     def test_solution_properties(self):
         for buf in self.solutions:
-            buf.zone_transfer()
             buf.conductivity()
-            buf.transference()
             buf.debye()
             buf.buffering_capacity()
+
+    def test_transference(self):
+        buf = self.solutions[5]
+        self.assertNotEqual(buf.transference('hydrochloric acid'), 0,
+                            'HCl should have a non-zero '
+                            'transference number.')
+        self.assertNotEqual(buf.transference(Database()['tris']), 0,
+                            'Tris should have a non-zero '
+                            'transference number.')
+        self.assertEqual(buf.transference(Database()['bis-tris']), 0)
+
+    def test_zone_transfer(self):
+        buf = self.solutions[5]
+        self.assertNotEqual(buf.zone_transfer('hydrochloric acid'), 0,
+                            'HCl should have a non-zero '
+                            'transference number.')
+        self.assertNotEqual(buf.zone_transfer(Database()['tris']), 0,
+                            'Tris should have a non-zero '
+                            'transference number.')
+        self.assertNotEqual(buf.zone_transfer(Database()['bis-tris']), 0)
 
     def test_conservation_functions(self):
         for buf in self.solutions:
