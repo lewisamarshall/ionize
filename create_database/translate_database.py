@@ -4,6 +4,7 @@ from load_steep_db import load_steep_db
 import json
 from process_nightingale import fit_dict
 
+
 # TODO: Complete rewrite
 def make_database():
     """Make the ionize database.
@@ -22,7 +23,7 @@ def make_database():
     mobilitylist = open('create_database/mobility.csv', 'r')
 
     # z is a fixed list that the other parameters are compared to.
-    z = map(int, z.readline().split(','))
+    z = list(map(int, z.readline().split(',')))
 
     # Call a separate function to open the steep db.
     steep_db = load_steep_db()
