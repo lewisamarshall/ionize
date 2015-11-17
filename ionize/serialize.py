@@ -2,9 +2,9 @@ import json
 import numpy as np
 
 
-def _serialize(serial, compact, nested):
+def _serialize(serial, nested, compact):
     if nested:
-        return serialize
+        return serial
 
     if compact:
         sort_keys, indent, separators = True, None, (',', ':')

@@ -1,5 +1,5 @@
 import click
-# from .Solution import Solution
+from .Solution import Solution
 from .Database import Database
 
 
@@ -11,6 +11,13 @@ def cli():
 @cli.command()
 def database():
     click.echo(Database().serialize())
+
+
+@cli.command()
+@click.argument('name')
+def ion(name):
+    new_ion = Database()[name]
+    click.echo(Database()[name].serialize(nested=False, compact=True))
 
 
 # @cli.command()
