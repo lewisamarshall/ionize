@@ -1,7 +1,9 @@
-from __future__ import division
-from scipy.optimize import newton, brentq
+from __future__ import division, print_function
+from scipy.optimize import newton, brentq, root
+import numpy as np
 import numbers
 import warnings
+from copy import deepcopy
 
 from ..Ion import Ion
 from ..Database import Database
@@ -85,3 +87,58 @@ def equilibrate_CO2(self):
         self._contents[CO2] = c
     else:
         raise RuntimeError('Solver did not converge')
+
+
+def displace(self, receding, advancing):
+    """Electrophoretically displace an ion."""
+    # Convert ion names to ions
+    if isinstance(advancing, str):
+        advancing = database[advancing]
+    if isinstance(receding, str):
+        receding = database[receding]
+
+    # Check that displacement is possible.
+    assert advancing not in self, \
+        'The advancing ion is already present.'
+    assert receding in self, \
+        'The receding ion is not present.'
+
+    # Make a new solution to perform optimization.
+    new_solution = deepcopy(self)
+    new_solution._contents[advancing] = \
+        new_solution._contents.pop(receding)
+
+    # Give the advancing and receding ions the right context.
+    advancing.context(new_solution), receding.context(self)
+    new_solution._equilibrate()
+
+    def min_func(concentrations):
+        for ion, concentration in zip(new_solution.ions,
+                                      concentrations):
+            new_solution._contents[ion] = concentration
+        self._equilibrate()
+
+        field_ratio = receding.mobility()/advancing.mobility()
+
+        delta = [new_solution.concentration(ion) -
+                 self.concentration(ion) / field_ratio *
+                 (self[ion].mobility() - receding.mobility()) /
+                 (new_solution[ion].mobility() -
+                  advancing.mobility())
+                 for ion in new_solution.ions
+                 if ion is not advancing]
+
+        delta.append(field_ratio -
+                     self.conductivity() /
+                     new_solution.conductivity()
+                     )
+
+        return np.array(delta)
+
+    sol = root(min_func, new_solution.concentrations)
+
+    if sol['success']:
+        return new_solution
+    else:
+        msg = 'Solver failed to converge. {}'.format(sol['message'])
+        raise RuntimeError(msg)

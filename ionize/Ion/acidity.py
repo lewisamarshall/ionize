@@ -7,15 +7,19 @@ from ..constants import gas_constant, kelvin, pitts
 
 
 def acidity(self, ionic_strength=None, temperature=None):
-    """Return the effective Ka values for the ion.
+    """Return the effective acidity constant for the ion.
 
     Args:
-        I (float): The ambiant ionic strength.
+        ionic_strength (float): The ambiant ionic strength.
+        temperature (float): The ambiant temperature
 
-    This function correct the Ka for ionic strength, using the Dubye-Huckel
-    theory to calculate activity coefficients. If no ionic strength is
-    supplied, and the Ion is nested in a Solution, the solution ionic
-    strength will be used. Otherwise, the ionic strength is assumed to be 0.
+    This function returns a corrected acidity (Ka) for the ion based on
+    ionic strength and temperature. The correction uses the Debye-Huckel
+    approximation to correct the activity coefficients.
+
+    If no ionic strength or temperature is supplied, returns the value at
+    low ionic_strength and 25°C. (See Aqueous for information on
+    ionic_strength.)
     """
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)
@@ -38,6 +42,19 @@ def acidity(self, ionic_strength=None, temperature=None):
 
 
 def pKa(self, ionic_strength=None, temperature=None):
+    """Return the effective pKa constant for the ion.
+
+    Args:
+        ionic_strength (float): The ambiant ionic strength.
+        temperature (float): The ambiant temperature.
+
+    This function returns a corrected pKa for the ion based on
+    ionic strength and temperature. The correction uses the Debye-Huckel
+    approximation to correct the activity coefficients.
+
+    If no ionic strength or temperature is supplied, returns the value at
+    low ionic_strength and 25°C. (See Aqueous for information on
+    ionic_strength.)"""
     return -np.log10(self.acidity(ionic_strength, temperature))
 
 

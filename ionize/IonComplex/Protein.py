@@ -37,13 +37,18 @@ class Protein(IonComplex):
 
     def _from_pdb(self):
         temploc = tempfile.mkdtemp()
-        file_ = lister.retrieve_pdb_file(self.name, pdir=temploc)
+        try:
+            file_ = lister.retrieve_pdb_file(self.name, pdir=temploc)
+        except:
+            raise RuntimeError(
+                'Could not download {} from the PDB.'.format(self.name))
         structure = parser.get_structure(self.name, file_)
 
         ids = []
         sequences = []
         for chain in structure.get_chains():
             ids.append('{}:{}'.format(self.name, chain.id))
-            sequences.append(str(builder.build_peptides(chain)[0].get_sequence()))
+            sequences.append(
+                str(builder.build_peptides(chain)[0].get_sequence()))
 
         return tuple(ids), tuple(sequences)

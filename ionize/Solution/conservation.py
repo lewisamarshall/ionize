@@ -1,20 +1,22 @@
 from __future__ import division
 import warnings
-from numpy import mean
+import numpy as np
 from ..constants import lpm3
 
 
 def kohlrausch(self):
     """Return the Kohlrausch regulating function (KRF) value of a solution.
 
-    Throw a warning if the ions in the solution are not near fully ionized.
+    The Kohlrausch regulating function is only valid if ions are near full
+    ionization. This function will deliver a warning where this is not the case.
     """
     KRF = 0
 
-    for ion, c in zip(self.ions, self.concentrations):
-        z_eff = (mean([z*f for z, f in
+    for ion in self.ions:
+
+        z_eff = (np.mean([z*f for z, f in
                  zip(ion.valence, ion.ionization_fraction())]))
-        KRF += abs(z_eff) * c * lpm3 / ion.mobility()
+        KRF += abs(z_eff) * self.concentration(ion) * lpm3 / ion.mobility()
         if max(ion.ionization_fraction()) < .9:
             warnings.warn('ions are not fully ionized. KRF is a poor approx.')
 
@@ -71,4 +73,4 @@ def gas(self):
     jovin = self.jovin()
     gas = [alberty - jovin / self._hydronium.mobility(self.pH),
            alberty - jovin / self._hydroxide.mobility(self.pH)]
-    return tuple(gas)
+    return np.array(gas)

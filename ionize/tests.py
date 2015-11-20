@@ -14,7 +14,7 @@ import warnings
 import numpy as np
 from copy import copy
 
-
+# TODO fix temperature=0 behavior.
 class TestAqueous(unittest.TestCase):
 
     """Test the Aqueous class."""
