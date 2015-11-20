@@ -246,7 +246,8 @@ class Solution(object):
     from .equilibrium import _equilibrate
     from .conductivity import conductivity, hydroxide_conductivity, \
         hydronium_conductivity
-    from .titrate import titrate, buffering_capacity, equilibrate_CO2
+    from .titrate import titrate, buffering_capacity, \
+        equilibrate_CO2, displace
     from .debye import debye
     from .transference import transference, zone_transfer
     from .conservation import kohlrausch, alberty, jovin, gas

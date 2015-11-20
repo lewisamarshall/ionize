@@ -246,6 +246,13 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(sol.concentration(sol.ions[0]), 0.1,
                          'Failed to find tris by ion.')
 
+    def test_getitem(self):
+        sol = Solution(['tris', 'hydrochloric acid'],
+                       [0.1, 0.05])
+
+        self.assertEqual(sol['tris'], sol[Database()['tris']],
+                         'Failed to get equivilent items from solution.')
+
     def test_repr(self):
         sol = Solution(['tris', 'hydrochloric acid'],
                        [0.1, 0.05])
@@ -257,6 +264,11 @@ class TestSolution(unittest.TestCase):
         sol = Solution()
         sol.equilibrate_CO2()
         self.assertAlmostEqual(sol.pH, 5.6, 1)
+
+    def test_displace(self):
+        sol = Solution(['tris', 'acetic acid'], [0.01, 0.005])
+        cycle = sol.displace('tris', 'bis-tris').displace('bis-tris', 'tris')
+        self.assertAlmostEqual(sol.pH, cycle.pH, 1)
 
 
 class TestNucleicAcid(unittest.TestCase):
