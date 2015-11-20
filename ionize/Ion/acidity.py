@@ -53,7 +53,7 @@ def pKa(self, ionic_strength=None, temperature=None):
     approximation to correct the activity coefficients.
 
     If no ionic strength or temperature is supplied, returns the value at
-    low ionic_strength and 25°C. (See Aqueous for information on
+    low ionic_strength and 25C. (See Aqueous for information on
     ionic_strength.)"""
     return -np.log10(self.acidity(ionic_strength, temperature))
 
