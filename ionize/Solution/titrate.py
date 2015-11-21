@@ -116,22 +116,18 @@ def displace(self, receding, advancing):
         for ion, concentration in zip(new_solution.ions,
                                       concentrations):
             new_solution._contents[ion] = concentration
-        self._equilibrate()
+        new_solution._equilibrate()
 
         field_ratio = receding.mobility()/advancing.mobility()
 
         delta = [new_solution.concentration(ion) -
                  self.concentration(ion) / field_ratio *
                  (self[ion].mobility() - receding.mobility()) /
-                 (new_solution[ion].mobility() -
-                  advancing.mobility())
-                 for ion in new_solution.ions
-                 if ion is not advancing]
+                 (new_solution[ion].mobility() - advancing.mobility())
+                 for ion in new_solution.ions if ion is not advancing]
 
         delta.append(field_ratio -
-                     self.conductivity() /
-                     new_solution.conductivity()
-                     )
+                     self.conductivity() / new_solution.conductivity())
 
         return np.array(delta)
 
