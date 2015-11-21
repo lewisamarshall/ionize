@@ -48,10 +48,10 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
 
     att = getattr(self, titration_property)
     if isinstance(att, numbers.Number):
-        min_func = lambda c:\
+        def min_func(c):
             getattr(self + (titrant, c), titration_property)-target
     else:
-        min_func = lambda c: \
+        def min_func(c):
             getattr(self + (titrant, c), titration_property)()-target
 
     with warnings.catch_warnings():
@@ -70,6 +70,7 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
 def equilibrate_CO2(self):
     CO2 = database['carbonic acid']
     CO2.context(self)
+    # TODO: move to constants
     atmospheric_CO2 = 0.0004
     eq = atmospheric_CO2 * self._solvent.henry_CO2(self.temperature())
 
