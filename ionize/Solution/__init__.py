@@ -224,6 +224,9 @@ class Solution(object):
     def __contains__(self, other):
         return other in self.ions or other in self._name_lookup.keys()
 
+    def __iter__(self):
+        return (ion for ion in self.ions)
+
     def __getitem__(self, item):
         try:
             if hasattr(item, 'name'):
