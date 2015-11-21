@@ -323,7 +323,6 @@ class TestProtein(unittest.TestCase):
 
 
 class TestCLI(unittest.TestCase):
-
     def test_database_cli(self):
         runner = CliRunner()
         result = runner.invoke(cli, ['database'])
