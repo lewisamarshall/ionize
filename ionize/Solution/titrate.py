@@ -49,10 +49,10 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
     att = getattr(self, titration_property)
     if isinstance(att, numbers.Number):
         def min_func(c):
-            getattr(self + (titrant, c), titration_property)-target
+            return getattr(self + (titrant, c), titration_property)-target
     else:
         def min_func(c):
-            getattr(self + (titrant, c), titration_property)()-target
+            return getattr(self + (titrant, c), titration_property)()-target
 
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
