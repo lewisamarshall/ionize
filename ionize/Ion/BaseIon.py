@@ -48,8 +48,14 @@ class BaseIon(object):
 
     def __eq__(self, other):
         try:
-            return self.serialize() == other.serialize()
-        except:
+            assert self._state == other._state
+            for prop in self._state:
+                if isinstance(getattr(self, prop), np.ndarray):
+                    assert(np.all(getattr(self, prop) == getattr(other, prop)))
+                else:
+                    assert getattr(self, prop) == getattr(other, prop)
+            return True
+        except Exception as e:
             return False
 
     def serialize(self, nested=False, compact=False):
@@ -99,7 +105,7 @@ class BaseIon(object):
 
         The context is used as a convenience to set pH, temperature,
         ionic_strength, and other information used in calculations about
-        the ion. If no 
+        the ion. If no
 
         """
         if context is False:

@@ -123,7 +123,8 @@ class TestIon(unittest.TestCase):
     def test_serialize(self):
         for ion_name in self.database.keys():
             ion = self.database.load(ion_name)
-            self.assertEqual(ion, deserialize(ion.serialize()))
+            self.assertEqual(ion, deserialize(ion.serialize()),
+                             'Deserializing {} failed.'.format(ion_name))
 
     def test_order(self):
         """Ensures that valence order is enforced."""
