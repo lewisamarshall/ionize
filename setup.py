@@ -6,8 +6,10 @@ try:
 except:
     long_description = None
 
+from ionize.__version__ import __version__
+
 setup(name='ionize',
-      version='0.15.0',
+      version=__version__,
       author='Lewis A. Marshall',
       author_email='lewis.a.marshall@gmail.com',
       url="http://lewisamarshall.github.io/ionize/",
