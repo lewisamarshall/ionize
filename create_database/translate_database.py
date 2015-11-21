@@ -1,7 +1,9 @@
+from __future__ import print_function
 from math import copysign
 from load_steep_db import load_steep_db
 import json
 from process_nightingale import fit_dict
+
 
 # TODO: Complete rewrite
 def make_database():
@@ -21,7 +23,7 @@ def make_database():
     mobilitylist = open('create_database/mobility.csv', 'r')
 
     # z is a fixed list that the other parameters are compared to.
-    z = map(int, z.readline().split(','))
+    z = list(map(int, z.readline().split(',')))
 
     # Call a separate function to open the steep db.
     steep_db = load_steep_db()
@@ -117,13 +119,13 @@ def make_database():
         json.dump(ion_dict, ion_db,
                   sort_keys=True, indent=4, separators=(',', ': '))
 
-    print len(ion_dict), 'ions in database'
-    print n_steep, 'ions from steep'
+    print(len(ion_dict), 'ions in database')
+    print(n_steep, 'ions from steep')
 
     # Check to make that all of the entries in the steep db were added
     for name in steep_db.keys():
         if name not in steep_common:
-            print name, 'in Steep database not added'
+            print(name, 'in Steep database not added')
 
     # make sure that the length of dCp is the same as the length of z
     # for ion in sorted(ion_dict.keys()):

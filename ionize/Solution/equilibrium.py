@@ -1,3 +1,4 @@
+from __future__ import division
 import numpy as np
 from math import log10, sqrt
 from scipy.optimize import newton, brentq

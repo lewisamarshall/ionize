@@ -1,3 +1,4 @@
+from __future__ import division
 import json
 import copy
 from collections import OrderedDict
@@ -70,12 +71,16 @@ class Solution(object):
     _contents = OrderedDict()
 
     @property
+    def _name_lookup(self):
+        return {ion.name: ion for ion in self.ions}
+
+    @property
     def ions(self):
-        return self._contents.keys()
+        return tuple(self._contents.keys())
 
     @property
     def concentrations(self):
-        return np.array(self._contents.values())
+        return np.array(list(self._contents.values()))
 
     pH = property(operator.attrgetter("_pH"))
     ionic_strength = property(operator.attrgetter("_ionic_strength"))
@@ -98,7 +103,7 @@ class Solution(object):
 
         self._contents = OrderedDict()
         for ion, concentration in zip(ions, concentrations):
-            if isinstance(ion, basestring):
+            if isinstance(ion, str):
                 ion = database.load(ion)
             else:
                 ion = copy.copy(ion)
@@ -150,17 +155,17 @@ class Solution(object):
                                       self.temperature()) ** 2.)
         return cOH
 
-    # TODO: insert a name lookup dictionary
     def concentration(self, ion):
         if ion in ('H+', self._hydronium):
             return self._cH()
         elif ion in ('OH-', self._hydroxide):
             return self._cOH()
         else:
+            ion = self._name_lookup.get(ion, ion)
             return self._contents.get(ion, 0)
 
     def __add__(self, other):
-        new_i = self.ions[:]
+        new_i = list(self.ions)
         new_c = self.concentrations.tolist()
         if isinstance(other, Solution):
             for ion, c in zip(other.ions, other.concentrations):
@@ -216,6 +221,21 @@ class Solution(object):
         except:
             return False
 
+    def __contains__(self, other):
+        return other in self.ions or other in self._name_lookup.keys()
+
+    def __iter__(self):
+        return (ion for ion in self.ions)
+
+    def __getitem__(self, item):
+        try:
+            if hasattr(item, 'name'):
+                return self._name_lookup[item.name]
+            else:
+                return self._name_lookup[item]
+        except:
+            raise KeyError(item)
+
     def serialize(self, nested=False, compact=False):
         serial = {'__solution__': True}
         serial['concentrations'] = self.concentrations
@@ -229,8 +249,8 @@ class Solution(object):
     from .equilibrium import _equilibrate
     from .conductivity import conductivity, hydroxide_conductivity, \
         hydronium_conductivity
-    from .titrate import titrate, buffering_capacity, equilibrate_CO2
+    from .titrate import titrate, buffering_capacity, \
+        equilibrate_CO2, displace
     from .debye import debye
     from .transference import transference, zone_transfer
     from .conservation import kohlrausch, alberty, jovin, gas
-    from .onsager_fuoss import interaction

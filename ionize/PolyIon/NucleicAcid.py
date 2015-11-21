@@ -39,7 +39,7 @@ class NucleicAcid(PolyIon):
 
     def charge(self):
         # return self.size * (1 + self.__species_options[self.species]['duplex'])
-        raise NotImplementedError 
+        raise NotImplementedError
 
     def diffusivity(self):
         raise NotImplementedError

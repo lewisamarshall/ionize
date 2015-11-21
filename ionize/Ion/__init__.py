@@ -1,4 +1,5 @@
 """Module containing the Ion class."""
+from __future__ import division
 import warnings
 from math import copysign
 import json
@@ -71,6 +72,10 @@ class Ion(BaseIon):
                 assert getattr(self, prop).shape == self.valence.shape, \
                     '{} must have the same shape as valence.'.format(prop)
 
+        assert np.all((self.reference_mobility / self.valence) > 0.), \
+            'Mobilities must be signed. {}, {}'.format(self.reference_mobility,
+                                                       self.valence)
+
         if nightingale_data is not None:
             self._nightingale_data = nightingale_data
             self._nightingale_function = \
@@ -89,6 +94,3 @@ class Ion(BaseIon):
         mobility, robinson_stokes_mobility, onsager_fuoss_mobility
 
     from .transport import molar_conductivity, diffusivity
-
-if __name__ == '__main__':
-    pass

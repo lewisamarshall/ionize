@@ -1,3 +1,4 @@
+from __future__ import print_function
 import numpy
 import os
 
@@ -19,12 +20,12 @@ nightingale_dict = dict()
 fit_dict = dict()
 
 for key, file in files:
-    print os.path.dirname(__file__)
+    print(os.path.dirname(__file__))
     fullfile = os.path.join(os.getcwd(),
                             os.path.dirname(__file__),
                             './nightingale_data', file)
     open_file = open(fullfile)
-    print open_file.readline()
+    print(open_file.readline())
     nightingale_dict[key] = ([], [])
     for line in open_file:
         line = line.split(',')

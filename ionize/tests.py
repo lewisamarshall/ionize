@@ -5,16 +5,17 @@ from .Ion import Ion
 from .PolyIon import NucleicAcid, Peptide
 from .IonComplex import Protein
 from .Solution import Solution
-
 from .Database import Database
 from .deserialize import deserialize
+from .__main__ import cli
 
 import unittest
 import warnings
 import numpy as np
 from copy import copy
+from click.testing import CliRunner
 
-
+# TODO fix temperature=0 behavior.
 class TestAqueous(unittest.TestCase):
 
     """Test the Aqueous class."""
@@ -68,8 +69,8 @@ class TestIon(unittest.TestCase):
         warnings.filterwarnings('ignore')
 
     def test_malformed(self):
-        good_prop = range(1, 4)
-        bad_prop = range(1, 3)
+        good_prop = list(range(1, 4))
+        bad_prop = list(range(1, 3))
         properties = ('valence',
                       'reference_pKa',
                       'reference_mobility',
@@ -84,6 +85,10 @@ class TestIon(unittest.TestCase):
             initializer[prop] = bad_prop
             with self.assertRaises(AssertionError):
                 Ion(**initializer)
+
+    def test_bad_sign(self):
+        with self.assertRaises(AssertionError):
+            Ion('bad_sign', [-1, 1], [5, 5], [1e-9, -1e-9])
 
     def test_acidity(self):
         """Test that all acidities are computable."""
@@ -119,7 +124,8 @@ class TestIon(unittest.TestCase):
     def test_serialize(self):
         for ion_name in self.database.keys():
             ion = self.database.load(ion_name)
-            self.assertEqual(ion, deserialize(ion.serialize()))
+            self.assertEqual(ion, deserialize(ion.serialize()),
+                             'Deserializing {} failed.'.format(ion_name))
 
     def test_order(self):
         """Ensures that valence order is enforced."""
@@ -147,7 +153,7 @@ class TestDatabase(unittest.TestCase):
         warnings.filterwarnings('ignore')
 
     def test_import(self):
-        for ion_name in self.database.data.keys():
+        for ion_name in self.database.keys():
             ion = self.database.load(ion_name)
 
     def test_search(self):
@@ -183,11 +189,29 @@ class TestSolution(unittest.TestCase):
 
     def test_solution_properties(self):
         for buf in self.solutions:
-            buf.zone_transfer()
             buf.conductivity()
-            buf.transference()
             buf.debye()
             buf.buffering_capacity()
+
+    def test_transference(self):
+        buf = self.solutions[5]
+        self.assertNotEqual(buf.transference('hydrochloric acid'), 0,
+                            'HCl should have a non-zero '
+                            'transference number.')
+        self.assertNotEqual(buf.transference(Database()['tris']), 0,
+                            'Tris should have a non-zero '
+                            'transference number.')
+        self.assertEqual(buf.transference(Database()['bis-tris']), 0)
+
+    def test_zone_transfer(self):
+        buf = self.solutions[5]
+        self.assertNotEqual(buf.zone_transfer('hydrochloric acid'), 0,
+                            'HCl should have a non-zero '
+                            'transference number.')
+        self.assertNotEqual(buf.zone_transfer(Database()['tris']), 0,
+                            'Tris should have a non-zero '
+                            'transference number.')
+        self.assertNotEqual(buf.zone_transfer(Database()['bis-tris']), 0)
 
     def test_conservation_functions(self):
         for buf in self.solutions:
@@ -214,9 +238,27 @@ class TestSolution(unittest.TestCase):
                                          sol2.serialize())
                          )
 
+    def test_lookup(self):
+        sol = Solution(['tris', 'hydrochloric acid'],
+                       [0.1, 0.05])
+
+        self.assertEqual(sol.concentration('tris'), 0.1,
+                         'Failed to find tris by name.')
+
+        self.assertEqual(sol.concentration(sol.ions[0]), 0.1,
+                         'Failed to find tris by ion.')
+
+    def test_getitem(self):
+        sol = Solution(['tris', 'hydrochloric acid'],
+                       [0.1, 0.05])
+
+        self.assertEqual(sol['tris'], sol[Database()['tris']],
+                         'Failed to get equivilent items from solution.')
+
     def test_repr(self):
         sol = Solution(['tris', 'hydrochloric acid'],
                        [0.1, 0.05])
+
         self.assertEqual(sol, eval(repr(sol)),
                          'Solution malformed by repr.')
 
@@ -224,6 +266,11 @@ class TestSolution(unittest.TestCase):
         sol = Solution()
         sol.equilibrate_CO2()
         self.assertAlmostEqual(sol.pH, 5.6, 1)
+
+    def test_displace(self):
+        sol = Solution(['tris', 'acetic acid'], [0.01, 0.005])
+        cycle = sol.displace('tris', 'bis-tris').displace('bis-tris', 'tris')
+        self.assertAlmostEqual(sol.pH, cycle.pH, 1)
 
 
 class TestNucleicAcid(unittest.TestCase):
@@ -273,6 +320,19 @@ class TestProtein(unittest.TestCase):
     def test_membership(self):
         for peptide in Protein('2AVI'):
             self.assertTrue(isinstance(peptide, Peptide))
+
+
+class TestCLI(unittest.TestCase):
+    def test_database_cli(self):
+        runner = CliRunner()
+        result = runner.invoke(cli, ['database'])
+        self.assertEqual(result.exit_code, 0)
+
+    def test_ion_cli(self):
+        runner = CliRunner()
+        result = runner.invoke(cli, ['ion', 'tris'])
+        self.assertEqual(result.exit_code, 0)
+
 
 
 if __name__ == '__main__':

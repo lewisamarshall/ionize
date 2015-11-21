@@ -1,3 +1,4 @@
+from __future__ import division
 from .PolyIon import PolyIon
 from ..constants import boltzmann, kelvin, reference_temperature, \
                         elementary_charge, avogadro, lpm3, gpkg
