@@ -5,14 +5,15 @@ from .Ion import Ion
 from .PolyIon import NucleicAcid, Peptide
 from .IonComplex import Protein
 from .Solution import Solution
-
 from .Database import Database
 from .deserialize import deserialize
+from .__main__ import cli
 
 import unittest
 import warnings
 import numpy as np
 from copy import copy
+from click.testing import CliRunner
 
 # TODO fix temperature=0 behavior.
 class TestAqueous(unittest.TestCase):
@@ -319,6 +320,20 @@ class TestProtein(unittest.TestCase):
     def test_membership(self):
         for peptide in Protein('2AVI'):
             self.assertTrue(isinstance(peptide, Peptide))
+
+
+class TestCLI(unittest.TestCase):
+
+    def test_database_cli(self):
+        runner = CliRunner()
+        result = runner.invoke(cli, ['database'])
+        self.assertEqual(result.exit_code, 0)
+
+    def test_ion_cli(self):
+        runner = CliRunner()
+        result = runner.invoke(cli, ['ion', 'tris'])
+        self.assertEqual(result.exit_code, 0)
+
 
 
 if __name__ == '__main__':
