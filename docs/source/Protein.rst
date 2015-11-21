@@ -1,6 +1,6 @@
-The Ion Class
+The Protein Class
 =============
 
-.. autoclass:: ionize.Ion
+.. autoclass:: ionize.Protein
    :members:
    :inherited-members:

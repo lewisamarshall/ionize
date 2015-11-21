@@ -27,6 +27,8 @@ Contents:
 
     Ion
     Solution
+    Nucleic_Acid
+    Protein
     database
 
 
