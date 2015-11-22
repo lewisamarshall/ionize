@@ -29,7 +29,10 @@ Contents:
     Solution
     Nucleic_Acid
     Protein
-    database
+    Database
+    Solvent
+    utils
+    constants
 
 
 

@@ -1,0 +1,4 @@
+Utilities
+=============
+
+.. autofunction:: ionize.deserialize
