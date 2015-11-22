@@ -1,7 +1,5 @@
 #!/usr/bin/python
 from setuptools import setup, find_packages
-from pip.req import parse_requirements
-from pip.download import PipSession
 
 # Read long description from readme.md.
 try:
@@ -12,12 +10,6 @@ except:
 
 # Read version from package.
 from ionize.__version__ import __version__
-
-# Read requirements from requirements.txt
-# session = PipSession()
-# install_reqs = parse_requirements('requirements.txt', session=session)
-# reqs = [str(ir.req) for ir in install_reqs]
-reqs = ['numpy', 'scipy', 'biopython', 'click']
 
 setup(name='ionize',
       version=__version__,
@@ -38,7 +30,7 @@ setup(name='ionize',
       description='A package for calculating electrolyte properties.',
       long_description=long_description,
       packages=find_packages(),
-      requires=reqs,
+      requires=['numpy', 'scipy', 'biopython', 'click'],
       package_data={'ionize': ['Database/ion_data.json']},
       entry_points={'console_scripts': ['ionize = ionize.__main__:cli']},
       test_suite="ionize.tests",
