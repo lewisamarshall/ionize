@@ -69,6 +69,7 @@ def jovin(self):
 
 
 def gas(self):
+    """Return the Gas conservation function value of the solution."""
     alberty = self.alberty()
     jovin = self.jovin()
     gas = [alberty - jovin / self._hydronium.mobility(self.pH),

@@ -1,7 +1,7 @@
 def debye(self, temperature=None):
     """Return the Debye length of the solution.
 
-    Uses the Debye-Huckel approximation for the calculation
+    Uses the Debye-Huckel approximation for the calculation.
     """
     if temperature is None:
         temperature = self.temperature()

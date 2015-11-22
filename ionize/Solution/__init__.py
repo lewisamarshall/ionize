@@ -75,10 +75,12 @@ class Solution(object):
 
     @property
     def ions(self):
+        """Return a tuple of the ions in the solution."""
         return tuple(self._contents.keys())
 
     @property
     def concentrations(self):
+        """Return a numpy array of the ion concentrations in the solution."""
         return np.array(list(self._contents.values()))
 
     pH = property(operator.attrgetter("_pH"))
@@ -125,7 +127,10 @@ class Solution(object):
     def temperature(self, temperature=None):
         """Set or get the temperature of the solution.
 
-        If a temperature is supplied, returns a context manager that reverts
+        If no argument is supplied, returns the current temperature of the
+        solution.
+
+        If a numerical temperature is supplied, returns a context manager that reverts
         to the original temperature.
         """
         if temperature is None:
@@ -158,6 +163,10 @@ class Solution(object):
         return cOH
 
     def concentration(self, ion):
+        """Return the concentration of the input ion.
+
+        The input may be an Ion or an ion name as a string.
+        """
         if ion in ('H+', self._hydronium):
             return self._cH()
         elif ion in ('OH-', self._hydroxide):
@@ -239,11 +248,13 @@ class Solution(object):
             raise KeyError(item)
 
     def serialize(self, nested=False, compact=False):
+        """Return a JSON-formatted serialization of the object."""
         serial = {'__solution__': True}
         serial['concentrations'] = self.concentrations
         serial['ions'] = self.ions
         return _serialize(serial, nested, compact)
 
+    # TODO: Figure out why this dumps text.
     def save(self, filename):
         with open(filename, 'w') as file:
             json.dump(self.serialize(), file)

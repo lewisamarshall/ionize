@@ -68,6 +68,7 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
 
 
 def equilibrate_CO2(self):
+    """Titrates the CO2 in solution to equilibrium with earth's atmosphere."""
     CO2 = database['carbonic acid']
     CO2.context(self)
     # TODO: move to constants

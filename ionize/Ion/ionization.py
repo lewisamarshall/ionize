@@ -35,6 +35,11 @@ def ionization_fraction(self, pH=None, ionic_strength=None, temperature=None):
 
 
 def charge(self, pH=None, ionic_strength=None, temperature=None, moment=1):
+    """Return the time-averaged charge of the charge of the ion.
+
+    Use the moment argument to control which moment of the average charge is
+    calculated.
+    """
     fraction = self.ionization_fraction(pH, ionic_strength, temperature)
     return np.sum(fraction * self.valence**moment)
 
