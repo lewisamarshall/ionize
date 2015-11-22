@@ -83,8 +83,15 @@ class Solution(object):
         """Return a numpy array of the ion concentrations in the solution."""
         return np.array(list(self._contents.values()))
 
-    pH = property(operator.attrgetter("_pH"))
-    ionic_strength = property(operator.attrgetter("_ionic_strength"))
+    @property
+    def pH(self):
+        """The pH of the solution."""
+        return self._pH
+
+    @property
+    def ionic_strength(self):
+        """The ionic strength of the solution."""
+        return self._ionic_strength
 
     def __init__(self, ions=[], concentrations=[], temperature=None):
         """Initialize a solution object."""
@@ -130,8 +137,8 @@ class Solution(object):
         If no argument is supplied, returns the current temperature of the
         solution.
 
-        If a numerical temperature is supplied, returns a context manager that reverts
-        to the original temperature.
+        If a numerical temperature is supplied, returns a context manager that
+        reverts to the original temperature.
         """
         if temperature is None:
             return self._temperature
@@ -256,8 +263,9 @@ class Solution(object):
 
     # TODO: Figure out why this dumps text.
     def save(self, filename):
+        """Save the solution to file."""
         with open(filename, 'w') as file:
-            json.dump(self.serialize(), file)
+            file.write(self.serialize())
 
     from .equilibrium import _equilibrate
     from .conductivity import conductivity, hydroxide_conductivity, \
