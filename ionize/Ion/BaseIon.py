@@ -74,7 +74,7 @@ class BaseIon(object):
     def save(self, filename):
         """Save a serialized Ion to a file."""
         with open(filename, 'w') as file:
-            json.dump(self.serialize(), file)
+            file.write(self.serialize())
 
     def mobility(self):
         """The effective mobility of the ion.

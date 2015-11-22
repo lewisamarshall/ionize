@@ -55,9 +55,8 @@ class Solution(object):
     """
 
     _solvent = Aqueous
-    # TODO: move these into solvent.
-    _hydronium = Ion('H+', [1], [100], [362E-9])
-    _hydroxide = Ion('OH-', [-1], [-100], [-205E-9])
+    _hydronium = None
+    _hydroxide = None
 
     _pH = 7.                # Normal pH units.
     _ionic_strength = 0.    # Expected in molar.
@@ -76,14 +75,23 @@ class Solution(object):
 
     @property
     def ions(self):
+        """Return a tuple of the ions in the solution."""
         return tuple(self._contents.keys())
 
     @property
     def concentrations(self):
+        """Return a numpy array of the ion concentrations in the solution."""
         return np.array(list(self._contents.values()))
 
-    pH = property(operator.attrgetter("_pH"))
-    ionic_strength = property(operator.attrgetter("_ionic_strength"))
+    @property
+    def pH(self):
+        """The pH of the solution."""
+        return self._pH
+
+    @property
+    def ionic_strength(self):
+        """The ionic strength of the solution."""
+        return self._ionic_strength
 
     def __init__(self, ions=[], concentrations=[], temperature=None):
         """Initialize a solution object."""
@@ -111,6 +119,9 @@ class Solution(object):
             assert concentration >= 0, 'Concentrations must be positive.'
             self._contents[ion] = concentration
 
+        # TODO: move these into database.
+        self._hydronium = Ion('H+', [1], [100], [362E-9])
+        self._hydroxide = Ion('OH-', [-1], [-100], [-205E-9])
         self._hydronium = copy.copy(self._hydronium)
         self._hydroxide = copy.copy(self._hydroxide)
         self._hydronium.context(self)
@@ -123,8 +134,11 @@ class Solution(object):
     def temperature(self, temperature=None):
         """Set or get the temperature of the solution.
 
-        If a temperature is supplied, returns a context manager that reverts
-        to the original temperature.
+        If no argument is supplied, returns the current temperature of the
+        solution.
+
+        If a numerical temperature is supplied, returns a context manager that
+        reverts to the original temperature.
         """
         if temperature is None:
             return self._temperature
@@ -156,6 +170,10 @@ class Solution(object):
         return cOH
 
     def concentration(self, ion):
+        """Return the concentration of the input ion.
+
+        The input may be an Ion or an ion name as a string.
+        """
         if ion in ('H+', self._hydronium):
             return self._cH()
         elif ion in ('OH-', self._hydroxide):
@@ -237,14 +255,17 @@ class Solution(object):
             raise KeyError(item)
 
     def serialize(self, nested=False, compact=False):
+        """Return a JSON-formatted serialization of the object."""
         serial = {'__solution__': True}
         serial['concentrations'] = self.concentrations
         serial['ions'] = self.ions
         return _serialize(serial, nested, compact)
 
+    # TODO: Figure out why this dumps text.
     def save(self, filename):
+        """Save the solution to file."""
         with open(filename, 'w') as file:
-            json.dump(self.serialize(), file)
+            file.write(self.serialize())
 
     from .equilibrium import _equilibrate
     from .conductivity import conductivity, hydroxide_conductivity, \

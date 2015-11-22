@@ -1,8 +1,8 @@
-from ..Ion import Ion, fixed_state
+from ..Ion import BaseIon, fixed_state
 
 
 @fixed_state
-class IonComplex(Ion):
+class IonComplex(BaseIon):
 
     _state = ('name', 'members')
 

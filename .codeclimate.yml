@@ -1,0 +1,17 @@
+languages:
+  Python: true
+
+exclude_paths:
+- "docs/*"
+
+ratings:
+  paths:
+  - "**.py"
+
+engines:
+  fixme:
+    enabled: true
+  pep8:
+    enabled: true
+  radon:
+    enabled: true

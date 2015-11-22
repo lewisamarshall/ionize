@@ -1,6 +1,6 @@
-The Ion Class
+The Aqueous Class
 =============
 
-.. autoclass:: ionize.Ion
+.. autoclass:: ionize.Aqueous
    :members:
    :inherited-members:

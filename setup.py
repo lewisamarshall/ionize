@@ -1,13 +1,18 @@
 #!/usr/bin/python
 from setuptools import setup, find_packages
+
+# Read long description from readme.md.
 try:
     import pypandoc
     long_description = pypandoc.convert('README.md', 'rst')
 except:
     long_description = None
 
+# Read version from package.
+from ionize.__version__ import __version__
+
 setup(name='ionize',
-      version='0.15.0',
+      version=__version__,
       author='Lewis A. Marshall',
       author_email='lewis.a.marshall@gmail.com',
       url="http://lewisamarshall.github.io/ionize/",

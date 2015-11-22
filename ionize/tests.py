@@ -61,6 +61,9 @@ class TestAqueous(unittest.TestCase):
             self.assertGreater(dh_new, dh)
             dh = dh_new
 
+    def test_pKs(self):
+        self.aqueous.pKs(0.01, 25)
+
 
 class TestIon(unittest.TestCase):
 
@@ -153,8 +156,7 @@ class TestDatabase(unittest.TestCase):
         warnings.filterwarnings('ignore')
 
     def test_import(self):
-        for ion_name in self.database.keys():
-            ion = self.database.load(ion_name)
+        [ion for ion in self.database]
 
     def test_search(self):
         for ion_name in self.database.keys():
@@ -167,7 +169,7 @@ class TestSolution(unittest.TestCase):
 
     def setUp(self):
         self.solutions = [Solution(['tris', 'hydrochloric acid'], [k, 0.1-k])
-                          for k in np.linspace(0, 0.1, 20)]
+                          for k in np.linspace(0, 0.1, 5)]
 
     def test_walk_concentration(self):
         """Increase Acid concentration and observe pH decrease."""
@@ -194,7 +196,7 @@ class TestSolution(unittest.TestCase):
             buf.buffering_capacity()
 
     def test_transference(self):
-        buf = self.solutions[5]
+        buf = self.solutions[-2]
         self.assertNotEqual(buf.transference('hydrochloric acid'), 0,
                             'HCl should have a non-zero '
                             'transference number.')
@@ -204,7 +206,7 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(buf.transference(Database()['bis-tris']), 0)
 
     def test_zone_transfer(self):
-        buf = self.solutions[5]
+        buf = self.solutions[-2]
         self.assertNotEqual(buf.zone_transfer('hydrochloric acid'), 0,
                             'HCl should have a non-zero '
                             'transference number.')

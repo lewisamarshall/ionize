@@ -39,8 +39,8 @@ def calculate_pH(self, ionic_strength):
     # Set up the matrix of Ls, the multiplication
     # of acidity coefficients for each ion.
     l_matrix = np.array([np.resize(ion.acidity_product(ionic_strength),
-                                         [max_columns])
-                         for ion in self.ions])
+                        [max_columns])
+                        for ion in self.ions])
 
     # Construct Q vector.
     Q = 1.0
@@ -50,8 +50,7 @@ def calculate_pH(self, ionic_strength):
     # Convolve with water dissociation.
     Q = np.convolve(Q, [-self._solvent.dissociation(ionic_strength,
                                                     self.temperature()),
-                           0.0, 1.0])
-
+                        0.0, 1.0])
 
     # Construct P matrix
     PMat = []
@@ -70,7 +69,7 @@ def calculate_pH(self, ionic_strength):
 
     # Multiply P matrix by concentrations, and sum.
     P = np.sum(np.array(PMat, ndmin=2) *
-                  np.array(self.concentrations)[:, np.newaxis], 0)
+               np.array(self.concentrations)[:, np.newaxis], 0)
     # Construct polynomial. Change the shapes as needed, then reverse the order
     if len(P) < len(Q):
         P.resize(Q.shape)

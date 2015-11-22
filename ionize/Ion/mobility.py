@@ -37,6 +37,7 @@ def mobility(self, pH=None, ionic_strength=None, temperature=None):
 
 
 def actual_mobility(self, ionic_strength=None, temperature=None):
+    """Return the mobility for each charge state."""
     try:
         return self.onsager_fuoss_mobility()
     except AttributeError:
@@ -47,6 +48,10 @@ def actual_mobility(self, ionic_strength=None, temperature=None):
 
 
 def absolute_mobility(self, temperature=None):
+    """Return the mobility of each charge state.
+
+    Absolulte mobility does not take ionic strength into account.
+    """
     _, _, temperature = \
         self._resolve_context(None, None, temperature)
 
@@ -101,6 +106,7 @@ def robinson_stokes_mobility(self, ionic_strength=None, temperature=None):
 
 
 def onsager_fuoss_mobility(self):
+    """Return the onsager fuoss corrected mobility of each charge state."""
     _, ionic_strength, temperature = \
         self._resolve_context(None, None, None)
 

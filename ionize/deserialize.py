@@ -4,7 +4,8 @@ import json
 
 
 def deserialize(serial):
-        return json.loads(serial, object_hook=object_hook)
+    """Deserialize a JSON object into an ionize object."""
+    return json.loads(serial, object_hook=object_hook)
 
 
 def object_hook(obj):

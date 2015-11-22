@@ -27,7 +27,12 @@ Contents:
 
     Ion
     Solution
-    database
+    Nucleic_Acid
+    Protein
+    Database
+    Aqueous
+    utils
+    constants
 
 
 

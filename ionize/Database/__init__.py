@@ -7,6 +7,7 @@ from ..Ion import Ion
 
 
 class Database(object):
+    """A database containing ion information."""
 
     _default_source = os.path.join(os.getcwd(),
                                    os.path.dirname(__file__),
@@ -27,6 +28,7 @@ class Database(object):
             self._data = json.load(fp)
 
     def load(self, name):
+        """Return an ion from the database based on the name."""
         name = name.lower()
         if name in self.data:
             data = {key: value for
@@ -36,16 +38,28 @@ class Database(object):
             raise NameError('Ion {} not found in database.'.format(name))
 
     def search(self, searchstring):
+        """Return each name in the database that matches the searchstring.
+
+        The searchstring can be a regular expression.
+        """
         return tuple(sorted([str(key) for key in self.data.keys()
                              if re.search(searchstring, key)]))
 
     def keys(self):
+        """Return the keys of the database as a list."""
         return sorted(self.data.keys())
 
+    def serialize(self):
+        """Return a JSON formatted serialization of the database."""
+        return json.dumps(self.data)
+
     def __getitem__(self, key):
+        """Return the ion that matches the key."""
         return self.load(key)
 
     def __iter__(self):
+        """Retern a generator that yields each ion in the Database."""
+
         for key in self.keys():
             yield self[key]
 
@@ -54,6 +68,3 @@ class Database(object):
 
     def __str__(self):
         return 'Database: {} entries'.format(len(self.keys()))
-
-    def serialize(self):
-        return json.dumps(self.data)

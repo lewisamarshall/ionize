@@ -10,7 +10,7 @@ Function search_ion searches the database.
 
 Function get_db returns the database as a dictionary.
 """
-
+from .__version__ import __version__
 from .Solvent import Aqueous
 from .Ion import Ion
 from .PolyIon import NucleicAcid, Peptide
