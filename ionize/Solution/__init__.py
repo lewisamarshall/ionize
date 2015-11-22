@@ -56,8 +56,8 @@ class Solution(object):
 
     _solvent = Aqueous
     # TODO: move these into solvent.
-    _hydronium = Ion('H+', [1], [100], [362E-9])
-    _hydroxide = Ion('OH-', [-1], [-100], [-205E-9])
+    _hydronium = None
+    _hydroxide = None
 
     _pH = 7.                # Normal pH units.
     _ionic_strength = 0.    # Expected in molar.
@@ -111,6 +111,8 @@ class Solution(object):
             assert concentration >= 0, 'Concentrations must be positive.'
             self._contents[ion] = concentration
 
+        self._hydronium = Ion('H+', [1], [100], [362E-9])
+        self._hydroxide = Ion('OH-', [-1], [-100], [-205E-9])
         self._hydronium = copy.copy(self._hydronium)
         self._hydroxide = copy.copy(self._hydroxide)
         self._hydronium.context(self)
