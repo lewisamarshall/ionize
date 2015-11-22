@@ -14,9 +14,10 @@ except:
 from ionize.__version__ import __version__
 
 # Read requirements from requirements.txt
-session = PipSession()
-install_reqs = parse_requirements('requirements.txt', session=session)
-reqs = [str(ir.req) for ir in install_reqs]
+# session = PipSession()
+# install_reqs = parse_requirements('requirements.txt', session=session)
+# reqs = [str(ir.req) for ir in install_reqs]
+reqs = ['numpy', 'scipy', 'biopython', 'click']
 
 setup(name='ionize',
       version=__version__,
