@@ -30,7 +30,7 @@ Contents:
     Nucleic_Acid
     Protein
     Database
-    Solvent
+    Aqueous
     utils
     constants
 

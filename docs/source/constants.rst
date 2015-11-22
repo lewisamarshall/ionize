@@ -1,4 +1,4 @@
-Utilities
+Constants
 =============
 
 .. automodule:: ionize.constants

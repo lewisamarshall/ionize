@@ -17,6 +17,7 @@ class Solvent(object):
 
     @classmethod
     def reference_pKs(self):
+        """Return the reference value of pKs at the reference temperature."""
         return -log10(self.reference_dissociation)
 
     @classmethod
@@ -59,6 +60,7 @@ class Solvent(object):
 
     @classmethod
     def debye(self, ionic_strength, temperature):
+        """Return the debye length of the solvent."""
         dielectric = self.dielectric(temperature)
         viscosity = self.viscosity(temperature)
         lamda = (dielectric * permittivity * boltzmann * kelvin(temperature) /
@@ -78,6 +80,7 @@ class Solvent(object):
 
     @classmethod
     def ionic_strength(self, pH=None, temperature=None):
+        """Return the ion contribution to ionic strength."""
         try:
             cH = 10**-pH
         except TypeError:
@@ -92,6 +95,7 @@ class Solvent(object):
 
     @classmethod
     def pKs(self, ionic_strength, temperature):
+        """Return the pKs for the solvent."""
         return -log10(self.dissociation(ionic_strength, temperature))
 
     @classmethod
@@ -143,6 +147,7 @@ class Aqueous(Solvent):
 
     @classmethod
     def henry_CO2(self, temperature):
+        """Returns the henry's law constant for CO2."""
         temperature = kelvin(temperature)
         reference = kelvin(reference_temperature)
         H = 0.034 * exp(2400. * (1./temperature - 1./reference))

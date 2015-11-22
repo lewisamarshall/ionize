@@ -1,4 +1,4 @@
-The Solvent Class
+The Aqueous Class
 =============
 
 .. autoclass:: ionize.Aqueous
