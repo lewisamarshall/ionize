@@ -148,6 +148,15 @@ class TestIon(unittest.TestCase):
             self.assertEqual(ion, eval(repr(ion)),
                              'Evaluating repr({}) was malformed.'.format(name))
 
+    def test_separability(self):
+        ref = self.database['tris']
+        for name in ['tris', 'bis-tris', 'hydrochloric acid']:
+            other = self.database[name]
+            if name is not 'tris':
+                self.assertGreater(ref.separability(other, pH=8), 0)
+            else:
+                self.assertAlmostEqual(ref.separability(other, pH=8), 0)
+
 
 class TestDatabase(unittest.TestCase):
 
