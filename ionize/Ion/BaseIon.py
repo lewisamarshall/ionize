@@ -128,12 +128,12 @@ class BaseIon(object):
             except AttributeError:
                 pH = None
 
-        try:
-            temperature = temperature or \
-                          self.context().temperature() or \
-                          self.reference_temperature
-        except AttributeError:
-            temperature = self.reference_temperature
+        if temperature is None:
+            try:
+                temperature = self.context().temperature() or \
+                              self.reference_temperature
+            except AttributeError:
+                temperature = self.reference_temperature
 
         if pH is not None:
             lower_limit = self._solvent.ionic_strength(pH, temperature)

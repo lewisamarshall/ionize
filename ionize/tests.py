@@ -15,7 +15,7 @@ import numpy as np
 from copy import copy
 from click.testing import CliRunner
 
-# TODO fix temperature=0 behavior.
+
 class TestAqueous(unittest.TestCase):
 
     """Test the Aqueous class."""
@@ -156,6 +156,20 @@ class TestIon(unittest.TestCase):
                 self.assertGreater(ref.separability(other, pH=8), 0)
             else:
                 self.assertAlmostEqual(ref.separability(other, pH=8), 0)
+
+    def test_context(self):
+        ion = self.database['tris']
+        pH, ionic_strength, temperature = \
+            ion._resolve_context(None, None, None)
+        self.assertEqual(pH, None)
+        self.assertAlmostEqual(ionic_strength, 0, 5)
+        self.assertEqual(temperature, ion.reference_temperature)
+
+        pH, ionic_strength, temperature = \
+            ion._resolve_context(1, 0.1, 0)
+        self.assertEqual(pH, 1)
+        self.assertEqual(ionic_strength, 0.1)
+        self.assertEqual(temperature, 0)
 
 
 class TestDatabase(unittest.TestCase):
