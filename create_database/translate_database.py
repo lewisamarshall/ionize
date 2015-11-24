@@ -109,8 +109,6 @@ def make_database():
     n_steep += 1
     steep_common.append('boric acid')
 
-    # ions.update(ion_dict)
-    # ions.close()
 
     for key in ion_dict.keys():
         ion_dict[key]['__ion__'] = True
@@ -127,11 +125,6 @@ def make_database():
         if name not in steep_common:
             print(name, 'in Steep database not added')
 
-    # make sure that the length of dCp is the same as the length of z
-    # for ion in sorted(ion_dict.keys()):
-    #     if ion_dict[ion][3]:
-    #         if len(ion_dict[ion][3]) != len(ion_dict[ion][0]):
-    #             print ion, ion_dict[ion]
 
 if __name__ == "__main__":
     make_database()
