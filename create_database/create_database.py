@@ -20,7 +20,8 @@ NIGHTINGALE_FILES = {'silver': 'silver',
                      'perchlorate acid': 'perchlorate_acid',
                      'rubidium': 'rubidium_cesium',
                      'sulfuric acid': 'sulfuric_acid',
-                     'cesium': 'rubidium_cesium'}
+                     'cesium': 'rubidium_cesium'
+                     }
 
 
 class DataCreator(object):
@@ -31,7 +32,9 @@ class DataCreator(object):
         self.load_steep()
         self.load_spresso()
         self.load_nightingale()
-        # self.create()
+        self.create()
+        self.patch()
+        self.check()
         # self.write
 
     def load_spresso(self):
@@ -39,11 +42,11 @@ class DataCreator(object):
                                      'data', 'Z.csv'),
                         engine='python').columns.tolist()
         name = pd.read_csv(os.path.join(os.path.dirname(__file__),
-                                         'data', 'name.csv'),
-                            engine='python', sep='~', header=None,
-                            names=['name'])
+                                        'data', 'name.csv'),
+                           engine='python', sep='~', header=None,
+                           names=['name'])
         pKa = pd.read_csv(os.path.join(os.path.dirname(__file__),
-                                     'data', 'pKa.csv'),
+                                       'data', 'pKa.csv'),
                           engine='python', header=None,
                           names=['pKa {}'.format(i) for i in z])
         mobility = pd.read_csv(os.path.join(os.path.dirname(__file__),
@@ -52,96 +55,7 @@ class DataCreator(object):
                                names=['mobility {}'.format(i) for i in z])
         self.spresso = pd.concat([name, pKa, mobility], axis=1)
 
-    def create(self):
-        self.data = dict()
-        n_steep = 0
-        steep_common = []
-        for idx, name in enumerate(namelist):
-            # get name
-            name = name.rstrip().lower()
-
-            # check to see if the ion is in the steep database.
-            if name in steep_db.keys():
-                n_steep += 1
-                steep_common.append(name)
-                dH = steep_db[name][3]
-                if steep_db[name][4]:
-                    dCp = steep_db[name][4]
-                else:
-                    dCp = None
-            else:
-                dH = None
-                dCp = None
-
-            # Get pKa lists
-            pKa = pKalist.readline()
-            pKa = pKa.rstrip().split(',')
-
-            # Get mobility lists
-            mobility = mobilitylist.readline()
-            mobility = mobility.rstrip().split(',')
-
-            # print name, pKa, mobility
-            state = [[], [], [], dH, dCp]
-            for i in range(len(z)):
-                if not pKa[i] == 'NaN':
-                    state[0].append(z[i])
-                    state[1].append(float(pKa[i]))
-                    state[2].append(copysign(float(mobility[i]), z[i])*1e-9)
-
-            # If steep parameters were added, but the length was different,
-            # pad the parameters.
-            if state[3] and len(state[3]) < len(state[2]):
-                state[3].append(0)
-            if state[4] and len(state[4]) < len(state[2]):
-                state[4].append(0)
-
-            if name in fit_dict.keys():
-                nightingale_function = fit_dict[name]
-            else:
-                nightingale_function = None
-            # Add the result to the ion dictionary.
-            serial_ion = {'name': name,
-                          'valence': state[0],
-                          'reference_pKa': state[1],
-                          'reference_mobility': state[2],
-                          'enthalpy': dH,
-                          'heat_capacity': dCp,
-                          'nightingale_data': nightingale_function}
-
-            ion_dict[name] = serial_ion
-        ion_dict['taps']['heat_capacity'] = [15.0]
-        # print ion_dict['taps']
-        # print ion_dict['tartaric acid']
-        # boric acid is uniquely in the STEEP database but not the Spresso database
-        # add manually.
-        steep_db['boric acid'][2][0] *= -1
-        boric = steep_db['boric acid']
-        ion_dict['boric acid'] = {'name': 'boric acid',
-                                  'valence': boric[0],
-                                  'reference_pKa': boric[1],
-                                  'reference_mobility': boric[2],
-                                  'enthalpy': boric[3],
-                                  'heat_capacity': boric[4],
-                                  'nightingale_data': None}
-
-        # Remove valences to fix ion search
-        # TODO: Undo this.
-        ion_dict['uranyl'] = ion_dict.pop('uranyl(vi)')
-        ion_dict['iron'] = ion_dict.pop('iron(ii)')
-
-        n_steep += 1
-        steep_common.append('boric acid')
-
-        for key in ion_dict.keys():
-            ion_dict[key]['__ion__'] = True
-
-
-
-
-
     def load_nightingale(self):
-        nightingale_dict = dict()
         self.nightingale_fits = nightingale_fits = dict()
 
         for ion in NIGHTINGALE_FILES.keys():
@@ -165,26 +79,101 @@ class DataCreator(object):
                                 'STEEP_Database.csv')
         self.steep = pd.read_csv(fullpath)
 
+    def create(self):
+        self.data = dict()
+        for idx, row in self.spresso.iterrows():
+            name = row['name']
+            entry = self.data[name.lower()] = {'name': name.lower(),
+                                               '__ion__': 'Ion',
+                                               }
+
+            # check to see if the ion is in the steep database.
+            """Set steep parameters"""
+            steep = self.steep[self.steep['Name'].str.lower() == name.lower()]
+            if not steep.empty:
+                entry['enthalpy'] = [steep[loc].tolist()[0] for loc in
+                                     ['deltaH', 'deltaH.1', 'deltaH.2']
+                                     if not np.isnan(steep[loc].tolist()[0])]
+                entry['heat_capacity'] = ([steep[loc].tolist()[0] for loc in
+                                           ['deltaCp', 'deltaCp.1',
+                                            'deltaCp.2']
+                                           if not
+                                           np.isnan(steep[loc].tolist()[0])] or
+                                          None)
+                entry['molecular_weight'] = steep['MW'].tolist()[0]
+            else:
+                entry['heat_capacity'] = None
+                entry['enthalpy'] = None
+                entry['molecular_weight'] = None
+            #
+            """Get pKa lists"""
+            entry['valence'] = []
+            entry['reference_pKa'] = []
+            entry['reference_mobility'] = []
+
+            for valence in [-3, -2, -1, 1, 2, 3]:
+                if not np.isnan(row['pKa {}'.format(valence)]):
+                    assert not np.isnan(row['mobility {}'.format(valence)]), \
+                        '{} pKa must have a matching valence'.format(row[
+                                                                         'name'
+                                                                         ]
+                                                                     )
+                    entry['valence'].append(valence)
+                    entry['reference_pKa'].append(row['pKa {}'.format(valence)])
+                    mob = (row['mobility {}'.format(valence)] *
+                           1e-9 *
+                           copysign(1, valence))
+                    entry['reference_mobility'].append(mob)
+
+            if entry['heat_capacity'] and \
+                    len(entry['heat_capacity']) < len(entry['valence']):
+                entry['heat_capacity'].append(0)
+            if entry['enthalpy'] and \
+                    len(entry['enthalpy']) < len(entry['valence']):
+                entry['enthalpy'].append(0)
+
+            entry['nightingale_data'] = \
+                self.nightingale_fits.get(name.lower(), None)
+
+    def patch(self):
+        self.data['taps']['heat_capacity'] = [15.0]
+
+        # boric acid is uniquely in the STEEP database,
+        # but not the Spresso database add manually.
+        boric = self.steep[self.steep['Name'].str.lower() == 'boric acid']
+        self.data['boric acid'] = {'name': 'boric acid',
+                                   '__ion__': 'Ion',
+                                   'valence': [-1],
+                                   'reference_pKa': boric['pKa'].tolist(),
+                                   'reference_mobility':
+                                   [boric['Mobility'].tolist()[0]*-1],
+                                   'enthalpy': boric['deltaH'].tolist(),
+                                   'heat_capacity': boric['deltaCp'].tolist(),
+                                   'nightingale_data': None}
+
+        # Remove valences to fix ion search
+        self.data['uranyl'] = self.data.pop('uranyl(vi)')
+        self.data['iron'] = self.data.pop('iron(ii)')
+
     def create_aliases(self):
         pass
 
     def write(self):
         path = os.path.join(os.path.dirname(__file__), '..',
                             'ionize', 'Database', 'ion_data.json')
-
         with open(path, 'wb') as ion_file:
             json.dump(self.data, ion_file,
                       sort_keys=True, indent=4, separators=(',', ': '))
 
     def check(self):
         # Check to make that all of the entries in the steep db were added
-        for name in steep_db.keys():
-            if name not in steep_common:
-                print(name, 'in Steep database not added')
+        # for name in steep_db.keys():
+        #     if name not in steep_common:
+        #         print(name, 'in Steep database not added')
 
-        print(len(ion_dict), 'ions in database')
-        print(n_steep, 'ions from steep')
+        print(len(self.data), 'ions in database')
+        # print(n_steep, 'ions from steep')
 
 
 if __name__ == '__main__':
-    DataCreator()
+    creator = DataCreator()
