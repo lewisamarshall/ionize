@@ -35,7 +35,7 @@ class DataCreator(object):
         self.create()
         self.patch()
         self.check()
-        # self.write
+        self.write()
 
     def load_spresso(self):
         z = pd.read_csv(os.path.join(os.path.dirname(__file__),
@@ -91,15 +91,34 @@ class DataCreator(object):
             """Set steep parameters"""
             steep = self.steep[self.steep['Name'].str.lower() == name.lower()]
             if not steep.empty:
-                entry['enthalpy'] = [steep[loc].tolist()[0] for loc in
+                entry['valence'] = [steep[loc].tolist()[0] for loc in
+                                    ['Valence', 'Valence.1', 'Valence.2']
+                                    if not np.isnan(steep[loc].tolist()[0])]
+
+                entry['enthalpy'] = ([steep[loc].tolist()[0] for loc in
                                      ['deltaH', 'deltaH.1', 'deltaH.2']
                                      if not np.isnan(steep[loc].tolist()[0])]
+                                     or None)
                 entry['heat_capacity'] = ([steep[loc].tolist()[0] for loc in
                                            ['deltaCp', 'deltaCp.1',
                                             'deltaCp.2']
                                            if not
                                            np.isnan(steep[loc].tolist()[0])] or
                                           None)
+
+                if entry['enthalpy']:
+                    entry['enthalpy'] = sorted(entry['enthalpy'],
+                                               key={e: v for v, e in
+                                               zip(entry['valence'],
+                                                   entry['enthalpy'])
+                                                    }.__getitem__)
+                if entry['heat_capacity']:
+                    entry['heat_capacity'] = sorted(entry['heat_capacity'],
+                                                    key={h: v for v, h in
+                                                         zip(entry['valence'],
+                                                             entry['heat_capacity']
+                                                             )
+                                                         }.__getitem__)
                 entry['molecular_weight'] = steep['MW'].tolist()[0]
             else:
                 entry['heat_capacity'] = None
@@ -149,11 +168,22 @@ class DataCreator(object):
                                    [boric['Mobility'].tolist()[0]*-1],
                                    'enthalpy': boric['deltaH'].tolist(),
                                    'heat_capacity': boric['deltaCp'].tolist(),
-                                   'nightingale_data': None}
+                                   'nightingale_data': None,
+                                   'molecular_weight': None}
 
         # Remove valences to fix ion search
         self.data['uranyl'] = self.data.pop('uranyl(vi)')
         self.data['iron'] = self.data.pop('iron(ii)')
+
+        # Note: Tartaric acid in STEEP database twice.
+
+        tmpa = self.data['trimetaphosphoric acid']
+        for idx in [1, 2]:
+            tmpa['reference_mobility'][idx] = (tmpa['reference_mobility'][0] *
+                                               tmpa['valence'][idx] /
+                                               tmpa['valence'][0])
+
+        tmpa['reference_pKa'][-1] = -1.
 
     def create_aliases(self):
         pass
@@ -161,7 +191,8 @@ class DataCreator(object):
     def write(self):
         path = os.path.join(os.path.dirname(__file__), '..',
                             'ionize', 'Database', 'ion_data.json')
-        with open(path, 'wb') as ion_file:
+        print(path)
+        with open(path, 'w') as ion_file:
             json.dump(self.data, ion_file,
                       sort_keys=True, indent=4, separators=(',', ': '))
 

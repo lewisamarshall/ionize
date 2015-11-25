@@ -1,11 +1,12 @@
 {
     "1,1-cyclobutanedicarboxylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -3368.0,
             -1084.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 144.13,
         "name": "1,1-cyclobutanedicarboxylic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -22,12 +23,13 @@
         ]
     },
     "1,1-cyclohexanedicarboxylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             331.0,
             -4372.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 172.128,
         "name": "1,1-cyclohexanedicarboxylic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -44,12 +46,13 @@
         ]
     },
     "1,1-cyclopentanedicarboxylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -264.0,
             0
         ],
         "heat_capacity": null,
+        "molecular_weight": 158.154,
         "name": "1,1-cyclopentanedicarboxylic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -66,9 +69,10 @@
         ]
     },
     "2,3-dibromopropionic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,3-dibromopropionic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -82,9 +86,10 @@
         ]
     },
     "2,3-dimethylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,3-dimethylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -98,9 +103,10 @@
         ]
     },
     "2,3-dimethylpyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,3-dimethylpyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -114,9 +120,10 @@
         ]
     },
     "2,3-dinitrophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,3-dinitrophenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -130,9 +137,10 @@
         ]
     },
     "2,4,6-trimethylaniline": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,4,6-trimethylaniline",
         "nightingale_data": null,
         "reference_mobility": [
@@ -146,9 +154,10 @@
         ]
     },
     "2,4,6-trimethylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,4,6-trimethylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -162,9 +171,10 @@
         ]
     },
     "2,4,6-trimethylpyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,4,6-trimethylpyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -178,9 +188,10 @@
         ]
     },
     "2,4-dichlorophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,4-dichlorophenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -194,9 +205,10 @@
         ]
     },
     "2,4-dichlorophenoxyacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,4-dichlorophenoxyacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -210,9 +222,10 @@
         ]
     },
     "2,4-dihydroxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,4-dihydroxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -226,25 +239,27 @@
         ]
     },
     "2,4-dimethylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,4-dimethylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -2.7100000000000004e-08
         ],
         "reference_pKa": [
-            4.182
+            4.1819999999999995
         ],
         "valence": [
             -1
         ]
     },
     "2,4-dimethylpyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,4-dimethylpyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -258,11 +273,12 @@
         ]
     },
     "2,4-dinitrophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             9414.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 184.11,
         "name": "2,4-dinitrophenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -276,9 +292,10 @@
         ]
     },
     "2,5-dihydroxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,5-dihydroxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -292,9 +309,10 @@
         ]
     },
     "2,5-dimethylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,5-dimethylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -308,9 +326,10 @@
         ]
     },
     "2,5-dimethylpyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,5-dimethylpyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -324,11 +343,12 @@
         ]
     },
     "2,5-dinitrophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             5146.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 184.11,
         "name": "2,5-dinitrophenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -342,9 +362,10 @@
         ]
     },
     "2,6-dihydroxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,6-dihydroxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -358,25 +379,27 @@
         ]
     },
     "2,6-dimethylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,6-dimethylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -2.7100000000000004e-08
         ],
         "reference_pKa": [
-            3.246
+            3.2460000000000004
         ],
         "valence": [
             -1
         ]
     },
     "2,6-dimethylpyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,6-dimethylpyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -390,9 +413,10 @@
         ]
     },
     "2,6-dinitrobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,6-dinitrobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -406,29 +430,31 @@
         ]
     },
     "2,6-dinitrophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2,6-dinitrophenol",
         "nightingale_data": null,
         "reference_mobility": [
             -3.13e-08
         ],
         "reference_pKa": [
-            3.706
+            3.7060000000000004
         ],
         "valence": [
             -1
         ]
     },
     "2-amino-2-methyl-1-propanol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             54050.0
         ],
         "heat_capacity": [
             -21.0
         ],
+        "molecular_weight": 89.137,
         "name": "2-amino-2-methyl-1-propanol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -442,9 +468,10 @@
         ]
     },
     "2-bromobutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-bromobutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -458,9 +485,10 @@
         ]
     },
     "2-bromopropionic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-bromopropionic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -474,9 +502,10 @@
         ]
     },
     "2-chloro-3-oh-butyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-chloro-3-oh-butyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -490,9 +519,10 @@
         ]
     },
     "2-chlorobutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-chlorobutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -506,9 +536,10 @@
         ]
     },
     "2-chlorocrotonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-chlorocrotonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -522,9 +553,10 @@
         ]
     },
     "2-chloroisocrotonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-chloroisocrotonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -538,27 +570,29 @@
         ]
     },
     "2-chloropropionic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             1339.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 108.52,
         "name": "2-chloropropionic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.69e-08
         ],
         "reference_pKa": [
-            2.796
+            2.7960000000000003
         ],
         "valence": [
             -1
         ]
     },
     "2-ethylbutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-ethylbutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -572,9 +606,10 @@
         ]
     },
     "2-hydroxy-3-chlorobutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-hydroxy-3-chlorobutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -588,9 +623,10 @@
         ]
     },
     "2-hydroxy-3-cl-isobutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-hydroxy-3-cl-isobutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -604,25 +640,27 @@
         ]
     },
     "2-hydroxy-3-cl-propionic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-hydroxy-3-cl-propionic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.65e-08
         ],
         "reference_pKa": [
-            3.124
+            3.1239999999999997
         ],
         "valence": [
             -1
         ]
     },
     "2-hydroxy-m-toluic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-hydroxy-m-toluic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -636,25 +674,27 @@
         ]
     },
     "2-hydroxybutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-hydroxybutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.4299999999999996e-08
         ],
         "reference_pKa": [
-            3.979
+            3.9789999999999996
         ],
         "valence": [
             -1
         ]
     },
     "2-hydroxyisobutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-hydroxyisobutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -668,9 +708,10 @@
         ]
     },
     "2-hydroxyvaleric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-hydroxyvaleric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -684,9 +725,10 @@
         ]
     },
     "2-ketoglutaric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-ketoglutaric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -703,9 +745,10 @@
         ]
     },
     "2-methylpyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-methylpyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -719,25 +762,27 @@
         ]
     },
     "2-naphtalenesulfonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-naphtalenesulfonic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.13e-08
         ],
         "reference_pKa": [
-            0.167
+            0.16699999999999998
         ],
         "valence": [
             -1
         ]
     },
     "2-nitro-3-bromobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-nitro-3-bromobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -751,9 +796,10 @@
         ]
     },
     "2-nitro-3-chlorobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-nitro-3-chlorobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -767,9 +813,10 @@
         ]
     },
     "2-phenylpropionic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "2-phenylpropionic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -783,25 +830,27 @@
         ]
     },
     "3,4-dihydroxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3,4-dihydroxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.4400000000000004e-08
         ],
         "reference_pKa": [
-            4.509
+            4.5089999999999995
         ],
         "valence": [
             -1
         ]
     },
     "3,4-dimethylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3,4-dimethylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -815,9 +864,10 @@
         ]
     },
     "3,4-dimethylpyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3,4-dimethylpyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -831,25 +881,27 @@
         ]
     },
     "3,4-dinitrophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3,4-dinitrophenol",
         "nightingale_data": null,
         "reference_mobility": [
             -3.13e-08
         ],
         "reference_pKa": [
-            5.424
+            5.4239999999999995
         ],
         "valence": [
             -1
         ]
     },
     "3,5-dihydroxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3,5-dihydroxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -863,9 +915,10 @@
         ]
     },
     "3,5-dimethylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3,5-dimethylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -879,9 +932,10 @@
         ]
     },
     "3,5-dimethylpyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3,5-dimethylpyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -895,9 +949,10 @@
         ]
     },
     "3,5-dinitrobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3,5-dinitrobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -911,11 +966,12 @@
         ]
     },
     "3,5-dinitrophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             15719.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 184.11,
         "name": "3,5-dinitrophenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -929,9 +985,10 @@
         ]
     },
     "3-chlorobutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-chlorobutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -945,25 +1002,27 @@
         ]
     },
     "3-chlorocrotonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-chlorocrotonic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.54e-08
         ],
         "reference_pKa": [
-            3.848
+            3.8480000000000003
         ],
         "valence": [
             -1
         ]
     },
     "3-chloropropionic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-chloropropionic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -977,9 +1036,10 @@
         ]
     },
     "3-ethylglutaric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-ethylglutaric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -996,9 +1056,10 @@
         ]
     },
     "3-hydroxy-o-toluic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-hydroxy-o-toluic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1012,25 +1073,27 @@
         ]
     },
     "3-hydroxy-p-toluic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-hydroxy-p-toluic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.13e-08
         ],
         "reference_pKa": [
-            3.143
+            3.1430000000000002
         ],
         "valence": [
             -1
         ]
     },
     "3-hydroxybutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-hydroxybutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1044,11 +1107,12 @@
         ]
     },
     "3-iodopropionic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -5774.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 199.98,
         "name": "3-iodopropionic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1062,9 +1126,10 @@
         ]
     },
     "3-methoxypiridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-methoxypiridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1078,11 +1143,12 @@
         ]
     },
     "3-methylpyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             26738.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 93.13,
         "name": "3-methylpyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1096,25 +1162,27 @@
         ]
     },
     "3-nitro-2-bromobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-nitro-2-bromobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -2.82e-08
         ],
         "reference_pKa": [
-            2.979
+            2.9789999999999996
         ],
         "valence": [
             -1
         ]
     },
     "3-nitro-4-bromobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-nitro-4-bromobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1128,25 +1196,27 @@
         ]
     },
     "3-nitro-4-chlorobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-nitro-4-chlorobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.13e-08
         ],
         "reference_pKa": [
-            3.357
+            3.3569999999999998
         ],
         "valence": [
             -1
         ]
     },
     "3-nitro-5-chlorobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-nitro-5-chlorobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1160,9 +1230,10 @@
         ]
     },
     "3-phenylpropionic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-phenylpropionic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1176,9 +1247,10 @@
         ]
     },
     "3-propylglutaric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "3-propylglutaric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1195,9 +1267,10 @@
         ]
     },
     "4-bromobutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "4-bromobutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1211,25 +1284,27 @@
         ]
     },
     "4-hydroxy-m-toluic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "4-hydroxy-m-toluic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.13e-08
         ],
         "reference_pKa": [
-            3.066
+            3.0660000000000003
         ],
         "valence": [
             -1
         ]
     },
     "4-hydroxybutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "4-hydroxybutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1243,9 +1318,10 @@
         ]
     },
     "4-hydroxyvaleric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "4-hydroxyvaleric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1259,9 +1335,10 @@
         ]
     },
     "4-iodobutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "4-iodobutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1275,9 +1352,10 @@
         ]
     },
     "4-methoxypyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "4-methoxypyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1291,9 +1369,10 @@
         ]
     },
     "4-methylpyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "4-methylpyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1307,9 +1386,10 @@
         ]
     },
     "4-phenylbutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "4-phenylbutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1323,9 +1403,10 @@
         ]
     },
     "5-bromo-2.4-dihydroxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "5-bromo-2.4-dihydroxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1342,9 +1423,10 @@
         ]
     },
     "5-bromovaleric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "5-bromovaleric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1358,9 +1440,10 @@
         ]
     },
     "5-chlorovaleric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "5-chlorovaleric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1374,9 +1457,10 @@
         ]
     },
     "5-iodovaleric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "5-iodovaleric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1390,9 +1474,10 @@
         ]
     },
     "6-hydroxy-o-toluic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "6-hydroxy-o-toluic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1406,13 +1491,14 @@
         ]
     },
     "acetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -410.0
         ],
         "heat_capacity": [
             -142.0
         ],
+        "molecular_weight": 60.05,
         "name": "acetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1426,11 +1512,12 @@
         ]
     },
     "acrylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             1862.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 72.06,
         "name": "acrylic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1444,12 +1531,13 @@
         ]
     },
     "adipic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -2678.0,
             -4184.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 146.14,
         "name": "adipic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1466,13 +1554,14 @@
         ]
     },
     "adp": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -5439.0,
             17154.0,
             0
         ],
         "heat_capacity": null,
+        "molecular_weight": 427.20099999999996,
         "name": "adp",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1492,12 +1581,13 @@
         ]
     },
     "alanine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             44936.0,
             3368.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 89.09,
         "name": "alanine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1505,7 +1595,7 @@
             3.4e-08
         ],
         "reference_pKa": [
-            9.857,
+            9.857000000000001,
             2.33
         ],
         "valence": [
@@ -1514,9 +1604,10 @@
         ]
     },
     "alexa fluor 488": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "alexa fluor 488",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1530,27 +1621,29 @@
         ]
     },
     "allylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "allylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.39e-08
         ],
         "reference_pKa": [
-            4.674
+            4.6739999999999995
         ],
         "valence": [
             -1
         ]
     },
     "allylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             53932.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 57.09,
         "name": "allylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1564,9 +1657,10 @@
         ]
     },
     "aluminium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "aluminium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1586,9 +1680,10 @@
         ]
     },
     "amediol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amediol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1602,13 +1697,14 @@
         ]
     },
     "ammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             51950.0
         ],
         "heat_capacity": [
             8.0
         ],
+        "molecular_weight": 17.031,
         "name": "ammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1622,12 +1718,13 @@
         ]
     },
     "amp": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -7531.0,
             17573.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 347.22,
         "name": "amp",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1636,7 +1733,7 @@
         ],
         "reference_pKa": [
             6.791,
-            3.981
+            3.9810000000000003
         ],
         "valence": [
             -2,
@@ -1644,9 +1741,10 @@
         ]
     },
     "amylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1660,9 +1758,10 @@
         ]
     },
     "amylbutylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amylbutylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1676,9 +1775,10 @@
         ]
     },
     "amylbutylpropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amylbutylpropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1692,9 +1792,10 @@
         ]
     },
     "amyldiethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amyldiethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1708,9 +1809,10 @@
         ]
     },
     "amyldipropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amyldipropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1724,9 +1826,10 @@
         ]
     },
     "amylheptylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amylheptylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1740,9 +1843,10 @@
         ]
     },
     "amylhexylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amylhexylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1756,9 +1860,10 @@
         ]
     },
     "amylmethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amylmethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1772,9 +1877,10 @@
         ]
     },
     "amylocaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amylocaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1788,9 +1894,10 @@
         ]
     },
     "amylpropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amylpropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1804,9 +1911,10 @@
         ]
     },
     "amyltrimethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "amyltrimethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1820,11 +1928,12 @@
         ]
     },
     "aniline": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             29748.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 93.13,
         "name": "aniline",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1838,13 +1947,14 @@
         ]
     },
     "arginine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             51882.0,
             44685.0,
             4686.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 174.2,
         "name": "arginine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1864,12 +1974,13 @@
         ]
     },
     "arsenic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             1700.0,
             -7800.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 141.94,
         "name": "arsenic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1886,9 +1997,10 @@
         ]
     },
     "ascorbic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ascorbic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1905,12 +2017,13 @@
         ]
     },
     "asparagine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             39915.0,
             4728.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 132.12,
         "name": "asparagine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1927,13 +2040,14 @@
         ]
     },
     "aspartic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             37761.0,
             4602.0,
             77404.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 133.1,
         "name": "aspartic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1953,9 +2067,10 @@
         ]
     },
     "aspirin": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "aspirin",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1969,9 +2084,10 @@
         ]
     },
     "azelaic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "azelaic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -1979,7 +2095,7 @@
             -2.2000000000000002e-08
         ],
         "reference_pKa": [
-            5.333,
+            5.332999999999999,
             4.55
         ],
         "valence": [
@@ -1988,12 +2104,13 @@
         ]
     },
     "b-alanine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             47154.0,
             4937.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 89.09,
         "name": "b-alanine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2010,9 +2127,10 @@
         ]
     },
     "b-eucaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "b-eucaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2026,9 +2144,10 @@
         ]
     },
     "barium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "barium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2045,9 +2164,10 @@
         ]
     },
     "benzenesulfonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "benzenesulfonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2061,11 +2181,12 @@
         ]
     },
     "benzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             628.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 122.12,
         "name": "benzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2079,11 +2200,12 @@
         ]
     },
     "benzylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             54308.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 107.15,
         "name": "benzylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2097,9 +2219,10 @@
         ]
     },
     "benzylasparatic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "benzylasparatic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2113,9 +2236,10 @@
         ]
     },
     "benzyldiethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "benzyldiethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2129,9 +2253,10 @@
         ]
     },
     "beryllium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "beryllium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2148,13 +2273,14 @@
         ]
     },
     "bis-tris": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             28400.0
         ],
         "heat_capacity": [
             27.0
         ],
+        "molecular_weight": 209.24,
         "name": "bis-tris",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2168,17 +2294,18 @@
         ]
     },
     "boric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             13800.0
         ],
         "heat_capacity": [
             -240.0
         ],
+        "molecular_weight": null,
         "name": "boric acid",
         "nightingale_data": null,
         "reference_mobility": [
-            -3.65e-08
+            -3.6499999999999996e-08
         ],
         "reference_pKa": [
             9.237
@@ -2188,11 +2315,12 @@
         ]
     },
     "bromic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             5464.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 128.91,
         "name": "bromic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2206,27 +2334,29 @@
         ]
     },
     "bromoacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -5020.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 138.95,
         "name": "bromoacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -4.0600000000000006e-08
         ],
         "reference_pKa": [
-            2.901
+            2.9010000000000002
         ],
         "valence": [
             -1
         ]
     },
     "bupivacaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "bupivacaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2240,9 +2370,10 @@
         ]
     },
     "butylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "butylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2256,9 +2387,10 @@
         ]
     },
     "butyldiethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "butyldiethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2272,9 +2404,10 @@
         ]
     },
     "butyldipropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "butyldipropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2288,9 +2421,10 @@
         ]
     },
     "butylethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "butylethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2304,9 +2438,10 @@
         ]
     },
     "butylethylpropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "butylethylpropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2320,9 +2455,10 @@
         ]
     },
     "butylhexylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "butylhexylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2336,9 +2472,10 @@
         ]
     },
     "butylpropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "butylpropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2352,9 +2489,10 @@
         ]
     },
     "butyltriethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "butyltriethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2368,9 +2506,10 @@
         ]
     },
     "butyltrimethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "butyltrimethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2384,11 +2523,12 @@
         ]
     },
     "butyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -3096.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 88.11,
         "name": "butyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2402,13 +2542,14 @@
         ]
     },
     "cacodylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -3000.0
         ],
         "heat_capacity": [
             -86.0
         ],
+        "molecular_weight": 138.0,
         "name": "cacodylic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2422,9 +2563,10 @@
         ]
     },
     "cadmium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cadmium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2441,21 +2583,22 @@
         ]
     },
     "calcium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "calcium",
         "nightingale_data": {
             "fit": [
-                3.506921439098901e-16,
-                -1.4221599760248256e-13,
-                2.418053975179004e-11,
-                -2.273201793021199e-09,
-                1.3199040090740946e-07,
-                -4.99138727004708e-06,
-                0.0001221356463261665,
-                -0.0018478244910274412,
-                0.2790691957373372
+                3.506921439093868e-16,
+                -1.4221599760227976e-13,
+                2.4180539751756564e-11,
+                -2.2732017930182806e-09,
+                1.3199040090726573e-07,
+                -4.99138727004315e-06,
+                0.0001221356463261132,
+                -0.001847824491027187,
+                0.27906919573733885
             ],
             "max": 99.4969,
             "min": 0.1025
@@ -2474,9 +2617,10 @@
         ]
     },
     "capric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "capric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2490,11 +2634,12 @@
         ]
     },
     "caproic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -2391.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 116.1,
         "name": "caproic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2508,11 +2653,12 @@
         ]
     },
     "caprylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -2594.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 144.21,
         "name": "caprylic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2526,7 +2672,7 @@
         ]
     },
     "carbonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             14700.0,
             9150.0
@@ -2535,6 +2681,7 @@
             -249.0,
             -371.0
         ],
+        "molecular_weight": 44.01,
         "name": "carbonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2551,9 +2698,10 @@
         ]
     },
     "cdp": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cdp",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2573,9 +2721,10 @@
         ]
     },
     "cerium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cerium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2595,21 +2744,22 @@
         ]
     },
     "cesium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cesium",
         "nightingale_data": {
             "fit": [
-                2.817425916390039e-13,
-                -5.2777020718583336e-11,
-                4.0509053158788574e-09,
-                -1.6600478918157214e-07,
-                3.989137215624388e-06,
-                -5.9586688157420366e-05,
-                0.0006294269381179405,
-                -0.008233000307605381,
-                0.7881903563056731
+                2.817425916255924e-13,
+                -5.2777020716562767e-11,
+                4.050905315754626e-09,
+                -1.6600478917756903e-07,
+                3.989137215552217e-06,
+                -5.958668815670179e-05,
+                0.0006294269381143143,
+                -0.008233000307597872,
+                0.7881903563056698
             ],
             "max": 37.2251,
             "min": 0.1188
@@ -2625,13 +2775,14 @@
         ]
     },
     "ches": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             39550.0
         ],
         "heat_capacity": [
             9.0
         ],
+        "molecular_weight": 207.29,
         "name": "ches",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2645,9 +2796,10 @@
         ]
     },
     "chloric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "chloric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2661,9 +2813,10 @@
         ]
     },
     "chloroacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "chloroacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2677,9 +2830,10 @@
         ]
     },
     "chlorodibromoacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "chlorodibromoacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2693,9 +2847,10 @@
         ]
     },
     "chlorodifluoroacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "chlorodifluoroacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2709,9 +2864,10 @@
         ]
     },
     "chlorous acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "chlorous acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2725,9 +2881,10 @@
         ]
     },
     "chromic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "chromic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2744,9 +2901,10 @@
         ]
     },
     "chromium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "chromium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2766,9 +2924,10 @@
         ]
     },
     "cinchocaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cinchocaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2782,11 +2941,12 @@
         ]
     },
     "cinnamic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             2510.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 148.16,
         "name": "cinnamic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2800,25 +2960,27 @@
         ]
     },
     "cis-cinnamic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cis-cinnamic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -2.8300000000000002e-08
         ],
         "reference_pKa": [
-            3.879
+            3.8789999999999996
         ],
         "valence": [
             -1
         ]
     },
     "citraconic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "citraconic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2835,7 +2997,7 @@
         ]
     },
     "citric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -3380.0,
             2230.0,
@@ -2846,6 +3008,7 @@
             -178.0,
             -131.0
         ],
+        "molecular_weight": 192.13,
         "name": "citric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2865,9 +3028,10 @@
         ]
     },
     "cmp": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cmp",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2884,9 +3048,10 @@
         ]
     },
     "cobalt": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cobalt",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2903,9 +3068,10 @@
         ]
     },
     "cocaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cocaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2919,9 +3085,10 @@
         ]
     },
     "copper": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "copper",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2938,9 +3105,10 @@
         ]
     },
     "creatinine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "creatinine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2954,25 +3122,27 @@
         ]
     },
     "cresol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cresol",
         "nightingale_data": null,
         "reference_mobility": [
             -3.34e-08
         ],
         "reference_pKa": [
-            7.377
+            7.377000000000001
         ],
         "valence": [
             -1
         ]
     },
     "crotonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "crotonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -2986,11 +3156,12 @@
         ]
     },
     "cyanic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             10376.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 43.03,
         "name": "cyanic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3004,9 +3175,10 @@
         ]
     },
     "cyanoacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cyanoacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3020,9 +3192,10 @@
         ]
     },
     "cyclohexylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cyclohexylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3036,13 +3209,14 @@
         ]
     },
     "cysteine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             39330.0,
             31300.0,
             297.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 121.16,
         "name": "cysteine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3062,9 +3236,10 @@
         ]
     },
     "cystine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "cystine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3087,9 +3262,10 @@
         ]
     },
     "decamethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "decamethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3106,9 +3282,10 @@
         ]
     },
     "decylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "decylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3122,9 +3299,10 @@
         ]
     },
     "decylsulfonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "decylsulfonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3138,9 +3316,10 @@
         ]
     },
     "deta": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "deta",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3160,9 +3339,10 @@
         ]
     },
     "diamylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "diamylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3176,9 +3356,10 @@
         ]
     },
     "diamylethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "diamylethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3192,9 +3373,10 @@
         ]
     },
     "dibromofluoroacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dibromofluoroacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3208,9 +3390,10 @@
         ]
     },
     "dibutylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dibutylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3224,9 +3407,10 @@
         ]
     },
     "dibutylethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dibutylethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3240,9 +3424,10 @@
         ]
     },
     "dibutylpropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dibutylpropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3256,25 +3441,27 @@
         ]
     },
     "dichloroacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dichloroacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.9700000000000005e-08
         ],
         "reference_pKa": [
-            1.257
+            1.2570000000000001
         ],
         "valence": [
             -1
         ]
     },
     "dichlorofluoroacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dichlorofluoroacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3288,9 +3475,10 @@
         ]
     },
     "dichromic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dichromic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3307,11 +3495,12 @@
         ]
     },
     "diethylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -8242.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 116.16,
         "name": "diethylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3325,11 +3514,12 @@
         ]
     },
     "diethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             53262.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 73.14,
         "name": "diethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3343,9 +3533,10 @@
         ]
     },
     "diethyldimethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "diethyldimethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3359,9 +3550,10 @@
         ]
     },
     "diethylmalonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "diethylmalonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3378,9 +3570,10 @@
         ]
     },
     "diethylmethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "diethylmethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3394,9 +3587,10 @@
         ]
     },
     "diethylpropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "diethylpropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3410,9 +3604,10 @@
         ]
     },
     "difluoroacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "difluoroacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3426,9 +3621,10 @@
         ]
     },
     "dihexylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dihexylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3442,9 +3638,10 @@
         ]
     },
     "dihydroxytartaric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dihydroxytartaric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3453,7 +3650,7 @@
         ],
         "reference_pKa": [
             4.004,
-            1.947
+            1.9469999999999998
         ],
         "valence": [
             -2,
@@ -3461,9 +3658,10 @@
         ]
     },
     "diisoamylaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "diisoamylaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3477,9 +3675,10 @@
         ]
     },
     "diisobutylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "diisobutylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3493,11 +3692,12 @@
         ]
     },
     "dimethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             49706.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 45.08,
         "name": "dimethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3511,9 +3711,10 @@
         ]
     },
     "dimethylbenzylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dimethylbenzylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3527,9 +3728,10 @@
         ]
     },
     "dimethylmalonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dimethylmalonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3538,7 +3740,7 @@
         ],
         "reference_pKa": [
             6.059,
-            3.166
+            3.1660000000000004
         ],
         "valence": [
             -2,
@@ -3546,9 +3748,10 @@
         ]
     },
     "diocaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "diocaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3562,9 +3765,10 @@
         ]
     },
     "diperodone": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "diperodone",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3578,25 +3782,27 @@
         ]
     },
     "diphenylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "diphenylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -2.62e-08
         ],
         "reference_pKa": [
-            3.939
+            3.9389999999999996
         ],
         "valence": [
             -1
         ]
     },
     "dipropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dipropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3610,9 +3816,10 @@
         ]
     },
     "dipropylmalonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dipropylmalonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3621,7 +3828,7 @@
         ],
         "reference_pKa": [
             7.51,
-            2.067
+            2.0669999999999997
         ],
         "valence": [
             -2,
@@ -3629,9 +3836,10 @@
         ]
     },
     "dithionic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dithionic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3648,9 +3856,10 @@
         ]
     },
     "dithionous acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dithionous acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3667,9 +3876,10 @@
         ]
     },
     "dodecamethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dodecamethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3686,9 +3896,10 @@
         ]
     },
     "dodecylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dodecylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3702,9 +3913,10 @@
         ]
     },
     "dodecylsulfonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dodecylsulfonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3718,9 +3930,10 @@
         ]
     },
     "dysprosium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "dysprosium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3740,11 +3953,12 @@
         ]
     },
     "e-aminocaproic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -33.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 131.173,
         "name": "e-aminocaproic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3758,9 +3972,10 @@
         ]
     },
     "enanthylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "enanthylic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3774,9 +3989,10 @@
         ]
     },
     "erbium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "erbium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3796,13 +4012,14 @@
         ]
     },
     "ethanolamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             50520.0
         ],
         "heat_capacity": [
             26.0
         ],
+        "molecular_weight": 61.08,
         "name": "ethanolamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3816,11 +4033,12 @@
         ]
     },
     "ethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             57362.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 45.08,
         "name": "ethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3834,9 +4052,10 @@
         ]
     },
     "ethyldipropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethyldipropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3850,9 +4069,10 @@
         ]
     },
     "ethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3861,7 +4081,7 @@
         ],
         "reference_pKa": [
             9.96,
-            6.838
+            6.837999999999999
         ],
         "valence": [
             1,
@@ -3869,9 +4089,10 @@
         ]
     },
     "ethylfumaric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethylfumaric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3885,25 +4106,27 @@
         ]
     },
     "ethylmaleic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethylmaleic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -2.92e-08
         ],
         "reference_pKa": [
-            2.959
+            2.9589999999999996
         ],
         "valence": [
             -1
         ]
     },
     "ethylmalonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethylmalonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3911,7 +4134,7 @@
             -2.55e-08
         ],
         "reference_pKa": [
-            5.833,
+            5.832999999999999,
             2.988
         ],
         "valence": [
@@ -3920,9 +4143,10 @@
         ]
     },
     "ethylmethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethylmethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3936,9 +4160,10 @@
         ]
     },
     "ethylmethylpropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethylmethylpropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3952,9 +4177,10 @@
         ]
     },
     "ethylpropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethylpropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3968,9 +4194,10 @@
         ]
     },
     "ethylpropylmalonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethylpropylmalonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -3987,9 +4214,10 @@
         ]
     },
     "ethylsulfonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethylsulfonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4003,9 +4231,10 @@
         ]
     },
     "ethyltrimethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethyltrimethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4019,9 +4248,10 @@
         ]
     },
     "ethyltripropylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ethyltripropylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4035,9 +4265,10 @@
         ]
     },
     "europium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "europium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4057,9 +4288,10 @@
         ]
     },
     "fluorescein": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "fluorescein",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4076,27 +4308,29 @@
         ]
     },
     "fluoroacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "fluoroacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -4.6e-08
         ],
         "reference_pKa": [
-            2.584
+            2.5839999999999996
         ],
         "valence": [
             -1
         ]
     },
     "formic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -335.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 46.03,
         "name": "formic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4110,9 +4344,10 @@
         ]
     },
     "fructose": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "fructose",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4126,9 +4361,10 @@
         ]
     },
     "fumaric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "fumaric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4136,8 +4372,8 @@
             -3.1e-08
         ],
         "reference_pKa": [
-            4.384,
-            3.019
+            4.3839999999999995,
+            3.0189999999999997
         ],
         "valence": [
             -2,
@@ -4145,9 +4381,10 @@
         ]
     },
     "gaba": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "gaba",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4161,9 +4398,10 @@
         ]
     },
     "gadolinium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "gadolinium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4183,27 +4421,29 @@
         ]
     },
     "gallic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             3067.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 170.12,
         "name": "gallic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.4400000000000004e-08
         ],
         "reference_pKa": [
-            4.469
+            4.468999999999999
         ],
         "valence": [
             -1
         ]
     },
     "gluconic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "gluconic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4217,11 +4457,12 @@
         ]
     },
     "glucose": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             36694.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 180.16,
         "name": "glucose",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4235,9 +4476,10 @@
         ]
     },
     "glucuronic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "glucuronic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4251,9 +4493,10 @@
         ]
     },
     "glutaconic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "glutaconic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4270,13 +4513,14 @@
         ]
     },
     "glutamic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             40584.0,
             1561.0,
             -267.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 147.13,
         "name": "glutamic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4296,12 +4540,13 @@
         ]
     },
     "glutamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             40459.0,
             3431.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 146.14,
         "name": "glutamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4318,12 +4563,13 @@
         ]
     },
     "glutaric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -10460.0,
             -12552.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 160.17,
         "name": "glutaric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4340,9 +4586,10 @@
         ]
     },
     "glyceric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "glyceric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4356,7 +4603,7 @@
         ]
     },
     "glycine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             44200.0,
             4000.0
@@ -4365,6 +4612,7 @@
             -57.0,
             -139.0
         ],
+        "molecular_weight": 75.067,
         "name": "glycine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4381,11 +4629,12 @@
         ]
     },
     "glycolic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             628.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 76.05,
         "name": "glycolic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4399,25 +4648,27 @@
         ]
     },
     "glyoxylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "glyoxylic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.9600000000000004e-08
         ],
         "reference_pKa": [
-            3.337
+            3.3369999999999997
         ],
         "valence": [
             -1
         ]
     },
     "gmp": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "gmp",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4427,7 +4678,7 @@
         ],
         "reference_pKa": [
             9.5,
-            6.512,
+            6.5120000000000005,
             2.845
         ],
         "valence": [
@@ -4437,13 +4688,14 @@
         ]
     },
     "hepes": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             20400.0
         ],
         "heat_capacity": [
             47.0
         ],
+        "molecular_weight": 238.3012,
         "name": "hepes",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4457,9 +4709,10 @@
         ]
     },
     "heptamethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "heptamethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4476,9 +4729,10 @@
         ]
     },
     "heptylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "heptylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4492,9 +4746,10 @@
         ]
     },
     "heptyltrimethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "heptyltrimethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4508,9 +4763,10 @@
         ]
     },
     "hexamethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hexamethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4527,9 +4783,10 @@
         ]
     },
     "hexylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hexylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4543,9 +4800,10 @@
         ]
     },
     "hexyltrimethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hexyltrimethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4559,9 +4817,10 @@
         ]
     },
     "hippuric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hippuric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4578,7 +4837,7 @@
         ]
     },
     "histidine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             43800.0,
             29500.0,
@@ -4589,6 +4848,7 @@
             176.0,
             0
         ],
+        "molecular_weight": 155.15,
         "name": "histidine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4608,9 +4868,10 @@
         ]
     },
     "holmium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "holmium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4630,9 +4891,10 @@
         ]
     },
     "hydrobromic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hydrobromic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4646,23 +4908,24 @@
         ]
     },
     "hydrochloric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             55815.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 36.46,
         "name": "hydrochloric acid",
         "nightingale_data": {
             "fit": [
-                -2.2137142181060233e-16,
-                8.863674452701262e-14,
-                -1.4332969510592665e-11,
-                1.1888046230819577e-09,
-                -5.145376056942322e-08,
-                7.923801398904878e-07,
-                3.3530212793127194e-05,
-                -0.0032209848253299594,
-                0.7381662817975986
+                -2.2137142180766439e-16,
+                8.8636744525831e-14,
+                -1.4332969510398711e-11,
+                1.1888046230652203e-09,
+                -5.145376056860824e-08,
+                7.923801398682049e-07,
+                3.353021279344433e-05,
+                -0.0032209848253318698,
+                0.7381662817976009
             ],
             "max": 99.0894,
             "min": 0.3302
@@ -4678,9 +4941,10 @@
         ]
     },
     "hydrocyanic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hydrocyanic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4694,9 +4958,10 @@
         ]
     },
     "hydrofluoric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hydrofluoric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4710,9 +4975,10 @@
         ]
     },
     "hydrogen": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hydrogen",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4726,9 +4992,10 @@
         ]
     },
     "hydrogen hexafluorophosphide": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hydrogen hexafluorophosphide",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4742,11 +5009,12 @@
         ]
     },
     "hydrogen sulfide": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             22175.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 34.08,
         "name": "hydrogen sulfide",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4760,9 +5028,10 @@
         ]
     },
     "hydroiodic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hydroiodic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4776,9 +5045,10 @@
         ]
     },
     "hydroxylysine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hydroxylysine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4798,9 +5068,10 @@
         ]
     },
     "hydroxyproline": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hydroxyproline",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4817,9 +5088,10 @@
         ]
     },
     "hydroxytrimethylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hydroxytrimethylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4833,9 +5105,10 @@
         ]
     },
     "hypophosphorous acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "hypophosphorous acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4849,13 +5122,14 @@
         ]
     },
     "imidazole": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             36640.0
         ],
         "heat_capacity": [
             -9.0
         ],
+        "molecular_weight": 68.077,
         "name": "imidazole",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4869,9 +5143,10 @@
         ]
     },
     "imp": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "imp",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4891,9 +5166,10 @@
         ]
     },
     "iodic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "iodic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4907,9 +5183,10 @@
         ]
     },
     "iodoacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "iodoacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4923,9 +5200,10 @@
         ]
     },
     "iron": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "iron(ii)",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4942,9 +5220,10 @@
         ]
     },
     "isoamylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "isoamylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4958,9 +5237,10 @@
         ]
     },
     "isobutylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "isobutylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4974,11 +5254,12 @@
         ]
     },
     "isobutyric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             3343.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 88.11,
         "name": "isobutyric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -4992,11 +5273,12 @@
         ]
     },
     "isocaproic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -2552.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 116.15799999999999,
         "name": "isocaproic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5010,9 +5292,10 @@
         ]
     },
     "isocitric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "isocitric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5032,12 +5315,13 @@
         ]
     },
     "isoleucine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             45312.0,
             1259.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 131.17,
         "name": "isoleucine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5054,9 +5338,10 @@
         ]
     },
     "isophtalic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "isophtalic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5073,9 +5358,10 @@
         ]
     },
     "isopropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "isopropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5089,9 +5375,10 @@
         ]
     },
     "isopropylmalonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "isopropylmalonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5108,11 +5395,12 @@
         ]
     },
     "isovaleric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -5100.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 102.13,
         "name": "isovaleric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5126,9 +5414,10 @@
         ]
     },
     "itaconic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "itaconic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5145,11 +5434,12 @@
         ]
     },
     "lactic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -427.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 90.08,
         "name": "lactic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5163,9 +5453,10 @@
         ]
     },
     "lanthanum": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "lanthanum",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5185,9 +5476,10 @@
         ]
     },
     "laurylsulfonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "laurylsulfonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5201,9 +5493,10 @@
         ]
     },
     "lead": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "lead",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5220,12 +5513,13 @@
         ]
     },
     "leucine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             45606.0,
             35982.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 131.17,
         "name": "leucine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5242,9 +5536,10 @@
         ]
     },
     "leucinocaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "leucinocaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5258,9 +5553,10 @@
         ]
     },
     "levulinic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "levulinic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5274,9 +5570,10 @@
         ]
     },
     "lidocaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "lidocaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5290,21 +5587,22 @@
         ]
     },
     "lithium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "lithium",
         "nightingale_data": {
             "fit": [
-                3.7352528214994493e-16,
-                -1.8580621260856514e-13,
-                3.6951661074809596e-11,
-                -3.797367302185294e-09,
-                2.160893033709514e-07,
-                -6.795877639036419e-06,
-                0.00011184462943018673,
-                -0.0008091978446377246,
-                0.34554327592939
+                3.7352528214462407e-16,
+                -1.8580621260638644e-13,
+                3.695166107444218e-11,
+                -3.797367302152483e-09,
+                2.160893033692886e-07,
+                -6.795877638988778e-06,
+                0.00011184462942946061,
+                -0.0008091978446326853,
+                0.34554327592937967
             ],
             "max": 99.4497,
             "min": 0.0587
@@ -5320,9 +5618,10 @@
         ]
     },
     "lutetium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "lutetium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5342,13 +5641,14 @@
         ]
     },
     "lysine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             48702.0,
             44685.0,
             1255.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 146.19,
         "name": "lysine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5368,9 +5668,10 @@
         ]
     },
     "m-bromobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-bromobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5384,9 +5685,10 @@
         ]
     },
     "m-chlorobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-chlorobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5400,11 +5702,12 @@
         ]
     },
     "m-chlorophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             17824.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 128.56,
         "name": "m-chlorophenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5418,9 +5721,10 @@
         ]
     },
     "m-cresol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-cresol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5434,25 +5738,27 @@
         ]
     },
     "m-cyanobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-cyanobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.13e-08
         ],
         "reference_pKa": [
-            3.598
+            3.5980000000000003
         ],
         "valence": [
             -1
         ]
     },
     "m-fluorobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-fluorobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5466,9 +5772,10 @@
         ]
     },
     "m-hydroxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-hydroxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5485,9 +5792,10 @@
         ]
     },
     "m-hydroxycinnamic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-hydroxycinnamic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5501,25 +5809,27 @@
         ]
     },
     "m-iodobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-iodobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.34e-08
         ],
         "reference_pKa": [
-            3.851
+            3.8510000000000004
         ],
         "valence": [
             -1
         ]
     },
     "m-iodophenylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-iodophenylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5533,9 +5843,10 @@
         ]
     },
     "m-methoxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-methoxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5549,25 +5860,27 @@
         ]
     },
     "m-nitrobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-nitrobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.23e-08
         ],
         "reference_pKa": [
-            3.493
+            3.4930000000000003
         ],
         "valence": [
             -1
         ]
     },
     "m-nitrophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-nitrophenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5581,9 +5894,10 @@
         ]
     },
     "m-sulfanilic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-sulfanilic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5597,9 +5911,10 @@
         ]
     },
     "m-toluic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-toluic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5613,9 +5928,10 @@
         ]
     },
     "m-toluidine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "m-toluidine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5629,21 +5945,22 @@
         ]
     },
     "magnesium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": 24.305,
         "name": "magnesium",
         "nightingale_data": {
             "fit": [
-                1.6412760127081952e-15,
-                -7.367120279633224e-13,
-                1.3759527201722757e-10,
-                -1.3816548627615182e-08,
-                8.045308172193235e-07,
-                -2.7327023210901708e-05,
-                0.000517378572139467,
-                -0.004922276739875762,
-                0.2547077086683144
+                1.6412760127075706e-15,
+                -7.367120279631519e-13,
+                1.3759527201721278e-10,
+                -1.3816548627615042e-08,
+                8.045308172193729e-07,
+                -2.732702321090454e-05,
+                0.0005173785721395226,
+                -0.004922276739876016,
+                0.25470770866831843
             ],
             "max": 99.5135,
             "min": -0.2371
@@ -5662,7 +5979,7 @@
         ]
     },
     "maleic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -3600.0,
             1100.0
@@ -5671,6 +5988,7 @@
             -31.0,
             -21.0
         ],
+        "molecular_weight": 116.07,
         "name": "maleic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5687,12 +6005,13 @@
         ]
     },
     "malic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             1180.0,
             2954.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 134.09,
         "name": "malic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5709,12 +6028,13 @@
         ]
     },
     "malonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -2008.0,
             1213.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 104.06,
         "name": "malonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5722,7 +6042,7 @@
             -4.070000000000001e-08
         ],
         "reference_pKa": [
-            5.696,
+            5.696000000000001,
             2.847
         ],
         "valence": [
@@ -5731,9 +6051,10 @@
         ]
     },
     "mandelic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "mandelic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5747,9 +6068,10 @@
         ]
     },
     "manganese": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "manganese",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5766,13 +6088,14 @@
         ]
     },
     "mes": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             14800.0
         ],
         "heat_capacity": [
             5.0
         ],
+        "molecular_weight": 195.24,
         "name": "mes",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5786,9 +6109,10 @@
         ]
     },
     "mesaconic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "mesaconic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5797,7 +6121,7 @@
         ],
         "reference_pKa": [
             4.75,
-            3.098
+            3.0980000000000003
         ],
         "valence": [
             -2,
@@ -5805,9 +6129,10 @@
         ]
     },
     "mesotartaric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "mesotartaric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5824,25 +6149,27 @@
         ]
     },
     "methacrylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "methacrylic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.6700000000000004e-08
         ],
         "reference_pKa": [
-            4.483
+            4.4830000000000005
         ],
         "valence": [
             -1
         ]
     },
     "methionine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "methionine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5859,9 +6186,10 @@
         ]
     },
     "methoxyacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "methoxyacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5875,13 +6203,14 @@
         ]
     },
     "methylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             55340.0
         ],
         "heat_capacity": [
             33.0
         ],
+        "molecular_weight": 31.057,
         "name": "methylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5895,9 +6224,10 @@
         ]
     },
     "methyldipropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "methyldipropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5911,9 +6241,10 @@
         ]
     },
     "methylethylmalonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "methylethylmalonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5921,7 +6252,7 @@
             -2.5000000000000002e-08
         ],
         "reference_pKa": [
-            6.413,
+            6.412999999999999,
             2.86
         ],
         "valence": [
@@ -5930,9 +6261,10 @@
         ]
     },
     "methylmalonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "methylmalonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5940,7 +6272,7 @@
             -2.93e-08
         ],
         "reference_pKa": [
-            5.787,
+            5.787000000000001,
             3.072
         ],
         "valence": [
@@ -5949,9 +6281,10 @@
         ]
     },
     "methylpropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "methylpropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5965,9 +6298,10 @@
         ]
     },
     "methylsulfonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "methylsulfonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5981,9 +6315,10 @@
         ]
     },
     "methyltripropylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "methyltripropylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -5997,13 +6332,14 @@
         ]
     },
     "mops": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             21100.0
         ],
         "heat_capacity": [
             25.0
         ],
+        "molecular_weight": 209.2633,
         "name": "mops",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6017,11 +6353,12 @@
         ]
     },
     "morpholine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             39037.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 87.12,
         "name": "morpholine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6035,9 +6372,10 @@
         ]
     },
     "neodymium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "neodymium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6057,9 +6395,10 @@
         ]
     },
     "nickel": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "nickel",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6076,11 +6415,12 @@
         ]
     },
     "nicotinic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             10376.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 123.109,
         "name": "nicotinic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6094,9 +6434,10 @@
         ]
     },
     "nitric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "nitric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6110,11 +6451,12 @@
         ]
     },
     "nitrous acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             10460.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 47.013000000000005,
         "name": "nitrous acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6128,9 +6470,10 @@
         ]
     },
     "nonamethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "nonamethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6147,9 +6490,10 @@
         ]
     },
     "nonylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "nonylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6163,11 +6507,12 @@
         ]
     },
     "o-aminobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             11673.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 137.14,
         "name": "o-aminobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6181,41 +6526,44 @@
         ]
     },
     "o-bromobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-bromobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.1500000000000004e-08
         ],
         "reference_pKa": [
-            2.854
+            2.8539999999999996
         ],
         "valence": [
             -1
         ]
     },
     "o-bromophenylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-bromophenylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.14e-08
         ],
         "reference_pKa": [
-            4.054
+            4.053999999999999
         ],
         "valence": [
             -1
         ]
     },
     "o-chlorobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-chlorobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6229,9 +6577,10 @@
         ]
     },
     "o-chlorophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-chlorophenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6245,9 +6594,10 @@
         ]
     },
     "o-ethoxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-ethoxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6261,9 +6611,10 @@
         ]
     },
     "o-ethylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-ethylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6277,9 +6628,10 @@
         ]
     },
     "o-fluorobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-fluorobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6293,9 +6645,10 @@
         ]
     },
     "o-hydroxycinnamic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-hydroxycinnamic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6309,9 +6662,10 @@
         ]
     },
     "o-iodobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-iodobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6325,9 +6679,10 @@
         ]
     },
     "o-iodophenylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-iodophenylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6341,9 +6696,10 @@
         ]
     },
     "o-isopropylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-isopropylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6357,25 +6713,27 @@
         ]
     },
     "o-methoxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-methoxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -2.8300000000000002e-08
         ],
         "reference_pKa": [
-            4.094
+            4.093999999999999
         ],
         "valence": [
             -1
         ]
     },
     "o-nitrobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-nitrobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6389,9 +6747,10 @@
         ]
     },
     "o-nitrophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-nitrophenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6405,25 +6764,27 @@
         ]
     },
     "o-sulfanilic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-sulfanilic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.34e-08
         ],
         "reference_pKa": [
-            7.488
+            7.4879999999999995
         ],
         "valence": [
             -1
         ]
     },
     "o-t-butylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-t-butylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6437,9 +6798,10 @@
         ]
     },
     "o-toluic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-toluic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6453,9 +6815,10 @@
         ]
     },
     "o-toluidine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "o-toluidine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6469,9 +6832,10 @@
         ]
     },
     "octamethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "octamethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6488,9 +6852,10 @@
         ]
     },
     "octylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "octylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6504,9 +6869,10 @@
         ]
     },
     "octylsulfonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "octylsulfonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6520,9 +6886,10 @@
         ]
     },
     "octyltrimethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "octyltrimethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6536,9 +6903,10 @@
         ]
     },
     "ornitine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ornitine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6558,9 +6926,10 @@
         ]
     },
     "orotic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "orotic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6574,7 +6943,7 @@
         ]
     },
     "oxalic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             7000.0,
             -3900.0
@@ -6583,6 +6952,7 @@
             -231.0,
             -231.0
         ],
+        "molecular_weight": 90.036,
         "name": "oxalic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6599,9 +6969,10 @@
         ]
     },
     "oxaloacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "oxaloacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6618,11 +6989,12 @@
         ]
     },
     "p-aminobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             17447.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 137.14,
         "name": "p-aminobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6636,9 +7008,10 @@
         ]
     },
     "p-bromobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-bromobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6652,9 +7025,10 @@
         ]
     },
     "p-chlorobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-chlorobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6668,9 +7042,10 @@
         ]
     },
     "p-chlorophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-chlorophenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6684,9 +7059,10 @@
         ]
     },
     "p-chlorophenylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-chlorophenylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6700,9 +7076,10 @@
         ]
     },
     "p-cresol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-cresol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6716,9 +7093,10 @@
         ]
     },
     "p-ethoxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-ethoxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6732,9 +7110,10 @@
         ]
     },
     "p-ethylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-ethylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6748,25 +7127,27 @@
         ]
     },
     "p-fluorobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-fluorobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.42e-08
         ],
         "reference_pKa": [
-            4.142
+            4.1419999999999995
         ],
         "valence": [
             -1
         ]
     },
     "p-hydroxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-hydroxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6783,9 +7164,10 @@
         ]
     },
     "p-hydroxycinnamic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-hydroxycinnamic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6799,25 +7181,27 @@
         ]
     },
     "p-hydroxyphenylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-hydroxyphenylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -2.69e-08
         ],
         "reference_pKa": [
-            3.171
+            3.1710000000000003
         ],
         "valence": [
             -1
         ]
     },
     "p-iodobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-iodobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6831,9 +7215,10 @@
         ]
     },
     "p-iodophenylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-iodophenylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6847,9 +7232,10 @@
         ]
     },
     "p-isopropylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-isopropylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6863,9 +7249,10 @@
         ]
     },
     "p-methoxybenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-methoxybenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6879,25 +7266,27 @@
         ]
     },
     "p-methoxyphenylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-methoxyphenylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -2.97e-08
         ],
         "reference_pKa": [
-            4.361
+            4.361000000000001
         ],
         "valence": [
             -1
         ]
     },
     "p-nitrobenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-nitrobenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6911,11 +7300,12 @@
         ]
     },
     "p-nitrophenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             19748.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 139.11,
         "name": "p-nitrophenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6929,9 +7319,10 @@
         ]
     },
     "p-tertbutylbenzoic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-tertbutylbenzoic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6945,9 +7336,10 @@
         ]
     },
     "p-toluenesulfonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-toluenesulfonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6961,9 +7353,10 @@
         ]
     },
     "p-toluic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-toluic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6977,9 +7370,10 @@
         ]
     },
     "p-toluidine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-toluidine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -6993,9 +7387,10 @@
         ]
     },
     "p-tolyltrimethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "p-tolyltrimethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7009,9 +7404,10 @@
         ]
     },
     "pdc": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "pdc",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7028,9 +7424,10 @@
         ]
     },
     "pelargonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "pelargonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7044,9 +7441,10 @@
         ]
     },
     "pentamethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "pentamethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7063,11 +7461,12 @@
         ]
     },
     "perchloric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -7531.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 100.46,
         "name": "perchloric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7081,9 +7480,10 @@
         ]
     },
     "periodic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "periodic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7097,9 +7497,10 @@
         ]
     },
     "permanganic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "permanganic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7113,9 +7514,10 @@
         ]
     },
     "peroxysulfuric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "peroxysulfuric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7132,9 +7534,10 @@
         ]
     },
     "perrhenic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "perrhenic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7148,11 +7551,12 @@
         ]
     },
     "phenol": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             23640.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 94.11,
         "name": "phenol",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7166,25 +7570,27 @@
         ]
     },
     "phenoxyacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "phenoxyacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -2.7800000000000004e-08
         ],
         "reference_pKa": [
-            3.171
+            3.1710000000000003
         ],
         "valence": [
             -1
         ]
     },
     "phenylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "phenylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7198,9 +7604,10 @@
         ]
     },
     "phenylalanine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "phenylalanine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7217,7 +7624,7 @@
         ]
     },
     "phosphoric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             16000.0,
             3600.0,
@@ -7228,6 +7635,7 @@
             -230.0,
             -141.0
         ],
+        "molecular_weight": 98.0,
         "name": "phosphoric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7247,9 +7655,10 @@
         ]
     },
     "phosphorous acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "phosphorous acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7266,7 +7675,7 @@
         ]
     },
     "phthalic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -2170.0,
             -2700.0
@@ -7275,6 +7684,7 @@
             -295.0,
             -91.0
         ],
+        "molecular_weight": 166.13,
         "name": "phthalic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7282,7 +7692,7 @@
             -2.8100000000000003e-08
         ],
         "reference_pKa": [
-            5.408,
+            5.4079999999999995,
             2.95
         ],
         "valence": [
@@ -7291,9 +7701,10 @@
         ]
     },
     "picric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "picric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7307,9 +7718,10 @@
         ]
     },
     "pimelic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "pimelic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7318,7 +7730,7 @@
         ],
         "reference_pKa": [
             5.312,
-            4.509
+            4.5089999999999995
         ],
         "valence": [
             -2,
@@ -7326,9 +7738,10 @@
         ]
     },
     "piperidine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "piperidine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7342,21 +7755,22 @@
         ]
     },
     "potassium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": 56.1056,
         "name": "potassium",
         "nightingale_data": {
             "fit": [
-                -2.1640997834924316e-16,
-                8.809769713554015e-14,
-                -1.3564845120510646e-11,
-                9.30099523366719e-10,
-                -1.920666021293238e-08,
-                -1.0170445806473988e-06,
-                8.01791628564367e-05,
-                -0.004191381829994272,
-                0.7282627896683677
+                -2.164099783480712e-16,
+                8.809769713507903e-14,
+                -1.3564845120435935e-11,
+                9.300995233602943e-10,
+                -1.9206660212618077e-08,
+                -1.0170445806560314e-06,
+                8.017916285655607e-05,
+                -0.004191381829994838,
+                0.7282627896683654
             ],
             "max": 99.1219,
             "min": 0.159
@@ -7372,9 +7786,10 @@
         ]
     },
     "praseodymium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "praseodymium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7394,9 +7809,10 @@
         ]
     },
     "procaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "procaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7410,12 +7826,13 @@
         ]
     },
     "proline": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             43137.0,
             1431.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 115.13,
         "name": "proline",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7432,9 +7849,10 @@
         ]
     },
     "propionic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "propionic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7448,9 +7866,10 @@
         ]
     },
     "propylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "propylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7464,9 +7883,10 @@
         ]
     },
     "propylmalonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "propylmalonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7483,9 +7903,10 @@
         ]
     },
     "propylsulfonic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "propylsulfonic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7499,9 +7920,10 @@
         ]
     },
     "psicaine-neu": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "psicaine-neu",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7515,9 +7937,10 @@
         ]
     },
     "pyrazole-2.3-dicarboxylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "pyrazole-2.3-dicarboxylic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7534,11 +7957,12 @@
         ]
     },
     "pyridine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             20062.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 79.1,
         "name": "pyridine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7552,9 +7976,10 @@
         ]
     },
     "pyruvic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "pyruvic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7568,9 +7993,10 @@
         ]
     },
     "radium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "radium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7587,9 +8013,10 @@
         ]
     },
     "rhodamine 6g": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "rhodamine 6g",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7603,21 +8030,22 @@
         ]
     },
     "rubidium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "rubidium",
         "nightingale_data": {
             "fit": [
-                2.817425916390039e-13,
-                -5.2777020718583336e-11,
-                4.0509053158788574e-09,
-                -1.6600478918157214e-07,
-                3.989137215624388e-06,
-                -5.9586688157420366e-05,
-                0.0006294269381179405,
-                -0.008233000307605381,
-                0.7881903563056731
+                2.817425916255924e-13,
+                -5.2777020716562767e-11,
+                4.050905315754626e-09,
+                -1.6600478917756903e-07,
+                3.989137215552217e-06,
+                -5.958668815670179e-05,
+                0.0006294269381143143,
+                -0.008233000307597872,
+                0.7881903563056698
             ],
             "max": 37.2251,
             "min": 0.1188
@@ -7633,9 +8061,10 @@
         ]
     },
     "saccharin": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "saccharin",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7649,25 +8078,27 @@
         ]
     },
     "salicylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "salicylic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -3.54e-08
         ],
         "reference_pKa": [
-            3.107
+            3.1069999999999998
         ],
         "valence": [
             -1
         ]
     },
     "samarium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "samarium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7687,9 +8118,10 @@
         ]
     },
     "scandium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "scandium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7709,9 +8141,10 @@
         ]
     },
     "sebacic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "sebacic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7728,9 +8161,10 @@
         ]
     },
     "sec-butylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "sec-butylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7744,9 +8178,10 @@
         ]
     },
     "selenic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "selenic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7763,12 +8198,13 @@
         ]
     },
     "selenious acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             11715.0,
             -3096.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 128.97,
         "name": "selenious acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7785,9 +8221,10 @@
         ]
     },
     "selenocyanic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "selenocyanic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7801,12 +8238,13 @@
         ]
     },
     "serine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             43304.0,
             5523.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 105.09,
         "name": "serine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7823,21 +8261,22 @@
         ]
     },
     "silver": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "silver",
         "nightingale_data": {
             "fit": [
-                3.9541153550810977e-16,
-                -1.681500229419623e-13,
-                2.8554880961228385e-11,
-                -2.4463766627318256e-09,
-                1.0930852581875511e-07,
-                -2.4226765198407778e-06,
-                3.746090700932888e-05,
-                -0.002106769968128469,
-                0.5955154793119364
+                3.954115355069657e-16,
+                -1.6815002294144627e-13,
+                2.855488096113234e-11,
+                -2.4463766627223457e-09,
+                1.0930852581822395e-07,
+                -2.4226765198239697e-06,
+                3.746090700904684e-05,
+                -0.0021067699681263795,
+                0.5955154793119307
             ],
             "max": 99.3368,
             "min": 0.0699
@@ -7853,21 +8292,22 @@
         ]
     },
     "sodium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": 39.997,
         "name": "sodium",
         "nightingale_data": {
             "fit": [
-                1.8361801574398507e-15,
-                -7.771957712563575e-13,
-                1.3726743751038493e-10,
-                -1.3134854963823525e-08,
-                7.365899027626493e-07,
-                -2.4384750239282085e-05,
-                0.0004589827773686091,
-                -0.004868805581520387,
-                0.47473431420672396
+                1.836180157438552e-15,
+                -7.771957712559199e-13,
+                1.3726743751032313e-10,
+                -1.3134854963818892e-08,
+                7.365899027624609e-07,
+                -2.4384750239278277e-05,
+                0.0004589827773685711,
+                -0.004868805581519946,
+                0.474734314206711
             ],
             "max": 99.5713,
             "min": 0.1484
@@ -7883,9 +8323,10 @@
         ]
     },
     "sorbic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "sorbic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7899,9 +8340,10 @@
         ]
     },
     "strontium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "strontium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7918,12 +8360,13 @@
         ]
     },
     "suberic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -2678.0,
             -1632.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 174.2,
         "name": "suberic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7932,7 +8375,7 @@
         ],
         "reference_pKa": [
             5.403,
-            4.517
+            4.5169999999999995
         ],
         "valence": [
             -2,
@@ -7940,7 +8383,7 @@
         ]
     },
     "succinic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -500.0,
             3000.0
@@ -7949,6 +8392,7 @@
             -217.0,
             -121.0
         ],
+        "molecular_weight": 118.09,
         "name": "succinic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7965,9 +8409,10 @@
         ]
     },
     "sucrose": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "sucrose",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7981,9 +8426,10 @@
         ]
     },
     "sulfanilic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "sulfanilic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -7997,7 +8443,7 @@
         ]
     },
     "sulfuric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -22400.0,
             0
@@ -8006,21 +8452,22 @@
             -258.0,
             0
         ],
+        "molecular_weight": 98.079,
         "name": "sulfuric acid",
         "nightingale_data": {
             "fit": [
-                -1.9856705841496435e-15,
-                8.022768724907974e-13,
-                -1.327032638845264e-10,
-                1.1539689180941341e-08,
-                -5.609542837799751e-07,
-                1.472073744587279e-05,
-                -0.00016945986953736367,
-                8.525617028954685e-06,
-                0.2738733821547467
+                -1.9856705841329985e-15,
+                8.022768724840743e-13,
+                -1.3270326388340687e-10,
+                1.1539689180842199e-08,
+                -5.609542837749555e-07,
+                1.472073744572793e-05,
+                -0.0001694598695351435,
+                8.525617013795471e-06,
+                0.2738733821547772
             ],
             "max": 99.8824,
-            "min": 0.144
+            "min": 0.14400000000000002
         },
         "reference_mobility": [
             -8.290000000000001e-08,
@@ -8036,7 +8483,7 @@
         ]
     },
     "sulfurous acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -3650.0,
             -17800.0
@@ -8045,6 +8492,7 @@
             -262.0,
             -272.0
         ],
+        "molecular_weight": 82.08,
         "name": "sulfurous acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8052,7 +8500,7 @@
             -5.18e-08
         ],
         "reference_pKa": [
-            6.991,
+            6.9910000000000005,
             1.78
         ],
         "valence": [
@@ -8061,9 +8509,10 @@
         ]
     },
     "sulphamic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "sulphamic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8077,13 +8526,14 @@
         ]
     },
     "taps": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             40400.0
         ],
         "heat_capacity": [
             15.0
         ],
+        "molecular_weight": 243.28,
         "name": "taps",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8097,12 +8547,16 @@
         ]
     },
     "tartaric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
-            992.0,
-            -3180.0
+            930.0,
+            3190.0
         ],
-        "heat_capacity": null,
+        "heat_capacity": [
+            -218.0,
+            -147.0
+        ],
+        "molecular_weight": 150.09,
         "name": "tartaric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8110,7 +8564,7 @@
             -3.26e-08
         ],
         "reference_pKa": [
-            4.366,
+            4.3660000000000005,
             3.036
         ],
         "valence": [
@@ -8119,9 +8573,10 @@
         ]
     },
     "tartronic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tartronic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8138,9 +8593,10 @@
         ]
     },
     "taurine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "taurine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8157,9 +8613,10 @@
         ]
     },
     "terbium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "terbium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8179,9 +8636,10 @@
         ]
     },
     "terephtalic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "terephtalic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8198,9 +8656,10 @@
         ]
     },
     "tert-butylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tert-butylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8214,9 +8673,10 @@
         ]
     },
     "tetracaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tetracaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8230,9 +8690,10 @@
         ]
     },
     "tetraethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tetraethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8246,9 +8707,10 @@
         ]
     },
     "tetramethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tetramethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8262,9 +8724,10 @@
         ]
     },
     "tetramethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tetramethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8273,7 +8736,7 @@
         ],
         "reference_pKa": [
             10.75,
-            9.216
+            9.216000000000001
         ],
         "valence": [
             1,
@@ -8281,9 +8744,10 @@
         ]
     },
     "tetrapropylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tetrapropylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8297,9 +8761,10 @@
         ]
     },
     "thallium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "thallium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8313,25 +8778,27 @@
         ]
     },
     "thioacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "thioacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
             -4.370000000000001e-08
         ],
         "reference_pKa": [
-            3.337
+            3.3369999999999997
         ],
         "valence": [
             -1
         ]
     },
     "thiocyanic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "thiocyanic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8345,9 +8812,10 @@
         ]
     },
     "thiocyanoacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "thiocyanoacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8361,9 +8829,10 @@
         ]
     },
     "thioglycolic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "thioglycolic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8377,9 +8846,10 @@
         ]
     },
     "thiosulfuric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "thiosulfuric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8396,9 +8866,10 @@
         ]
     },
     "threonine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "threonine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8415,9 +8886,10 @@
         ]
     },
     "thulium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "thulium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8437,9 +8909,10 @@
         ]
     },
     "tribromoacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tribromoacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8453,9 +8926,10 @@
         ]
     },
     "tributylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tributylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8469,9 +8943,10 @@
         ]
     },
     "trichloroacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "trichloroacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8485,9 +8960,10 @@
         ]
     },
     "trichloroacrylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "trichloroacrylic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8501,9 +8977,10 @@
         ]
     },
     "trichlorolactic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "trichlorolactic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8517,13 +8994,14 @@
         ]
     },
     "tricine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             31370.0
         ],
         "heat_capacity": [
             -53.0
         ],
+        "molecular_weight": 179.17,
         "name": "tricine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8537,9 +9015,10 @@
         ]
     },
     "tridecamethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tridecamethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8556,13 +9035,14 @@
         ]
     },
     "triethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             43130.0
         ],
         "heat_capacity": [
             151.0
         ],
+        "molecular_weight": 101.19,
         "name": "triethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8576,9 +9056,10 @@
         ]
     },
     "triethylmethylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "triethylmethylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8592,9 +9073,10 @@
         ]
     },
     "triethylphenylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "triethylphenylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8608,9 +9090,10 @@
         ]
     },
     "triethylpropylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "triethylpropylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8624,9 +9107,10 @@
         ]
     },
     "trifluoroacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "trifluoroacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8640,9 +9124,10 @@
         ]
     },
     "triisobutylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "triisobutylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8656,9 +9141,10 @@
         ]
     },
     "trimecaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "trimecaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8672,15 +9158,16 @@
         ]
     },
     "trimetaphosphoric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "trimetaphosphoric acid",
         "nightingale_data": null,
         "reference_mobility": [
             -8.37e-08,
-            -5.58e-8,
-            -2.79e-8
+            -5.5800000000000003e-08,
+            -2.7900000000000002e-08
         ],
         "reference_pKa": [
             2.05,
@@ -8694,11 +9181,12 @@
         ]
     },
     "trimethylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -3029.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 102.132,
         "name": "trimethylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8712,9 +9200,10 @@
         ]
     },
     "trimethylacrylic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "trimethylacrylic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8728,9 +9217,10 @@
         ]
     },
     "trimethylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "trimethylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8744,12 +9234,13 @@
         ]
     },
     "trimethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             58158.0,
             52844.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 74.125,
         "name": "trimethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8766,9 +9257,10 @@
         ]
     },
     "trimethylphenylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "trimethylphenylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8782,9 +9274,10 @@
         ]
     },
     "trimethylpropylammonium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "trimethylpropylammonium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8798,9 +9291,10 @@
         ]
     },
     "trimetylpyruvic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "trimetylpyruvic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8814,11 +9308,12 @@
         ]
     },
     "tripropylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             43932.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 143.27,
         "name": "tripropylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8832,13 +9327,14 @@
         ]
     },
     "tris": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             47450.0
         ],
         "heat_capacity": [
             -59.0
         ],
+        "molecular_weight": 121.14,
         "name": "tris",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8852,9 +9348,10 @@
         ]
     },
     "tropacocaine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tropacocaine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8868,9 +9365,10 @@
         ]
     },
     "tryptophane": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tryptophane",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8887,9 +9385,10 @@
         ]
     },
     "ttaoh": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ttaoh",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8903,9 +9402,10 @@
         ]
     },
     "tyrosine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "tyrosine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8925,9 +9425,10 @@
         ]
     },
     "ump": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ump",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8947,9 +9448,10 @@
         ]
     },
     "undecamethylenediamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "undecamethylenediamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8966,9 +9468,10 @@
         ]
     },
     "undecylamine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "undecylamine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -8982,9 +9485,10 @@
         ]
     },
     "uranyl": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "uranyl(vi)",
         "nightingale_data": null,
         "reference_mobility": [
@@ -9001,11 +9505,12 @@
         ]
     },
     "valeric acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             -2761.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 102.132,
         "name": "valeric acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -9019,12 +9524,13 @@
         ]
     },
     "valine": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             44894.0,
             335.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 117.15,
         "name": "valine",
         "nightingale_data": null,
         "reference_mobility": [
@@ -9041,11 +9547,12 @@
         ]
     },
     "vanillic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": [
             607.0
         ],
         "heat_capacity": null,
+        "molecular_weight": 168.14,
         "name": "vanillic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -9059,9 +9566,10 @@
         ]
     },
     "vinylacetic acid": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "vinylacetic acid",
         "nightingale_data": null,
         "reference_mobility": [
@@ -9075,9 +9583,10 @@
         ]
     },
     "ytterbium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "ytterbium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -9097,9 +9606,10 @@
         ]
     },
     "yttrium": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "yttrium",
         "nightingale_data": null,
         "reference_mobility": [
@@ -9119,9 +9629,10 @@
         ]
     },
     "zinc": {
-        "__ion__": true,
+        "__ion__": "Ion",
         "enthalpy": null,
         "heat_capacity": null,
+        "molecular_weight": null,
         "name": "zinc",
         "nightingale_data": null,
         "reference_mobility": [
