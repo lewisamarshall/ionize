@@ -9,9 +9,10 @@ class IonComplex(BaseIon):
     _members = tuple()
 
     def __init__(self, name, members):
-        assert all(isinstance(content, Ion) for content in contents), \
+        assert all(isinstance(member, BaseIon) for member in members), \
             'All inputs to a complex must be Ions.'
 
+        self._name = name
         self._members = tuple([member for member in members])
 
     def context(self, context=False):
@@ -49,8 +50,13 @@ class IonComplex(BaseIon):
     def molar_conductivity(self, pH, ionic_strength, temperature):
         raise NotImplementedError
 
+    @property
     def molecular_weight(self):
-        return sum([member.molecular_weight() for member in self.members])
+        try:
+            return sum([member.molecular_weight for member in self.members])
+        except TypeError:
+            raise TypeError('Each member must have a numeric molecular '
+                            'weight to compute the complex weight.')
 
     def __getitem__(self, idx):
         return self.members[idx]
