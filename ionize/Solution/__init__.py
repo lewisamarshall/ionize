@@ -71,7 +71,13 @@ class Solution(object):
 
     @property
     def _name_lookup(self):
-        return {ion.name: ion for ion in self.ions}
+        name_lookup = dict()
+        for ion in self.ions:
+            name_lookup[ion.name] = ion
+            if ion.alias is not None:
+                for alias in ion.alias:
+                    name_lookup[alias] = ion
+        return name_lookup
 
     @property
     def ions(self):

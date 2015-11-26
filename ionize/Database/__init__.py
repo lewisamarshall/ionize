@@ -29,12 +29,13 @@ class Database(object):
 
     def load(self, name):
         """Return an ion from the database based on the name."""
-        name = name.lower()
         if name in self.data:
             name = self.data[name].get('alias_of', name)
             data = {key: value for
                     key, value in self.data[name].items() if key != '__ion__'}
             return Ion(**data)
+        elif name.lower() in self.data:
+            return self.load(name.lower())
         else:
             raise NameError('Ion {} not found in database.'.format(name))
 

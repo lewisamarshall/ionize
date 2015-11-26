@@ -90,6 +90,7 @@ class DataCreator(object):
             name = row['name']
             entry = self.data[name.lower()] = {'name': name.lower(),
                                                '__ion__': 'Ion',
+                                               'alias': None
                                                }
 
             # check to see if the ion is in the steep database.
@@ -174,7 +175,8 @@ class DataCreator(object):
                                    'enthalpy': boric['deltaH'].tolist(),
                                    'heat_capacity': boric['deltaCp'].tolist(),
                                    'nightingale_data': None,
-                                   'molecular_weight': None}
+                                   'molecular_weight': None,
+                                   'alias': None}
 
         # Remove valences to fix ion search
         self.data['uranyl'] = self.data.pop('uranyl(vi)')
@@ -203,7 +205,8 @@ class DataCreator(object):
                                    'enthalpy': None,
                                    'heat_capacity': None,
                                    'nightingale_data': None,
-                                   'molecular_weight': 1.}
+                                   'molecular_weight': 1.,
+                                   'alias': None}
         self.data['hydroxide'] = {'name': 'hydroxide',
                                    '__ion__': 'Ion',
                                    'valence': [-1],
@@ -212,11 +215,20 @@ class DataCreator(object):
                                    'enthalpy': None,
                                    'heat_capacity': None,
                                    'nightingale_data': None,
-                                   'molecular_weight': 19.}
+                                   'molecular_weight': 19.,
+                                   'alias': None}
+
 
     def create_aliases(self):
-        for alias, ion in ALIASES.items():
-            self.data[alias] = {'alias_of': ion}
+        for alias, name in ALIASES.items():
+            self.alias(alias, name)
+
+    def alias(self, alias, name):
+        self.data[alias] = {'alias_of': name}
+        if self.data[name]['alias'] is None:
+            self.data[name]['alias'] = [alias]
+        else:
+            self.data[name]['alias'].append(alias)
 
     def write(self):
         path = os.path.join(os.path.dirname(__file__), '..',

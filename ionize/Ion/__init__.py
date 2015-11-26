@@ -24,7 +24,8 @@ class Ion(BaseIon):
               'enthalpy',
               'heat_capacity',
               'nightingale_data',
-              'molecular_weight')
+              'molecular_weight',
+              'alias')
 
     # The reference properties of the ion are stored.
     _valence = None
@@ -37,16 +38,19 @@ class Ion(BaseIon):
     _heat_capacity = None
     _nightingale_data = None
     _molecular_weight = None
+    _alias = None
 
     # Polynomial function is a derived parameter.
     _nightingale_function = None
 
     def __init__(self, name, valence, reference_pKa, reference_mobility,
                  reference_temperature=None, enthalpy=None, heat_capacity=None,
-                 nightingale_data=None, molecular_weight=None):
+                 nightingale_data=None, molecular_weight=None, alias=None):
         """Initialize an Ion object."""
 
         self._name = str(name)
+        if alias is not None:
+            self._alias = tuple(alias)
         self._valence = np.int_(valence)
 
         if len(self.valence) > 1:
