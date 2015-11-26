@@ -7,7 +7,7 @@ import contextlib
 import operator
 import numpy as np
 
-from ..Ion import Ion
+from ..Ion import Ion, BaseIon
 from ..Solvent import Aqueous
 from ..Database import Database
 from ..serialize import _serialize
@@ -96,9 +96,7 @@ class Solution(object):
     def __init__(self, ions=[], concentrations=[], temperature=None):
         """Initialize a solution object."""
 
-        try:
-            len(ions)
-        except:
+        if isinstance(ions, (str, BaseIon)):
             ions = (ions,)
 
         try:
@@ -123,6 +121,10 @@ class Solution(object):
         self._hydroxide = database['hydroxide']
         self._hydronium.context(self)
         self._hydroxide.context(self)
+
+        for solvent_component in self._hydroxide, self._hydronium:
+            assert solvent_component not in self.ions, \
+                "Solvent components cannot be manually added to Solution."
 
         if temperature is not None:
             self.temperature(temperature)
