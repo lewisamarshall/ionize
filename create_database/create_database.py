@@ -34,6 +34,7 @@ class DataCreator(object):
         self.load_nightingale()
         self.create()
         self.patch()
+        self.patch_water()
         self.check()
         self.write()
 
@@ -184,6 +185,27 @@ class DataCreator(object):
                                                tmpa['valence'][0])
 
         tmpa['reference_pKa'][-1] = -1.
+
+    def patch_water(self):
+        del self.data['hydrogen']
+        self.data['hydronium'] = {'name': 'hydronium',
+                                   '__ion__': 'Ion',
+                                   'valence': [1],
+                                   'reference_pKa': [100],
+                                   'reference_mobility': [362e-9],
+                                   'enthalpy': None,
+                                   'heat_capacity': None,
+                                   'nightingale_data': None,
+                                   'molecular_weight': 1.}
+        self.data['hydroxide'] = {'name': 'hydroxide',
+                                   '__ion__': 'Ion',
+                                   'valence': [-1],
+                                   'reference_pKa': [-100],
+                                   'reference_mobility': [-205e-9],
+                                   'enthalpy': None,
+                                   'heat_capacity': None,
+                                   'nightingale_data': None,
+                                   'molecular_weight': 19.}
 
     def create_aliases(self):
         pass

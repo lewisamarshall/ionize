@@ -4974,23 +4974,6 @@
             -1
         ]
     },
-    "hydrogen": {
-        "__ion__": "Ion",
-        "enthalpy": null,
-        "heat_capacity": null,
-        "molecular_weight": null,
-        "name": "hydrogen",
-        "nightingale_data": null,
-        "reference_mobility": [
-            3.625e-07
-        ],
-        "reference_pKa": [
-            14.0
-        ],
-        "valence": [
-            1
-        ]
-    },
     "hydrogen hexafluorophosphide": {
         "__ion__": "Ion",
         "enthalpy": null,
@@ -5039,6 +5022,40 @@
         ],
         "reference_pKa": [
             -2.0
+        ],
+        "valence": [
+            -1
+        ]
+    },
+    "hydronium": {
+        "__ion__": "Ion",
+        "enthalpy": null,
+        "heat_capacity": null,
+        "molecular_weight": 1.0,
+        "name": "hydronium",
+        "nightingale_data": null,
+        "reference_mobility": [
+            3.62e-07
+        ],
+        "reference_pKa": [
+            100
+        ],
+        "valence": [
+            1
+        ]
+    },
+    "hydroxide": {
+        "__ion__": "Ion",
+        "enthalpy": null,
+        "heat_capacity": null,
+        "molecular_weight": 19.0,
+        "name": "hydroxide",
+        "nightingale_data": null,
+        "reference_mobility": [
+            -2.05e-07
+        ],
+        "reference_pKa": [
+            -100
         ],
         "valence": [
             -1

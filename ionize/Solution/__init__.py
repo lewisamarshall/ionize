@@ -119,9 +119,8 @@ class Solution(object):
             assert concentration >= 0, 'Concentrations must be positive.'
             self._contents[ion] = concentration
 
-        # TODO: move these into database.
-        self._hydronium = Ion('H+', [1], [100], [362E-9])
-        self._hydroxide = Ion('OH-', [-1], [-100], [-205E-9])
+        self._hydronium = database['hydronium']
+        self._hydroxide = database['hydroxide']
         self._hydronium.context(self)
         self._hydroxide.context(self)
 
