@@ -7,6 +7,8 @@ from copy import deepcopy
 
 from ..Ion import Ion
 from ..Database import Database
+from ..constants import atmospheric_CO2
+
 
 database = Database()
 
@@ -71,8 +73,6 @@ def equilibrate_CO2(self):
     """Titrates the CO2 in solution to equilibrium with earth's atmosphere."""
     CO2 = database['carbonic acid']
     CO2.context(self)
-    # TODO: move to constants
-    atmospheric_CO2 = 0.0004
     eq = atmospheric_CO2 * self._solvent.henry_CO2(self.temperature())
 
     def min_func(concentration):

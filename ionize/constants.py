@@ -37,6 +37,10 @@ faraday = elementary_charge * avogadro  # Faraday's const.[C/mol]
 reference_temperature = 25.      # Reference temperature (Celsius)
 kelvin_conversion = 273.15
 
+# Environmental Information
+atmospheric_CO2 = 0.0004        # Atmospheric CO2, in bar.
+
+
 # Correction constants
 pitts = 1.5                     # Finite ion radius correction. [(mol/L)**.5]
 onsager_fuoss = np.array((0.2929, -0.3536, 0.0884, -0.0442, 0.0276, -0.0193))
