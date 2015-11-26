@@ -1490,6 +1490,12 @@
             -1
         ]
     },
+    "H+": {
+        "alias_of": "hydronium"
+    },
+    "OH-": {
+        "alias_of": "hydronium"
+    },
     "acetic acid": {
         "__ion__": "Ion",
         "enthalpy": [
@@ -2811,6 +2817,9 @@
         "valence": [
             -1
         ]
+    },
+    "chloride": {
+        "alias_of": "hydrochloric acid"
     },
     "chloroacetic acid": {
         "__ion__": "Ion",
@@ -5493,21 +5502,7 @@
         ]
     },
     "laurylsulfonic acid": {
-        "__ion__": "Ion",
-        "enthalpy": null,
-        "heat_capacity": null,
-        "molecular_weight": null,
-        "name": "laurylsulfonic acid",
-        "nightingale_data": null,
-        "reference_mobility": [
-            -2.29e-08
-        ],
-        "reference_pKa": [
-            1.0
-        ],
-        "valence": [
-            -1
-        ]
+        "alias_of": "dodecylsulfonic acid"
     },
     "lead": {
         "__ion__": "Ion",
@@ -7935,6 +7930,9 @@
         "valence": [
             -1
         ]
+    },
+    "proton": {
+        "alias_of": "hydrochloric acid"
     },
     "psicaine-neu": {
         "__ion__": "Ion",

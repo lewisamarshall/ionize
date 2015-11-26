@@ -7,7 +7,10 @@ import numpy as np
 import pandas as pd
 
 ALIASES = {'chloride': 'hydrochloric acid',
-           'dodecylsulfonic acid': 'laurylsulfonic acid'
+           'laurylsulfonic acid': 'dodecylsulfonic acid',
+           'proton': 'hydrochloric acid',
+           'H+': 'hydronium',
+           'OH-': 'hydronium',
            }
 
 NIGHTINGALE_FILES = {'silver': 'silver',
@@ -35,6 +38,7 @@ class DataCreator(object):
         self.create()
         self.patch()
         self.patch_water()
+        self.create_aliases()
         self.check()
         self.write()
 
@@ -186,6 +190,9 @@ class DataCreator(object):
 
         tmpa['reference_pKa'][-1] = -1.
 
+        # Remove Laurylsulfonic acid in  favor of alias
+        del self.data['laurylsulfonic acid']
+
     def patch_water(self):
         del self.data['hydrogen']
         self.data['hydronium'] = {'name': 'hydronium',
@@ -208,7 +215,8 @@ class DataCreator(object):
                                    'molecular_weight': 19.}
 
     def create_aliases(self):
-        pass
+        for alias, ion in ALIASES.items():
+            self.data[alias] = {'alias_of': ion}
 
     def write(self):
         path = os.path.join(os.path.dirname(__file__), '..',

@@ -31,6 +31,7 @@ class Database(object):
         """Return an ion from the database based on the name."""
         name = name.lower()
         if name in self.data:
+            name = self.data[name].get('alias_of', name)
             data = {key: value for
                     key, value in self.data[name].items() if key != '__ion__'}
             return Ion(**data)
