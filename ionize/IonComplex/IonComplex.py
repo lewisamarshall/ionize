@@ -14,9 +14,27 @@ class IonComplex(BaseIon):
 
         self._members = tuple([member for member in members])
 
-    def context(self, context):
+    def context(self, context=False):
+        """Control the context of the ion.
+
+        Complex contexts works by setting the context of the members of the
+        complex. The Complex has on context of its own.
+        """
+        old_context = [member.context() for member in self.members]
+
+        if context is False:
+            return tuple(old_context)
+
+        # Update to new context, save old_context
         [member.context(context) for member in self.members]
-        self._context = context
+
+        # Return a context manager to revert to old_context
+        @contextlib.contextmanager
+        def manager():
+            yield
+            [member.context(context)
+             for member, old in zip(self.members, old_context)]
+        return manager()
 
     def charge(self, pH, ionic_strength, temperature):
         return sum([member.charge(pH, ionic_strength, temperature) for
