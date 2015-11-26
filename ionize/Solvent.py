@@ -108,7 +108,7 @@ class Solvent(object):
              (1. + pitts * sqrt(ionic_strength))
              )
         # TODO: check if this is right
-        B = 0.1*ionic_strength  # Matching STEEP implementation.
+        B = 0.1 * ionic_strength  # Matching STEEP implementation.
 
         # Use them to calculate the activity coefficients.
         gamma = 10**((valence**2)*(B-A))
