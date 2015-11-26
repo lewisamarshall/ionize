@@ -340,7 +340,8 @@ class TestPeptide(unittest.TestCase):
 class TestProtein(unittest.TestCase):
     def test_download(self):
         for name in ['2AVI', '3V03']:
-            Protein(name)
+            p = Protein(name)
+            p.molecular_weight
 
     def test_membership(self):
         for peptide in Protein('2AVI'):
