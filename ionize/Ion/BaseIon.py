@@ -70,7 +70,6 @@ class BaseIon(object):
 
         return _serialize(serial, nested, compact)
 
-    # TODO: figure out why this dumps text
     def save(self, filename):
         """Save a serialized Ion to a file."""
         with open(filename, 'w') as file:

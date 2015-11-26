@@ -122,8 +122,6 @@ class Solution(object):
         # TODO: move these into database.
         self._hydronium = Ion('H+', [1], [100], [362E-9])
         self._hydroxide = Ion('OH-', [-1], [-100], [-205E-9])
-        self._hydronium = copy.copy(self._hydronium)
-        self._hydroxide = copy.copy(self._hydroxide)
         self._hydronium.context(self)
         self._hydroxide.context(self)
 
@@ -261,7 +259,6 @@ class Solution(object):
         serial['ions'] = self.ions
         return _serialize(serial, nested, compact)
 
-    # TODO: Figure out why this dumps text.
     def save(self, filename):
         """Save the solution to file."""
         with open(filename, 'w') as file:
