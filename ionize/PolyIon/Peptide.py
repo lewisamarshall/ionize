@@ -23,7 +23,7 @@ class Peptide(PolyIon):
     _sequence = None
     _analysis = None
 
-    # TODO: move h to function or constants
+    # TODO: move h to function or constants. Unify with pitts?
     _h_max = 1
     _h_min = 2./3.
     _h = 5./6.

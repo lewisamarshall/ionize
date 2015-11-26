@@ -38,7 +38,6 @@ def molar_conductivity(self, pH=None, ionic_strength=None, temperature=None):
     return m_conductivity
 
 
-# TODO: Use charge and mobility to simplify math
 def diffusivity(self, pH=None, ionic_strength=None, temperature=None):
     """Return the diffusivity of the species at a specified pH and temperature.
 

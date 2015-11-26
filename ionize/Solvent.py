@@ -107,7 +107,7 @@ class Solvent(object):
         A = (self.debye_huckel(temperature) * sqrt(ionic_strength) /
              (1. + pitts * sqrt(ionic_strength))
              )
-        # TODO: check if this is right
+        # TODO: Unify with Onsager-Fuoss
         B = 0.1 * ionic_strength  # Matching STEEP implementation.
 
         # Use them to calculate the activity coefficients.
