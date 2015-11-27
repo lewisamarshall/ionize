@@ -334,7 +334,7 @@ class TestPeptide(unittest.TestCase):
                                'LEKSHCIAEVEKDAIPENLPPLTADFAEDKDVCKNYQE')
         avi.radius()
         avi.volume()
-        avi.molecular_weight()
+        avi.molecular_weight
 
 
 class TestProtein(unittest.TestCase):

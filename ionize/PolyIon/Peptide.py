@@ -33,6 +33,7 @@ class Peptide(PolyIon):
         self._sequence = sequence
         self._analysis = ProteinAnalysis(str(self.sequence))
 
+    @property
     def molecular_weight(self):
         return SeqUtils.molecular_weight(self.sequence, 'protein')
 
@@ -64,14 +65,14 @@ class Peptide(PolyIon):
         return self._analysis.isoelectric_point()
 
     def volume(self):
-        v = self.molecular_weight() / avogadro / self.density() / lpm3 / gpkg
+        v = self.molecular_weight / avogadro / self.density() / lpm3 / gpkg
         return v
 
     def radius(self):
         return (self.volume() * 3. / 4. / pi) ** (1. / 3.)
 
     def density(self):
-        return 1.410 + 0.145 * exp(-self.molecular_weight() / 13.)
+        return 1.410 + 0.145 * exp(-self.molecular_weight / 13.)
 
     def mobility(self, pH=None, ionic_strength=None, temperature=None):
         pH, ionic_strength, temperature = \
