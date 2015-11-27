@@ -1623,6 +1623,36 @@
             -1
         ]
     },
+    "adenosine diphosphate": {
+        "__ion__": "Ion",
+        "alias": [
+            "adp"
+        ],
+        "enthalpy": [
+            -5439.0,
+            17154.0,
+            0
+        ],
+        "heat_capacity": null,
+        "molecular_weight": 427.20099999999996,
+        "name": "adp",
+        "nightingale_data": null,
+        "reference_mobility": [
+            -5.3700000000000004e-08,
+            -3.6700000000000004e-08,
+            -1.92e-08
+        ],
+        "reference_pKa": [
+            7.056,
+            4.101,
+            0.0
+        ],
+        "valence": [
+            -3,
+            -2,
+            -1
+        ]
+    },
     "adipic acid": {
         "__ion__": "Ion",
         "alias": null,
@@ -1648,32 +1678,7 @@
         ]
     },
     "adp": {
-        "__ion__": "Ion",
-        "alias": null,
-        "enthalpy": [
-            -5439.0,
-            17154.0,
-            0
-        ],
-        "heat_capacity": null,
-        "molecular_weight": 427.20099999999996,
-        "name": "adp",
-        "nightingale_data": null,
-        "reference_mobility": [
-            -5.3700000000000004e-08,
-            -3.6700000000000004e-08,
-            -1.92e-08
-        ],
-        "reference_pKa": [
-            7.056,
-            4.101,
-            0.0
-        ],
-        "valence": [
-            -3,
-            -2,
-            -1
-        ]
+        "alias_of": "adenosine diphosphate"
     },
     "alanine": {
         "__ion__": "Ion",
@@ -2851,28 +2856,7 @@
         ]
     },
     "cdp": {
-        "__ion__": "Ion",
-        "alias": null,
-        "enthalpy": null,
-        "heat_capacity": null,
-        "molecular_weight": null,
-        "name": "cdp",
-        "nightingale_data": null,
-        "reference_mobility": [
-            -5.7300000000000004e-08,
-            -4e-08,
-            -1.9500000000000003e-08
-        ],
-        "reference_pKa": [
-            7.349,
-            4.782,
-            0.0
-        ],
-        "valence": [
-            -3,
-            -2,
-            -1
-        ]
+        "alias_of": "cytidine diphosphate"
     },
     "cerium": {
         "__ion__": "Ion",
@@ -3200,25 +3184,7 @@
         ]
     },
     "cmp": {
-        "__ion__": "Ion",
-        "alias": null,
-        "enthalpy": null,
-        "heat_capacity": null,
-        "molecular_weight": null,
-        "name": "cmp",
-        "nightingale_data": null,
-        "reference_mobility": [
-            -4.0600000000000006e-08,
-            -2.37e-08
-        ],
-        "reference_pKa": [
-            6.705,
-            4.468
-        ],
-        "valence": [
-            -2,
-            -1
-        ]
+        "alias_of": "cytidine monophosphate"
     },
     "cobalt": {
         "__ion__": "Ion",
@@ -3445,6 +3411,55 @@
             2
         ]
     },
+    "cytidine diphosphate": {
+        "__ion__": "Ion",
+        "alias": [
+            "cdp"
+        ],
+        "enthalpy": null,
+        "heat_capacity": null,
+        "molecular_weight": null,
+        "name": "cdp",
+        "nightingale_data": null,
+        "reference_mobility": [
+            -5.7300000000000004e-08,
+            -4e-08,
+            -1.9500000000000003e-08
+        ],
+        "reference_pKa": [
+            7.349,
+            4.782,
+            0.0
+        ],
+        "valence": [
+            -3,
+            -2,
+            -1
+        ]
+    },
+    "cytidine monophosphate": {
+        "__ion__": "Ion",
+        "alias": [
+            "cmp"
+        ],
+        "enthalpy": null,
+        "heat_capacity": null,
+        "molecular_weight": null,
+        "name": "cmp",
+        "nightingale_data": null,
+        "reference_mobility": [
+            -4.0600000000000006e-08,
+            -2.37e-08
+        ],
+        "reference_pKa": [
+            6.705,
+            4.468
+        ],
+        "valence": [
+            -2,
+            -1
+        ]
+    },
     "decamethylenediamine": {
         "__ion__": "Ion",
         "alias": null,
@@ -3503,28 +3518,7 @@
         ]
     },
     "deta": {
-        "__ion__": "Ion",
-        "alias": null,
-        "enthalpy": null,
-        "heat_capacity": null,
-        "molecular_weight": null,
-        "name": "deta",
-        "nightingale_data": null,
-        "reference_mobility": [
-            2.5000000000000002e-08,
-            5.86e-08,
-            7e-08
-        ],
-        "reference_pKa": [
-            10.28,
-            9.11,
-            4.36
-        ],
-        "valence": [
-            1,
-            2,
-            3
-        ]
+        "alias_of": "diethylenetriamine"
     },
     "diamylamine": {
         "__ion__": "Ion",
@@ -3670,6 +3664,29 @@
             -1
         ]
     },
+    "dichromate": {
+        "__ion__": "Ion",
+        "alias": [
+            "pdc"
+        ],
+        "enthalpy": null,
+        "heat_capacity": null,
+        "molecular_weight": null,
+        "name": "pdc",
+        "nightingale_data": null,
+        "reference_mobility": [
+            -5.0000000000000004e-08,
+            -3.5e-08
+        ],
+        "reference_pKa": [
+            6.92,
+            2.16
+        ],
+        "valence": [
+            -2,
+            -1
+        ]
+    },
     "dichromic acid": {
         "__ion__": "Ion",
         "alias": null,
@@ -3747,6 +3764,32 @@
         ],
         "valence": [
             1
+        ]
+    },
+    "diethylenetriamine": {
+        "__ion__": "Ion",
+        "alias": [
+            "deta"
+        ],
+        "enthalpy": null,
+        "heat_capacity": null,
+        "molecular_weight": null,
+        "name": "deta",
+        "nightingale_data": null,
+        "reference_mobility": [
+            2.5000000000000002e-08,
+            5.86e-08,
+            7e-08
+        ],
+        "reference_pKa": [
+            10.28,
+            9.11,
+            4.36
+        ],
+        "valence": [
+            1,
+            2,
+            3
         ]
     },
     "diethylmalonic acid": {
@@ -4628,22 +4671,7 @@
         ]
     },
     "gaba": {
-        "__ion__": "Ion",
-        "alias": null,
-        "enthalpy": null,
-        "heat_capacity": null,
-        "molecular_weight": null,
-        "name": "gaba",
-        "nightingale_data": null,
-        "reference_mobility": [
-            -3.0000000000000004e-08
-        ],
-        "reference_pKa": [
-            4.02
-        ],
-        "valence": [
-            -1
-        ]
+        "alias_of": "gamma-aminobutyric acid"
     },
     "gadolinium": {
         "__ion__": "Ion",
@@ -4684,6 +4712,26 @@
         ],
         "reference_pKa": [
             4.468999999999999
+        ],
+        "valence": [
+            -1
+        ]
+    },
+    "gamma-aminobutyric acid": {
+        "__ion__": "Ion",
+        "alias": [
+            "gaba"
+        ],
+        "enthalpy": null,
+        "heat_capacity": null,
+        "molecular_weight": null,
+        "name": "gaba",
+        "nightingale_data": null,
+        "reference_mobility": [
+            -3.0000000000000004e-08
+        ],
+        "reference_pKa": [
+            4.02
         ],
         "valence": [
             -1
@@ -4926,8 +4974,13 @@
         ]
     },
     "gmp": {
+        "alias_of": "guanosine monophosphate"
+    },
+    "guanosine monophosphate": {
         "__ion__": "Ion",
-        "alias": null,
+        "alias": [
+            "gmp"
+        ],
         "enthalpy": null,
         "heat_capacity": null,
         "molecular_weight": null,
@@ -5183,8 +5236,8 @@
     "hydrochloric acid": {
         "__ion__": "Ion",
         "alias": [
-            "proton",
-            "chloride"
+            "chloride",
+            "proton"
         ],
         "enthalpy": [
             55815.0
@@ -5312,8 +5365,8 @@
     "hydronium": {
         "__ion__": "Ion",
         "alias": [
-            "H+",
-            "OH-"
+            "OH-",
+            "H+"
         ],
         "enthalpy": null,
         "heat_capacity": null,
@@ -5452,8 +5505,13 @@
         ]
     },
     "imp": {
+        "alias_of": "inosine monophosphate"
+    },
+    "inosine monophosphate": {
         "__ion__": "Ion",
-        "alias": null,
+        "alias": [
+            "imp"
+        ],
         "enthalpy": null,
         "heat_capacity": null,
         "molecular_weight": null,
@@ -7819,25 +7877,7 @@
         ]
     },
     "pdc": {
-        "__ion__": "Ion",
-        "alias": null,
-        "enthalpy": null,
-        "heat_capacity": null,
-        "molecular_weight": null,
-        "name": "pdc",
-        "nightingale_data": null,
-        "reference_mobility": [
-            -5.0000000000000004e-08,
-            -3.5e-08
-        ],
-        "reference_pKa": [
-            6.92,
-            2.16
-        ],
-        "valence": [
-            -2,
-            -1
-        ]
+        "alias_of": "dichromate"
     },
     "pelargonic acid": {
         "__ion__": "Ion",
@@ -9945,28 +9985,7 @@
         ]
     },
     "ump": {
-        "__ion__": "Ion",
-        "alias": null,
-        "enthalpy": null,
-        "heat_capacity": null,
-        "molecular_weight": null,
-        "name": "ump",
-        "nightingale_data": null,
-        "reference_mobility": [
-            -5.6000000000000005e-08,
-            -3.9700000000000005e-08,
-            -2.34e-08
-        ],
-        "reference_pKa": [
-            9.5,
-            6.529,
-            2.499
-        ],
-        "valence": [
-            -3,
-            -2,
-            -1
-        ]
+        "alias_of": "uridine monophosphate"
     },
     "undecamethylenediamine": {
         "__ion__": "Ion",
@@ -10026,6 +10045,32 @@
         "valence": [
             1,
             2
+        ]
+    },
+    "uridine monophosphate": {
+        "__ion__": "Ion",
+        "alias": [
+            "ump"
+        ],
+        "enthalpy": null,
+        "heat_capacity": null,
+        "molecular_weight": null,
+        "name": "ump",
+        "nightingale_data": null,
+        "reference_mobility": [
+            -5.6000000000000005e-08,
+            -3.9700000000000005e-08,
+            -2.34e-08
+        ],
+        "reference_pKa": [
+            9.5,
+            6.529,
+            2.499
+        ],
+        "valence": [
+            -3,
+            -2,
+            -1
         ]
     },
     "valeric acid": {

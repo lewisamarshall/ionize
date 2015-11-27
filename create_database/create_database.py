@@ -38,6 +38,7 @@ class DataCreator(object):
         self.create()
         self.patch()
         self.patch_water()
+        self.patch_abbreviations()
         self.create_aliases()
         self.check()
         self.write()
@@ -218,6 +219,20 @@ class DataCreator(object):
                                    'molecular_weight': 19.,
                                    'alias': None}
 
+    def patch_abbreviations(self):
+        abbreviations = {'adp': 'adenosine diphosphate',
+                         'cdp': 'cytidine diphosphate',
+                         'cmp': 'cytidine monophosphate',
+                         'deta': 'diethylenetriamine',
+                         'gaba': 'gamma-aminobutyric acid',
+                         'gmp': 'guanosine monophosphate',
+                         'imp': 'inosine monophosphate',
+                         'pdc': 'dichromate',
+                         'ump': 'uridine monophosphate'}
+
+        for abbr, name in abbreviations.items():
+            self.data[name] = self.data.pop(abbr)
+            self.alias(abbr, name)
 
     def create_aliases(self):
         for alias, name in ALIASES.items():
