@@ -13,6 +13,7 @@ from ..constants import atmospheric_CO2
 database = Database()
 
 
+# TODO: Decide on a chaining api or a modifying api.
 def buffering_capacity(self):
     """Return the buffering capacity of the solution.
 
@@ -91,13 +92,15 @@ def equilibrate_CO2(self):
         raise RuntimeError('Solver did not converge')
 
 
-def displace(self, receding, advancing):
+def displace(self, receding, advancing=None):
     """Electrophoretically displace an ion."""
     # Convert ion names to ions
     if isinstance(advancing, str):
         advancing = database[advancing]
     if isinstance(receding, str):
         receding = database[receding]
+
+    receding.context(self)
 
     # Check that displacement is possible.
     assert advancing not in self, \
@@ -107,36 +110,44 @@ def displace(self, receding, advancing):
 
     # Make a new solution to perform optimization.
     new_solution = deepcopy(self)
-    new_solution._contents[advancing] = \
+    if advancing is not None:
+        new_solution._contents[advancing] = \
+            new_solution._contents.pop(receding)
+        advancing.context(new_solution)
+    else:
         new_solution._contents.pop(receding)
 
-    # Give the advancing and receding ions the right context.
-    advancing.context(new_solution), receding.context(self)
     new_solution._equilibrate()
 
     def min_func(concentrations):
         for ion, concentration in zip(new_solution.ions,
                                       concentrations):
-            new_solution._contents[ion] = concentration
+            new_solution._contents[ion] = abs(concentration)
         new_solution._equilibrate()
 
-        field_ratio = receding.mobility()/advancing.mobility()
+        field_ratio = self.conductivity() / new_solution.conductivity()
+        reference = receding.mobility()
 
-        delta = [new_solution.concentration(ion) -
-                 self.concentration(ion) / field_ratio *
-                 (self[ion].mobility() - receding.mobility()) /
-                 (new_solution[ion].mobility() - advancing.mobility())
-                 for ion in new_solution.ions if ion is not advancing]
+        err = []
+        for ion in new_solution.ions:
+            if ion is advancing:
+                err.append(ion.mobility() * field_ratio - reference)
+            else:
+                err.append(new_solution.concentration(ion) -
+                           self.concentration(ion) *
+                           (self[ion].mobility() - reference) /
+                           (field_ratio * ion.mobility() - reference))
 
-        delta.append(field_ratio -
-                     self.conductivity() / new_solution.conductivity())
+        return np.array(err)
 
-        return np.array(delta)
-
-    sol = root(min_func, new_solution.concentrations)
+    try:
+        sol = root(min_func, new_solution.concentrations)
+    except Exception as e:
+        msg = 'Solver failed on iteration. \nSolution: {}\nError: {}'
+        raise RuntimeError(msg.format(repr(new_solution), e))
 
     if sol['success']:
         return new_solution
     else:
-        msg = 'Solver failed to converge. {}'.format(sol['message'])
-        raise RuntimeError(msg)
+        msg = 'Solver failed to converge. \nSolution: {}\nError: {}'
+        raise RuntimeError(msg.format(repr(new_solution), sol['message']))
