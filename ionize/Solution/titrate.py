@@ -69,12 +69,14 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
     else:
         raise RuntimeError('Solver did not converge.')
 
-
-def equilibrate_CO2(self):
-    """Titrates the CO2 in solution to equilibrium with earth's atmosphere."""
+# TODO: Make this return a new solution.
+def equilibrate_CO2(self, partial_pressure=atmospheric_CO2):
+    """Titrates the CO2 in solution to equilibrium with the atmosphere.
+    :param partial_pressure: The partial pressure of CO2 in the atmosphere,
+    in bar. Defaults to the typical value of Earth's atmosphere."""
     CO2 = database['carbonic acid']
     CO2.context(self)
-    eq = atmospheric_CO2 * self._solvent.henry_CO2(self.temperature())
+    eq = partial_pressure * self._solvent.henry_CO2(self.temperature())
 
     def min_func(concentration):
         self._contents[CO2] = concentration

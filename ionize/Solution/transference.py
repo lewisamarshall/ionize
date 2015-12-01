@@ -8,8 +8,8 @@ database = Database()
 def transference(self, ion):
     """Return the fraction of charge carried by each of the ions as a list.
 
-    Should not precisely add to 1, because some charge is carried by protons
-    and hydroxyls.
+    Should not precisely add to 1, because some charge is carried by
+    dissociated water.
     """
     if ion in self:
         if isinstance(ion, str):
@@ -22,7 +22,7 @@ def transference(self, ion):
 
 
 def zone_transfer(self, ion):
-    """Return the zone transfer charge of the solution per liter."""
+    """Return the zone transfer ion in the solution, in Coulombs/liter."""
     if isinstance(ion, str):
         ion = database[ion]
 

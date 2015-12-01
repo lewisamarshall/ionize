@@ -13,7 +13,7 @@ class Solvent(object):
     heat_capacity = None
 
     def __new__(cls, *args, **kwargs):
-        raise TypeError('Solvents may not be intantiated.')
+        raise TypeError('Solvents may not be instantiated.')
 
     @classmethod
     def reference_pKs(self):

@@ -19,48 +19,37 @@ database = Database()
 
 class Solution(object):
 
-    """Describe an aqueous solution.
+    """Represent an aqueous Solution.
 
-    Args:
-        ions (list): A list of valence states for the ion, as integers.
+    Solutions automatically compute their equilibrium state, and store it
+    as pH and ionic_strength.
 
-        concentrations (list): The pKa of each valence at the refernce
-        temperature, as floats.
+    :param ions: An iterable of ion objects, or strings. Each string is
+    converted to an ion object using the ionize database. If ion objects are
+    used, new copies are stored inside the Solution. Each ion inside the
+    Solution has the Solution as their context by default. However, the
+    original version of the ion retains its original context.
 
-        T (float): The temperature to use to calculate the properties of the
-        ions, in degrees C.
-
-    Attributes:
-        ions (list): A list of valence states for the ion, as integers.
-
-        concentrations (list): The pKa of each valence at the reference
-        temperature, as floats.
-
-        T (float): The temperature to use to calculate the properties of the
-        ions, in degrees C.
-
-    Raises:
-        None
+    :param concentrations: An iterable of concentrations, in moles per liter.
 
     Example:
-        To to initialize an Soltuion, call as:
-
-        >>> ionize.Solution([ion1, ion2], [c1, c2], T=30)
-
-        When a new Solution is initialized, it will immediately calculate the
-        equilibrium state, including the pH and the ionic strength (I) of the
-        solution. These values willl be stored as permenant attributes of the
-        object. Other solution properties can be calculated by invoking the
-        appropriate method.
+        sol = ionize.Solution(['chloride', 'tris'], [0.02, 0.05])
+        sol.pH, sol.ionic_strength
+        'tris' in sol  # True
+        sol.concentration('chloride') # 0.02
+        with sol.temperature(35):
+            sol.conductivity()
+        sol.serialize()
+        sol['tris']  # Ion('tris')
     """
 
     _solvent = Aqueous
+    # TODO: Create a _solvent_components member.
     _hydronium = None
     _hydroxide = None
 
     _pH = 7.                # Normal pH units.
     _ionic_strength = 0.    # Expected in molar.
-    _interaction_matrix = None
     _temperature = reference_temperature  # Temperature in C
 
     # Ions and concentrations fully represent state.
@@ -99,7 +88,7 @@ class Solution(object):
         """The ionic strength of the solution."""
         return self._ionic_strength
 
-    def __init__(self, ions=[], concentrations=[], temperature=None):
+    def __init__(self, ions=[], concentrations=[]):
         """Initialize a solution object."""
 
         if isinstance(ions, (str, BaseIon)):
@@ -132,18 +121,14 @@ class Solution(object):
             assert solvent_component not in self.ions, \
                 "Solvent components cannot be manually added to Solution."
 
-        if temperature is not None:
-            self.temperature(temperature)
         self._equilibrate()
 
     def temperature(self, temperature=None):
         """Set or get the temperature of the solution.
 
-        If no argument is supplied, returns the current temperature of the
-        solution.
-
-        If a numerical temperature is supplied, returns a context manager that
-        reverts to the original temperature.
+        :param temperature: The new temperature. If temperature is None, return
+        the current temperature. Otherwise, sets the temperature and returns
+        a context manager that reverts to the original temperature.
         """
         if temperature is None:
             return self._temperature
@@ -152,12 +137,13 @@ class Solution(object):
             if temperature != old_temperature:
                 self._temperature = float(temperature)
                 self._equilibrate()
-        return self._manage_temperature(old_temperature)
 
-    @contextlib.contextmanager
-    def _manage_temperature(self, old_temperature):
-        yield
-        self.temperature(old_temperature)
+            @contextlib.contextmanager
+            def manage_temperature():
+                yield
+                self.temperature(old_temperature)
+
+            return manage_temperature()
 
     def _cH(self):
         """Return the concentration of protons in solution."""
@@ -175,9 +161,9 @@ class Solution(object):
         return cOH
 
     def concentration(self, ion):
-        """Return the concentration of the input ion.
+        """Return the concentration of the ion.
 
-        The input may be an Ion or an ion name as a string.
+        The input may be an ion object or an ion name as a string.
         """
         if ion in ('H+', self._hydronium):
             return self._cH()
@@ -188,29 +174,21 @@ class Solution(object):
             return self._contents.get(ion, 0)
 
     def __add__(self, other):
-        new_i = list(self.ions)
-        new_c = self.concentrations.tolist()
         if isinstance(other, Solution):
-            for ion, c in zip(other.ions, other.concentrations):
-                if ion in self.ions:
-                    new_c[self.ions.index(ion)] += c
-                else:
-                    new_i.append(ion)
-                    new_c.append(c)
-            return Solution(new_i, new_c)
-        elif isinstance(other, (list, tuple)) and\
-                len(other) == 2 and\
-                isinstance(other[0], Ion) and\
-                isinstance(other[1], (int, float)):
-            ion, c = other
-            if ion in self.ions:
-                new_c[self.ions.index(ion)] += c
-            else:
-                new_i.append(ion)
-                new_c.append(c)
-            return Solution(new_i, new_c)
+            ions = list(set(self.ions, other.ions))
+            return Solution(ions, [self.concentration(ion) +
+                                   other.concentration(ion)
+                                   for ion in ions]
+                            )
         else:
-            raise TypeError
+            try:
+                ion, concentration = other
+                new_contents = dict(self._contents)
+                new_contents[ion] = self.concentration(ion) + concentration
+                return Solution(new_contents.keys(), new_contents.values())
+            except:
+                raise TypeError('Solutions add to other Solutions or to an'
+                                 '(Ion, concentration) iterable pair.')
 
     __radd__ = __add__
 
@@ -230,10 +208,9 @@ class Solution(object):
 
     def __repr__(self):
         """Return a representation of the Solution."""
-        template = "Solution(ions={}, concentrations={}, temperature={})"
+        template = "Solution(ions={}, concentrations={})"
         return template.format([ion.name for ion in self.ions],
-                               self.concentrations.tolist(),
-                               self.temperature())
+                               self.concentrations.tolist())
 
     def __len__(self):
         return len(self.ions)

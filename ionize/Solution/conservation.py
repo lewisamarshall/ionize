@@ -8,7 +8,8 @@ def kohlrausch(self):
     """Return the Kohlrausch regulating function (KRF) value of a solution.
 
     The Kohlrausch regulating function is only valid if ions are near full
-    ionization. This function will deliver a warning where this is not the case.
+    ionization. This function will deliver a warning where this is not the
+    case.
     """
     KRF = 0
 
@@ -70,6 +71,7 @@ def jovin(self):
 
 def gas(self):
     """Return the Gas conservation function value of the solution."""
+    # TODO: Only return the valid version of the gas conservation function.
     alberty = self.alberty()
     jovin = self.jovin()
     gas = [alberty - jovin / self._hydronium.mobility(self.pH),
