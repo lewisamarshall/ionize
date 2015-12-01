@@ -14,7 +14,48 @@ from .fixed_state import fixed_state
 @fixed_state
 class Ion(BaseIon):
 
-    """Describe an ion dissolved in aqueous solution."""
+    """An Ion describes a charged species in solution.
+
+    Ion is the most commonly used subclass of BaseIon. It is used to represent
+    small ions that have a set of known valence states with distinct pKas. Ions
+    are immutable.
+
+    Example::
+
+        acid = ionize.Ion('acid', [-1], [3], [30e-9], molecular_weight=19)
+        acid.mobility(pH=7)
+        acid.diffusivity(pH=7)
+
+    :param name: The name of the ion.
+
+    :param valence: An iterable of the integer valence states.
+
+    :param reference_pKa: An iterable of the pKas associated with the valence
+    states at the reference temperature.
+
+    :param reference_mobility: An iterable of the fully ionized mobility of
+    each valence state at infinite dilution in m^2/V/s at the reference
+    temperature.
+
+    :param reference_temperature
+
+    :param enthalpy: The enthalpy change on dissociation for each valence
+    state. This is optional, but allows more accurate models for calculating
+    temperature-dependance of properties.
+
+    :param heat_capacity: The change in heat capacity on dissociation for
+    each valence state. This optional parameter further improves the accuracy
+    of temperature-dependant property calculation.
+
+    :param nightingale_data: Mobiliity correction data for small ions where
+    hydration shell dynamics are important.
+
+    :param molecular_weight: The molecular weight of uncharged species, in
+    Daltons.
+
+    :param alias: An iterable of alias strings that can be used to refer to
+    the ion.
+    """
 
     _state = ('name',
               'valence',
@@ -27,7 +68,7 @@ class Ion(BaseIon):
               'molecular_weight',
               'alias')
 
-    # The reference properties of the ion are stored.
+    # The reference properties of the ion are stored in private variables.
     _valence = None
     _reference_pKa = None
     _reference_mobility = None

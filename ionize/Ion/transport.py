@@ -4,23 +4,11 @@ import numpy as np
 
 
 def molar_conductivity(self, pH=None, ionic_strength=None, temperature=None):
-    """Retun the molar conductivity of the ion based on the pH and I.
+    """Retun the molar conductivity of the ion in S/m/M
 
-    Provides conducitivity in Siemens per meter per mole.
-
-    Args:
-        pH (float): The ambiant pH.
-
-        I (float): The ambiant ionic strength.
-
-    If an actual mobility from Onsager-Fouss is available, it is used,
-    otherwise, the Robinson-Stokes mobility estimate is used.
-
-    If the Ion is nested in a Solution, ok to call without a pH.
-
-    >>> Solution(myIon, .1).ions[0].molar_conductivity()
-
-    Otherwise, always call with a pH argument.
+    :param pH
+    :param ionic_strength
+    :param temperature
     """
     pH, ionic_strength, temperature = \
         self._resolve_context(pH, ionic_strength, temperature)
@@ -39,9 +27,11 @@ def molar_conductivity(self, pH=None, ionic_strength=None, temperature=None):
 
 
 def diffusivity(self, pH=None, ionic_strength=None, temperature=None):
-    """Return the diffusivity of the species at a specified pH and temperature.
+    """Return the diffusivity of the ion in m^2/s.
 
-    The diffusivity is returned in units of m^2/s.
+    :param pH
+    :param ionic_strength
+    :param temperature
     """
     pH, ionic_strength, temperature = self._resolve_context(pH,
                                                             ionic_strength,

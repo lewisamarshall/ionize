@@ -3,18 +3,14 @@ import numpy as np
 
 
 def ionization_fraction(self, pH=None, ionic_strength=None, temperature=None):
-    """Return the ionization fractions of an ion.
+    """Return the fraction of time the ion is in each valence state.
 
-    Args:
-        pH (float): The ambiant pH.
+    Value is returned as a numpy array. This array will not sum to 1 due to
+    the fraction of ion in the uncharged state.
 
-        I (float): The ambiant ionic strength.
-
-    If the Ion is nested in a Solution, ok to call without a pH.
-
-    >>> Solution(myIon, .1).ions[0].ionization_fraction()
-
-    Otherwise, always call with a pH argument.
+    :param pH
+    :param ionic_strength
+    :param temperature
     """
     pH, ionic_strength, temperature = \
         self._resolve_context(pH, ionic_strength, temperature)
@@ -35,27 +31,26 @@ def ionization_fraction(self, pH=None, ionic_strength=None, temperature=None):
 
 
 def charge(self, pH=None, ionic_strength=None, temperature=None, moment=1):
-    """Return the time-averaged charge of the charge of the ion.
+    """Return the time-averaged charge of the ion.
 
-    Use the moment argument to control which moment of the average charge is
-    calculated.
+    :param pH
+    :param ionic_strength
+    :param temperature
+    :param moment: Control which moment average is returned. Default is 1.
     """
     fraction = self.ionization_fraction(pH, ionic_strength, temperature)
     return np.sum(fraction * self.valence**moment)
 
 
 def acidity_product(self, ionic_strength=None, temperature=None):
-    """Return the L products of acidity constants.
+    """Return the products of the acidity.
 
-    Args:
-        I (float): The ambiant ionic strength.
+    This vector, commonly referred to as L, is useful in computing the
+    equilibrium pH in a solution, and to compute the ionization fraction of an
+    ion.
 
-    This function uses ionic strength to correct the Ka of ions. If no ionic
-    strength is supplied, and the Ion is nested in a Solution, the solution
-    ionic strength will be used. Otherwise, the ionic strength is assumed to be
-    0.
-
-    L is used by Solution selfects to calculate equilibrium pH.
+    :param ionic_strength
+    :param temperature
     """
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)

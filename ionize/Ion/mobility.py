@@ -8,21 +8,14 @@ from ..constants import pitts, reference_temperature, kelvin, faraday, \
 
 
 def mobility(self, pH=None, ionic_strength=None, temperature=None):
-    """Return the effective mobility of the ion at a given pH and I.
+    """Return the effective mobility of the ion in m^2/V/s.
 
-    Args:
-        pH (float): The ambiant pH.
+    If a context solution is available, mobility uses the full Onsager-Fuoss
+    correction to mobility. Otherwise, the Robinson-Stokes model is used.
 
-        I (float): The ambiant ionic strength.
-
-    If an actual mobility from Onsager-Fouss is available, it is used,
-    otherwise, the Robinson-Stokes mobility estimate is used.
-
-    If the Ion is nested in a Solution, ok to call without a pH.
-
-    >>> Solution(myIon, .1).ions[0].effective_mobility()
-
-    Otherwise, always call with a pH argument.
+    :param pH
+    :param ionic_strength
+    :param temperature
     """
     pH, ionic_strength, temperature = \
         self._resolve_context(pH, ionic_strength, temperature)
@@ -37,7 +30,14 @@ def mobility(self, pH=None, ionic_strength=None, temperature=None):
 
 
 def actual_mobility(self, ionic_strength=None, temperature=None):
-    """Return the mobility for each charge state."""
+    """Return the mobility for each charge state.
+
+    Uses the Onsager-Fuoss correction if a context solution is available,
+    otherwise uses the Robinson-Stokes mobility.
+
+    :param ionic_strength
+    :param temperature
+    """
     try:
         return self.onsager_fuoss_mobility()
     except AttributeError:
@@ -48,9 +48,9 @@ def actual_mobility(self, ionic_strength=None, temperature=None):
 
 
 def absolute_mobility(self, temperature=None):
-    """Return the mobility of each charge state.
+    """Return the mobility of each charge state at infinite dilution.
 
-    Absolulte mobility does not take ionic strength into account.
+    :param temperature
     """
     _, _, temperature = \
         self._resolve_context(None, None, temperature)
@@ -106,7 +106,7 @@ def robinson_stokes_mobility(self, ionic_strength=None, temperature=None):
 
 
 def onsager_fuoss_mobility(self):
-    """Return the onsager fuoss corrected mobility of each charge state."""
+    """Return the Onsager-Fuoss corrected mobility of each charge state."""
     _, ionic_strength, temperature = \
         self._resolve_context(None, None, None)
 
@@ -135,7 +135,8 @@ def _interaction(ion, solution):
 
     This function returns a list of all corrected actual mobilities.
     These mobilities are automatically assigned to the correct ions when
-    a solution is initialized."""
+    a solution is initialized.
+    """
 
     ions = [ion_ for ion_ in solution.ions if solution.concentration(ion_) > 0] + \
            [solution._hydroxide,  solution._hydronium]
