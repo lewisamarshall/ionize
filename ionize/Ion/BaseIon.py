@@ -15,9 +15,9 @@ from ..serialize import _serialize
 @fixed_state
 class BaseIon(object):
 
-    """BaseIon class describing basic ion properties.
-
-    All ions on ionize should be subclassed from BaseIon.
+    """BaseIon is the basic implementation of a ion, a charged species in
+    solution. All ion implementations in ionize are subclassed from BaseIon.
+    The most common version is the :class:`Ion`.
     """
 
     _solvent = Aqueous
@@ -59,11 +59,14 @@ class BaseIon(object):
             return False
 
     def serialize(self, nested=False, compact=False):
-        """Return a serialized representation of the ion.
+        """Returns a JSON serialized string representation of the ion.
+        This representation can be returned to an Ion object using deserialize.
 
-        If "nested" is true, returns a dictionary. Otherwise, returns
-        a json-formatted string. This string can be returned to an Ion object
-        using deserialize.
+        :param nested: If True, skips JSON serialization and returns a python
+        dictionary.
+
+        :param compact: If True, returns a JSON representation with minimal
+        characters. Otherwise, whitespace is introduced for readability.
         """
         serial = {key: getattr(self, key) for key in self._state}
         serial['__ion__'] = type(self).__name__
@@ -76,36 +79,68 @@ class BaseIon(object):
             file.write(self.serialize())
 
     def mobility(self):
-        """The effective mobility of the ion.
+        """The effective mobility of the ion, in meter^2/Volt/second.
 
         Mobility must be overridden by subclasses."""
         raise NotImplementedError
 
     def diffusivity(self):
-        """The diffusivity of the ion.
+        """The diffusivity of the ion, in meter^2/second.
 
         Diffusivity must be overridden by subclasses."""
         raise NotImplementedError
 
     def molar_conductivity(self):
-        """The molar conductivity of the ion, in S/m/M
+        """The molar conductivity of the ion, in Seimens/meter/Molar
 
-        molar_conductivity must be overridden by subclasses."""
+        Molar conductivity must be overridden by subclasses."""
         raise NotImplementedError
 
-    def charge(self, moment=1):
-        """The charge of the ion.
+    def charge(self):
+        """The average charge of the ion divided by the charge of an electron.
 
-        molar_conductivity must be overridden by subclasses."""
+        Charge must be overridden by subclasses."""
         raise NotImplementedError
 
     def context(self, context=False):
-        """Control the context of the ion.
+        """Control the context in which ion properties are calculated.
 
-        The context is used as a convenience to set pH, temperature,
-        ionic_strength, and other information used in calculations about
-        the ion. If no
+        The context is used as a convenience to specify what values of pH,
+        ionic strength, and temperature are used to compute ion properties.
 
+        Example::
+            water = ionize.Solution()
+
+            my_ion.mobility()  # Raises without a pH for calculation
+
+            with my_ion.context(water):
+                my_ion.mobility()  # Uses water pH
+
+            my_ion.context(water)
+            my_ion.mobility()      # Uses water pH
+            my_ion.context()       # Returns water
+            my_ion.context(None)
+
+        There are multiple sources from which pH, ionic strength, and
+        temperature can be drawn. They are, in order of priority::
+
+            Method parameters. Manually setting a value when calling an ion
+            method always has the highest priority.
+
+            Context.
+
+            Default values. The default temperature is the package reference
+            temperature, 25 degrees C. This is assumed throughout the package
+            if temperature is not specified. The default ionic strength is the
+            solvent ionic strength. This ionic strength is calculated from the
+            pH if available. Otherwise, it is calculated as the minimum ionic
+            strength associated with the solvent dissociation constant. There
+            is no default value for the pH.
+
+
+        :param context: The new context to use for ion calculations. If context
+        is False, the current context is returned. Context can be None (to
+        erase the current context) or a Solution object.
         """
         if context is False:
             return self._context
@@ -134,16 +169,16 @@ class BaseIon(object):
             except AttributeError:
                 temperature = self.reference_temperature
 
-        if pH is not None:
-            lower_limit = self._solvent.ionic_strength(pH, temperature)
-        else:
-            lower_limit = sqrt(self._solvent.dissociation(0., temperature))
-
         if ionic_strength is None:
             try:
                 ionic_strength = self.context().ionic_strength
             except AttributeError:
-                ionic_strength = lower_limit
+                if pH is not None:
+                    ionic_strength = self._solvent.ionic_strength(pH,
+                                                                  temperature)
+                else:
+                    ionic_strength = \
+                        sqrt(self._solvent.dissociation(0., temperature))
 
         return pH, ionic_strength, temperature
 
@@ -152,7 +187,18 @@ class BaseIon(object):
         """Return the separability between this ion and the other ion.
 
         Separabillity is a normalized difference between this ion and the other
-        on. Context is taken from this ion if available.
+        ion, defined as:
+            abs((self.mobility - other.mobility)/ self.mobility)
+
+        :param other: The other ion for comparison. Must have valid context
+        and mobility methods.
+
+        :param pH
+        :param ionic_strength
+        :param temperature
+
+        The context from this ion is used to override the context of the
+        other ion.
         """
         with other.context(self.context()):
             mobilities = [ion.mobility(pH, ionic_strength, temperature)
