@@ -3,6 +3,11 @@ from ..Ion import BaseIon, fixed_state
 
 @fixed_state
 class IonComplex(BaseIon):
+    """IonComplex is a collection of ions that moves together.
+
+    :param name: The name for the complex.
+    :param members: An iterable of ion objects that make up the complex.
+    """
 
     _state = ('name', 'members')
 
@@ -20,6 +25,8 @@ class IonComplex(BaseIon):
 
         Complex contexts works by setting the context of the members of the
         complex. The Complex has on context of its own.
+
+        See the context method for the members for additional information.
         """
         old_context = [member.context() for member in self.members]
 
@@ -38,11 +45,13 @@ class IonComplex(BaseIon):
         return manager()
 
     def charge(self, pH=None, ionic_strength=None, temperature=None):
+        """Return the net charge for the complex."""
         return sum([member.charge(pH, ionic_strength, temperature) for
                     member in self.members])
 
     def mobility(self, pH=None, ionic_strength=None, temperature=None):
-        # Note: Unclear if molecular_weight averaging is appropriate.
+        """Return the mobility of the complex, in m^2/V/s."""
+        # NOTE: relies on the molecular-weight averaged mobility
         return sum([member.mobility(pH, ionic_strength, temperature) *
                     member.molecular_weight / self.molecular_weight
                     for member in self])

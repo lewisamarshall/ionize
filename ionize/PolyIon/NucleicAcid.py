@@ -21,19 +21,19 @@ class NucleicAcid(PolyIon):
                          'ssDNA': {'duplex': False},
                          'ssRNA': {'duplex': False}}
 
-
     def __init__(self, name=None,
                  size=None, sequence=None,
-                 species='DNA'):
+                 species=None):
 
         self._name = name or self.name
         self._size = size or self.size
         self._sequence = sequence or self.sequence
 
-        assert species in self.__species_options.keys()
         self._species = species or self.species
+        assert self.species in self.__species_options.keys()
 
-    def mobility(self):
+    def mobility(self, pH=None, ionic_strength=None, temperature=None):
+        # TODO: Introduce manning condensation model
         mu = (3.75 - 1.8 * (self.size**-.6)) * 1e-8
         return mu
 

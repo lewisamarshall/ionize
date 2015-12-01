@@ -2,6 +2,5 @@ from ..Ion import BaseIon
 
 
 class PolyIon(BaseIon):
-
-    def molecular_weight(self):
-        raise NotImplementedError
+    """PolyIon is the base class for electrically charged polymers."""
+    pass

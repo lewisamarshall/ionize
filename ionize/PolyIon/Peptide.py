@@ -1,21 +1,26 @@
 from __future__ import division
+
 from .PolyIon import PolyIon
-from ..constants import boltzmann, kelvin, reference_temperature, \
-                        elementary_charge, avogadro, lpm3, gpkg
 from ..Ion import fixed_state
+from ..constants import boltzmann, kelvin, reference_temperature, \
+    elementary_charge, avogadro, lpm3, gpkg
 
 from math import pi, exp
 import numpy as np
 
 from Bio import SeqUtils
-from Bio.SeqUtils.IsoelectricPoint import IsoelectricPoint, \
-                                          positive_pKs, negative_pKs, \
-                                          pKcterminal, pKnterminal
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
+from Bio.SeqUtils.IsoelectricPoint import IsoelectricPoint, positive_pKs, \
+    negative_pKs, pKcterminal, pKnterminal
 
 
 @fixed_state
 class Peptide(PolyIon):
+    """Peptide represents single protein chains in solution.
+
+    Peptides properties are based entirely on analysis of the sequence of the
+    peptide.
+    """
 
     _state = ('name',
               'sequence')
@@ -38,6 +43,12 @@ class Peptide(PolyIon):
         return SeqUtils.molecular_weight(self.sequence, 'protein')
 
     def charge(self, pH=None, ionic_strength=None, temperature=None):
+        """Return the time-averaged charge of the peptide.
+
+        :param pH
+        :param ionic_strength
+        :param temperature
+        """
         pH, ionic_strength, temperature = \
             self._resolve_context(pH, ionic_strength, temperature)
 
@@ -60,21 +71,34 @@ class Peptide(PolyIon):
                                                            neg_pKs)
 
     def isoelectric_point(self, ionic_strength=None, temperature=None):
+        """Return the isoelectric point of the peptide."""
         # _, ionic_strength, temperature = \
         #     self._resolve_context(None, ionic_strength, temperature)
         return self._analysis.isoelectric_point()
 
     def volume(self):
+        """Return the approximate volume of the folded peptide in m^3."""
         v = self.molecular_weight / avogadro / self.density() / lpm3 / gpkg
         return v
 
     def radius(self):
+        """Return the approximate radius of the folded peptide in m."""
         return (self.volume() * 3. / 4. / pi) ** (1. / 3.)
 
     def density(self):
+        """Return the approximate density of the folded peptide in kg/L."""
         return 1.410 + 0.145 * exp(-self.molecular_weight / 13.)
 
     def mobility(self, pH=None, ionic_strength=None, temperature=None):
+        """Return the effective mobility of the ion in m^2/V/s.
+
+        If a context solution is available, mobility uses the full Onsager-Fuoss
+        correction to mobility. Otherwise, the Robinson-Stokes model is used.
+
+        :param pH
+        :param ionic_strength
+        :param temperature
+        """
         pH, ionic_strength, temperature = \
             self._resolve_context(pH, ionic_strength, temperature)
 

@@ -5,6 +5,7 @@ from ..Ion import fixed_state
 import tempfile
 from string import ascii_uppercase
 from Bio import PDB
+
 lister = PDB.PDBList(obsolete_pdb='override')
 parser = PDB.PDBParser()
 builder = PDB.PPBuilder()
@@ -12,6 +13,17 @@ builder = PDB.PPBuilder()
 
 @fixed_state
 class Protein(IonComplex):
+    """Protein represents an ion composed of a complex of peptides.
+
+    :param name: Name of the protein.
+    :param ids: Names of the peptide members.
+    :param sequences: Sequences of the peptide members.
+    :param members: An iterable of the peptide members.
+
+    If members and sequences are not provided, the name will be searched in the
+    Protein DataBase (PDB). If a protein of the same name is available, the
+    sequences of the peptides will be gathered from the PDB.
+    """
 
     _state = ('name', 'members')
 
