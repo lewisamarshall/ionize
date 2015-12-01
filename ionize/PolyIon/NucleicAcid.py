@@ -37,9 +37,8 @@ class NucleicAcid(PolyIon):
         mu = (3.75 - 1.8 * (self.size**-.6)) * 1e-8
         return mu
 
-    def charge(self):
-        # return self.size * (1 + self.__species_options[self.species]['duplex'])
-        raise NotImplementedError
+    def charge(self, pH=None, ionic_strength=None, temperature=None):
 
-    def diffusivity(self):
+        # TODO: introduce manning condensation model
+        # return self.size * (1 + self.__species_options[self.species]['duplex'])
         raise NotImplementedError

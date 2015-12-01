@@ -47,17 +47,6 @@ class IonComplex(BaseIon):
                     member.molecular_weight / self.molecular_weight
                     for member in self])
 
-    def diffusivity(self, pH=None, ionic_strength=None, temperature=None):
-        # Note: relies on the molecular weight averaged mobility
-        raise NotImplementedError
-
-    def molar_conductivity(self, pH=None, ionic_strength=None,
-                           temperature=None):
-        return (lpm3 * faraday *
-                self.mobility(pH, ionic_strength, temperature) *
-                self.charge(pH, ionic_strength, temperature)
-                )
-
     @property
     def molecular_weight(self):
         try:

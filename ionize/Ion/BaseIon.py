@@ -84,17 +84,26 @@ class BaseIon(object):
         Mobility must be overridden by subclasses."""
         raise NotImplementedError
 
-    def diffusivity(self):
-        """The diffusivity of the ion, in meter^2/second.
+    def diffusivity(self, pH=None, ionic_strength=None, temperature=None):
+        """The diffusivity of the ion, in meter^2/second."""
+        pH, ionic_strength, temperature = \
+            self._resolve_context(pH, ionic_strength, temperature)
 
-        Diffusivity must be overridden by subclasses."""
-        raise NotImplementedError
+        return (self.mobility(pH, ionic_strength, temperature) /
+                self.charge(pH, ionic_strength, temperature) /
+                elementary_charge * boltzmann * kelvin(temperature)
+                )
 
-    def molar_conductivity(self):
-        """The molar conductivity of the ion, in Seimens/meter/Molar
-
-        Molar conductivity must be overridden by subclasses."""
-        raise NotImplementedError
+    def molar_conductivity(self, pH=None, ionic_strength=None,
+                           temperature=None):
+        """The molar conductivity of the ion, in Seimens/meter/Molar."""
+        pH, ionic_strength, temperature = \
+            self._resolve_context(pH, ionic_strength, temperature)
+            
+        return (lpm3 * faraday *
+                self.mobility(pH, ionic_strength, temperature) *
+                self.charge(pH, ionic_strength, temperature)
+                )
 
     def charge(self):
         """The average charge of the ion divided by the charge of an electron.
