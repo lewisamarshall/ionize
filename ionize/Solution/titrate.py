@@ -141,7 +141,7 @@ def displace(self, receding, advancing=None):
         return np.array(err)
 
     try:
-        sol = root(min_func, new_solution.concentrations)
+        sol = root(min_func, new_solution.concentrations, method='lm')
     except Exception as e:
         msg = 'Solver failed on iteration. \nSolution: {}\nError: {}'
         raise RuntimeError(msg.format(repr(new_solution), e))
