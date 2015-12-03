@@ -1,5 +1,7 @@
 from ..Ion import BaseIon, fixed_state
 
+import contextlib
+
 
 @fixed_state
 class IonComplex(BaseIon):

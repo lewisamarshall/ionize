@@ -1,3 +1,4 @@
+"""Database module for ionize."""
 import json
 import re
 import os
@@ -20,6 +21,7 @@ class Database(object):
     _source = None
 
     def __init__(self, source=None):
+        """Initialize a Database instance."""
         self._source = source or self._default_source
         self._open()
 
@@ -61,7 +63,6 @@ class Database(object):
 
     def __iter__(self):
         """Retern a generator that yields each ion in the Database."""
-
         for key in self.keys():
             yield self[key]
 

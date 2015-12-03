@@ -14,10 +14,11 @@ from ..serialize import _serialize
 
 @fixed_state
 class BaseIon(object):
+    """BaseIon is the basic implementation of a ion.
 
-    """BaseIon is the basic implementation of a ion, a charged species in
-    solution. All ion implementations in ionize are subclassed from BaseIon.
-    The most common version is the :class:`Ion`.
+    It represents a charged species in solution. All ion implementations in
+    ionize are subclassed from BaseIon. The most common version is the
+    :class:`Ion`.
     """
 
     _solvent = Aqueous
@@ -29,6 +30,7 @@ class BaseIon(object):
     _context = None
 
     def __repr__(self):
+        """Return an unambiguous string representation."""
         inner = []
         for prop in self._state:
             prop = str(prop)  # convert unicode to string
@@ -41,12 +43,15 @@ class BaseIon(object):
         return '{}({})'.format(type(self).__name__, ', '.join(inner))
 
     def __str__(self):
+        """Return a readable string representation."""
         return "{}('{}')".format(type(self).__name__, self.name)
 
     def __hash__(self):
+        """Return the hash value for the object."""
         return hash(repr(self))
 
     def __eq__(self, other):
+        """Test equality between two ions."""
         try:
             assert self._state == other._state
             for prop in self._state:
@@ -55,7 +60,7 @@ class BaseIon(object):
                 else:
                     assert getattr(self, prop) == getattr(other, prop)
             return True
-        except Exception as e:
+        except:
             return False
 
     def serialize(self, nested=False, compact=False):
@@ -99,7 +104,7 @@ class BaseIon(object):
         """The molar conductivity of the ion, in Seimens/meter/Molar."""
         pH, ionic_strength, temperature = \
             self._resolve_context(pH, ionic_strength, temperature)
-            
+
         return (lpm3 * faraday *
                 self.mobility(pH, ionic_strength, temperature) *
                 self.charge(pH, ionic_strength, temperature)
@@ -118,7 +123,7 @@ class BaseIon(object):
         ionic strength, and temperature are used to compute ion properties.
 
         Example::
-            water = ionize.Solution()
+            ``water = ionize.Solution()
 
             my_ion.mobility()  # Raises without a pH for calculation
 
@@ -128,7 +133,7 @@ class BaseIon(object):
             my_ion.context(water)
             my_ion.mobility()      # Uses water pH
             my_ion.context()       # Returns water
-            my_ion.context(None)
+            my_ion.context(None)``
 
         There are multiple sources from which pH, ionic strength, and
         temperature can be drawn. They are, in order of priority::
@@ -201,10 +206,6 @@ class BaseIon(object):
 
         :param other: The other ion for comparison. Must have valid context
         and mobility methods.
-
-        :param pH
-        :param ionic_strength
-        :param temperature
 
         The context from this ion is used to override the context of the
         other ion.

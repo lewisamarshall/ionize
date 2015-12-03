@@ -33,14 +33,14 @@ class Solution(object):
     :param concentrations: An iterable of concentrations, in moles per liter.
 
     Example:
-        sol = ionize.Solution(['chloride', 'tris'], [0.02, 0.05])
+        ``sol = ionize.Solution(['chloride', 'tris'], [0.02, 0.05])
         sol.pH, sol.ionic_strength
         'tris' in sol  # True
         sol.concentration('chloride') # 0.02
         with sol.temperature(35):
             sol.conductivity()
         sol.serialize()
-        sol['tris']  # Ion('tris')
+        sol['tris']  # Ion('tris')``
     """
 
     _solvent = Aqueous

@@ -36,7 +36,7 @@ def buffering_capacity(self):
     return Cb
 
 
-def titrate(self, titrant, target, titration_property='pH', return_c=False):
+def titrate(self, titrant, target, titration_property='pH'):
     """Return a Solution titrated to the target pH using the titrant.
 
     Titrate uses root finding to determine the concentration of titrant
@@ -62,18 +62,18 @@ def titrate(self, titrant, target, titration_property='pH', return_c=False):
         c, r = brentq(min_func, 0, 55, full_output=True)
 
     if r.converged:
-        if return_c:
-            return c
-        else:
-            return (self + (titrant, c))
+        return (self + (titrant, c))
     else:
         raise RuntimeError('Solver did not converge.')
 
+
 # TODO: Make this return a new solution.
 def equilibrate_CO2(self, partial_pressure=atmospheric_CO2):
-    """Titrates the CO2 in solution to equilibrium with the atmosphere.
+    """Titrate the CO2 in solution to equilibrium with the atmosphere.
+
     :param partial_pressure: The partial pressure of CO2 in the atmosphere,
-    in bar. Defaults to the typical value of Earth's atmosphere."""
+    in bar. Defaults to the typical value of Earth's atmosphere.
+    """
     CO2 = database['carbonic acid']
     CO2.context(self)
     eq = partial_pressure * self._solvent.henry_CO2(self.temperature())

@@ -11,9 +11,6 @@ def acidity(self, ionic_strength=None, temperature=None):
 
     The value is corrected for ionic strength and temperature using the
     Debye-Huckel approximation.
-
-    :param ionic_strength
-    :param temperature
     """
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)
@@ -36,19 +33,7 @@ def acidity(self, ionic_strength=None, temperature=None):
 
 
 def pKa(self, ionic_strength=None, temperature=None):
-    """Return the effective pKa constant for the ion.
-
-    Args:
-        ionic_strength (float): The ambiant ionic strength.
-        temperature (float): The ambiant temperature.
-
-    This function returns a corrected pKa for the ion based on
-    ionic strength and temperature. The correction uses the Debye-Huckel
-    approximation to correct the activity coefficients.
-
-    If no ionic strength or temperature is supplied, returns the value at
-    low ionic_strength and 25C. (See Aqueous for information on
-    ionic_strength.)"""
+    """Return the effective pKa for the ion."""
     return -np.log10(self.acidity(ionic_strength, temperature))
 
 

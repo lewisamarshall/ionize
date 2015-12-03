@@ -342,6 +342,9 @@ class TestProtein(unittest.TestCase):
         for name in ['2AVI', '3V03']:
             p = Protein(name)
             p.molecular_weight
+            p.mobility(pH=8)
+            with p.context(Solution()):
+                p.mobility()
 
     def test_membership(self):
         for peptide in Protein('2AVI'):
@@ -358,7 +361,6 @@ class TestCLI(unittest.TestCase):
         runner = CliRunner()
         result = runner.invoke(cli, ['ion', 'tris'])
         self.assertEqual(result.exit_code, 0)
-
 
 
 if __name__ == '__main__':

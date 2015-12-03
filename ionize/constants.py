@@ -1,25 +1,25 @@
 """Constants used in ionize.
 
-    :lpm3:
-        1000. liter/m^3.
-    :gpkg:
-        1000. gram/kilogram
-    :faraday:
-        Faraday's constant, 96485. C/mol.
-    :boltzmann:
-        Boltzmann's constant, 1.38e-23 J/K
-    :gas_constant:
-        8.31 J/mol/K
-    :permittivity:
-        Permittivity of free space, 8.854e-12 F/m
-    :avogadro:
-        Avogadro's constant, 6.022e23 / mol.
-    :elementary_charge:
-        Charge of a proton, 1.602e-19 C.
-    :reference_temperature:
-        Room temperature, 25 C.
-    :pitts: Pitts correction constant for finite ion radius,
-        1.5 (mol/L)^.5
+:lpm3:
+    1000. liter/m^3.
+:gpkg:
+    1000. gram/kilogram
+:faraday:
+    Faraday's constant, 96485. C/mol.
+:boltzmann:
+    Boltzmann's constant, 1.38e-23 J/K
+:gas_constant:
+    8.31 J/mol/K
+:permittivity:
+    Permittivity of free space, 8.854e-12 F/m
+:avogadro:
+    Avogadro's constant, 6.022e23 / mol.
+:elementary_charge:
+    Charge of a proton, 1.602e-19 C.
+:reference_temperature:
+    Room temperature, 25 C.
+:pitts: Pitts correction constant for finite ion radius,
+    1.5 (mol/L)^.5
 """
 import numpy as np
 

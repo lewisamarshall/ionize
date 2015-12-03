@@ -7,10 +7,6 @@ def ionization_fraction(self, pH=None, ionic_strength=None, temperature=None):
 
     Value is returned as a numpy array. This array will not sum to 1 due to
     the fraction of ion in the uncharged state.
-
-    :param pH
-    :param ionic_strength
-    :param temperature
     """
     pH, ionic_strength, temperature = \
         self._resolve_context(pH, ionic_strength, temperature)
@@ -33,9 +29,6 @@ def ionization_fraction(self, pH=None, ionic_strength=None, temperature=None):
 def charge(self, pH=None, ionic_strength=None, temperature=None, moment=1):
     """Return the time-averaged charge of the ion.
 
-    :param pH
-    :param ionic_strength
-    :param temperature
     :param moment: Control which moment average is returned. Default is 1.
     """
     fraction = self.ionization_fraction(pH, ionic_strength, temperature)
@@ -48,9 +41,6 @@ def acidity_product(self, ionic_strength=None, temperature=None):
     This vector, commonly referred to as L, is useful in computing the
     equilibrium pH in a solution, and to compute the ionization fraction of an
     ion.
-
-    :param ionic_strength
-    :param temperature
     """
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)

@@ -13,7 +13,6 @@ from .fixed_state import fixed_state
 
 @fixed_state
 class Ion(BaseIon):
-
     """An Ion describes a charged species in solution.
 
     Ion is the most commonly used subclass of BaseIon. It is used to represent
@@ -31,30 +30,31 @@ class Ion(BaseIon):
     :param valence: An iterable of the integer valence states.
 
     :param reference_pKa: An iterable of the pKas associated with the valence
-    states at the reference temperature.
+        states at the reference temperature.
 
     :param reference_mobility: An iterable of the fully ionized mobility of
-    each valence state at infinite dilution in m^2/V/s at the reference
-    temperature.
+        each valence state at infinite dilution in m^2/V/s at the reference
+        temperature.
 
-    :param reference_temperature
+    :param reference_temperature: The temperature at which other parameters are
+        measured. Defaults to 25 degrees C.
 
     :param enthalpy: The enthalpy change on dissociation for each valence
-    state. This is optional, but allows more accurate models for calculating
-    temperature-dependance of properties.
+        state. This is optional, but allows more accurate models for calculating
+        temperature-dependance of properties.
 
     :param heat_capacity: The change in heat capacity on dissociation for
-    each valence state. This optional parameter further improves the accuracy
-    of temperature-dependant property calculation.
+        each valence state. This optional parameter further improves the accuracy
+        of temperature-dependant property calculation.
 
     :param nightingale_data: Mobiliity correction data for small ions where
-    hydration shell dynamics are important.
+        hydration shell dynamics are important.
 
     :param molecular_weight: The molecular weight of uncharged species, in
-    Daltons.
+        Daltons.
 
     :param alias: An iterable of alias strings that can be used to refer to
-    the ion.
+        the ion.
     """
 
     _state = ('name',
