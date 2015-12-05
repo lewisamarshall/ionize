@@ -13,7 +13,6 @@ from ..constants import atmospheric_CO2
 database = Database()
 
 
-# TODO: Decide on a chaining api or a modifying api.
 def buffering_capacity(self):
     """Return the buffering capacity of the solution.
 
@@ -67,7 +66,6 @@ def titrate(self, titrant, target, titration_property='pH'):
         raise RuntimeError('Solver did not converge.')
 
 
-# TODO: Make this return a new solution.
 def equilibrate_CO2(self, partial_pressure=atmospheric_CO2):
     """Titrate the CO2 in solution to equilibrium with the atmosphere.
 
@@ -75,13 +73,11 @@ def equilibrate_CO2(self, partial_pressure=atmospheric_CO2):
     in bar. Defaults to the typical value of Earth's atmosphere.
     """
     CO2 = database['carbonic acid']
-    CO2.context(self)
     eq = partial_pressure * self._solvent.henry_CO2(self.temperature())
 
     def min_func(concentration):
-        self._contents[CO2] = concentration
-        self._equilibrate()
-        deionized = concentration * (1-sum(CO2.ionization_fraction()))
+        new_sol = self + (CO2, concentration)
+        deionized = concentration * (1-sum(new_sol[CO2].ionization_fraction()))
         return deionized - eq
 
     with warnings.catch_warnings():
@@ -89,7 +85,7 @@ def equilibrate_CO2(self, partial_pressure=atmospheric_CO2):
         c, r = brentq(min_func, 0, 1., full_output=True)
 
     if r.converged:
-        self._contents[CO2] = c
+        return self + (CO2, c)
     else:
         raise RuntimeError('Solver did not converge')
 

@@ -288,8 +288,7 @@ class TestSolution(unittest.TestCase):
                          'Solution malformed by repr.')
 
     def test_equilibrate_CO2(self):
-        sol = Solution()
-        sol.equilibrate_CO2()
+        sol = Solution().equilibrate_CO2()
         self.assertAlmostEqual(sol.pH, 5.6, 1)
 
     def test_displace(self):
