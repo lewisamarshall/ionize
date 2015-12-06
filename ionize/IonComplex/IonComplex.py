@@ -46,10 +46,11 @@ class IonComplex(BaseIon):
              for member, old in zip(self.members, old_context)]
         return manager()
 
-    def charge(self, pH=None, ionic_strength=None, temperature=None):
+    def charge(self, pH=None, ionic_strength=None, temperature=None,
+               moment=1):
         """Return the net charge for the complex."""
         return sum([member.charge(pH, ionic_strength, temperature) for
-                    member in self.members])
+                    member in self.members])**moment
 
     def mobility(self, pH=None, ionic_strength=None, temperature=None):
         """Return the mobility of the complex, in m^2/V/s."""

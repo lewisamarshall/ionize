@@ -42,7 +42,8 @@ class Peptide(PolyIon):
     def molecular_weight(self):
         return SeqUtils.molecular_weight(self.sequence, 'protein')
 
-    def charge(self, pH=None, ionic_strength=None, temperature=None):
+    def charge(self, pH=None, ionic_strength=None, temperature=None,
+               moment=1):
         """Return the time-averaged charge of the peptide.
 
         :param pH
@@ -65,10 +66,11 @@ class Peptide(PolyIon):
         if cterm in pKcterminal:
             neg_pKs['Cterm'] = pKcterminal[cterm]
 
-        return IsoelectricPoint(self.sequence,
-                                amino_acid_count)._chargeR(pH,
-                                                           pos_pKs,
-                                                           neg_pKs)
+        charge = IsoelectricPoint(self.sequence,
+                                  amino_acid_count)._chargeR(pH,
+                                                             pos_pKs,
+                                                             neg_pKs)
+        return charge**moment
 
     def isoelectric_point(self, ionic_strength=None, temperature=None):
         """Return the isoelectric point of the peptide."""

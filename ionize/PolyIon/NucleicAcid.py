@@ -37,7 +37,8 @@ class NucleicAcid(PolyIon):
         mu = (3.75 - 1.8 * (self.size**-.6)) * 1e-8
         return mu
 
-    def charge(self, pH=None, ionic_strength=None, temperature=None):
+    def charge(self, pH=None, ionic_strength=None, temperature=None,
+               moment=1):
 
         # TODO: introduce manning condensation model
         # return self.size * (1 + self.__species_options[self.species]['duplex'])

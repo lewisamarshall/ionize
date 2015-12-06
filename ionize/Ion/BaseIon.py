@@ -110,7 +110,8 @@ class BaseIon(object):
                 self.charge(pH, ionic_strength, temperature)
                 )
 
-    def charge(self):
+    def charge(self, pH=None, ionic_strength=None, temperature=None, 
+	       moment=1):
         """The average charge of the ion divided by the charge of an electron.
 
         Charge must be overridden by subclasses."""
