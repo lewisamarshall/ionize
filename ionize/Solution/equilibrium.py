@@ -6,6 +6,7 @@ import warnings
 
 
 # TODO: Make sure this only uses common ion API.
+# TODO: Insert checks to ensure excess charge isn't relevant.
 def calculate_ionic_strength(self, pH, guess):
     # For each ion, add the contribution to ionic strength to the sum.
 
@@ -34,14 +35,14 @@ def calculate_pH(self, ionic_strength):
     # Find the order of the polynomial. This is the maximum
     # size of the list of charge states in an ion.
     max_columns = max([max(ion.valence)-min(ion.valence)+2
-                       for ion in self.ions])
+                       for ion in self.ions if hasattr(ion, 'valence')])
     n_ions = len(self.ions)
 
     # Set up the matrix of Ls, the multiplication
     # of acidity coefficients for each ion.
     l_matrix = np.array([np.resize(ion.acidity_product(ionic_strength),
                         [max_columns])
-                        for ion in self.ions])
+                        for ion in self.ions if hasattr(ion, 'valence')])
 
     # Construct Q vector.
     Q = 1.0
