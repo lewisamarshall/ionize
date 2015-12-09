@@ -7,7 +7,7 @@ import warnings
 
 # TODO: Make sure this only uses common ion API.
 # TODO: Insert checks to ensure excess charge isn't relevant.
-def calculate_ionic_strength(self, pH, guess):
+def _calculate_ionic_strength(self, pH, guess):
     # For each ion, add the contribution to ionic strength to the sum.
 
     self._pH = pH
@@ -21,17 +21,7 @@ def calculate_ionic_strength(self, pH, guess):
     return I
 
 
-def calculate_pH(self, ionic_strength):
-    """Return the pH of the object.
-
-    If an ionic strength is specified, uses the corrected acidity constants.
-    This function should be used only when finding the equilibrium state.
-    After that, the value should be pulled from obj.pH.
-
-    If ionic strength does not exist, assume it is zero.
-    This function is used to find the equilibrium state,
-    so it cannot pull the ionic strength from the object.
-    """
+def _calculate_pH(self, ionic_strength):
     # Find the order of the polynomial. This is the maximum
     # size of the list of charge states in an ion.
     max_columns = max([max(ion.valence)-min(ion.valence)+2
@@ -106,8 +96,8 @@ def equilibrium_offset(I_i, self):
     using the new equilibrum coefficents. find_equilibrium finds the root of
     this function.
     """
-    pH = calculate_pH(self, I_i)
-    I_f = calculate_ionic_strength(self, pH, I_i)
+    pH = _calculate_pH(self, I_i)
+    I_f = _calculate_ionic_strength(self, pH, I_i)
 
     res = (I_f-I_i)
     return res
@@ -121,15 +111,14 @@ def _equilibrate(self):
     adjusted activity coefficients. This function is called when the selfect is
     initialized.
     """
-
     if not self.ions:
         dissociation = self._solvent.dissociation(0, self.temperature())
         self._pH = -log10(sqrt(dissociation))
-        self._ionic_strength = calculate_ionic_strength(self, self.pH, 0)
+        self._ionic_strength = _calculate_ionic_strength(self, self.pH, 0)
         return
 
     # Generate an initial ionic strength guess without activity corrections
-    I = calculate_ionic_strength(self, calculate_pH(self, 0), 0)
+    I = _calculate_ionic_strength(self, _calculate_pH(self, 0), 0)
 
     # Try to bound the true answer.
     b1 = equilibrium_offset(0., self)
@@ -144,12 +133,12 @@ def _equilibrate(self):
         assert r.converged
 
     except AssertionError:
-        I = calculate_ionic_strength(self, calculate_pH(self, 0), 0)
+        I = _calculate_ionic_strength(self, _calculate_pH(self, 0), 0)
         I = newton(equilibrium_offset, I, args=(self,))
         warnings.warn('Couldn\'t use the brentq method. Using newton.')
 
     # Use this final ionic strength to find the correct pH.
-    pH = calculate_pH(self, I)
+    pH = _calculate_pH(self, I)
 
     if I > 1.:
         warnings.warn(('Ionic strength > 1M. '
