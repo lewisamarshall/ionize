@@ -1,7 +1,6 @@
 import operator
 
 
-# TODO: Is this a good way of doing this?
 def fixed_state(cls):
     for state_property in cls._state:
         setattr(cls,
