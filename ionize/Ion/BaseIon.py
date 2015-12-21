@@ -23,10 +23,11 @@ class BaseIon(object):
 
     _solvent = Aqueous
 
-    _state = {'name': 'The name of the ion.', 
+    _state = {'name': 'The name of the ion.',
               'reference_temperature': 'The temperature at which ion '
                                        'properties were measured.'}
     _name = 'BaseIon'
+    _alias = None
     _reference_temperature = reference_temperature
 
     _context = None
@@ -112,7 +113,7 @@ class BaseIon(object):
                 self.charge(pH, ionic_strength, temperature)
                 )
 
-    def charge(self, pH=None, ionic_strength=None, temperature=None, 
+    def charge(self, pH=None, ionic_strength=None, temperature=None,
 	       moment=1):
         """The average charge of the ion divided by the charge of an electron.
 
