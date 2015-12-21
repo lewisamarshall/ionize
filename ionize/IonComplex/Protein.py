@@ -25,7 +25,9 @@ class Protein(IonComplex):
     sequences of the peptides will be gathered from the PDB.
     """
 
-    _state = ('name', 'members')
+    _state = {'name': 'Protein name.',
+             'members': 'Name of the peptide members.'
+             }
 
     sequences = tuple()
 

@@ -11,7 +11,8 @@ class IonComplex(BaseIon):
     :param members: An iterable of ion objects that make up the complex.
     """
 
-    _state = ('name', 'members')
+    _state = {'name': 'Name of the ion.',
+              'members': 'Components of the ion complex.'}
 
     _members = tuple()
 

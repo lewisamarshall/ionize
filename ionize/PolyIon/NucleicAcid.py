@@ -5,10 +5,11 @@ from ..Ion import fixed_state
 @fixed_state
 class NucleicAcid(PolyIon):
 
-    _state = ('name',
-              'size',
-              'species',
-              'sequence')
+    _state = {'name': 'Name of the ion.',
+              'size': 'Number of bases or base pairs in the nucleic acid.',
+              'species': 'Type of nucleic acid species.',
+              'sequence': 'Sequence of the nucleic acid.',
+              }
 
     _name = 'Nucleic Acid'
     _size = float('inf')

@@ -23,7 +23,9 @@ class BaseIon(object):
 
     _solvent = Aqueous
 
-    _state = ('name', 'reference_temperature')
+    _state = {'name': 'The name of the ion.', 
+              'reference_temperature': 'The temperature at which ion '
+                                       'properties were measured.'}
     _name = 'BaseIon'
     _reference_temperature = reference_temperature
 

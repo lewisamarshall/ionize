@@ -57,16 +57,16 @@ class Ion(BaseIon):
         the ion.
     """
 
-    _state = ('name',
-              'valence',
-              'reference_pKa',
-              'reference_mobility',
-              'reference_temperature',
-              'enthalpy',
-              'heat_capacity',
-              'nightingale_data',
-              'molecular_weight',
-              'alias')
+    _state = {'name': 'The ion name.',
+              'valence': 'The valence of each state.',
+              'reference_pKa': 'The pKas of each ionization state at the reference state.',
+              'reference_mobility': 'The mobility of each ionization at the reference state.',
+              'reference_temperature': 'The temperature at whcih properties were measured.',
+              'enthalpy': 'The change in enthalpy on ionization.',
+              'heat_capacity': 'The change in heat capacity on ionization.',
+              'nightingale_data': 'Temperature dependance data for small ions.',
+              'molecular_weight': 'The ion molecular weight',
+              'alias': 'Alternative chemical names.'}
 
     # The reference properties of the ion are stored in private variables.
     _valence = None

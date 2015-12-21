@@ -22,8 +22,9 @@ class Peptide(PolyIon):
     peptide.
     """
 
-    _state = ('name',
-              'sequence')
+    _state = {'name': 'Name of the peptide.',
+              'sequence': 'Amino acid sequence of the peptide.'
+              }
 
     _sequence = None
     _analysis = None
