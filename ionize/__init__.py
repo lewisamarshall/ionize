@@ -20,4 +20,3 @@ from .deserialize import deserialize
 from .Database import Database
 
 # TODO: include pitzer model for high ionic strength NaCl activity
-# TODO: Include docstrings about properties.
