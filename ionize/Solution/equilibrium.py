@@ -26,7 +26,7 @@ def _calculate_pH(self, ionic_strength):
     # size of the list of charge states in an ion.
     max_columns = max([max(ion.valence)-min(ion.valence)+2
                        for ion in self.ions if hasattr(ion, 'valence')])
-    n_ions = len(self.ions)
+    n_ions = len([ion for ion in self.ions if hasattr(ion, 'valence')])
 
     # Set up the matrix of Ls, the multiplication
     # of acidity coefficients for each ion.
@@ -111,7 +111,7 @@ def _equilibrate(self):
     adjusted activity coefficients. This function is called when the selfect is
     initialized.
     """
-    if not self.ions:
+    if not [ion for ion in self.ions if hasattr(ion, 'valence')]:
         dissociation = self._solvent.dissociation(0, self.temperature())
         self._pH = -log10(sqrt(dissociation))
         self._ionic_strength = _calculate_ionic_strength(self, self.pH, 0)

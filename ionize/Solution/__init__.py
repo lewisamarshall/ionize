@@ -63,9 +63,11 @@ class Solution(object):
         name_lookup = dict()
         for ion in self.ions:
             name_lookup[ion.name] = ion
-            if ion.alias is not None:
+            try:
                 for alias in ion.alias:
                     name_lookup[alias] = ion
+            except (AttributeError, TypeError):
+                pass
         return name_lookup
 
     @property
