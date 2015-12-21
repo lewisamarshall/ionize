@@ -1,4 +1,3 @@
-#!/usr/bin/python
 from setuptools import setup, find_packages
 
 # Read long description from readme.md.

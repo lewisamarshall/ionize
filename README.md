@@ -7,11 +7,12 @@ electrolytes. Originally designed with electrophoresis in mind,
 these calculations can help any time the pH or electrical properties of an
 aqueous solution impact system performance.
 
- The goal of **ionize** is to make full simulations of electrolyte properties
- easy, ubiquitous, and accurate. The **ionize** models consider the impact of pH, ionic strength, temperature, and the interactions between different ions.
- Considering all of these impacts makes ionize accurate over the widest
- available range of operating conditions. In addition, **ionize** includes
- warnings when experimental conditions are outside the range of model
+The goal of **ionize** is to make full simulations of electrolyte properties
+easy, ubiquitous, and accurate. The **ionize** models consider the impact of pH,
+ionic strength, temperature, and the interactions between different ions.
+Considering all of these impacts makes ionize accurate over the widest
+available range of operating conditions. In addition, **ionize** includes
+warnings when experimental conditions are outside the range of model
 assumptions.
 
 Installation
