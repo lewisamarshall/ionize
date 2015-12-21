@@ -5,7 +5,6 @@ from scipy.optimize import newton, brentq
 import warnings
 
 
-# TODO: Make sure this only uses common ion API.
 # TODO: Insert checks to ensure excess charge isn't relevant.
 def _calculate_ionic_strength(self, pH, guess):
     # For each ion, add the contribution to ionic strength to the sum.
