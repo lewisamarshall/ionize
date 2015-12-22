@@ -60,7 +60,7 @@ class Solvent(object):
 
     @classmethod
     def debye(self, ionic_strength, temperature):
-        """Return the debye length of the solvent."""
+        """Return the Debye length of the solvent."""
         dielectric = self.dielectric(temperature)
         viscosity = self.viscosity(temperature)
         lamda = (dielectric * permittivity * boltzmann * kelvin(temperature) /
@@ -77,6 +77,14 @@ class Solvent(object):
 
         # Before returning answer, use log 10, convert from meter**3 to liter
         return dh / log(10.) * sqrt(lpm3)
+
+    @classmethod
+    def bjerrum(self, temperature):
+        """Return the Bjerrum length of the solvent."""
+        dielectric = self.dielectric(temperature)
+        lamda = elementary_charge**2 /\
+                4 / pi / dielectric / permittivity/ boltzmann / kelvin(temperature)
+        return lamda
 
     @classmethod
     def ionic_strength(self, pH=None, temperature=None):

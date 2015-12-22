@@ -61,6 +61,14 @@ class TestAqueous(unittest.TestCase):
             self.assertGreater(dh_new, dh)
             dh = dh_new
 
+    def test_bjerrum(self):
+        bj = 0
+        for t in self.temperature_range:
+            bj_new = self.aqueous.bjerrum(t)
+            self.assertGreater(bj_new, bj)
+            bj = bj_new
+
+
     def test_pKs(self):
         self.aqueous.pKs(0.01, 25)
 
