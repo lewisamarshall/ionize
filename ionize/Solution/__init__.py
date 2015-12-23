@@ -68,6 +68,10 @@ class Solution(object):
                     name_lookup[alias] = ion
             except (AttributeError, TypeError):
                 pass
+        name_lookup['H+'] = self._hydronium
+        name_lookup['OH-'] = self._hydroxide
+        name_lookup['hydronium'] = self._hydronium
+        name_lookup['hydroxide'] = self._hydroxide
         return name_lookup
 
     @property
@@ -237,6 +241,32 @@ class Solution(object):
                 return self._name_lookup[item]
         except:
             raise KeyError(item)
+
+    def safe(self):
+        """Return True if the solution has a safe pH.
+
+        We define moderate pH as the regime in which the
+        conductivity contributed by H+ and OH- is less
+        than 10% the sum of charge contributed by other ions.
+        """
+        diss = sum([self.concentration(ion) * self[ion].molar_conductivity()
+                    for ion in ('H+', 'OH-')])
+        other = sum([self.concentration(ion) * ion.molar_conductivity()
+                     for ion in self.ions])
+        return 10. * diss < other
+
+    def moderate(self):
+        """Return True if the solution has a moderate pH.
+
+        We define moderate pH as the regime in which the
+        sum of charge contributed by H+ and OH- is less
+        than 10% the sum of charge contributed by other ions.
+        """
+        diss = sum([abs(self.concentration(ion) * self[ion].charge())
+                    for ion in ('H+', 'OH-')])
+        other = sum([abs(self.concentration(ion) * ion.charge())
+                     for ion in self.ions])
+        return 10. * diss < other
 
     def serialize(self, nested=False, compact=False):
         """Return a JSON-formatted serialization of the object."""

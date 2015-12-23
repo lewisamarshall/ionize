@@ -304,6 +304,17 @@ class TestSolution(unittest.TestCase):
         cycle = sol.displace('tris', 'bis-tris').displace('bis-tris', 'tris')
         self.assertAlmostEqual(sol.pH, cycle.pH, 1)
 
+    def test_safe(self):
+        """Test safe pH evaluation."""
+        sol = Solution('chloride', 0.001)
+        self.assertFalse(sol.safe(), 'Unbuffered acid evaluated as safe.')
+        self.assertTrue(sol.titrate('tris', 8).safe(), 'Tris buffer evaluated as unsafe.')
+
+    def test_moderate(self):
+        """Test moderate pH evaluation."""
+        sol = Solution('chloride', 0.001)
+        self.assertFalse(sol.moderate(), 'Unbuffered acid evaluated as safe.')
+        self.assertTrue(sol.titrate('tris', 8).moderate(), 'Tris buffer evaluated as unsafe.')
 
 class TestNucleicAcid(unittest.TestCase):
 
