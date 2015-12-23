@@ -55,6 +55,7 @@ class BaseIon(object):
 
     def __eq__(self, other):
         """Test equality between two ions."""
+        # TODO: Comparing None to arrays throws warning.
         try:
             assert self._state == other._state
             for prop in self._state:

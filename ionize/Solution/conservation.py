@@ -70,10 +70,21 @@ def jovin(self):
 
 
 def gas(self):
-    """Return the Gas conservation function value of the solution."""
-    # TODO: Only return the valid version of the gas conservation function.
+    """Return the Gas conservation function value of the solution.
+
+    There are two Gas conservation function values, one that depends
+    on the mobility of hydronium, the other depending on the mobility
+    of hydroxide. Each of these is only valid when the concentration
+    of the other ion is negligable. When this assumption is broken,
+    this function returns NaN for one value and a float for the other.
+    """
     alberty = self.alberty()
     jovin = self.jovin()
     gas = [alberty - jovin / self._hydronium.mobility(self.pH),
            alberty - jovin / self._hydroxide.mobility(self.pH)]
+    if not self.safe():
+        if self.concentration('H+') > self.concentration('OH-'):
+            gas[1] = float('NaN')
+        else:
+            gas[0] = float('NaN')
     return np.array(gas)
