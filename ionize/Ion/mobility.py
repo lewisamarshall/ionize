@@ -114,13 +114,8 @@ def onsager_fuoss_mobility(self):
     viscosity = self._solvent.viscosity(temperature)
     interaction = _interaction(self, self.context())
 
-    # New temperature corrected coefficients.
-    alpha = 1.971e6 * sqrt(2) /\
-        (kelvin(temperature) * dielectric)**(3./2.)
-
-    # TODO: Check this scaling. Based on magnitude, unsure on units.
-    beta = (28.98 * sqrt(2) * faraday * elementary_charge * lpm3 /
-            sqrt(kelvin(temperature) * dielectric) / viscosity)
+    alpha = 1.98074e6 / (kelvin(temperature) * dielectric)**(3./2.)
+    beta = 3.022588e-9 * viscosity / (kelvin(temperature) * dielectric)**(1./2.)
 
     mobility = self.absolute_mobility()
     mobility -= (alpha * mobility * interaction * np.abs(self.valence) +
