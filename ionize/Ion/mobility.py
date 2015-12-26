@@ -80,11 +80,6 @@ def robinson_stokes_mobility(self, ionic_strength=None, temperature=None):
     This correction is appropriate if a generic ionic strength is known,
     but the specific ions in solution are unknown.
     """
-    # Currently using the ionic strength where Bahga 2010
-    # uses twice the ionic strength. This appears to work, and follows the
-    # SPRESSO implimentation.
-    # Likely typo in paper.
-    # TODO: Recheck this typo.
     _, ionic_strength, temperature = \
         self._resolve_context(None, ionic_strength, temperature)
 

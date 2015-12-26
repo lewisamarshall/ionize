@@ -110,15 +110,12 @@ class Solvent(object):
     def activity(self, valence, ionic_strength, temperature):
         """Return activity coefficients of a charge state."""
 
-        # There are two coefficients that are used repeatedly.
         # Specified in Bahga.
         A = (self.debye_huckel(temperature) * sqrt(ionic_strength) /
              (1. + pitts * sqrt(ionic_strength))
              )
-        # TODO: Unify with Onsager-Fuoss
-        B = 0.1 * ionic_strength  # Matching STEEP implementation.
+        B = 0.1 * ionic_strength
 
-        # Use them to calculate the activity coefficients.
         gamma = 10**((valence**2)*(B-A))
 
         return gamma
