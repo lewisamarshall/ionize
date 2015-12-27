@@ -6,7 +6,6 @@ import numpy as np
 from ..constants import pitts, reference_temperature, kelvin, faraday, \
     elementary_charge, lpm3, gpkg, onsager_fuoss
 
-
 def mobility(self, pH=None, ionic_strength=None, temperature=None):
     """Return the effective mobility of the ion in m^2/V/s.
 
@@ -109,26 +108,23 @@ def onsager_fuoss_mobility(self):
     viscosity = self._solvent.viscosity(temperature)
     interaction = _interaction(self, self.context())
 
-    alpha = 1.98074e6 / (kelvin(temperature) * dielectric)**(3./2.)
-    beta = 3.022588e-9 * viscosity / (kelvin(temperature) * dielectric)**(1./2.)
+    alpha = (1.98074e6 * abs(self.valence) * interaction /
+             (kelvin(temperature) * dielectric)**(3./2.)
+             )
+    beta = (3.022588e-9 * abs(self.valence) /  viscosity /
+            (kelvin(temperature) * dielectric)**(1./2.))
 
     mobility = self.absolute_mobility()
-    mobility -= (alpha * mobility * interaction * np.abs(self.valence) +
+    mobility -= (alpha * mobility +
                  beta * np.sign(self.valence)) * \
-        (sqrt(ionic_strength) / (1. + pitts * sqrt(ionic_strength)))
+        (sqrt(2 * ionic_strength) / (1. + pitts * sqrt(2 *ionic_strength)))
 
     return mobility
 
 
 def _interaction(ion, solution):
-    """Return the Onsager-Fuoss correction to the mobilities of ions.
-
-    This function returns a list of all corrected actual mobilities.
-    These mobilities are automatically assigned to the correct ions when
-    a solution is initialized.
-    """
-
-    ions = [ion_ for ion_ in solution.ions if solution.concentration(ion_) > 0] + \
+    ions = [ion_ for ion_ in solution.ions
+            if solution.concentration(ion_) > 0] + \
            [solution._hydroxide,  solution._hydronium]
 
     if ion not in ions:
