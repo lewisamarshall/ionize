@@ -55,11 +55,11 @@ class BaseIon(object):
 
     def __eq__(self, other):
         """Test equality between two ions."""
-        # TODO: Comparing None to arrays throws warning.
         try:
             assert self._state == other._state
             for prop in self._state:
                 if isinstance(getattr(self, prop), np.ndarray):
+                    assert getattr(other, prop) is not None
                     assert(np.all(getattr(self, prop) == getattr(other, prop)))
                 else:
                     assert getattr(self, prop) == getattr(other, prop)
