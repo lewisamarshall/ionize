@@ -85,17 +85,17 @@ def robinson_stokes_mobility(self, ionic_strength=None, temperature=None):
     dielectric = self._solvent.dielectric(temperature)
     viscosity = self._solvent.viscosity(temperature)
 
-    # TODO: Check again.
-    alpha = 1.705 * (kelvin(temperature) / dielectric) ** (-3./2.)
-    beta = 4.275e-9 / sqrt(kelvin(temperature) * dielectric) /\
-        viscosity
+    alpha = (5.799e5 * abs(self.valence) /
+             (kelvin(temperature) * dielectric)**(3./2.)
+             )
+    beta = (3.022588e-9 * abs(self.valence) / viscosity /
+            (kelvin(temperature) * dielectric)**(1./2.))
 
     mobility = self.absolute_mobility(temperature)
     mobility -= (alpha * mobility +
-                 beta * np.sign(self.valence)
-                 ) * (sqrt(ionic_strength) /
-                      (1. + pitts * sqrt(ionic_strength))
-                      )
+                 beta * np.sign(self.valence)) * \
+        (sqrt(2 * ionic_strength) / (1. + pitts * sqrt(2 *ionic_strength)))
+
     return mobility
 
 
@@ -111,7 +111,7 @@ def onsager_fuoss_mobility(self):
     alpha = (1.98074e6 * abs(self.valence) * interaction /
              (kelvin(temperature) * dielectric)**(3./2.)
              )
-    beta = (3.022588e-9 * abs(self.valence) /  viscosity /
+    beta = (3.022588e-9 * abs(self.valence) / viscosity /
             (kelvin(temperature) * dielectric)**(1./2.))
 
     mobility = self.absolute_mobility()
