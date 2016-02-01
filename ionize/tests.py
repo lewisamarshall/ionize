@@ -62,16 +62,60 @@ class TestAqueous(unittest.TestCase):
             dh = dh_new
 
     def test_bjerrum(self):
+        """Test the Bjerrum length."""
         bj = 0
         for t in self.temperature_range:
             bj_new = self.aqueous.bjerrum(t)
             self.assertGreater(bj_new, bj)
             bj = bj_new
 
-
     def test_pKs(self):
+        """Test the solvent dissociation."""
         self.aqueous.pKs(0.01, 25)
 
+
+class BaseTestIon(object):
+    """Base class for ion tests."""
+    def test_serialize(self):
+        for ion in self.ions:
+            self.assertEqual(ion, deserialize(ion.serialize()),
+                             'Deserializing {} failed.'.format(ion_name))
+
+    def test_immutable(self):
+        """Test that parts of ion state are immutable."""
+        ion = self.database.load('histidine')
+        for prop in ion._state:
+            with self.assertRaises(AttributeError):
+                setattr(ion, prop, None)
+
+    def test_repr(self):
+        for name in self.database.keys():
+            ion = self.database.load(name)
+            self.assertEqual(ion, eval(repr(ion)),
+                             'Evaluating repr({}) was malformed.'.format(name))
+
+    def test_separability(self):
+        ref = self.database['tris']
+        for name in ['tris', 'bis-tris', 'hydrochloric acid']:
+            other = self.database[name]
+            if name is not 'tris':
+                self.assertGreater(ref.separability(other, pH=8), 0)
+            else:
+                self.assertAlmostEqual(ref.separability(other, pH=8), 0)
+
+    def test_context(self):
+        ion = self.database['tris']
+        pH, ionic_strength, temperature = \
+            ion._resolve_context(None, None, None)
+        self.assertEqual(pH, None)
+        self.assertAlmostEqual(ionic_strength, 0, 5)
+        self.assertEqual(temperature, ion.reference_temperature)
+
+        pH, ionic_strength, temperature = \
+            ion._resolve_context(1, 0.1, 0)
+        self.assertEqual(pH, 1)
+        self.assertEqual(ionic_strength, 0.1)
+        self.assertEqual(temperature, 0)
 
 class TestIon(unittest.TestCase):
 

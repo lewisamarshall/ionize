@@ -12,7 +12,7 @@ ALIASES = {'chloride': 'hydrochloric acid',
            'H+': 'hydronium',
            'OH-': 'hydronium',
            }
-
+# TODO: Make sure full names are included with aliases.
 NIGHTINGALE_FILES = {'silver': 'silver',
                      'calcium': 'calcium',
                      'hydrochloric acid': 'hydrochloric_acid',
