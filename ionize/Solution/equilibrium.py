@@ -5,7 +5,6 @@ from scipy.optimize import newton, brentq
 import warnings
 
 
-# TODO: Insert checks to ensure excess charge isn't relevant.
 def _calculate_ionic_strength(self, pH, guess):
     # For each ion, add the contribution to ionic strength to the sum.
 
@@ -23,15 +22,17 @@ def _calculate_ionic_strength(self, pH, guess):
 def _calculate_pH(self, ionic_strength):
     # Find the order of the polynomial. This is the maximum
     # size of the list of charge states in an ion.
+    ions = [ion for ion in self.ions if hasattr(ion, 'valence')]
     max_columns = max([max(ion.valence)-min(ion.valence)+2
-                       for ion in self.ions if hasattr(ion, 'valence')])
-    n_ions = len([ion for ion in self.ions if hasattr(ion, 'valence')])
+                       for ion in ions])
+    n_ions = len(ions)
 
     # Set up the matrix of Ls, the multiplication
     # of acidity coefficients for each ion.
     l_matrix = np.array([np.resize(ion.acidity_product(ionic_strength),
                         [max_columns])
-                        for ion in self.ions if hasattr(ion, 'valence')])
+                        for ion in ions])
+    concentrations = np.array([self.concentration(ion) for ion in ions])
 
     # Construct Q vector.
     Q = 1.0
@@ -45,8 +46,8 @@ def _calculate_pH(self, ionic_strength):
 
     # Construct P matrix
     PMat = []
-    for i in range(n_ions):
-        z_list = np.resize(self.ions[i]._valence_zero(), [max_columns])
+    for i, ion in enumerate(ions):
+        z_list = np.resize(ion._valence_zero(), [max_columns])
 
         Mmod = l_matrix.copy()
         Mmod[i, :] *= np.array(z_list)
@@ -60,7 +61,7 @@ def _calculate_pH(self, ionic_strength):
 
     # Multiply P matrix by concentrations, and sum.
     P = np.sum(np.array(PMat, ndmin=2) *
-               np.array(self.concentrations)[:, np.newaxis], 0)
+               np.array(concentrations)[:, np.newaxis], 0)
     # Construct polynomial. Change the shapes as needed, then reverse the order
     if len(P) < len(Q):
         P.resize(Q.shape)
@@ -142,6 +143,16 @@ def _equilibrate(self):
     if I > 1.:
         warnings.warn(('Ionic strength > 1M. '
                       'Ionic stregth correction may be inaccurate.'))
+
+    # Check the excess charge due to large ions
+
+    small = [ion for ion in self.ions if hasattr(ion, 'valence')]
+    I_small = sum([self.concentration(ion) * ion.charge(moment=2)
+         for ion in small]) / 2.
+
+    if I_small < I/2.:
+        raise RuntimeError('Large ions may be contributing to charge, '
+                           'pH estimate is inaccurate.'))
 
     self._pH = pH
     self._ionic_strength = I
