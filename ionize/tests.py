@@ -365,14 +365,14 @@ class TestSolution(unittest.TestCase):
         self.assertFalse(sol.moderate(), 'Unbuffered acid evaluated as safe.')
         self.assertTrue(sol.titrate('tris', 8).moderate(), 'Tris buffer evaluated as unsafe.')
 
-class TestNucleicAcid(unittest.TestCase):
-
-    def test_mobility(self):
-        mu = 0
-        for n in [10, 100, 1000, 10000, 100000, None]:
-            mup = NucleicAcid(size=n).mobility()
-            self.assertGreater(mup, mu, "Mobility didn't increase with size")
-            mu = mup
+#class TestNucleicAcid(unittest.TestCase):
+#
+#    def test_mobility(self):
+#        mu = 0
+#        for n in [10, 100, 1000, 10000, 100000, None]:
+#            mup = NucleicAcid(size=n).mobility()
+#            self.assertGreater(mup, mu, "Mobility didn't increase with size")
+#            mu = mup
 
 
 class TestPeptide(unittest.TestCase):
