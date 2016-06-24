@@ -347,6 +347,11 @@ class TestSolution(unittest.TestCase):
         sol = Solution(['tris', 'acetic acid'], [0.01, 0.005])
         cycle = sol.displace('tris', 'bis-tris').displace('bis-tris', 'tris')
         self.assertAlmostEqual(sol.pH, cycle.pH, 1)
+        # Check that guesses work for solutions where the initial concentration
+        # does not converge to the correct value
+        sol = Solution(['tris', 'chloride', 'hepes'], [0.01, 0.004, 0.001])
+        cycle = sol.displace('chloride', guess=[0.009, 0.004])
+        self.assertAlmostEqual(sol.pH, cycle.pH, 0)
 
     def test_safe(self):
         """Test safe pH evaluation."""

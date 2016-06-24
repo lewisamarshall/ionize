@@ -90,7 +90,7 @@ def equilibrate_CO2(self, partial_pressure=atmospheric_CO2):
         raise RuntimeError('Solver did not converge')
 
 
-def displace(self, receding, advancing=None):
+def displace(self, receding, advancing=None, guess=None):
     """Electrophoretically displace an ion."""
     # Convert ion names to ions
     if isinstance(advancing, str):
@@ -114,6 +114,12 @@ def displace(self, receding, advancing=None):
         advancing.context(new_solution)
     else:
         new_solution._contents.pop(receding)
+
+    # If there is a guess, use it to update the concentrations
+    if guess is not None:
+        assert len(new_solution.ions) == len(guess), 'Incorrect guess length.'
+        for ion, c_guess in zip(new_solution._contents.keys(), guess):
+            new_solution._contents[ion] = c_guess
 
     new_solution._equilibrate()
 
