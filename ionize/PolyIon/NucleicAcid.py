@@ -42,7 +42,7 @@ class NucleicAcid(PolyIon):
         # mu = (3.75 - 1.8 * (self.size**-.6)) * 1e-8
         lb = self._solvent.bjerrum(temperature)
         k = 1./self._solvent.debye(ionic_strength, temperature)
-        mu = 6 * pi * self.solvent.viscosity() * lb / self.friction()
+        mu = 6 * pi * self._solvent.viscosity(temperature) * lb / self.friction()
         mu -= 2 * self.charge() * log(1 - exp(-k * lb / self.charge()))
         return mu
 
