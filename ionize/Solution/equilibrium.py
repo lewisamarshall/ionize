@@ -149,10 +149,11 @@ def _equilibrate(self):
     small = [ion for ion in self.ions if hasattr(ion, 'valence')]
     I_small = sum([self.concentration(ion) * ion.charge(moment=2)
          for ion in small]) / 2.
+    I_small += (self.concentration('H+') + self.concentration('OH-'))/2
 
     if I_small < I/2.:
         raise RuntimeError('Large ions may be contributing to charge, '
-                           'pH estimate is inaccurate.'))
+                           'pH estimate is inaccurate.')
 
     self._pH = pH
     self._ionic_strength = I

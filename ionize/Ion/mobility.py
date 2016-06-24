@@ -40,10 +40,10 @@ def actual_mobility(self, ionic_strength=None, temperature=None):
     try:
         return self.onsager_fuoss_mobility()
     except AttributeError:
-        warnings.warn("Insufficient information for Onsager-Fuoss "
-                      "correction to mobility. Returning the Robinson-"
-                      "Stokes approximation.")
-    return self.robinson_stokes_mobility(ionic_strength, temperature)
+        # warnings.warn("Insufficient information for Onsager-Fuoss "
+        #               "correction to mobility. Returning the Robinson-"
+        #               "Stokes approximation.")
+        return self.robinson_stokes_mobility(ionic_strength, temperature)
 
 
 def absolute_mobility(self, temperature=None):

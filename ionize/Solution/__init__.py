@@ -181,7 +181,7 @@ class Solution(object):
 
     def __add__(self, other):
         if isinstance(other, Solution):
-            ions = list(set(self.ions, other.ions))
+            ions = list(set(self.ions + other.ions))
             return Solution(ions, [self.concentration(ion) +
                                    other.concentration(ion)
                                    for ion in ions]

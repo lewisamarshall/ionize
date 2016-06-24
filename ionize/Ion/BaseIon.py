@@ -1,14 +1,12 @@
 """Module containing the BaseIon class."""
-import json
 import numpy as np
 import contextlib
-import operator
 from math import sqrt
-import warnings
 
 from .fixed_state import fixed_state
 from ..Solvent import Aqueous
-from ..constants import reference_temperature
+from ..constants import reference_temperature, elementary_charge, lpm3, \
+    boltzmann, faraday, kelvin
 from ..serialize import _serialize
 
 
