@@ -1,5 +1,5 @@
 from __future__ import division, print_function
-from scipy.optimize import newton, brentq, root
+from scipy.optimize import brentq, root
 import numpy as np
 import numbers
 import warnings
@@ -127,20 +127,22 @@ def displace(self, receding, advancing=None, guess=None):
         for ion, concentration in zip(new_solution.ions,
                                       concentrations):
             new_solution._contents[ion] = abs(concentration)
+
         new_solution._equilibrate()
 
-        field_ratio = self.conductivity() / new_solution.conductivity()
-        reference = receding.mobility()
+        velocity = 1./self.zone_transfer(receding)
 
         err = []
+
         for ion in new_solution.ions:
             if ion is advancing:
-                err.append(ion.mobility() * field_ratio - reference)
+                err.append(1./new_solution.zone_transfer(ion) - velocity)
             else:
                 err.append(new_solution.concentration(ion) -
                            self.concentration(ion) *
-                           (self[ion].mobility() - reference) /
-                           (field_ratio * ion.mobility() - reference))
+                           (1./self.zone_transfer(ion)-velocity) /
+                           (1./new_solution.zone_transfer(ion)-velocity)
+                           )
 
         return np.array(err)
 

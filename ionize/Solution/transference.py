@@ -1,4 +1,3 @@
-import numpy as np
 from ..constants import lpm3
 from ..Database import Database
 

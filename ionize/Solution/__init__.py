@@ -1,18 +1,14 @@
 from __future__ import division
-import json
 import copy
 from collections import OrderedDict
-import numbers
 import contextlib
-import operator
 import numpy as np
 
-from ..Ion import Ion, BaseIon
+from ..Ion import BaseIon
 from ..Solvent import Aqueous
 from ..Database import Database
 from ..serialize import _serialize
-from ..constants import permittivity, avogadro, boltzmann, \
-                        elementary_charge, lpm3, reference_temperature
+from ..constants import reference_temperature
 
 database = Database()
 
