@@ -1,16 +1,16 @@
 from __future__ import print_function
 from math import copysign
-import json
+import simplejson as json
 import os
-import csv
 import numpy as np
 import pandas as pd
+import decimal
 
 ALIASES = {'chloride': 'hydrochloric acid',
            'laurylsulfonic acid': 'dodecylsulfonic acid',
-           'proton': 'hydrochloric acid',
+           'proton': 'hydronium',
            'H+': 'hydronium',
-           'OH-': 'hydronium',
+           'OH-': 'hydroxide',
            }
 # TODO: Make sure full names are included with aliases.
 NIGHTINGALE_FILES = {'silver': 'silver',
@@ -25,6 +25,10 @@ NIGHTINGALE_FILES = {'silver': 'silver',
                      'sulfuric acid': 'sulfuric_acid',
                      'cesium': 'rubidium_cesium'
                      }
+
+
+def sig_fig(x):
+    return [decimal.Decimal('{0:.5e}'.format(i)) for i in x]
 
 
 class DataCreator(object):
@@ -71,10 +75,11 @@ class DataCreator(object):
             data = pd.read_csv(fullpath, engine='python', header=0,
                                index_col=0, names=['value'])
 
-            nightingale_fits[ion] = {'fit': np.polyfit(data.index,
-                                                       data['value'],
-                                                       deg=8
-                                                       ).tolist(),
+            nightingale_fits[ion] = {'fit': sig_fig(np.polyfit(data.index,
+                                                              data['value'],
+                                                              deg=8
+                                                              )
+                                                    ),
                                      'min': min(data.index),
                                      'max': max(data.index)
                                      }
