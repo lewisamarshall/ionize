@@ -60,6 +60,8 @@ class BaseIon(object):
                     assert getattr(other, prop) is not None
                     assert(np.all(getattr(self, prop) == getattr(other, prop)))
                 else:
+                    if isinstance(getattr(other, prop), np.ndarray):
+                        assert getattr(self, prop) is not None
                     assert getattr(self, prop) == getattr(other, prop)
             return True
         except:
