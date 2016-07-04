@@ -2,6 +2,7 @@
 import numpy as np
 import contextlib
 from math import sqrt
+import json
 
 from .fixed_state import fixed_state
 from ..Solvent import Aqueous
@@ -33,7 +34,7 @@ class BaseIon(object):
     def __repr__(self):
         """Return an unambiguous string representation."""
         inner = []
-        for prop in self._state:
+        for prop in sorted(self._state):
             prop = str(prop)  # convert unicode to string
             value = getattr(self, prop)
             if isinstance(value, np.ndarray):
@@ -49,7 +50,7 @@ class BaseIon(object):
 
     def __hash__(self):
         """Return the hash value for the object."""
-        return hash(repr(self))
+        return hash(json.dumps(self._state))
 
     def __eq__(self, other):
         """Test equality between two ions."""

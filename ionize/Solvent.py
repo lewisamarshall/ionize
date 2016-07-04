@@ -62,7 +62,6 @@ class Solvent(object):
     def debye(self, ionic_strength, temperature):
         """Return the Debye length of the solvent."""
         dielectric = self.dielectric(temperature)
-        viscosity = self.viscosity(temperature)
         lamda = (dielectric * permittivity * boltzmann * kelvin(temperature) /
                  elementary_charge**2. /
                  (ionic_strength * lpm3) / avogadro) ** .5
@@ -144,7 +143,7 @@ class Aqueous(Solvent):
     def viscosity(self, temperature):
         """Return the viscosity of water at the specified temperature.
 
-        Correlation is based on Fox and McDonald's Intro to FLuid Mechanics.
+        Correlation is based on Fox and McDonald's Intro to Fluid Mechanics.
         """
         temperature = kelvin(temperature)
         viscosity_ = 2.414e-5 * 10**(247.8 / (temperature - 140))
