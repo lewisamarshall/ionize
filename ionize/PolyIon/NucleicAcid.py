@@ -38,7 +38,7 @@ class NucleicAcid(PolyIon):
     def mobility(self, pH=None, ionic_strength=None, temperature=None):
         pH, ionic_strength, temperature = \
                 self._resolve_context(pH, ionic_strength, temperature)
-        mu = (3.75 - 1.8 * (self.size**-.6)) * 1e-8
+        mu = (3.75 - 1.8 * (self.size**-.6)) * -1e-8
         return mu
 
 
