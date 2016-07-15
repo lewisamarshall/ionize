@@ -38,24 +38,31 @@ class NucleicAcid(PolyIon):
     def mobility(self, pH=None, ionic_strength=None, temperature=None):
         pH, ionic_strength, temperature = \
                 self._resolve_context(pH, ionic_strength, temperature)
-        # TODO: Introduce manning condensation model
-        # mu = (3.75 - 1.8 * (self.size**-.6)) * 1e-8
-        lb = self._solvent.bjerrum(temperature)
-        k = 1./self._solvent.debye(ionic_strength, temperature)
-        mu = 6 * pi * self._solvent.viscosity(temperature) * lb / self.friction()
-        mu -= 2 * self.charge() * log(1 - exp(-k * lb / self.charge()))
+        mu = (3.75 - 1.8 * (self.size**-.6)) * 1e-8
         return mu
+
 
     def charge(self, pH=None, ionic_strength=None, temperature=None,
                moment=1):
         pH, ionic_strength, temperature = \
                 self._resolve_context(pH, ionic_strength, temperature)
 
-        return -1 * self.length() / self._solvent.bjerrum(temperature)
-
+        return -1. * self.length() / self._solvent.bjerrum(temperature)
 
     def length(self):
-        return self.size * DNA_LENGTH # TODO: Define
+        per_bp_length = 3.4e-10 # 3.4 Angstrom in meters
+        return self.size * per_bp_length
 
-    def friction(self, pH=None, ionic_strength=None, temperature=None):
+    # TODO: Finish the manning model below
+    def _friction(self, pH=None, ionic_strength=None, temperature=None):
         pass
+
+    def _manning_mobility(self, pH=None, ionic_strength=None, temperature=None):
+        pH, ionic_strength, temperature = \
+                self._resolve_context(pH, ionic_strength, temperature)
+
+        lb = self._solvent.bjerrum(temperature)
+        k = 1./self._solvent.debye(ionic_strength, temperature)
+        mu = 6 * pi * self._solvent.viscosity(temperature) * lb / self.friction()
+        mu -= 2 * self.charge() * log(1 - exp(-k * lb / self.charge()))
+        return mu
