@@ -223,6 +223,9 @@ class Solution(object):
         except:
             return False
 
+    def __hash__(self):
+        return hash(self.serialize())
+
     def __contains__(self, other):
         return other in self.ions or other in self._name_lookup.keys()
 
