@@ -176,6 +176,16 @@ class TestIon(unittest.TestCase):
         sol = Solution([hcl], [0.1])
         self.assertEqual(hcl, hcl2)
 
+    def test_hash(self):
+        for ion in self.database.keys():
+            ion1 = self.database[ion]
+            ion2 = self.database[ion]
+            ion1.context({'pH': 8, 'ionic_strength': 0.1, 'temperature': 28})
+            ion2.context({'pH': 9, 'ionic_strength': 0.05, 'temperature': 23})
+            self.assertTrue(hash(ion1)==hash(ion2),
+                            "Ions from database aren't identitcal.",
+                            )
+
     def test_serialize(self):
         for ion_name in self.database.keys():
             ion = self.database.load(ion_name)
@@ -364,6 +374,11 @@ class TestSolution(unittest.TestCase):
         sol = Solution('chloride', 0.001)
         self.assertFalse(sol.moderate(), 'Unbuffered acid evaluated as safe.')
         self.assertTrue(sol.titrate('tris', 8).moderate(), 'Tris buffer evaluated as unsafe.')
+
+    def test_hash(self):
+        sol1 = Solution('chloride', 0.001)
+        sol2 = Solution('chloride', 0.001)
+        self.assertEqual(hash(sol1), hash(sol2))
 
 class TestNucleicAcid(unittest.TestCase):
 

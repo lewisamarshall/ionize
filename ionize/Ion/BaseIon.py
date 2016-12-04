@@ -50,7 +50,7 @@ class BaseIon(object):
 
     def __hash__(self):
         """Return the hash value for the object."""
-        return hash(json.dumps(self._state))
+        return hash(self.serialize())
 
     def __eq__(self, other):
         """Test equality between two ions."""
