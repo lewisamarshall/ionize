@@ -194,6 +194,25 @@ class Solution(object):
 
     __radd__ = __add__
 
+    def __sub__(self, other):
+        if isinstance(other, Solution):
+            ions = list(set(self.ions + other.ions))
+            return Solution(ions, [self.concentration(ion) -
+                                   other.concentration(ion)
+                                   for ion in ions]
+                            )
+        else:
+            try:
+                ion, concentration = other
+                new_contents = dict(self._contents)
+                new_contents[ion] = self.concentration(ion) - concentration
+                return Solution(new_contents.keys(), new_contents.values())
+            except:
+                raise TypeError('Solutions add to other Solutions or to an'
+                                 '(Ion, concentration) iterable pair.')
+
+    __rsub__ = __sub__
+
     def __mul__(self, other):
         if other >= 0:
             return Solution(self.ions,
@@ -202,6 +221,15 @@ class Solution(object):
             raise TypeError
 
     __rmul__ = __mul__
+
+    def __truediv__(self, other):
+        if other > 0:
+            return Solution(self.ions,
+                            [c / other for c in self.concentrations])
+        else:
+            raise TypeError
+
+    __rtruediv__ = __truediv__
 
     def __str__(self):
         """Return a string representing the Solution."""
