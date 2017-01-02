@@ -211,8 +211,6 @@ class Solution(object):
                 raise TypeError('Solutions add to other Solutions or to an'
                                  '(Ion, concentration) iterable pair.')
 
-    __rsub__ = __sub__
-
     def __mul__(self, other):
         if other >= 0:
             return Solution(self.ions,
@@ -228,8 +226,6 @@ class Solution(object):
                             [c / other for c in self.concentrations])
         else:
             raise TypeError
-
-    __rtruediv__ = __truediv__
 
     def __str__(self):
         """Return a string representing the Solution."""
