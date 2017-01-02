@@ -111,8 +111,12 @@ class Solution(object):
             else:
                 ion = copy.copy(ion)
             ion.context(self)
-            assert concentration >= 0, 'Concentrations must be positive.'
-            self._contents[ion] = concentration
+            if concentration == 0:
+                continue
+            elif concentration <0:
+                raise ValueError('Concentrations must be positive.')
+            else:
+                self._contents[ion] = concentration
 
         self._hydronium = database['hydronium']
         self._hydroxide = database['hydroxide']
@@ -206,6 +210,8 @@ class Solution(object):
                 ion, concentration = other
                 new_contents = dict(self._contents)
                 new_contents[ion] = self.concentration(ion) - concentration
+                if new_contents[ion]==0:
+                    del new_contents[ion]
                 return Solution(new_contents.keys(), new_contents.values())
             except:
                 raise TypeError('Solutions add to other Solutions or to an'

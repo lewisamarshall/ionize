@@ -77,7 +77,8 @@ def equilibrate_CO2(self, partial_pressure=atmospheric_CO2):
 
     def min_func(concentration):
         new_sol = self + (CO2, concentration)
-        deionized = concentration * (1-sum(new_sol[CO2].ionization_fraction()))
+        with CO2.context(new_sol):
+            deionized = concentration * (1-sum(CO2.ionization_fraction()))
         return deionized - eq
 
     with warnings.catch_warnings():
