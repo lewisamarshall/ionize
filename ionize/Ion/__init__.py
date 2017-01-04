@@ -118,8 +118,10 @@ class Ion(BaseIon):
                      'enthalpy',
                      'heat_capacity'):
             if getattr(self, prop) is not None:
-                assert getattr(self, prop).shape == self.valence.shape, \
-                    '{} must have the same shape as valence.'.format(prop)
+                template = 'In {}, valence is {}, while {} is {}. Wrong size.'
+                assert getattr(self, prop).size == self.valence.size, \
+                    template.format(self.name, self.valence, prop,
+                                    getattr(self, prop))
 
         assert np.all((self.reference_mobility / self.valence) > 0.), \
             'Mobilities must be signed. {}, {}'.format(self.reference_mobility,
