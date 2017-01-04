@@ -106,7 +106,7 @@ class Ion(BaseIon):
 
         if enthalpy is not None:
             self._enthalpy = np.float_(enthalpy)
-            assert len(enthalpy) == len(self.reference_pKa)
+            assert len(self.enthalpy) == len(self.reference_pKa)
 
         if heat_capacity is not None:
             self._heat_capacity = np.float_(heat_capacity)
