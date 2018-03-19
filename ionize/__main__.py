@@ -65,7 +65,7 @@ def solution(ions, concentrations, titrate, titration_property):
         click.echo('\ntitrated solution:')
         click.echo(titrated_solution)
         click.echo(titrated_solution.serialize(nested = False, compact = True))
-        click.echo('\ntitration: %f M %s' % ((titrated_solution - initial_solution).concentration(titrant), titrant))
+        click.echo('\ntitration: add %f M %s' % ((titrated_solution - initial_solution).concentration(titrant), titrant))
 
 
 if __name__ == '__main__':
