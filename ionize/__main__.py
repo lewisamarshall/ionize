@@ -43,7 +43,7 @@ def ion(name):
 @cli.command()
 @click.argument('ions')
 @click.argument('concentrations')
-@click.option('--titrate', '-t', type = (str, float), help = 'titrate the solution with the specified titrant to the specified value of a property, e.g. \'hydrochloric acid\' 8.5')
+@click.option('--titrate', '-t', type = (str, float), default = (None, None), help = 'titrate the solution with the specified titrant to the specified value of a property, e.g. \'hydrochloric acid\' 8.5')
 @click.option('--titration_property', '-p', default = 'pH', help = 'physical property to titrate, default pH')
 def solution(ions, concentrations, titrate, titration_property):
     '''
@@ -55,11 +55,11 @@ def solution(ions, concentrations, titrate, titration_property):
     
     initial_solution = Solution(ions.split(','), list(map(float, concentrations.split(','))))
     
-    if titrate: click.echo('starting solution:')
+    if titrate != (None, None): click.echo('starting solution:')
     click.echo(initial_solution)
     click.echo(initial_solution.serialize(nested = False, compact = True))
     
-    if titrate:
+    if titrate != (None, None):
         titrant, target = titrate
         titrated_solution = initial_solution.titrate(titrant, target, titration_property)
         click.echo('\ntitrated solution:')
