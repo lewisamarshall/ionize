@@ -22,8 +22,22 @@ def ion(name):
     '''
     Print the physical properties of an ion.
     '''
-    new_ion = Database()[name]
-    click.echo(Database()[name].serialize(nested = False, compact = True))
+    db = Database()
+    if name in db:
+        new_ion = db[name]
+    else:
+        search_results = db.search(name)
+        if not search_results:
+            click.echo('\'%s\' not found' % name)
+            return
+        click.echo('Did you mean one of these?\n')
+        for i in range(len(search_results)):
+            click.echo('%i: %s' % (i + 1, search_results[i]))
+        which_result = click.prompt('\nEnter the number of the correct ion', type = int)
+        new_ion = db[search_results[which_result - 1]]
+        click.echo()
+    
+    click.echo(new_ion.serialize(nested = False, compact = True))
 
 
 @cli.command()
