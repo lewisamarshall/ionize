@@ -274,6 +274,13 @@ class TestSolution(unittest.TestCase):
             self.assertAlmostEqual(base.titrate('hydrochloric acid', pH).pH,
                                    pH)
 
+    def test_solution_titrate(self):
+        """Test titration with a solution."""
+        base = Solution(['tris'], [0.1])
+        titrant = Solution('hydrochloric acid', 0.2)
+        for pH in (1, 3, 5, 7):
+            self.assertAlmostEqual(base.titrate(titrant, pH).pH, pH)
+
     def test_solution_properties(self):
         for buf in self.solutions:
             buf.conductivity()

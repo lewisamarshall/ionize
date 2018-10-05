@@ -5,6 +5,7 @@ import numbers
 import warnings
 from copy import deepcopy
 
+from ..Ion.BaseIon import BaseIon
 from ..Ion import Ion
 from ..Database import Database
 from ..constants import atmospheric_CO2
@@ -45,25 +46,46 @@ def titrate(self, titrant, target, titration_property='pH'):
     To titrate to a target property other than pH, simply set the property
     to a property of the Solution class.
     """
+    from . import Solution
     if isinstance(titrant, str):
         titrant = database.load(titrant)
 
-    att = getattr(self, titration_property)
-    if isinstance(att, numbers.Number):
-        def min_func(c):
-            return getattr(self + (titrant, c), titration_property)-target
-    else:
-        def min_func(c):
-            return getattr(self + (titrant, c), titration_property)()-target
+    if isinstance(titrant, BaseIon):
+        att = getattr(self, titration_property)
+        if isinstance(att, numbers.Number):
+            def min_func(c):
+                return getattr(self + (titrant, c), titration_property)-target
+        else:
+            def min_func(c):
+                return getattr(self + (titrant, c), titration_property)()-target
 
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
-        c, r = brentq(min_func, 0, 55, full_output=True)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            c, r = brentq(min_func, 0, 55, full_output=True)
 
-    if r.converged:
-        return (self + (titrant, c))
+        if r.converged:
+            return (self + (titrant, c))
+        else:
+            raise RuntimeError('Solver did not converge.')
+    elif isinstance(titrant, Solution):
+        att = getattr(self, titration_property)
+        if isinstance(att, numbers.Number):
+            def min_func(c):
+                return getattr((self*(1-c) + titrant*c), titration_property)-target
+        else:
+            def min_func(c):
+                return getattr((self*(1-c) + titrant*c), titration_property)()-target
+
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            c, r = brentq(min_func, 0, 1, full_output=True)
+
+        if r.converged:
+            return (self*(1-c)+titrant*c)
+        else:
+            raise RuntimeError('Solver did not converge.')
     else:
-        raise RuntimeError('Solver did not converge.')
+        raise TypeError('Titrant must be an Ion, an ion name string, or a Solution.')
 
 
 def equilibrate_CO2(self, partial_pressure=atmospheric_CO2):
