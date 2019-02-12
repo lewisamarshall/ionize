@@ -8,6 +8,7 @@ import decimal
 
 ALIASES = {'chloride': 'hydrochloric acid',
            'laurylsulfonic acid': 'dodecylsulfonic acid',
+           'barium hydroxide': 'barium',
            'proton': 'hydronium',
            'H+': 'hydronium',
            'OH-': 'hydroxide',

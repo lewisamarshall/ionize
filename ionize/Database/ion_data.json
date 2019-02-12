@@ -2274,7 +2274,9 @@
     },
     "barium": {
         "__ion__": "Ion",
-        "alias": null,
+        "alias": [
+            "barium hydroxide"
+        ],
         "enthalpy": null,
         "heat_capacity": null,
         "molecular_weight": null,
@@ -2292,6 +2294,9 @@
             1,
             2
         ]
+    },
+    "barium hydroxide": {
+        "alias_of": "barium"
     },
     "benzenesulfonic acid": {
         "__ion__": "Ion",
@@ -5364,8 +5369,8 @@
     "hydronium": {
         "__ion__": "Ion",
         "alias": [
-            "H+",
-            "proton"
+            "proton",
+            "H+"
         ],
         "enthalpy": null,
         "heat_capacity": null,
