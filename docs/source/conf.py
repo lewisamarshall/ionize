@@ -17,7 +17,7 @@
 
 import sys
 import os
-import mock
+import unittest.mock as mock
 MOCK_MODULES = ['numpy', 'scipy', 'scipy.optimize', 'numpy.linalg', 'Bio',
                 'Bio.SeqUtils', 'Bio.SeqUtils.IsoelectricPoint',
                 'Bio.SeqUtils.ProtParam']
