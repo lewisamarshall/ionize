@@ -1,13 +1,9 @@
 """Module containing the Ion class."""
 from __future__ import division
-import warnings
-from math import copysign
-import json
 import numpy as np
 
 from .BaseIon import BaseIon
-from ..constants import reference_temperature, boltzmann, kelvin, \
-                        elementary_charge
+from ..constants import reference_temperature
 from .fixed_state import fixed_state
 
 
