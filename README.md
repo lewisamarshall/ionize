@@ -21,6 +21,11 @@ One-line install using [pip](https://pypi.python.org/pypi/pip):
 
     pip install ionize
 
+Alternatively, if you're installing from source:
+- Clone the repository, and `cd` into the `ionize` directory.
+- Install the dependencies with `pip3 install -r requirements.txt`
+- Install `ionize` using `python3 setup.py install`
+
 Tutorial
 --------
 Want to use **ionize**? Read the [tutorial][tutorial].
