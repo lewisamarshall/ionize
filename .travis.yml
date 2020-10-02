@@ -6,21 +6,11 @@ python:
 notifications:
   email: false
 install:
-- if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
-  -O miniconda.sh; else wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-  -O miniconda.sh; fi
-- bash miniconda.sh -b -p $HOME/miniconda
-- export PATH="$HOME/miniconda/bin:$PATH"
-- hash -r
-- conda config --set always_yes yes --set changeps1 no
-- conda update -q conda
-- conda info -a
-- conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION numpy scipy nose
-  coverage biopython click
-- source activate test-environment
-- pip install coveralls
+  - pip install coverage coveralls
+  - pip install -r requirements.txt
 script:
-- coverage run --source=ionize setup.py test
+  - coverage run --source=ionize setup.py test
+  
 after_success: coveralls
 deploy:
   provider: pypi
