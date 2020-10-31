@@ -460,6 +460,10 @@ class TestCLI(unittest.TestCase):
         result = runner.invoke(cli, ['ion', 'tris'])
         self.assertEqual(result.exit_code, 0)
 
+    def test_solution_cli(self):
+        runner = CliRunner()
+        result = runner.invoke(cli, ['solution', 'tris', '0.1', 'chloride', '0.05'])
+        self.assertEqual(result.exit_code, 0)
 
 if __name__ == '__main__':
     unittest.main()
