@@ -9,7 +9,7 @@ except:
 
 # Read version from package.
 # from ionize.__version__ import __version__
-__version__ == '1.4.0'
+__version__ = '1.4.0'
 
 setup(name='ionize',
       version=__version__,
