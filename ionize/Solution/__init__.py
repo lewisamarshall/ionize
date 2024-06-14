@@ -116,7 +116,7 @@ class Solution(object):
             elif concentration <0:
                 raise ValueError('Concentrations must be positive.')
             else:
-                self._contents[ion] = concentration
+                self._contents[ion] = float(concentration)
 
         self._hydronium = database['hydronium']
         self._hydroxide = database['hydroxide']
