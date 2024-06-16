@@ -1,14 +1,8 @@
 from setuptools import setup, find_packages
 
-# Read long description from readme.md.
-try:
-    import pypandoc
-    long_description = pypandoc.convert('README.md', 'rst')
-except:
-    long_description = None
-
 # Read version from package.
-from ionize.__version__ import __version__
+# from ionize.__version__ import __version__
+__version__ = '1.5.0'
 
 setup(name='ionize',
       version=__version__,
@@ -27,7 +21,8 @@ setup(name='ionize',
       use_2to3=False,
       license='LICENSE',
       description='A package for calculating electrolyte properties.',
-      long_description=long_description,
+      long_description=open('README.md').read(),
+      long_description_content_type='text/markdown',
       packages=find_packages(),
       requires=['numpy', 'scipy', 'biopython', 'click'],
       package_data={'ionize': ['Database/ion_data.json']},
