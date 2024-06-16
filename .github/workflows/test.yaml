@@ -22,4 +22,5 @@ jobs:
       - name: Test with pytest
         run: |
             pip install pytest pytest-cov
-            pytest ionize/tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+            pip install .
+            pytest --pyargs ionize.tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
