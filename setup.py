@@ -5,7 +5,7 @@ try:
     import pypandoc
     long_description = pypandoc.convert('README.md', 'rst')
 except:
-    long_description = None
+    long_description = ""
 
 # Read version from package.
 # from ionize.__version__ import __version__
