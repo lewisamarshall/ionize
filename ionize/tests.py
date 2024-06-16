@@ -347,6 +347,11 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(sol.concentration(sol.ions[0]), 0.1,
                          'Failed to find tris by ion.')
 
+        # Make a separate solution obtained by multiplication
+        sol2 = sol * 2
+        for s in sol, sol2:
+            self.assertEqual(type((s).concentration(sol.ions[0])), float)
+
     def test_getitem(self):
         sol = Solution(['tris', 'hydrochloric acid'],
                        [0.1, 0.05])
