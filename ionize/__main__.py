@@ -24,28 +24,23 @@ def ion(name):
     '''
     db = Database()
     if name in db:
-        new_ion = db[name]
+        result = db[name]
+        click.echo(result.serialize(nested = False, compact = True))
+    elif (search_results := db.search(name)):
+        click.echo('Did you mean one of these?')
+        for result in search_results:
+            click.echo(f"\t{result}")
     else:
-        search_results = db.search(name)
-        if not search_results:
-            click.echo('\'%s\' not found' % name)
-            return
-        click.echo('Did you mean one of these?\n')
-        for i in range(len(search_results)):
-            click.echo('%i: %s' % (i + 1, search_results[i]))
-        which_result = click.prompt('\nEnter the number of the correct ion', type = int)
-        new_ion = db[search_results[which_result - 1]]
-        click.echo()
+        click.echo(f"'{name}' not found")
     
-    click.echo(new_ion.serialize(nested = False, compact = True))
 
 
 @cli.command()
-@click.argument('ions')
-@click.argument('concentrations')
+@click.option('--component', '-c', type=(str, float), multiple=True)
 @click.option('--titrate', '-t', type = (str, float), default = (None, None), help = 'titrate the solution with the specified titrant to the specified value of a property, e.g. \'hydrochloric acid\' 8.5')
 @click.option('--titration_property', '-p', default = 'pH', help = 'physical property to titrate, default pH')
-def solution(ions, concentrations, titrate, titration_property):
+@click.option('--temperature', default = '25', help = "The temperature at which to simulate the solution, in Celcius.")
+def solution(component, titrate, titration_property, temperature):
     '''
     Compute the physical properties of a solution.
     
@@ -53,7 +48,10 @@ def solution(ions, concentrations, titrate, titration_property):
     CONCENTRATIONS: comma-separated list of concentrations (molar) in same order as ions, e.g. '0.01,0.006'
     '''
     
-    initial_solution = Solution(ions.split(','), list(map(float, concentrations.split(','))))
+    ions = [ion for ion, concentration in component]
+    concentrations = [concentration for ion, concentration in component]
+    initial_solution = Solution(ions, concentrations)
+    initial_solution.temperature(temperature)
     
     if titrate != (None, None): click.echo('starting solution:')
     click.echo(initial_solution)
