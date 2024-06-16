@@ -98,7 +98,7 @@ class BaseTestIon(object):
         ref = self.database['tris']
         for name in ['tris', 'bis-tris', 'hydrochloric acid']:
             other = self.database[name]
-            if name is not 'tris':
+            if name != 'tris':
                 self.assertGreater(ref.separability(other, pH=8), 0)
             else:
                 self.assertAlmostEqual(ref.separability(other, pH=8), 0)
@@ -214,7 +214,7 @@ class TestIon(unittest.TestCase):
         ref = self.database['tris']
         for name in ['tris', 'bis-tris', 'hydrochloric acid']:
             other = self.database[name]
-            if name is not 'tris':
+            if name != 'tris':
                 self.assertGreater(ref.separability(other, pH=8), 0)
             else:
                 self.assertAlmostEqual(ref.separability(other, pH=8), 0)
@@ -271,8 +271,20 @@ class TestSolution(unittest.TestCase):
         """Test pH titration."""
         base = Solution(['tris'], [0.1])
         for pH in (1, 3, 5, 7):
-            self.assertAlmostEqual(base.titrate('hydrochloric acid', pH).pH,
-                                   pH)
+            for temperature in (20, 25, 30):
+                base.temperature(temperature)
+                result = base.titrate('hydrochloric acid', pH)
+                # Ensure that the pH search converged.
+                self.assertAlmostEqual(result.pH, pH)
+                # Ensure that we retain the temperature through titration.
+                self.assertEqual(base.temperature(), result.temperature())
+
+    def test_solution_titrate(self):
+        """Test titration with a solution."""
+        base = Solution(['tris'], [0.1])
+        titrant = Solution('hydrochloric acid', 0.2)
+        for pH in (1, 3, 5, 7):
+            self.assertAlmostEqual(base.titrate(titrant, pH).pH, pH)
 
     def test_solution_properties(self):
         for buf in self.solutions:
@@ -334,6 +346,11 @@ class TestSolution(unittest.TestCase):
 
         self.assertEqual(sol.concentration(sol.ions[0]), 0.1,
                          'Failed to find tris by ion.')
+
+        # Make a separate solution obtained by multiplication
+        sol2 = sol * 2
+        for s in sol, sol2:
+            self.assertEqual(type((s).concentration(sol.ions[0])), float)
 
     def test_getitem(self):
         sol = Solution(['tris', 'hydrochloric acid'],

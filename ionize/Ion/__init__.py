@@ -1,13 +1,9 @@
 """Module containing the Ion class."""
 from __future__ import division
-import warnings
-from math import copysign
-import json
 import numpy as np
 
 from .BaseIon import BaseIon
-from ..constants import reference_temperature, boltzmann, kelvin, \
-                        elementary_charge
+from ..constants import reference_temperature
 from .fixed_state import fixed_state
 
 
@@ -98,18 +94,18 @@ class Ion(BaseIon):
             assert np.all(np.diff(self.valence) > 0), \
                 'Valences must be sorted.'
 
-        self._reference_pKa = np.float_(reference_pKa)
-        self._reference_mobility = np.float_(reference_mobility)
+        self._reference_pKa = np.float64(reference_pKa)
+        self._reference_mobility = np.float64(reference_mobility)
 
         if reference_temperature is not None:
             self._reference_temperature = float(reference_temperature)
 
         if enthalpy is not None:
-            self._enthalpy = np.float_(enthalpy)
+            self._enthalpy = np.float64(enthalpy)
             assert self.enthalpy.size == self.reference_pKa.size
 
         if heat_capacity is not None:
-            self._heat_capacity = np.float_(heat_capacity)
+            self._heat_capacity = np.float64(heat_capacity)
 
         self._molecular_weight = molecular_weight
 

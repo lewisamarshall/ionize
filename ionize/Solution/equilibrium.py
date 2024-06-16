@@ -64,9 +64,9 @@ def _calculate_pH(self, ionic_strength):
                np.array(concentrations)[:, np.newaxis], 0)
     # Construct polynomial. Change the shapes as needed, then reverse the order
     if len(P) < len(Q):
-        P.resize(Q.shape)
+        P = np.resize(P, Q.shape)
     elif len(P) > len(Q):
-        Q.resize(P.shape)
+        Q = np.resize(Q, P.shape)
     poly = (P+Q)[::-1]
 
     # Solve Polynomial for concentration

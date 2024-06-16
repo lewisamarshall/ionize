@@ -1,6 +1,6 @@
 from __future__ import print_function
 from math import copysign
-import simplejson as json
+import json
 import os
 import numpy as np
 import pandas as pd
@@ -26,10 +26,6 @@ NIGHTINGALE_FILES = {'silver': 'silver',
                      'sulfuric acid': 'sulfuric_acid',
                      'cesium': 'rubidium_cesium'
                      }
-
-
-def sig_fig(x):
-    return [decimal.Decimal('{0:.5e}'.format(i)) for i in x]
 
 
 class DataCreator(object):
@@ -76,11 +72,10 @@ class DataCreator(object):
             data = pd.read_csv(fullpath, engine='python', header=0,
                                index_col=0, names=['value'])
 
-            nightingale_fits[ion] = {'fit': sig_fig(np.polyfit(data.index,
-                                                              data['value'],
-                                                              deg=8
-                                                              )
-                                                    ),
+            nightingale_fits[ion] = {'fit': np.polyfit(data.index,
+                                                       data['value'],
+                                                       deg=8
+                                                       ).tolist(),
                                      'min': min(data.index),
                                      'max': max(data.index)
                                      }

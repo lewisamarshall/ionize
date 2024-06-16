@@ -68,9 +68,7 @@ class Peptide(PolyIon):
             neg_pKs['Cterm'] = pKcterminal[cterm]
 
         charge = IsoelectricPoint(self.sequence,
-                                  amino_acid_count)._chargeR(pH,
-                                                             pos_pKs,
-                                                             neg_pKs)
+                                  amino_acid_count).charge_at_pH(pH)
         return charge**moment
 
     def isoelectric_point(self, ionic_strength=None, temperature=None):

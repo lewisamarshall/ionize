@@ -66,6 +66,9 @@ class Database(object):
         for key in self.keys():
             yield self[key]
 
+    def __contains__(self, key):
+        return key in self.keys() 
+
     def __repr__(self):
         return 'Database("{}")'.format(self.source)
 

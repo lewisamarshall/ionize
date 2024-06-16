@@ -116,7 +116,7 @@ class Solution(object):
             elif concentration <0:
                 raise ValueError('Concentrations must be positive.')
             else:
-                self._contents[ion] = concentration
+                self._contents[ion] = float(concentration)
 
         self._hydronium = database['hydronium']
         self._hydroxide = database['hydroxide']
@@ -182,7 +182,7 @@ class Solution(object):
     def __add__(self, other):
         if isinstance(other, Solution):
             ions = list(set(self.ions + other.ions))
-            return Solution(ions, [self.concentration(ion) +
+            new_solution = Solution(ions, [self.concentration(ion) +
                                    other.concentration(ion)
                                    for ion in ions]
                             )
@@ -191,10 +191,14 @@ class Solution(object):
                 ion, concentration = other
                 new_contents = dict(self._contents)
                 new_contents[ion] = self.concentration(ion) + concentration
-                return Solution(new_contents.keys(), new_contents.values())
+                new_solution = Solution(new_contents.keys(), new_contents.values())
             except:
                 raise TypeError('Solutions add to other Solutions or to an'
                                  '(Ion, concentration) iterable pair.')
+        
+        # Update the temperature of the new solution to match this one.
+        new_solution.temperature(self._temperature)
+        return new_solution
 
     __radd__ = __add__
 
