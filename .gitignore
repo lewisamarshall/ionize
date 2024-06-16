@@ -58,3 +58,6 @@ tris_caproic.json
 
 # checkpoints
 .ipynb_checkpoints
+
+# Test results
+junit
