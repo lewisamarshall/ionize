@@ -270,14 +270,16 @@ class TestSolution(unittest.TestCase):
     def test_titrate(self):
         """Test pH titration."""
         base = Solution(['tris'], [0.1])
+        titrant_soln = Solution(['hydrochloric acid'], [1.])
         for pH in (1, 3, 5, 7):
             for temperature in (20, 25, 30):
                 base.temperature(temperature)
-                result = base.titrate('hydrochloric acid', pH)
-                # Ensure that the pH search converged.
-                self.assertAlmostEqual(result.pH, pH)
-                # Ensure that we retain the temperature through titration.
-                self.assertEqual(base.temperature(), result.temperature())
+                for titrant in ('hydrochloric acid', titrant_soln): # Check both ions and solns. 
+                    result = base.titrate(titrant, pH)
+                    # Ensure that the pH search converged.
+                    self.assertAlmostEqual(result.pH, pH)
+                    # Ensure that we retain the temperature through titration.
+                    self.assertEqual(base.temperature(), result.temperature())
 
     def test_solution_titrate(self):
         """Test titration with a solution."""

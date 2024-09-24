@@ -205,7 +205,7 @@ class Solution(object):
     def __sub__(self, other):
         if isinstance(other, Solution):
             ions = list(set(self.ions + other.ions))
-            return Solution(ions, [self.concentration(ion) -
+            new_solution = Solution(ions, [self.concentration(ion) -
                                    other.concentration(ion)
                                    for ion in ions]
                             )
@@ -216,26 +216,38 @@ class Solution(object):
                 new_contents[ion] = self.concentration(ion) - concentration
                 if new_contents[ion]==0:
                     del new_contents[ion]
-                return Solution(new_contents.keys(), new_contents.values())
+                new_solution = Solution(new_contents.keys(), new_contents.values())
             except:
                 raise TypeError('Solutions add to other Solutions or to an'
                                  '(Ion, concentration) iterable pair.')
+            
+        # Update the temperature of the new solution to match this one.
+        new_solution.temperature(self._temperature)
+        return new_solution
 
     def __mul__(self, other):
         if other >= 0:
-            return Solution(self.ions,
+            new_solution = Solution(self.ions,
                             [c * other for c in self.concentrations])
         else:
             raise TypeError
+        
+        # Update the temperature of the new solution to match this one.
+        new_solution.temperature(self._temperature)
+        return new_solution
 
     __rmul__ = __mul__
 
     def __truediv__(self, other):
         if other > 0:
-            return Solution(self.ions,
+            new_solution = Solution(self.ions,
                             [c / other for c in self.concentrations])
         else:
             raise TypeError
+        
+        # Update the temperature of the new solution to match this one.
+        new_solution.temperature(self._temperature)
+        return new_solution
 
     def __str__(self):
         """Return a string representing the Solution."""
